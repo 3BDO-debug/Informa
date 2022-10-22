@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import { m } from 'framer-motion';
 // material
 import { styled, useTheme } from '@mui/material/styles';
@@ -109,6 +109,7 @@ function Header() {
           }}
         >
           <Box
+            onClick={() => push('/')}
             sx={{
               width: {
                 xs: 40,

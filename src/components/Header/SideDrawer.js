@@ -57,7 +57,12 @@ function SideDrawer({ isTriggered, closeHandler, headerLinks }) {
       >
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           {/* Logo wrapper */}
-          <Box>
+          <Box
+            onClick={() => {
+              push('/');
+              closeHandler();
+            }}
+          >
             <Logo />
           </Box>
 
