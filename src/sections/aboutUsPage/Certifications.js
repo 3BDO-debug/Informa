@@ -13,7 +13,7 @@ const CertificationCard = ({ certification }) => {
   const theme = useTheme();
 
   return (
-    <Card>
+    <Card sx={{ maxWidth: 400 }}>
       <Box
         sx={{
           transition: theme.transitions.create(['transform'], {
@@ -76,16 +76,16 @@ function Certifications() {
             </Grid>
             <Grid item xs={12}>
               <Grid container marginTop={4} spacing={3}>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={3} sx={{ justifyContent: 'center', display: 'flex' }}>
                   <CertificationCard certification="/images/certifications/1.jpg" />
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={3} sx={{ justifyContent: 'center', display: 'flex' }}>
                   <CertificationCard certification="/images/certifications/2.jpg" />
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={3} sx={{ justifyContent: 'center', display: 'flex' }}>
                   <CertificationCard certification="/images/certifications/3.jpg" />
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={3} sx={{ justifyContent: 'center', display: 'flex' }}>
                   <CertificationCard certification="/images/certifications/4.jpg" />
                 </Grid>
               </Grid>
