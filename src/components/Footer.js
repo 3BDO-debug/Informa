@@ -14,18 +14,21 @@ const LINKS = [
   {
     headline: 'Informa',
     children: [
-      { name: 'Home', href: 'about-us' },
-      { name: 'Transformations', href: 'contact-us' },
-      { name: 'Plans & Pricing', href: 'projects' },
-      { name: 'About Us', href: '/' },
-      { name: 'Contact Us', href: '/' },
+      { name: 'Home', href: '/' },
+      { name: 'Transformations', href: '/transformations' },
+      { name: 'Plans & Pricing', href: '/plans-&-pricing' },
+      { name: 'About Us', href: '/about-us' },
+      { name: 'Contact Us', href: '/contact-us' },
     ],
   },
   {
     headline: 'Contact',
     children: [
-      { name: 'info@basedontech.com', href: 'mailto:info@basedontech.com' },
-      { name: '(+20) 1017003476', href: 'tel:+201017003476' },
+      { name: 'info@informa.com', href: 'mailto:info@informa.com' },
+      {
+        name: '(+20) 109 002 8014',
+        href: 'https://api.whatsapp.com/send?phone=201090028014&text=Hello%20Informa%2C%20I%20want%20to%20get%20in%20shape.%20',
+      },
     ],
   },
 ];
@@ -65,23 +68,34 @@ export default function Footer() {
               sx={{ mt: 5, mb: { xs: 5, md: 0 } }}
             >
               <Box marginRight={1}>
-                <IconButton onClick={() => window.open('https://www.facebook.com/Based.On.T')}>
-                  <FacebookIcon sx={{ color: '#3b5998' }} />
+                <IconButton onClick={() => window.open('https://www.facebook.com/informa180/')}>
+                  <Box component="img" src="/icons/facebook.png" width={30} />
                 </IconButton>
               </Box>
               <Box marginRight={1}>
-                <IconButton onClick={() => window.open('https://www.linkedin.com/company/justcode4it/')}>
-                  <LinkedInIcon sx={{ color: '#0e76a8' }} />
+                <IconButton onClick={() => window.open('https://www.tiktok.com/@informa180?lang=en')}>
+                  <Box component="img" src="/icons/tik-tok.png" width={30} />
                 </IconButton>
               </Box>
               <Box marginRight={1}>
-                <IconButton onClick={() => window.open('https://www.instagram.com/based_on_tech/')}>
-                  <InstagramIcon sx={{ color: '#833AB4' }} />
+                <IconButton onClick={() => window.open('https://www.instagram.com/informa180/')}>
+                  <Box component="img" src="/icons/instagram.png" width={30} />
                 </IconButton>
               </Box>
               <Box marginRight={1}>
-                <IconButton onClick={() => window.open('https://www.youtube.com/channel/UCtZVorrnQDOzmhgCox7C-nQ')}>
-                  <YouTubeIcon sx={{ color: '#c4302b' }} />
+                <IconButton onClick={() => window.open('https://www.youtube.com/channel/UCR-l_KqB-t4B_qyDccJHtOQ')}>
+                  <Box component="img" src="/icons/youtube.png" width={30} />
+                </IconButton>
+              </Box>
+              <Box marginRight={1}>
+                <IconButton
+                  onClick={() =>
+                    window.open(
+                      'https://api.whatsapp.com/send?phone=201090028014&text=Hello%20Informa%2C%20I%20want%20to%20get%20in%20shape.%20'
+                    )
+                  }
+                >
+                  <Box component="img" src="/icons/whatsapp.png" width={30} />
                 </IconButton>
               </Box>
             </Stack>

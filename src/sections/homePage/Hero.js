@@ -37,7 +37,7 @@ function Hero() {
   }, [videoRef]);
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', overflow: 'hidden' }}>
       {/*  {videoLoaded !== true && <LoadingScreen />} */}
       <MotionViewport>
         <Box
@@ -108,9 +108,10 @@ function Hero() {
                   WebkitTextFillColor: 'transparent',
                   textTransform: 'uppercase',
                   fontSize: {
-                    xs: 60,
+                    xs: 49,
                     md: 120,
                   },
+                  overflow: 'hidden',
                 }}
               >
                 confidence

@@ -20,7 +20,10 @@ function PageIntro({ coverImageVariants, subtitle, description, title }) {
     <Box
       sx={{
         backgroundImage: coverImageVariants,
-        height: '560px',
+        height: {
+          xs: 450,
+          md: 560,
+        },
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         maxWidth: {

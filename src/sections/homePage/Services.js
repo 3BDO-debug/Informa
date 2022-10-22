@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 // material
 import { Box, Button, Card, Grid, Typography, useTheme } from '@mui/material';
 import Iconify from 'src/components/Iconify';
+// theme
+import palette from 'src/theme/palette';
 
 // ---------------------------------------------------------------------------------------------------------------
 
@@ -25,6 +27,7 @@ const ServiceCard = ({ title, description, cover, icon }) => {
           display: 'flex',
           justifyContent: 'center',
           flexDirection: 'column',
+          backdropFilter: 'blur(5px)',
         }}
       >
         <Grid container spacing={1}>
@@ -40,9 +43,9 @@ const ServiceCard = ({ title, description, cover, icon }) => {
           </Grid>
           <Grid item xs={12}>
             <Typography
-              color="text.disabled"
               variant="body2"
               sx={{ textAlign: 'center', margin: '0 auto', width: '70%' }}
+              color={palette.dark.text.primary}
             >
               {description}
             </Typography>

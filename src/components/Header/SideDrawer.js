@@ -110,23 +110,34 @@ function SideDrawer({ isTriggered, closeHandler, headerLinks }) {
         {/* Socials */}
         <Stack direction="row" width="100%" justifyContent="center" marginTop={2}>
           <Box marginRight={1}>
-            <IconButton onClick={() => window.open('https://www.facebook.com/Based.On.T')}>
-              <FacebookIcon sx={{ color: '#3b5998' }} />
+            <IconButton onClick={() => window.open('https://www.facebook.com/informa180/')}>
+              <Box component="img" src="/icons/facebook.png" width={20} />
             </IconButton>
           </Box>
           <Box marginRight={1}>
-            <IconButton onClick={() => window.open('https://www.linkedin.com/company/justcode4it/')}>
-              <LinkedInIcon sx={{ color: '#0e76a8' }} />
+            <IconButton onClick={() => window.open('https://www.tiktok.com/@informa180?lang=en')}>
+              <Box component="img" src="/icons/tik-tok.png" width={20} />
             </IconButton>
           </Box>
           <Box marginRight={1}>
-            <IconButton onClick={() => window.open('https://www.instagram.com/based_on_tech/')}>
-              <InstagramIcon sx={{ color: '#833AB4' }} />
+            <IconButton onClick={() => window.open('https://www.instagram.com/informa180/')}>
+              <Box component="img" src="/icons/instagram.png" width={20} />
             </IconButton>
           </Box>
           <Box marginRight={1}>
-            <IconButton onClick={() => window.open('https://www.youtube.com/channel/UCtZVorrnQDOzmhgCox7C-nQ')}>
-              <YouTubeIcon sx={{ color: '#c4302b' }} />
+            <IconButton onClick={() => window.open('https://www.youtube.com/channel/UCR-l_KqB-t4B_qyDccJHtOQ')}>
+              <Box component="img" src="/icons/youtube.png" width={20} />
+            </IconButton>
+          </Box>
+          <Box marginRight={1}>
+            <IconButton
+              onClick={() =>
+                window.open(
+                  'https://api.whatsapp.com/send?phone=201090028014&text=Hello%20Informa%2C%20I%20want%20to%20get%20in%20shape.%20'
+                )
+              }
+            >
+              <Box component="img" src="/icons/whatsapp.png" width={20} />
             </IconButton>
           </Box>
         </Stack>

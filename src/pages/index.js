@@ -11,12 +11,13 @@ import Services from 'src/sections/homePage/Services';
 import Transformations from 'src/sections/homePage/Transformations';
 /* import Transformations from 'src/sections/homePage/xTransformations';
  */ import WhyUs from 'src/sections/homePage/WhyUs';
+import { Box } from '@mui/material';
 
 // ---------------------------------------------------------------------------------------------
 
 export default function Home() {
   return (
-    <>
+    <Box sx={{ overflow: 'hidden' }}>
       <Hero />
       <WhyUs />
       <AboutUs />
@@ -27,6 +28,6 @@ export default function Home() {
       <HaveQuestions />
       <NewsLetter />
       {/*  <Transformations /> */}
-    </>
+    </Box>
   );
 }

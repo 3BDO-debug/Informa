@@ -2,7 +2,9 @@ import React, { useRef } from 'react';
 import Slider from 'react-slick';
 import { m } from 'framer-motion';
 // material
-import { Box, Card, Grid, Paper, Typography, useTheme } from '@mui/material';
+import { Box, Card, Grid, IconButton, Paper, Typography, useTheme } from '@mui/material';
+import WestIcon from '@mui/icons-material/West';
+import EastIcon from '@mui/icons-material/East';
 // components
 import SectionWrapper from 'src/components/SectionWrapper';
 import { MotionViewport, varFade } from 'src/components/animate';
@@ -21,16 +23,25 @@ function Transformations() {
     slidesToScroll: 1,
     easing: 'ease-in-out',
     speed: 1000,
+    arrows: true,
   };
 
   const generateCarouselData = () => {
     const data = [];
 
     for (let index = 1; index < 7; index++) {
-      data.push(`/images/transformations/${index}.JPG`);
+      data.push(`/images/transformations/${index}.png`);
     }
 
     return data;
+  };
+
+  const handleCarouselPrev = () => {
+    carouselRef.current?.slickPrev();
+  };
+
+  const handleCarouselNext = () => {
+    carouselRef.current?.slickNext();
   };
 
   return (
@@ -46,135 +57,77 @@ function Transformations() {
             Register now and be a part of great Transformations
           </Typography>
         </Grid>
+        <Grid
+          item
+          xs={12}
+          sx={{
+            display: {
+              xs: 'block',
+              md: 'none',
+            },
+          }}
+        >
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <IconButton onClick={handleCarouselPrev}>
+              <WestIcon />
+            </IconButton>
+            <IconButton onClick={handleCarouselNext}>
+              <EastIcon />
+            </IconButton>
+          </Box>
+        </Grid>
         <Grid item xs={12} mt={6}>
-          <Slider ref={carouselRef} {...settings}>
-            <Box
+          <Grid container spacing={3}>
+            <Grid
+              item
               sx={{
-                pl: {
-                  sm: 25,
-                },
-                pr: {
-                  sm: 25,
+                display: {
+                  xs: 'none',
+                  md: 'flex',
                 },
               }}
+              md={2}
             >
-              <Paper elevation={15}>
-                <Box
-                  component="img"
-                  sx={{ borderRadius: '8px', objectFit: 'contain' }}
-                  src="/images/transformations/1.jpg"
-                />
-              </Paper>
-            </Box>
-            <Box
+              <IconButton onClick={handleCarouselPrev}>
+                <WestIcon />
+              </IconButton>
+            </Grid>
+            <Grid item xs={12} md={8}>
+              <Slider ref={carouselRef} {...settings}>
+                {generateCarouselData().map((client) => (
+                  <Box
+                    sx={{
+                      pl: {
+                        sm: 25,
+                      },
+                      pr: {
+                        sm: 25,
+                      },
+                      mb: 4,
+                    }}
+                  >
+                    <Paper elevation={15}>
+                      <Box component="img" sx={{ borderRadius: '8px', objectFit: 'contain' }} src={client} />
+                    </Paper>
+                  </Box>
+                ))}
+              </Slider>
+            </Grid>
+            <Grid
+              item
               sx={{
-                pl: {
-                  sm: 25,
-                },
-                pr: {
-                  sm: 25,
+                display: {
+                  xs: 'none',
+                  md: 'flex',
                 },
               }}
+              md={2}
             >
-              <Paper elevation={15}>
-                <Box
-                  component="img"
-                  sx={{ borderRadius: '8px', objectFit: 'contain' }}
-                  src="/images/transformations/2.jpg"
-                />
-              </Paper>
-            </Box>
-            <Box
-              sx={{
-                pl: {
-                  sm: 25,
-                },
-                pr: {
-                  sm: 25,
-                },
-              }}
-            >
-              <Paper elevation={15}>
-                <Box
-                  component="img"
-                  sx={{ borderRadius: '8px', objectFit: 'contain' }}
-                  src="/images/transformations/3.jpg"
-                />
-              </Paper>
-            </Box>
-            <Box
-              sx={{
-                pl: {
-                  sm: 25,
-                },
-                pr: {
-                  sm: 25,
-                },
-              }}
-            >
-              <Paper elevation={15}>
-                <Box
-                  component="img"
-                  sx={{ borderRadius: '8px', objectFit: 'contain' }}
-                  src="/images/transformations/4.jpg"
-                />
-              </Paper>
-            </Box>
-            <Box
-              sx={{
-                pl: {
-                  sm: 25,
-                },
-                pr: {
-                  sm: 25,
-                },
-              }}
-            >
-              <Paper elevation={15}>
-                <Box
-                  component="img"
-                  sx={{ borderRadius: '8px', objectFit: 'contain' }}
-                  src="/images/transformations/5.JPG"
-                />
-              </Paper>
-            </Box>
-            <Box
-              sx={{
-                pl: {
-                  sm: 25,
-                },
-                pr: {
-                  sm: 25,
-                },
-              }}
-            >
-              <Paper elevation={15}>
-                <Box
-                  component="img"
-                  sx={{ borderRadius: '8px', objectFit: 'contain' }}
-                  src="/images/transformations/6.jpg"
-                />
-              </Paper>
-            </Box>
-            <Box
-              sx={{
-                pl: {
-                  sm: 25,
-                },
-                pr: {
-                  sm: 25,
-                },
-              }}
-            >
-              <Paper elevation={15}>
-                <Box
-                  component="img"
-                  sx={{ borderRadius: '8px', objectFit: 'contain' }}
-                  src="/images/transformations/7.jpg"
-                />
-              </Paper>
-            </Box>
-          </Slider>
+              <IconButton onClick={handleCarouselNext}>
+                <EastIcon />
+              </IconButton>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </SectionWrapper>

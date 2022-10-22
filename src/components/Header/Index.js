@@ -251,13 +251,23 @@ function Header() {
                 lg: 'none',
               },
               mr: {
-                xs: 3,
+                xs: -1,
                 lg: 0,
               },
             }}
           >
+            {/* Whatsapp */}
+            <IconButton
+              onClick={() =>
+                window.open(
+                  'https://api.whatsapp.com/send?phone=201090028014&text=Hello%20Informa%2C%20I%20want%20to%20get%20in%20shape.%20'
+                )
+              }
+            >
+              <Box component="img" src="/icons/whatsapp.png" width={25} />
+            </IconButton>
             {/* Dark / Light mode */}
-            <IconButton sx={{ ml: 2 }} onClick={() => onChangeMode(themeMode === 'dark' ? 'light' : 'dark')}>
+            <IconButton sx={{ ml: 0 }} onClick={() => onChangeMode(themeMode === 'dark' ? 'light' : 'dark')}>
               {themeMode === 'light' ? (
                 <DarkModeIcon sx={{ color: theme.palette.grey[600] }} />
               ) : (

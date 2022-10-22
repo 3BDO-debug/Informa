@@ -76,14 +76,17 @@ function SocialMediaRecords() {
             </Grid>
             <Grid item xs={12}>
               <Grid container marginTop={3} spacing={3}>
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={3}>
                   <SocialMediaRecord icon="/icons/facebook.png" record={1100000} suffix={`M`} />
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={3}>
                   <SocialMediaRecord icon="/icons/youtube.png" record={758000} suffix={`K`} />
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={3}>
                   <SocialMediaRecord icon="/icons/instagram.png" record={267000} suffix={`K`} />
+                </Grid>
+                <Grid item xs={12} md={3}>
+                  <SocialMediaRecord icon="/icons/tik-tok.png" record={954000} suffix={`K`} />
                 </Grid>
               </Grid>
             </Grid>

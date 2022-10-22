@@ -35,7 +35,7 @@ function Clients() {
         <Grid container spacing={3}>
           {generateClientsData().map((client) => (
             <Grid item xs={12} sm={4} md={3}>
-              <ClientCard coverImg={`${client}.jpg` || `${client}.JPG`} />
+              <ClientCard coverImg={`${client}.png`} />
             </Grid>
           ))}
         </Grid>
