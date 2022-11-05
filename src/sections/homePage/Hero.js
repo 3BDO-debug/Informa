@@ -3,7 +3,7 @@ import { m } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { useRouter } from 'next/router';
-import { isMobile } from 'react-device-detect';
+import { useMediaQuery } from 'react-responsive';
 // material
 import { Box, Button, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
@@ -28,6 +28,8 @@ function Hero() {
   const { push } = useRouter();
 
   const videoRef = useRef();
+
+  const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
   const triggerRegisterPopUp = useSetRecoilState(registerNowPopUpAtom);
   const triggerJoinUsPopUp = useSetRecoilState(joinUsPopUpAtom);
