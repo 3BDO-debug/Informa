@@ -7,17 +7,19 @@ export default function useOffSetTop(top) {
   const isTop = top || 100;
 
   useEffect(() => {
-    window.onscroll = () => {
-      if (window.pageYOffset > isTop) {
+    const options = { passive: true }; // options must match add/remove event
+    const scroll = (event) => {
+      const { pageYOffset, scrollY } = window;
+      if (scrollY > isTop) {
         setOffSetTop(true);
       } else {
         setOffSetTop(false);
       }
     };
-    return () => {
-      window.onscroll = null;
-    };
-  }, [isTop]);
+    document.addEventListener('scroll', scroll, options);
+    // remove event on unmount to prevent a memory leak
+    () => document.removeEventListener('scroll', scroll, options);
+  }, []);
 
   return offsetTop;
 }

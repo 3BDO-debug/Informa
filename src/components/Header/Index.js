@@ -116,11 +116,8 @@ function Header() {
         sx={{
           ...(isOffset && {
             ...cssStyles(theme).bgBlur(),
-            height: { xs: HEADER.MAIN_DESKTOP_HEIGHT, md: HEADER.MAIN_DESKTOP_HEIGHT - 16 },
+            height: { md: HEADER.MAIN_DESKTOP_HEIGHT - 16 },
           }),
-          mt: {
-            xs: !isOffset ? 2 : 0,
-          },
         }}
       >
         <Container

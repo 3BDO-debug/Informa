@@ -26,7 +26,7 @@ export default function Home() {
       <Pricing />
       <ContactUs />
       <HaveQuestions />
-     
+
       {/*  <Transformations /> */}
     </Box>
   );
