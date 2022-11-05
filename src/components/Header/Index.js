@@ -21,7 +21,7 @@ import { useCallback } from 'react';
 // ----------------------------------------------------------------------
 
 const HEADER = {
-  MOBILE_HEIGHT: 64,
+  MOBILE_HEIGHT: 80,
   MAIN_DESKTOP_HEIGHT: 120,
 };
 
