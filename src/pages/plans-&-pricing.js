@@ -1,15 +1,18 @@
 import React from 'react';
-import ContactUs from 'src/sections/common/ContactUs';
-import NewsLetter from 'src/sections/common/NewsLetter';
+// hooks
+import useLocales from 'src/hooks/useLocales';
 // components
 import PageIntro from 'src/sections/common/PageIntro';
 import Pricing from 'src/sections/common/Pricing';
 import PlansPricingGuide from 'src/sections/plansPricingPage/PlansPricingGuide';
 import PlansInstructionVideo from 'src/sections/plansPricingPage/PlansInstructionVideo';
+import ContactUs from 'src/sections/common/ContactUs';
 
 // ---------------------------------------------------------------------------------------------------------
 
 function PlansPricing() {
+  const { translate } = useLocales();
+
   return (
     <>
       <PageIntro
@@ -17,15 +20,14 @@ function PlansPricing() {
           xs: 'url(/images/fade-effect.svg), url(/images/plans-pricing-section-cover-sm.png)',
           sm: 'url(/images/fade-effect.svg), url(/images/plans-pricing-section-cover-md.png)',
         }}
-        subtitle="Plans & Pricing"
-        title="We got pricing right"
-        description="At Informa we got no clients, we got heros we are proud to share."
+        subtitle={translate('pagesTranslations.pricingsPageTranslations.pageIntro.subtitle')}
+        title={translate('pagesTranslations.pricingsPageTranslations.pageIntro.title')}
+        description={translate('pagesTranslations.pricingsPageTranslations.pageIntro.description')}
       />
       <PlansInstructionVideo />
       <PlansPricingGuide />
       <Pricing />
       <ContactUs />
-      <NewsLetter />
     </>
   );
 }

@@ -15,23 +15,15 @@ import useSettings from 'src/hooks/useSettings';
 import cssStyles from '../../utils/cssStyles';
 import Logo from '../Logo';
 import SideDrawer from './SideDrawer';
+import useLocales from 'src/hooks/useLocales';
+import { useCallback } from 'react';
 
 // ----------------------------------------------------------------------
 
 const HEADER = {
   MOBILE_HEIGHT: 64,
-  MAIN_DESKTOP_HEIGHT: 115,
+  MAIN_DESKTOP_HEIGHT: 120,
 };
-
-// ----------------------------------------------------------------------
-
-const headerLinks = [
-  { title: 'Home', href: '/' },
-  { title: 'transformations', href: '/transformations' },
-  { title: 'plans & pricing', href: '/plans-&-pricing' },
-  { title: 'about us', href: '/about-us' },
-  { title: 'contact us', href: '/contact-us' },
-];
 
 // ----------------------------------------------------------------------
 
@@ -71,8 +63,38 @@ function Header() {
   const theme = useTheme();
   const { pathname, push } = useRouter();
   const [hoveredLink, setHoveredLink] = useState(null);
-  const { themeMode, onChangeMode } = useSettings();
+  const { themeMode, onChangeMode, onChangeDirection } = useSettings();
+  const { currentLang, allLangs, onChangeLang, translate } = useLocales();
   const [drawerIsTriggered, triggerDrawer] = useState(false);
+
+  const headerLinks = [
+    { title: translate('componentsTranslations.headerTranslations.1'), href: '/' },
+    { title: translate('componentsTranslations.headerTranslations.2'), href: '/transformations' },
+    { title: translate('componentsTranslations.headerTranslations.3'), href: '/plans-&-pricing' },
+    { title: translate('componentsTranslations.headerTranslations.4'), href: '/about-us' },
+    { title: translate('componentsTranslations.headerTranslations.5'), href: '/contact-us' },
+  ];
+
+  const handleLanguageChange = useCallback(() => {
+    if (currentLang.value === 'ar') {
+      onChangeLang('en');
+      onChangeDirection('ltr');
+    } else {
+      onChangeLang('ar');
+      onChangeDirection('rtl');
+    }
+  }, [onChangeDirection, currentLang]);
+
+  const renderLanguageIcon = useCallback(() => {
+    let context;
+    if (currentLang.value === 'ar') {
+      context = allLangs[0].icon;
+    } else {
+      context = allLangs[1].icon;
+    }
+
+    return context;
+  }, [currentLang, allLangs]);
 
   const detailsPageFinder = () => {
     const currentPathSplitted = pathname.split('/');
@@ -241,6 +263,10 @@ function Header() {
                 <LightModeIcon sx={{ color: '#FFF9A6' }} />
               )}
             </IconButton>
+            {/* Languages toggler */}
+            <IconButton onClick={handleLanguageChange}>
+              <Box component="img" src={renderLanguageIcon()} />
+            </IconButton>
           </Box>
           {/* Drawer trigger */}
           <Box
@@ -277,6 +303,10 @@ function Header() {
             </IconButton>
             <IconButton onClick={() => triggerDrawer(true)}>
               <MenuIcon />
+            </IconButton>
+            {/* Languages toggler */}
+            <IconButton onClick={handleLanguageChange}>
+              <Box component="img" src={renderLanguageIcon()} />
             </IconButton>
           </Box>
         </Container>

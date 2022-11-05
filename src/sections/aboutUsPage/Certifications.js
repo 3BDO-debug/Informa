@@ -2,6 +2,8 @@ import React from 'react';
 import { m } from 'framer-motion';
 // material
 import { Container, Box, Grid, Typography, Card, useTheme } from '@mui/material';
+// hooks
+import useLocales from 'src/hooks/useLocales';
 // theme
 import palette from 'src/theme/palette';
 // components
@@ -36,6 +38,8 @@ const CertificationCard = ({ certification }) => {
 // -----------------------------------------------------------------------------------------------------
 
 function Certifications() {
+  const { translate } = useLocales();
+
   return (
     <MotionViewport>
       <Box
@@ -51,7 +55,7 @@ function Certifications() {
                 variant="overline"
                 color={palette.dark.grey[500]}
               >
-                Certifications
+                {translate('pagesTranslations.aboutUsPageTranslations.certifications.subtitle')}
               </Typography>
             </Grid>
             <Grid item xs={12}>
@@ -62,7 +66,7 @@ function Certifications() {
                   textTransform: 'capitalize',
                   textAlign: 'center',
                   '&:after': {
-                    content: '"Certified"',
+                    content: `'${translate('pagesTranslations.aboutUsPageTranslations.certifications.gradientTitle')}'`,
                     ml: 2,
                     background: 'linear-gradient(45deg,#E5F61B, #B3852E)',
                     backgroundClip: 'text',
@@ -71,7 +75,7 @@ function Certifications() {
                   },
                 }}
               >
-                We got our success
+                {translate('pagesTranslations.aboutUsPageTranslations.certifications.title')}
               </Typography>
             </Grid>
             <Grid item xs={12}>

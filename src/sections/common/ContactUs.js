@@ -2,12 +2,17 @@ import React from 'react';
 // material
 import { Box, Button, Container, Grid, TextField, Typography, useTheme } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+// hooks
+import useLocales from 'src/hooks/useLocales';
+import ContactUsForm from 'src/components/ContactUsForm';
 // components
 
 // --------------------------------------------------------------------------------------------------
 
 function ContactUs() {
   const theme = useTheme();
+  const { translate } = useLocales();
+
   return (
     <Box
       sx={{
@@ -21,14 +26,14 @@ function ContactUs() {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Typography color="grey.600" variant="overline">
-                  Contact Us
+                  {translate('commonSectionsTranslations.contactUsSection.title')}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
                 <Typography
                   sx={{
                     '&:after': {
-                      content: "'you'",
+                      content: `'${translate('commonSectionsTranslations.contactUsSection.gradientTitle')}'`,
                       color: theme.palette.primary.main,
                       ml: 2,
                     },
@@ -36,39 +41,18 @@ function ContactUs() {
                   variant="h2"
                   color="common.white"
                 >
-                  Talk to us we would like to hear from
+                  {translate('commonSectionsTranslations.contactUsSection.title')}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
                 <Typography color="grey.400" variant="body1">
-                  It is a long established fact that a reader will be distracted by the readable content of a page when
-                  looking at its layout.
+                  {translate('commonSectionsTranslations.contactUsSection.description')}
                 </Typography>
               </Grid>
             </Grid>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
-                <TextField label="Full name" fullWidth />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField label="Phone Number" fullWidth />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField label="Email" fullWidth />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField label="Your message" multiline rows={4} fullWidth />
-              </Grid>
-              <Grid item xs={12}>
-                <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                  <Button endIcon={<SendIcon />} variant="contained">
-                    Send
-                  </Button>
-                </Box>
-              </Grid>
-            </Grid>
+            <ContactUsForm color="white" />
           </Grid>
         </Grid>
       </Container>

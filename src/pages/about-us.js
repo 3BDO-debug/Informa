@@ -1,8 +1,10 @@
 import React from 'react';
+// hooks
+import useLocales from 'src/hooks/useLocales';
 // components
 import PageIntro from 'src/sections/common/PageIntro';
 import AboutInforma from 'src/sections/aboutUsPage/AboutInforma';
-import SocialMediaRecords from 'src/sections/aboutUsPage/SocialMediaRecords';
+import SocialMediaRecords from 'src/sections/common/SocialMediaRecords';
 import Certifications from 'src/sections/aboutUsPage/Certifications';
 import ContactUs from 'src/sections/common/ContactUs';
 import Reviews from 'src/sections/aboutUsPage/Reviews';
@@ -10,6 +12,8 @@ import Reviews from 'src/sections/aboutUsPage/Reviews';
 // -------------------------------------------------------------------------------
 
 function AboutUs() {
+  const { translate } = useLocales();
+
   return (
     <>
       <PageIntro
@@ -17,9 +21,9 @@ function AboutUs() {
           xs: 'url(/images/fade-effect.svg), url(/images/about-us-cover-sm.png)',
           md: 'url(/images/fade-effect.svg), url(/images/about-us-cover-md.png)',
         }}
-        subtitle="About Us"
-        title="What's Informa ?"
-        description="At Informa we believe communcation is key of success thats why we always love to keep in touch with our clients."
+        subtitle={translate('pagesTranslations.aboutUsPageTranslations.pageIntro.subtitle')}
+        title={translate('pagesTranslations.aboutUsPageTranslations.pageIntro.title')}
+        description={translate('pagesTranslations.aboutUsPageTranslations.pageIntro.description')}
       />
       <AboutInforma />
       <Certifications />

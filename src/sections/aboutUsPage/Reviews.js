@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import Slider from 'react-slick';
 // material
 import { Box, Card, Container, Grid, Typography, useTheme } from '@mui/material';
+// hooks
+import useLocales from 'src/hooks/useLocales';
 // components
 
 // ------------------------------------------------------------------------------------------------------
@@ -47,6 +49,8 @@ function Reviews() {
 
   const carouselRef = useRef(null);
 
+  const { translate } = useLocales();
+
   const settings = {
     dots: true,
     infinite: true,
@@ -89,12 +93,12 @@ function Reviews() {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Typography variant="overline" sx={{ display: 'flex', justifyContent: 'center' }}>
-              Reviews
+              {translate('pagesTranslations.aboutUsPageTranslations.feedbacks.subtitle')}
             </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="h2" sx={{ textAlign: 'center', textTransform: 'capitalize' }}>
-              People are happy with us
+              {translate('pagesTranslations.aboutUsPageTranslations.feedbacks.title')}
             </Typography>
           </Grid>
           <Grid item xs={12}>

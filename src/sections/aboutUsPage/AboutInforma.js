@@ -1,5 +1,6 @@
 import React from 'react';
 import { m } from 'framer-motion';
+import useLocales from 'src/hooks/useLocales';
 // material
 import { Box, Button, Card, Grid, Typography } from '@mui/material';
 import YouTubeIcon from '@mui/icons-material/YouTube';
@@ -11,6 +12,8 @@ import { MotionViewport, varFade } from 'src/components/animate';
 // ------------------------------------------------------------------------------------
 
 function AboutInforma() {
+  const { translate } = useLocales();
+
   return (
     <MotionViewport>
       <SectionWrapper>
@@ -40,13 +43,15 @@ function AboutInforma() {
           <Grid item xs={12} md={6}>
             <Grid component={m.div} variants={varFade().inLeft} container rowSpacing={3}>
               <Grid item xs={12}>
-                <Typography variant="overline">About Us</Typography>
+                <Typography variant="overline">
+                  {translate('pagesTranslations.aboutUsPageTranslations.aboutInforma.subtitle')}
+                </Typography>
               </Grid>
               <Grid item xs={12}>
                 <Typography
                   sx={{
                     '&:after': {
-                      content: '"Informa"',
+                      content: `'${translate('pagesTranslations.aboutUsPageTranslations.aboutInforma.gradientTitle')}'`,
                       ml: 2,
                       background: 'linear-gradient(45deg,#E5F61B, #B3852E)',
                       backgroundClip: 'text',
@@ -56,16 +61,12 @@ function AboutInforma() {
                   }}
                   variant="h2"
                 >
-                  About
+                  {translate('pagesTranslations.aboutUsPageTranslations.aboutInforma.title')}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="body1">
-                  It is a long established fact that a reader will be distracted by the readable content of a page when
-                  looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                  distribution of letters, as opposed to using 'Content here, content here', making it look like
-                  readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                  default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy
+                  {translate('pagesTranslations.aboutUsPageTranslations.aboutInforma.description')}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
@@ -78,7 +79,7 @@ function AboutInforma() {
                   startIcon={<FitnessCenterIcon />}
                   variant="contained"
                 >
-                  Transform your life
+                  {translate('pagesTranslations.aboutUsPageTranslations.aboutInforma.actionButton')}
                 </Button>
               </Grid>
             </Grid>

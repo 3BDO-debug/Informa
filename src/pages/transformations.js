@@ -1,12 +1,16 @@
 import React from 'react';
-import ContactUs from 'src/sections/common/ContactUs';
+// hooks
+import useLocales from 'src/hooks/useLocales';
 // components
 import PageIntro from 'src/sections/common/PageIntro';
 import Clients from 'src/sections/transformationsPage/Clients';
+import ContactUs from 'src/sections/common/ContactUs';
 
 // ----------------------------------------------------------------------------------
 
 function Transformations() {
+  const { translate } = useLocales();
+
   return (
     <>
       <PageIntro
@@ -15,9 +19,9 @@ function Transformations() {
           sm: 'url(/images/fade-effect.svg), url(/images/transformations-section-cover-md.png)',
           md: 'url(/images/fade-effect.svg), url(/images/transformations-section-cover.png)',
         }}
-        subtitle="Transformations"
-        title="Some Of Our Heros"
-        description="At Informa we got no clients, we got heros we are proud to share."
+        subtitle={translate('pagesTranslations.transformationsPageTranslations.pageIntro.subtitle')}
+        title={translate('pagesTranslations.transformationsPageTranslations.pageIntro.title')}
+        description={translate('pagesTranslations.transformationsPageTranslations.pageIntro.description')}
       />
       <Clients />
       <ContactUs />

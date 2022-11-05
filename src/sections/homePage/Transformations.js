@@ -9,12 +9,14 @@ import EastIcon from '@mui/icons-material/East';
 import SectionWrapper from 'src/components/SectionWrapper';
 import { MotionViewport, varFade } from 'src/components/animate';
 import Image from 'src/components/Image';
+import useLocales from 'src/hooks/useLocales';
 
 // ------------------------------------------------------------------------------------------------------------------
 
 function Transformations() {
   const carouselRef = useRef(null);
   const theme = useTheme();
+  const { translate } = useLocales();
 
   const settings = {
     dots: true,
@@ -49,12 +51,14 @@ function Transformations() {
       <Grid component={MotionViewport} container spacing={3}>
         <Grid component={m.div} variants={varFade().inUp} item xs={12}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <Typography variant="overline">Transformations</Typography>
+            <Typography variant="overline">
+              {translate('pagesTranslations.homePageTranslations.transformations.subtitle')}
+            </Typography>
           </Box>
         </Grid>
         <Grid component={m.div} variants={varFade().inUp} item xs={12}>
           <Typography sx={{ textTransform: 'capitalize', textAlign: 'center' }} variant="h2">
-            Register now and be a part of great Transformations
+            {translate('pagesTranslations.homePageTranslations.transformations.title')}
           </Typography>
         </Grid>
         <Grid

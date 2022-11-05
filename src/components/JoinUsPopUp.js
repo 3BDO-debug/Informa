@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 // recoil
-import joinUsPopUpAtom from 'src/recoil/joinUsPopUpAtom';
+import joinUsPopUpAtom from 'src/recoil/atoms/joinUsPopUpAtom';
 // material
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, TextField } from '@mui/material';
 import { LoadingButton } from '@mui/lab';

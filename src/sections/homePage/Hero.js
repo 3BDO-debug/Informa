@@ -2,13 +2,17 @@ import React from 'react';
 import { m } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
+import { useRouter } from 'next/router';
+import { isMobile } from 'react-device-detect';
 // material
 import { Box, Button, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 // atoms
-import registerNowPopUpAtom from 'src/recoil/registerNowPopUpAtom';
-import joinUsPopUpAtom from 'src/recoil/joinUsPopUpAtom';
+import registerNowPopUpAtom from 'src/recoil/atoms/registerNowPopUpAtom';
+import joinUsPopUpAtom from 'src/recoil/atoms/joinUsPopUpAtom';
+// locales
+import useLocales from 'src/hooks/useLocales';
 //
 import { MotionViewport, varFade } from 'src/components/animate';
 import LoadingScreen from 'src/components/LoadingScreen';
@@ -16,8 +20,12 @@ import LoadingScreen from 'src/components/LoadingScreen';
 // ---------------------------------------------------------------------------------------
 
 function Hero() {
+  const { translate } = useLocales();
+
   const [videoLoaded, setVideoLoaded] = useState(null);
   const theme = useTheme();
+
+  const { push } = useRouter();
 
   const videoRef = useRef();
 
@@ -64,7 +72,7 @@ function Hero() {
             muted
             playsInline
           >
-            <source src="/videos/hero.mp4" type="video/mp4" />
+            <source src={isMobile ? '/videos/hero-mobile.mp4' : '/videos/hero.mp4'} type="video/mp4" />
           </video>
           {/* https://res.cloudinary.com/code-hustle/video/upload/v1665519157/hero_faqush.mp4 https://res.cloudinary.com/code-hustle/video/upload/v1666033444/hero_hbqcfu.mp4 */}
           {/* Hero content */}
@@ -125,7 +133,7 @@ function Hero() {
                 }}
                 variant="h1"
               >
-                Don’t limit your challenges
+                {translate('pagesTranslations.homePageTranslations.heroSection.title')}
               </Typography>
               <Typography
                 sx={{
@@ -140,24 +148,24 @@ function Hero() {
                 }}
                 variant="h1"
               >
-                challenge your limits
+                {translate('pagesTranslations.homePageTranslations.heroSection.secondaryTitle')}
               </Typography>
             </Box>
             {/* Hero actions */}
             <Box sx={{ display: 'flex', justifyContent: 'center', mt: 6, flexWrap: 'wrap' }}>
               <m.div variants={varFade().inLeft} transition={{ delay: 2 }}>
                 <Button
-                  onClick={() => triggerRegisterPopUp(true)}
+                  onClick={() => push('plans-&-pricing')}
                   sx={{ mr: 2 }}
                   variant="contained"
                   startIcon={<FitnessCenterIcon />}
                 >
-                  Transform your mindset
+                  {translate('pagesTranslations.homePageTranslations.heroSection.mainActionButton')}
                 </Button>
               </m.div>
               <m.div variants={varFade().inRight}>
-                <Button onClick={() => triggerJoinUsPopUp(true)} variant="outlined">
-                  Join Us
+                <Button onClick={() => push('transformations')} variant="outlined">
+                  {translate('pagesTranslations.homePageTranslations.heroSection.secondaryActionButton')}
                 </Button>
               </m.div>
             </Box>

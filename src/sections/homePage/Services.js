@@ -4,10 +4,11 @@ import { Box, Button, Card, Grid, Typography, useTheme } from '@mui/material';
 import Iconify from 'src/components/Iconify';
 // theme
 import palette from 'src/theme/palette';
+import useLocales from 'src/hooks/useLocales';
 
 // ---------------------------------------------------------------------------------------------------------------
 
-const ServiceCard = ({ title, description, cover, icon }) => {
+const ServiceCard = ({ title, description, cover, icon, actionButtonText }) => {
   const theme = useTheme();
   const [hovered, setHovered] = useState(false);
 
@@ -52,7 +53,7 @@ const ServiceCard = ({ title, description, cover, icon }) => {
           </Grid>
           <Grid item xs={12}>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Button variant="outlined">Learn more</Button>
+              <Button variant="outlined">{actionButtonText}</Button>
             </Box>
           </Grid>
         </Grid>
@@ -77,31 +78,38 @@ const ServiceCard = ({ title, description, cover, icon }) => {
 // ---------------------------------------------------------------------------------------------------------------
 
 function Services() {
+  const { translate } = useLocales();
+
   return (
     <Box sx={{ paddingTop: 10 }}>
       <Grid container spacing={0}>
         <Grid item xs={12} md={4}>
           <ServiceCard
-            title="Workout Plans"
-            description="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout"
+            title={translate('pagesTranslations.homePageTranslations.services.1.title')}
+            description={translate('pagesTranslations.homePageTranslations.services.1.description')}
             cover="/images/services-workout.jpeg"
             icon="ion:barbell"
+            actionButtonText={translate('pagesTranslations.homePageTranslations.services.1.actionButton')}
           />
         </Grid>
         <Grid item xs={12} md={4}>
           <ServiceCard
-            title="Nutrition Plans"
-            description="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout"
+            title={translate('pagesTranslations.homePageTranslations.services.2.title')}
+            description={translate('pagesTranslations.homePageTranslations.services.2.description')}
             cover="/images/services-supplements.jpeg"
             icon="game-icons:meal"
+            actionButtonText={translate('pagesTranslations.homePageTranslations.services.2.actionButton')}
+
           />
         </Grid>
         <Grid item xs={12} md={4}>
           <ServiceCard
-            title="Progress Tracking"
-            description="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout"
+            title={translate('pagesTranslations.homePageTranslations.services.3.title')}
+            description={translate('pagesTranslations.homePageTranslations.services.3.description')}
             cover="/images/services-progress.jpeg"
             icon="mdi:progress-check"
+            actionButtonText={translate('pagesTranslations.homePageTranslations.services.3.actionButton')}
+
           />
         </Grid>
       </Grid>

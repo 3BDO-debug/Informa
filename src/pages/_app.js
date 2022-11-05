@@ -1,4 +1,6 @@
 import { useRouter } from 'next/router';
+// i18n
+import '../locales/i18n';
 // recoil
 import { RecoilRoot } from 'recoil';
 // scroll bar

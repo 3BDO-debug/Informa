@@ -1,32 +1,38 @@
 import React, { useState } from 'react';
 import { m } from 'framer-motion';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 // material
 import { Box, Button, Card, Chip, Grid, Paper, Tab, Tabs, Typography, useTheme } from '@mui/material';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import AddIcon from '@mui/icons-material/Add';
-import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
-import CheckIcon from '@mui/icons-material/Check';
-import ClearIcon from '@mui/icons-material/Clear';
 // atoms
-import registerNowPopUpAtom from 'src/recoil/registerNowPopUpAtom';
+import registerNowPopUpAtom from 'src/recoil/atoms/registerNowPopUpAtom';
+import userPlanAtom from 'src/recoil/atoms/userPlanAtom';
 // mocked data
 import followUpPlans from 'src/utils/followUpPlansData';
+// hooks
+import useLocales from 'src/hooks/useLocales';
+// utils
+import customizeUserPlan from 'src/utils/customizeUserPlan';
 // components
 import SectionWrapper from 'src/components/SectionWrapper';
 import { MotionViewport, varFade } from 'src/components/animate';
 import Iconify from 'src/components/Iconify';
+import PricingCard from 'src/components/PricingCard';
 
 // ---------------------------------------------------------------------------------------------------------
 
 function Pricing() {
   const [selectedPlanType, setSelectedPlanType] = useState(1);
   const [selectedPlanDuration, setSelectedPlanDuration] = useState(0);
-  const [hovered, setHovered] = useState(null);
   const theme = useTheme();
-
+  const { translate } = useLocales();
+  const [userPlan, setUserPlan] = useRecoilState(userPlanAtom);
   const triggerRegisterPopUp = useSetRecoilState(registerNowPopUpAtom);
+
+  const [planProgram, setPlanProgram] = useState('nutrition-workout');
+  const [planDuration, setPlanDuration] = useState(6);
 
   return (
     <SectionWrapper>
@@ -34,13 +40,13 @@ function Pricing() {
         <Grid item xs={12}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <Typography sx={{ textAlign: 'center' }} variant="overline">
-              Pricing plans
+              {translate('commonSectionsTranslations.pricingsSection.subtitle')}
             </Typography>
           </Box>
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h3" sx={{ textTransform: 'capitalize', textAlign: 'center' }}>
-            Find the plan that best suits you
+            {translate('commonSectionsTranslations.pricingsSection.title')}
           </Typography>
         </Grid>
         <Grid item xs={12}>
@@ -55,7 +61,9 @@ function Pricing() {
               },
             }}
           >
-            <Typography variant="subtitle1">Choose Plan Type :</Typography>
+            <Typography variant="subtitle1">
+              {translate('commonSectionsTranslations.pricingsSection.planType.title')} :
+            </Typography>
             <Box
               sx={{
                 display: 'flex',
@@ -79,8 +87,9 @@ function Pricing() {
                     <FitnessCenterIcon />
                   </Box>
                 }
-                label="Nutrition & Workout Plan"
-                variant="filled"
+                onClick={() => setUserPlan({ ...userPlan, program: 'nutrition-workout' })}
+                label={translate('commonSectionsTranslations.pricingsSection.planType.1')}
+                variant={userPlan.program === 'nutrition-workout' ? 'filled' : 'outlined'}
                 sx={{
                   ml: 1,
                   mr: 1,
@@ -95,9 +104,24 @@ function Pricing() {
                 }}
                 clickable
               />
-              <Chip color="primary" icon={<FitnessCenterIcon />} label="Workout Plan" variant="outlined" clickable />
+              <Chip
+                color="primary"
+                sx={{ mr: 2, ml: 1 }}
+                icon={<FitnessCenterIcon />}
+                label={translate('commonSectionsTranslations.pricingsSection.planType.2')}
+                variant={userPlan.program === 'workout' ? 'filled' : 'outlined'}
+                onClick={() => setUserPlan({ ...userPlan, program: 'workout' })}
+                clickable
+              />
 
-              <Chip color="primary" icon={<LocalDiningIcon />} label="Nutrition Plan" variant="outlined" clickable />
+              <Chip
+                color="primary"
+                icon={<LocalDiningIcon />}
+                label={translate('commonSectionsTranslations.pricingsSection.planType.3')}
+                variant={userPlan.program === 'nutrition' ? 'filled' : 'outlined'}
+                onClick={() => setUserPlan({ ...userPlan, program: 'nutrition' })}
+                clickable
+              />
             </Box>
           </Box>
         </Grid>
@@ -113,7 +137,9 @@ function Pricing() {
               },
             }}
           >
-            <Typography variant="subtitle1">Choose Plan Duration :</Typography>
+            <Typography variant="subtitle1">
+              {translate('commonSectionsTranslations.pricingsSection.planDuration.title')} :
+            </Typography>
             <Box
               sx={{
                 display: 'flex',
@@ -126,19 +152,20 @@ function Pricing() {
                 },
               }}
             >
-              <Chip sx={{ mr: 1 }} color="primary" label="1 month" variant="outlined" clickable />
-              <Chip sx={{ mr: 1 }} color="primary" label="3 Months" variant="outlined" clickable />
               <Chip
-                sx={{
-                  mr: 1,
-                  mt: {
-                    xs: 1,
-                    lg: 0,
-                  },
-                }}
+                sx={{ mr: 1 }}
                 color="primary"
-                label="6 Months"
-                variant="filled"
+                label={translate('commonSectionsTranslations.pricingsSection.planDuration.1')}
+                variant={userPlan.duration === 1 ? 'filled' : 'outlined'}
+                onClick={() => setUserPlan({ ...userPlan, duration: 1 })}
+                clickable
+              />
+              <Chip
+                sx={{ mr: 1 }}
+                color="primary"
+                label={translate('commonSectionsTranslations.pricingsSection.planDuration.2')}
+                variant={userPlan.duration === 3 ? 'filled' : 'outlined'}
+                onClick={() => setUserPlan({ ...userPlan, duration: 3 })}
                 clickable
               />
               <Chip
@@ -150,8 +177,23 @@ function Pricing() {
                   },
                 }}
                 color="primary"
-                label="12 Months"
-                variant="outlined"
+                label={translate('commonSectionsTranslations.pricingsSection.planDuration.3')}
+                variant={userPlan.duration === 6 ? 'filled' : 'outlined'}
+                onClick={() => setUserPlan({ ...userPlan, duration: 6 })}
+                clickable
+              />
+              <Chip
+                sx={{
+                  mr: 1,
+                  mt: {
+                    xs: 1,
+                    lg: 0,
+                  },
+                }}
+                color="primary"
+                label={translate('commonSectionsTranslations.pricingsSection.planDuration.4')}
+                variant={userPlan.duration === 12 ? 'filled' : 'outlined'}
+                onClick={() => setUserPlan({ ...userPlan, duration: 12 })}
                 clickable
               />
             </Box>
@@ -159,84 +201,15 @@ function Pricing() {
         </Grid>
         <Grid item xs={12}>
           <Grid container spacing={3} mt={5} mb={12}>
-            {followUpPlans.map((followUp, index) => (
-              <Grid
-                key={index}
-                component={m.div}
-                variants={index === 2 ? varFade().inLeft : index === 1 ? varFade().in : varFade().inRight}
-                item
-                xs={12}
-                sm={6}
-                md={4}
-              >
-                <Paper
-                  onMouseEnter={() => setHovered(index)}
-                  onMouseLeave={() => setHovered(null)}
-                  elevation={followUp.title === 'Golden Package' ? 24 : 2}
-                  sx={{
-                    height: '550px',
-                    borderRadius: '18px',
-                    translate: {
-                      xs: '0',
-                      lg: followUp.title === 'Golden Package' ? '0 -50px' : 'o',
-                    },
-                    cursor: 'pointer',
-                  }}
-                >
-                  <Card>
-                    <Box
-                      component="img"
-                      src={followUp.coverImage}
-                      sx={{
-                        height: '550px',
-                        borderRadius: '18px',
-                        filter: 'brightness(30%)',
-                        transform: hovered === index ? 'scale(1.1)' : 'scale(1)',
-                        transition: theme.transitions.create(['transform'], {
-                          easing: theme.transitions.easing.easeInOut,
-                          duration: '0.9s',
-                        }),
-                        width: '100%',
-                      }}
-                    />
-                  </Card>
-                  {/* Pricing Content */}
-                  <Box sx={{ position: 'relative', bottom: '80%' }}>
-                    {/* Description */}
-                    <Typography color="common.white" sx={{ textAlign: 'center' }} variant="h3">
-                      150 $
-                    </Typography>
-                    <Typography variant="h3" color={followUp.color} sx={{ textAlign: 'center' }}>
-                      {followUp.title}
-                    </Typography>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        p: 5,
-                        mt: 3,
-                      }}
-                    >
-                      {followUp.features.map((feature, index) => (
-                        <Box display="flex" alignItems="center" key={index}>
-                          {feature.included ? <CheckIcon color="success" /> : <ClearIcon color="error" />}
-                          <Typography variant="caption" sx={{ ml: 1 }} color="common.white">
-                            {feature.feature}
-                          </Typography>
-                        </Box>
-                      ))}
-                    </Box>
-                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                      <Button
-                        onClick={() => triggerRegisterPopUp(true)}
-                        variant={hovered === index ? 'contained' : 'outlined'}
-                      >
-                        Select Plan
-                      </Button>
-                    </Box>
-                  </Box>
-                </Paper>
-              </Grid>
+            {followUpPlans(translate).map((followUp, index) => (
+              <PricingCard
+                clickHandler={() => {
+                  setUserPlan({ ...userPlan, followUpPackage: followUp.value });
+                  triggerRegisterPopUp(true);
+                }}
+                index={index}
+                data={followUp}
+              />
             ))}
           </Grid>
         </Grid>

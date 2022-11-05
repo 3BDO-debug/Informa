@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { m } from 'framer-motion';
 // material
 import { Box, Grid, styled, Typography } from '@mui/material';
 // components
 import SectionWrapper from 'src/components/SectionWrapper';
-import { MotionViewport, TextAnimate } from 'src/components/animate';
+import { MotionViewport, TextAnimate, varFade } from 'src/components/animate';
 
 // -----------------------------------------------------------------------------------------------------------
 
@@ -49,21 +50,20 @@ function PageIntro({ coverImageVariants, subtitle, description, title }) {
                   },
                 }}
               >
-                <TextAnimate text={title} isGradient textVariant="h2" />
+                <Typography
+                  component={m.h2}
+                  variants={varFade().in}
+                  variant="h2"
+                  sx={{
+                    background: 'linear-gradient(45deg,#E5F61B, #B3852E)',
+                    backgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    WebkitBackgroundClip: 'text',
+                  }}
+                >
+                  {title}
+                </Typography>
               </Box>
-
-              {/*  <GradientText
-                sx={{
-                  width: {
-                    xs: '100%',
-                    md: '50%',
-                  },
-                }}
-                variant="gradientText"
-                color="white"
-              >
-                {title}
-              </GradientText> */}
             </Grid>
             <Grid item xs={12}>
               <Typography

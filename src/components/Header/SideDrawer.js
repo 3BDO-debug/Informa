@@ -23,7 +23,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 // theme
 import palette from 'src/theme/palette';
 // atoms
-import registerNowPopUpAtom from 'src/recoil/registerNowPopUpAtom';
+import registerNowPopUpAtom from 'src/recoil/atoms/registerNowPopUpAtom';
 import Logo from '../Logo';
 
 // ------------------------------------------------------------------------------------------

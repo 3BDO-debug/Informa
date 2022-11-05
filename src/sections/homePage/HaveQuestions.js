@@ -2,12 +2,15 @@ import React from 'react';
 // material
 import { Box, Button, Container, Grid, Typography, useTheme } from '@mui/material';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+// hooks
+import useLocales from 'src/hooks/useLocales';
 // componenents
 
 // ------------------------------------------------------------------------------------
 
 function HaveQuestions() {
   const theme = useTheme();
+  const { translate } = useLocales();
 
   return (
     <Box sx={{ backgroundColor: theme.palette.grey[200] }}>
@@ -15,19 +18,21 @@ function HaveQuestions() {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Typography variant="overline">Contact us</Typography>
+              <Typography variant="overline">
+                {translate('pagesTranslations.homePageTranslations.haveQuestions.subtitle')}
+              </Typography>
             </Box>
           </Grid>
           <Grid item xs={12}>
             <Typography sx={{ textAlign: 'center' }} variant="h2">
-              Still have a questions ?
+              {translate('pagesTranslations.homePageTranslations.haveQuestions.title')}
             </Typography>
           </Grid>
 
           <Grid item xs={12}>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <Button variant="contained" startIcon={<WhatsAppIcon />}>
-                Contact Us
+                {translate('pagesTranslations.homePageTranslations.haveQuestions.actionButton')}
               </Button>
             </Box>
           </Grid>

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 // material
 import { Box, Button, Card, Container, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+// hooks
+import useLocales from 'src/hooks/useLocales';
 // components
 import SectionWrapper from 'src/components/SectionWrapper';
 import palette from 'src/theme/palette';
@@ -10,6 +13,10 @@ import palette from 'src/theme/palette';
 
 function AboutUs() {
   const theme = useTheme();
+
+  const { translate } = useLocales();
+
+  const { push } = useRouter();
 
   const [hovered, setHovered] = useState(false);
 
@@ -34,18 +41,12 @@ function AboutUs() {
                   variant="h2"
                   color="common.white"
                 >
-                  Story of success
+                  {translate('pagesTranslations.homePageTranslations.aboutUs.title')}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="body2" sx={{ color: theme.palette.grey[400] }}>
-                  It is a long established fact that a reader will be distracted by the readable content of a page when
-                  looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                  distribution of letters, as opposed to using 'Content here, content here', making it look like
-                  readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                  default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
-                  Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected
-                  humour and the like).
+                  {translate('pagesTranslations.homePageTranslations.aboutUs.description')}
                 </Typography>
               </Grid>
               <Grid
@@ -62,7 +63,9 @@ function AboutUs() {
                   },
                 }}
               >
-                <Button variant="outlined">Learn More</Button>
+                <Button onClick={() => push('about-us')} variant="outlined">
+                  {translate('pagesTranslations.homePageTranslations.aboutUs.actionButton')}
+                </Button>
               </Grid>
             </Grid>
           </Grid>
@@ -77,7 +80,7 @@ function AboutUs() {
                   }),
                 }}
                 component="img"
-                width={"100%"}
+                width={'100%'}
                 src="/images/about-section-1.jpeg"
               />
             </Card>
@@ -96,8 +99,8 @@ function AboutUs() {
               },
             }}
           >
-            <Button sx={{ mt: 4 }} variant="outlined">
-              Learn More
+            <Button onClick={() => push('about-us')} sx={{ mt: 4 }} variant="outlined">
+              {translate('pagesTranslations.homePageTranslations.aboutUs.actionButton')}
             </Button>
           </Grid>
         </Grid>
