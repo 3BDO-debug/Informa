@@ -4,7 +4,7 @@ const userPlanAtom = atom({
   key: 'userPlan',
   default: {
     program: 'nutrition-workout',
-    duration: 6,
+    duration: 3,
     followUpPackage: null,
     totalPrice: null,
   },

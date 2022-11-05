@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 // material
 import { Box, Button, Card, Grid, Typography, useTheme } from '@mui/material';
 import Iconify from 'src/components/Iconify';
@@ -11,6 +12,8 @@ import useLocales from 'src/hooks/useLocales';
 const ServiceCard = ({ title, description, cover, icon, actionButtonText }) => {
   const theme = useTheme();
   const [hovered, setHovered] = useState(false);
+
+  const { push } = useRouter();
 
   return (
     <Box
@@ -53,7 +56,9 @@ const ServiceCard = ({ title, description, cover, icon, actionButtonText }) => {
           </Grid>
           <Grid item xs={12}>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Button variant="outlined">{actionButtonText}</Button>
+              <Button onClick={() => push('plans-&-pricing')} variant="outlined">
+                {actionButtonText}
+              </Button>
             </Box>
           </Grid>
         </Grid>
@@ -99,7 +104,6 @@ function Services() {
             cover="/images/services-supplements.jpeg"
             icon="game-icons:meal"
             actionButtonText={translate('pagesTranslations.homePageTranslations.services.2.actionButton')}
-
           />
         </Grid>
         <Grid item xs={12} md={4}>
@@ -109,7 +113,6 @@ function Services() {
             cover="/images/services-progress.jpeg"
             icon="mdi:progress-check"
             actionButtonText={translate('pagesTranslations.homePageTranslations.services.3.actionButton')}
-
           />
         </Grid>
       </Grid>

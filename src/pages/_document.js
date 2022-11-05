@@ -28,11 +28,16 @@ export default class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
 
           <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap"
             rel="stylesheet"
           />
-
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+          />
           <meta name="description" content="Change your life now with Informa" />
           <meta name="keywords" content="Informa" />
           <meta name="author" content="Based On Tech" />

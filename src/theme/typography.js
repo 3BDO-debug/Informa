@@ -2,7 +2,7 @@ import { pxToRem, responsiveFontSizes } from '../utils/getFontValue';
 
 // ----------------------------------------------------------------------
 
-const FONT_PRIMARY = 'Public Sans, sans-serif'; // Google Font
+const FONT_PRIMARY = 'Public Sans, Cairo, sans-serif'; // Google Font
 // const FONT_SECONDARY = 'CircularStd, sans-serif'; // Local Font
 
 const typography = {
@@ -74,6 +74,7 @@ const typography = {
     lineHeight: 1.5,
     fontSize: pxToRem(12),
     textTransform: 'uppercase',
+    color: 'rgb(99, 115, 129)',
   },
   button: {
     fontWeight: 700,

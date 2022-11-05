@@ -21,7 +21,16 @@ const SocialMediaRecord = ({ icon, record, suffix }) => {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <Box sx={{ width: '13%' }} component="img" src={icon} />
+      <Box
+        sx={{
+          width: {
+            xs: '30%',
+            md: '13%',
+          },
+        }}
+        component="img"
+        src={icon}
+      />
       <CountUp
         start={0}
         end={record}
@@ -79,16 +88,16 @@ function SocialMediaRecords() {
             </Grid>
             <Grid item xs={12}>
               <Grid container marginTop={3} spacing={3}>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={6} md={3}>
                   <SocialMediaRecord icon="/icons/facebook.png" record={1100000} suffix={`M`} />
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={6} md={3}>
                   <SocialMediaRecord icon="/icons/youtube.png" record={758000} suffix={`K`} />
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={6} md={3}>
                   <SocialMediaRecord icon="/icons/instagram.png" record={267000} suffix={`K`} />
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={6} md={3}>
                   <SocialMediaRecord icon="/icons/tik-tok.png" record={954000} suffix={`K`} />
                 </Grid>
               </Grid>

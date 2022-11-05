@@ -93,20 +93,23 @@ function Pricing() {
                 sx={{
                   ml: 1,
                   mr: 1,
-                  mt: {
-                    xs: 1,
-                    md: 0,
-                  },
-                  mb: {
-                    xs: 1,
-                    md: 0,
-                  },
                 }}
                 clickable
               />
               <Chip
                 color="primary"
-                sx={{ mr: 2, ml: 1 }}
+                sx={{
+                  mr: 2,
+                  ml: 1,
+                  mb: {
+                    xs: 1,
+                    md: 0,
+                  },
+                  mt: {
+                    xs: 1,
+                    md: 0,
+                  },
+                }}
                 icon={<FitnessCenterIcon />}
                 label={translate('commonSectionsTranslations.pricingsSection.planType.2')}
                 variant={userPlan.program === 'workout' ? 'filled' : 'outlined'}
@@ -153,7 +156,13 @@ function Pricing() {
               }}
             >
               <Chip
-                sx={{ mr: 1 }}
+                sx={{
+                  mr: 1,
+                  mt: {
+                    xs: 1,
+                    lg: 0,
+                  },
+                }}
                 color="primary"
                 label={translate('commonSectionsTranslations.pricingsSection.planDuration.1')}
                 variant={userPlan.duration === 1 ? 'filled' : 'outlined'}
@@ -161,7 +170,13 @@ function Pricing() {
                 clickable
               />
               <Chip
-                sx={{ mr: 1 }}
+                sx={{
+                  mr: 1,
+                  mt: {
+                    xs: 1,
+                    lg: 0,
+                  },
+                }}
                 color="primary"
                 label={translate('commonSectionsTranslations.pricingsSection.planDuration.2')}
                 variant={userPlan.duration === 3 ? 'filled' : 'outlined'}
