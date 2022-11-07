@@ -7,31 +7,10 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+// hooks
+import useLocales from 'src/hooks/useLocales';
 
 // ----------------------------------------------------------------------
-
-const LINKS = [
-  {
-    headline: 'Informa',
-    children: [
-      { name: 'Home', href: '/' },
-      { name: 'Transformations', href: '/transformations' },
-      { name: 'Plans & Pricing', href: '/plans-&-pricing' },
-      { name: 'About Us', href: '/about-us' },
-      { name: 'Contact Us', href: '/contact-us' },
-    ],
-  },
-  {
-    headline: 'Contact',
-    children: [
-      { name: 'info@informa.com', href: 'mailto:info@informa.com' },
-      {
-        name: '(+20) 109 002 8014',
-        href: 'https://api.whatsapp.com/send?phone=201090028014&text=Hello%20Informa%2C%20I%20want%20to%20get%20in%20shape.%20',
-      },
-    ],
-  },
-];
 
 const RootStyle = styled(Container)(({ theme }) => ({
   position: 'relative',
@@ -41,6 +20,25 @@ const RootStyle = styled(Container)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Footer() {
+  const { translate } = useLocales();
+
+  const LINKS = [
+    {
+      headline: translate('componentsTranslations.footerTranslations.links.title'),
+      children: [
+        { name: translate('componentsTranslations.footerTranslations.links.1'), href: '/' },
+        { name: translate('componentsTranslations.footerTranslations.links.2'), href: '/transformations' },
+        { name: translate('componentsTranslations.footerTranslations.links.3'), href: '/plans-&-pricing' },
+        { name: translate('componentsTranslations.footerTranslations.links.4'), href: '/about-us' },
+        { name: translate('componentsTranslations.footerTranslations.links.5'), href: '/contact-us' },
+      ],
+    },
+    {
+      headline: translate('componentsTranslations.footerTranslations.contact.title'),
+      children: [{ name: 'Informa.180.sales@gmail.com', href: 'mailto:Informa.180.sales@gmail.com' }],
+    },
+  ];
+
   return (
     <RootStyle>
       <Divider />
@@ -57,9 +55,7 @@ export default function Footer() {
           </Grid>
           <Grid item xs={8} md={3}>
             <Typography variant="body2" sx={{ pr: { md: 5 } }}>
-              It is a long established fact that a reader will be distracted by the readable content of a page when
-              looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
-              letters, as opposed to using 'Content here, content here'.
+              {translate('componentsTranslations.footerTranslations.about')}
             </Typography>
 
             <Stack

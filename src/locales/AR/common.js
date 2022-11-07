@@ -5,8 +5,8 @@ const commonSectionsTranslations = {
     planType: {
       title: 'أختار برنامجك',
       1: 'برنامج تدريبي مع برنامج غذائي',
-      2: 'برنامج تدريبي',
-      3: 'برنامج غذائي',
+      2: 'برنامج تدريبي فقط',
+      3: 'برنامج غذائي فقط',
     },
     planDuration: {
       title: 'اختار مدة الاشتراك',
@@ -16,6 +16,7 @@ const commonSectionsTranslations = {
       4: '١٢ شهور',
     },
     plansData: {
+      headTitle: ': اختار نظام المتابعة المناسب لك',
       silverPackage: {
         title: 'الباقة الفضية',
         1: '٢٤/٧ خدمة عملاء انفورمة',

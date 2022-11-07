@@ -7,13 +7,13 @@ const homePageTranslations = {
   },
   aboutUs: {
     title: 'Story of success',
-    description: `I’m Hussein Sayed ,a certified fitness trainer and nutritionist who helps people change their mindsets and adopt healthier lifestyles.
-
-    Before starting my coaching business, I spent five years studying mechanical engineering and minoring in business administration at the American University in Cairo. After graduating in 2017, I realized that my passion is in developing mindsets instead of machines.
-    
-    Now with an experience of 11 years in the fitness field, I’m holding several certificates in this field including Certified Fitness trainer(CFT), Certified Nutritionist (CNC) & Certificated Personal Trainer (CPT) in addition to attending lectures presented by the European Register of Exercise professionals (EREPS).
-    
-    I started INFORMA in 2019 to increase people's awareness about healthy lifestyles. Now millions of followers around the world are benefiting from my online content. Additionally, I customized a huge number of fitness and nutrition programs that are based on knowledge and experience together to help my clients achieving their targets by following my flexible plans.`,
+    firstDescriptionParagraph:
+      'Hussein Sayed is a certified fitness trainer and nutritionist who helps people change their mindsets and adopt healthier lifestyles.',
+    secondDescriptionParagraph:
+      'Before starting his coaching business, Hussein spent five years studying mechanical engineering and minoring in business administration at the American University in Cairo. After graduating in 2017, he realized that his passion is in developing mindsets instead of machines.',
+    thirdDescriptionParagraph:
+      'Now with an experience of 11 years in the fitness field, Hussein is holding several certificates in this field including Certified Fitness trainer(CFT), Certified Nutritionist (CNC) & Certificated Personal Trainer (CPT) in addition to attending lectures  presented by the European Register of Exercise professionals (EREPS).',
+    fourthDescriptionParagraph: `Hussein started INFORMA in 2019 to increase people's awareness about healthy lifestyles. Now millions of followers around the world are benefiting from his online content. Additionally, his personally customized fitness and nutrition programs that are based on his knowledge and experience together help his clients achieve their targets by following his flexible plans.`,
     actionButton: 'Learn more',
   },
   transformations: {

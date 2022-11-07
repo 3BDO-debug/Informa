@@ -45,9 +45,28 @@ function AboutUs() {
                 </Typography>
               </Grid>
               <Grid item xs={12}>
-                <Typography variant="body2" sx={{ color: theme.palette.grey[400] }}>
-                  {translate('pagesTranslations.homePageTranslations.aboutUs.description')}
-                </Typography>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <Typography variant="body2" sx={{ color: theme.palette.grey[400] }}>
+                      {translate('pagesTranslations.homePageTranslations.aboutUs.firstDescriptionParagraph')}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Typography variant="body2" sx={{ color: theme.palette.grey[400] }}>
+                      {translate('pagesTranslations.homePageTranslations.aboutUs.secondDescriptionParagraph')}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Typography variant="body2" sx={{ color: theme.palette.grey[400] }}>
+                      {translate('pagesTranslations.homePageTranslations.aboutUs.thirdDescriptionParagraph')}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Typography variant="body2" sx={{ color: theme.palette.grey[400] }}>
+                      {translate('pagesTranslations.homePageTranslations.aboutUs.fourthDescriptionParagraph')}
+                    </Typography>
+                  </Grid>
+                </Grid>
               </Grid>
               <Grid
                 item

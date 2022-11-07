@@ -88,7 +88,7 @@ function Reviews() {
   };
 
   return (
-    <Box sx={{ backgroundColor: theme.palette.background.neutral }}>
+    <Box sx={{ backgroundColor: theme.palette.background.neutral }} id="feedbacks">
       <Container sx={{ paddingTop: 10, paddingBottom: 10 }}>
         <Grid container spacing={3}>
           <Grid item xs={12}>

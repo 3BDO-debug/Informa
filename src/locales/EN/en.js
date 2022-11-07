@@ -4,6 +4,7 @@ import commonSectionsTranslations from './common';
 import {
   contactUsFormTranslations,
   fabButtonTranslations,
+  footerTranslations,
   headerTranslations,
   registerNowPopUpTranslations,
 } from './components';
@@ -31,6 +32,7 @@ const en = {
   commonSectionsTranslations: commonSectionsTranslations,
   componentsTranslations: {
     headerTranslations: headerTranslations,
+    footerTranslations: footerTranslations,
     registerNowPopUpTranslations: registerNowPopUpTranslations,
     fabButtonTranslations: fabButtonTranslations,
     contactUsFormTranslations: contactUsFormTranslations,

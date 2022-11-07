@@ -1,12 +1,12 @@
 const commonSectionsTranslations = {
   pricingsSection: {
-    subtitle: 'PRICING PLANS',
+    subtitle: 'PRICING & PLANS',
     title: 'Find The Plan That Best Suits You',
     planType: {
       title: 'Choose your Program',
       1: 'Nutrition & Workout Plan',
-      2: 'Workout plan',
-      3: 'Nutrition Plan',
+      2: 'Workout only',
+      3: 'Nutrition only',
     },
     planDuration: {
       title: 'Choose Plan Duration',
@@ -16,6 +16,7 @@ const commonSectionsTranslations = {
       4: '12 Months',
     },
     plansData: {
+      headTitle: 'Choose Follow-Up Package that suits you :',
       silverPackage: {
         title: 'Silver Package',
         1: '24/7 Customer Services',
@@ -53,7 +54,7 @@ const commonSectionsTranslations = {
   },
   socialMediaRecords: {
     subtitle: 'Our family',
-    title: 'Our',
+    title: 'we got no fans we got',
     gradientTitle: 'Family',
   },
 };

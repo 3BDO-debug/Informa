@@ -3,7 +3,7 @@ import CountUp from 'react-countup';
 import numeral from 'numeral';
 import { m } from 'framer-motion';
 // material
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography, useTheme } from '@mui/material';
 // components
 import SectionWrapper from 'src/components/SectionWrapper';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -14,7 +14,9 @@ import useLocales from 'src/hooks/useLocales';
 
 // ------------------------------------------------------------------------------------------
 
-const SocialMediaRecord = ({ icon, record, suffix }) => {
+const SocialMediaRecord = ({ icon, record, suffix, link }) => {
+  const theme = useTheme();
+
   const formatNumber = useCallback((value) => {
     return numeral(value).format('0.0a');
   }, []);
@@ -27,8 +29,17 @@ const SocialMediaRecord = ({ icon, record, suffix }) => {
             xs: '30%',
             md: '13%',
           },
+          transition: theme.transitions.create(['transform'], {
+            easing: theme.transitions.easing.easeInOut,
+            duration: '0.9s',
+          }),
+          '&:hover': {
+            transform: 'scale(1.2)',
+          },
+          cursor: 'pointer',
         }}
         component="img"
+        onClick={() => window.open(link)}
         src={icon}
       />
       <CountUp
@@ -89,16 +100,36 @@ function SocialMediaRecords() {
             <Grid item xs={12}>
               <Grid container marginTop={3} spacing={3}>
                 <Grid item xs={6} md={3}>
-                  <SocialMediaRecord icon="/icons/facebook.png" record={1100000} suffix={`M`} />
+                  <SocialMediaRecord
+                    link="https://www.facebook.com/informa180"
+                    icon="/icons/facebook.png"
+                    record={1100000}
+                    suffix={`M`}
+                  />
                 </Grid>
                 <Grid item xs={6} md={3}>
-                  <SocialMediaRecord icon="/icons/youtube.png" record={758000} suffix={`K`} />
+                  <SocialMediaRecord
+                    link="https://www.youtube.com/channel/UCR-l_KqB-t4B_qyDccJHtOQ"
+                    icon="/icons/youtube.png"
+                    record={758000}
+                    suffix={`K`}
+                  />
                 </Grid>
                 <Grid item xs={6} md={3}>
-                  <SocialMediaRecord icon="/icons/instagram.png" record={267000} suffix={`K`} />
+                  <SocialMediaRecord
+                    link="https://www.instagram.com/informa180/"
+                    icon="/icons/instagram.png"
+                    record={267000}
+                    suffix={`K`}
+                  />
                 </Grid>
                 <Grid item xs={6} md={3}>
-                  <SocialMediaRecord icon="/icons/tik-tok.png" record={954000} suffix={`K`} />
+                  <SocialMediaRecord
+                    link="https://www.tiktok.com/@informa180"
+                    icon="/icons/tik-tok.png"
+                    record={954000}
+                    suffix={`K`}
+                  />
                 </Grid>
               </Grid>
             </Grid>

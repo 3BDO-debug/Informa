@@ -215,6 +215,11 @@ function Pricing() {
           </Box>
         </Grid>
         <Grid item xs={12}>
+          <Typography sx={{ textAlign: 'center' }} variant="h4">
+            {translate('commonSectionsTranslations.pricingsSection.plansData.headTitle')}
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
           <Grid container spacing={3} mt={5} mb={12}>
             {followUpPlans(translate).map((followUp, index) => (
               <PricingCard

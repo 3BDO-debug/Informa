@@ -1,7 +1,7 @@
 const registerNowPopUpTranslations = {
   title: {
     text: 'اشترك الان',
-    actionButton: 'الدليل',
+    actionButton: 'شرح التفاصيل',
   },
   form: {
     fullName: 'الاسم بالكامل',

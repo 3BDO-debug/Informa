@@ -159,7 +159,7 @@ function RegisterNowPopUp() {
               push('plans-&-pricing');
             }}
             startIcon={<TipsAndUpdatesIcon />}
-            variant="outlined"
+            variant="contained"
           >
             {translate('componentsTranslations.registerNowPopUpTranslations.title.actionButton')}
           </Button>
