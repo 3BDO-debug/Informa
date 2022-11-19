@@ -32,7 +32,6 @@ const GuideElement = ({ title, details }) => {
     <Accordion TransitionProps={{ unmountOnExit: true }}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          
           <Typography>{title}</Typography>
         </Box>
       </AccordionSummary>
@@ -93,177 +92,182 @@ function PlansPricingGuide() {
           <Grid item xs={12}>
             <Box>
               <GuideElement
-                title="شرح النظام"
+                title={translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.title')}
                 details={[
                   {
-                    data: `خدمه العملاء بتتواصل معك لتفعيل الاشتراك و الرد علي جميع اسئلتك و استفساراتك طوال رحلتك مع انفورمة وارسال البيانات لكابتن حسين (انفورمه) لتصميم البرنامج مفصل لك بناء على`,
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.1.data'),
                     subData: [
-                      'تفاصيل جسمك',
-                      'هدفك الرئيسي من البرنامج',
-                      'أسلوب حياتك',
-                      'الاكل الغير مرغوب فيه',
-                      'اي إصابات او مرض لا قدر الله',
-                      'و أي تفاصيل اخرى',
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.1.subData.1'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.1.subData.2'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.1.subData.3'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.1.subData.4'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.1.subData.5'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.1.subData.6'),
                     ],
                   },
                   {
-                    data: 'يتم تعديل البرنامج (بحد ادني شهر) علي حسب تغيرات جسمك و التزامك بالبرنامج و التطور بناء على اختياراتك للبرنامج الجديد و رؤية كوتش حسين (انفورمة)',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.2.data'),
                   },
                   {
-                    data: 'يتم تصميم البرنامج الخاص بك من قبل كابتن حسين (انفورمة) من ٧ الي ١٠ ايام عمل و يتم إرسال البرنامج من الايميل الخاص بكابتن حسين الى الايميل الخاص بك.',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.3.data'),
                   },
                   {
-                    data: 'تاريخ الاشتراك يبدأ بعد يوم من تاريخ ارسال البرنامج الأول بعد تصميمه و ينتهي بعد انتهاء فتره الاشتراك المختاره (شهر) او (٣شهور) او (٦ شهور) او (١٢ شهر)',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.4.data'),
                   },
                   {
-                    data: 'في حالة المرض او اي اصابة او الكورونا لا قدر الله ، يمكنك تجميد الاشتراك و فترة التجميد تكون كالتالى',
-                    subData: [`شهر (لايوجد)`, `٣ شهور (أسبوعين)`, `٦ شهور (شهر)`, `١٢ شهر ( شهرين)`],
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.5.data'),
+                    subData: [
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.5.subData.1'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.5.subData.2'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.5.subData.3'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.5.subData.4'),
+                    ],
                   },
-                  { data: 'برجاء العلم انه لا يتم تصميم الانظمة الغذائية الخاصة بالاشخاص النباتية.' },
+                  { data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.1.5.data') },
                 ]}
               />
               <GuideElement
-                title="البرنامج الغذائي"
+                title={translate('pagesTranslations.pricingsPageTranslations.guide.guideData.3.title')}
                 details={[
                   {
-                    data: 'كابتن حسين (انفورمة) بيصمم لحضرتك برنامج مفصل لك مبنى على اساس علمى و بيكون بناءً علي',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.3.1.data'),
                     subData: [
-                      'وزن الجسم و طوله',
-                      'هدفك الأساسي من البرنامج',
-                      'نسب الدهون و العضلات',
-                      'نوع جسمك',
-                      'عدد ايام التمرين',
-                      'مواعيد الوجبات المفضل لديك',
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.3.1.subData.1'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.3.1.subData.2'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.3.1.subData.3'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.3.1.subData.4'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.3.1.subData.5'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.3.1.subData.6'),
                     ],
                   },
                   {
-                    data: 'يتم تصميم البرنامج من قبل كابتن حسين (انفورمة) بناء على عدد الوجبات المفضله لديك فى اليوم و يتم وضع الأكل المرغوب به  فى البرنامج و محاولة تجنب اى اكل غير مرغوب فيه فى البرنامج.',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.3.2.data'),
                   },
                   {
-                    data: 'النظام محسوب بالسعرات الحرارية و احتياج جسمك من بروتين، كربوهيدرات، و دهون، النظام بيكون فيه كل العناصر الغذائية المطلوبه للجسم. ',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.3.3.data'),
                   },
                   {
-                    data: 'يوجد بدائل لكل وجبه فى البرنامج لحريه الاختيار يوميا الأكل المرغوب به اليوم و عدم الأحساس بالملل او الإجبار على وجبه محدده.',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.3.4.data'),
                   },
                   {
-                    data: 'يوجد مع كل وجبه السعرات الحرارية الخاصة بها (بروتين، كربوهيدرات، دهون) لسهولة ضم اى وجبه خارجيه عن البرنامج بالسعرات الحرارية المطلوبة.',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.3.5.data'),
                   },
                   {
-                    data: 'الأكل مذكور بالوزن بالجرام لكل صنف أو أكلة مع التوصيات و التعليمات والبدائل لكل وجبه.',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.3.6.data'),
                   },
                   {
-                    data: 'يوجد فيديوهات من (مطبخ انفورمة) لطريقة الطبخ و تتبيل الأكل.',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.3.7.data'),
                   },
                   {
-                    data: 'فى الاشتراك اكثر من شهر،  بعد الأسبوع الثالث خدمه العملاء تتواصل مع حضرتك لارسال البيانات لكابتن حسين انفورمة بالنتائج وشرح له الأهداف القادمة لتصميم برنامج الشهر الجديد.',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.3.8.data'),
                   },
                 ]}
               />
               <GuideElement
-                title="البرنامج التدريبي"
+                title={translate('pagesTranslations.pricingsPageTranslations.guide.guideData.2.title')}
                 details={[
                   {
-                    data: 'يتم تصميم البرنامج لرفع المستوي البدني الخاص بك و تحقيق أهدافك المتفق عليها مسبقاً.',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.2.1.data'),
                   },
                   {
-                    data: 'البرنامج مصمم علي حسب عدد الأيام اللي قادر تتمرن فيها سواء كان في الچيم أو في البيت.',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.2.2.data'),
                   },
                   {
-                    data: 'البرنامج مفصل لأبعد درجة من أول بدء التمرين لنهايته.',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.2.3.data'),
                   },
                   {
-                    data: 'مذكور في التمرين',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.2.4.data'),
                     subData: [
-                      'التسخين قبل التمرين (بالفيديوهات)',
-                      'تقسيمة التمارين علي الأسبوع',
-                      'أسماء التمارين و العضلات المستهدفة',
-                      'فيديو لكل تمرين أو حركة هتعملها',
-                      'عدد المجاميع لكل تمرينة',
-                      'عدد العدات المرغوب تنفيذها',
-                      'وقت الراحة بين المجاميع',
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.2.4.subData.1'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.2.4.subData.2'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.2.4.subData.3'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.2.4.subData.4'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.2.4.subData.5'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.2.4.subData.6'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.2.4.subData.7'),
                     ],
                   },
                   {
-                    data: 'كابتن حسين بيكتبلك النظام علي حسب الأجهزه المتاحه و كمان كل تمرين بيكون معاه فيديو لكابتن حسين بيشرح فيه التمرين و الطريقه الصحيحه و الطريقه الخاطئة و ايه الخطأ الى ممكن تقع فيه و ازاى تتجنبه و ايه البديل للتمرين لو الجهاز مش متاح .. هو بيعلمك كل حاجة عن التمرين علشان تلعبه صح.',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.2.5.data'),
                   },
                   {
-                    data: 'فى الاشتراك اكثر من شهر،  بعد الأسبوع الثالث خدمه العملاء تتواصل مع حضرتك لارسال البيانات لكابتن حسين انفورمة بالنتائج وشرح له الأهداف القادمة لتصميم برنامج الشهر الجديد',
-                  },
-                ]}
-              />
-              <GuideElement
-                title="متابعة الباقة الميجا"
-                details={[
-                  {
-                    data: 'بعد الدفع مباشراً سيتم التواصل معك من خدمة عملاء انفورمة لإرسال أسئلة إلكترونيه علشان يكون فيها كل المعلومات الكافية عنك و عن هدفك و بناءً عليه كابتن حسين (انفورمه)  بيقوم بعمل برنامج مخصص لك على تفاصيل ومعلومات جسمك',
-                  },
-                  {
-                    data: 'خدمة عملاء انفورمة بتكون متاحة معك طوال فترة الاشتراك لاى استفسار عن تفاصيل اشتراكك و مساعدك فى حل اى شكوى',
-                  },
-                  {
-                    data: 'متابعة أسبوعية مع كابتن حسين (انفورمه)عبر الواتساب الخاص به، كل أسبوع بيتم إرسال صور و مقاسات الجسم و الوزن  لكابتن حسين (انفورمة) عن طريق الواتساب الخاص به فى ميعاد متفق عليه بينكم للتقييم و كمان لو حابب تسأل عن اي حاجة اضافية هيكون معك للجواب على اى استفسار او استقبال اى شكوى',
-                  },
-                  {
-                    data: 'المتابعة الميجا بتكون طوال ايام الاسبوع من السبت للخميس باستثناء الجمعة مع كابتن معتمد من فريق انفورمة فى ميعاد متفق عليه بيتم تحديده مع فريق خدمة العملاء بما يتناسب مع احتياجاتك',
-                  },
-                  {
-                    data: 'في ايام المتابعة بيتواصل معاك كابتن معتمد من فريق انفورمة فى ميعاد محدد متفق عليه عن طريق الواتساب عشان يتابع معك خطوة بخطوة و يشجعك على الالتزام و الرد على جميع استفساراتك خلال رحلتك و يقدر يساعدك اذا كنت تحتاج لتبديل اى تمرين بتمرين اخر او اى وجبة بوجبة اخرى مهمته الاساسية انه يطمن ان مفيش اي عقبات بتواجهك و يتابع كل التطورات اللي بتحصل و يكون وراك دايما عشان يشجعك و يحفزك علشان تقدروا توصلوا سوى لهدفك الرئيسي',
-                  },
-                  {
-                    data: 'إذا كنت مشترك اكثر من شهر هيتم التواصل معك من قبل خدمة عملاء انفورمة قبل إنتهاء الشهر بأسبوع لإرسال اسئلة إلكترونية جديدة لتحديث البيانات للشهر الجديد علشان كابتن حسين (انفورمه) يعرف من خلالها المعلومات الكافية عن الشهر و عن التغيرات و يبدأ العمل على برنامج الشهر الجديد',
-                  },
-                  {
-                    data: `إذا  أمكن بيتم عمل   شهريًا، لتقيم افضل  للنتائج و  متابعة  التطور بشكل افضل`,
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.2.6.data'),
                   },
                 ]}
               />
               <GuideElement
-                title="متابعة الباقة الذهبية"
+                title={translate('pagesTranslations.pricingsPageTranslations.guide.guideData.6.title')}
                 details={[
                   {
-                    data: 'بعد الدفع مباشراً سيتم التواصل معك من خدمة عملاء انفورمة لإرسال أسئلة إلكترونيه علشان يكون فيها كل المعلومات الكافية عنك و عن هدفك و بناءً عليه كابتن حسين (انفورمه)  بيقوم بعمل برنامج مخصص لك على تفاصيل ومعلومات جسمك',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.6.1.data'),
                   },
                   {
-                    data: 'خدمة عملاء انفورمة بتكون متاحة معك طوال فترة الاشتراك لاى استفسار عن تفاصيل اشتراكك و مساعدك فى حل اى شكوى',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.6.2.data'),
                   },
                   {
-                    data: 'المتابعة الذهبية بتكون ٣ ايام فى الاسبوع فى ميعاد متفق عليه بيتم تحديده مع فريق خدمة العملاء بما يتناسب مع احتياجاتك',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.6.3.data'),
                   },
                   {
-                    data: 'في ايام المتابعة بيتواصل معاك كابتن معتمد من فريق انفورمة فى ميعاد محدد متفق عليه عن طريق الواتساب عشان يتابع معك خطوة بخطوة و يشجعك على الالتزام و الرد على جميع استفساراتك خلال رحلتك و يقدر يساعدك اذا كنت تحتاج لتبديل اى تمرين بتمرين اخر او اى وجبة بوجبة اخرى مهمته الاساسية انه يطمن ان مفيش اي عقبات بتواجهك و يتابع كل التطورات اللي بتحصل و يكون وراك دايما عشان يشجعك و يحفزك علشان تقدروا توصلوا سوى لهدفك الرئيسي',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.6.4.data'),
                   },
                   {
-                    data: 'متابعة أسبوعية مع كابتن حسين (انفورمه)، كل أسبوع بيتم إرسال صور و مقاسات الجسم و الوزن  لكابتن حسين (انفورمة) عن طريق الايميل الخاص به للتقييم و كمان لو حابب تسأل عن اي حاجة اضافية هيكون معك للجواب على اى استفسار او استقبال اى شكوى',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.6.5.data'),
                   },
                   {
-                    data: 'إذا كنت مشترك اكثر من شهر هيتم التواصل معك من قبل خدمة عملاء انفورمة قبل إنتهاء الشهر بأسبوع لإرسال اسئلة إلكترونية جديدة لتحديث البيانات للشهر الجديد علشان كابتن حسين (انفورمه) يعرف من خلالها المعلومات الكافية عن الشهر و عن التغيرات و يبدأ العمل على برنامج الشهر الجديد',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.6.6.data'),
                   },
                   {
-                    data: 'إذا أمكن بيتم عمل Inbody شهريًا، لتقيم افضل للنتائج و متابعة التطور بشكل افضل',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.6.7.data'),
                   },
                 ]}
               />
               <GuideElement
-                title="باقة المتابعة الفضية"
+                title={translate('pagesTranslations.pricingsPageTranslations.guide.guideData.5.title')}
                 details={[
                   {
-                    data: 'بعد الدفع مباشراً سيتم التواصل معك من خدمة عملاء انفورمة لإرسال أسئلة إلكترونيه علشان يكون فيها كل المعلومات الكافية عنك و عن هدفك و بناءً عليه كابتن حسين (انفورمه)  بيقوم بعمل برنامج مخصص لك على تفاصيل ومعلومات جسمك',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.5.1.data'),
                   },
                   {
-                    data: 'خدمة عملاء انفورمة بتكون متاحة معك طوال فترة الاشتراك لاى استفسار عن تفاصيل اشتراكك و مساعدك فى حل اى شكوى',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.5.2.data'),
                   },
                   {
-                    data: 'إذا كنت مشترك اكثر من شهر هيتم التواصل معك من قبل خدمة عملاء انفورمة قبل إنتهاء الشهر بأسبوع لإرسال اسئلة إلكترونية جديدة لتحديث البيانات للشهر الجديد علشان كابتن حسين (انفورمه) يعرف من خلالها المعلومات الكافية عن الشهر و عن التغيرات و يبدأ العمل على برنامج الشهر الجديد',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.5.3.data'),
                   },
                   {
-                    data: 'إذا أمكن بيتم عمل Inbody ، مقاسات للجسم ، صور للجسم (شهريًا) لتقييم افضل لنتائج الشهر المنقضي و إرسالها لكابتن حسين(انفورمه) عبر الايميل الخاص به و هذا اختيارى و ليس إجباري',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.5.4.data'),
                   },
                   {
-                    data: 'المتابعة الفضية هو نظام متابعة شهري يتم فيها التواصل مع كابتن حسين(انفورمه) بعدد ايميلات محددة (شهريا):',
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.5.5.data'),
+                  },
+                  {
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.5.6.data'),
+                  },
+                  {
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.5.7.data'),
+                  },
+                ]}
+              />
+              <GuideElement
+                title={translate('pagesTranslations.pricingsPageTranslations.guide.guideData.4.title')}
+                details={[
+                  {
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.4.1.data'),
+                  },
+                  {
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.4.2.data'),
+                  },
+                  {
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.4.3.data'),
+                  },
+                  {
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.4.4.data'),
+                  },
+                  {
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.4.5.data'),
                     subData: [
-                      'واحدة لإرسال المعلومات و البيانات عن الجسم',
-                      'والآخري للإستفسارات بعد إرسال البرنامج',
-                      'بعد إنتهاء الشهر بيتم ارسال الصور و النتائج للتقييم',
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.4.5.subData.1'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.4.5.subData.2'),
+                      translate('pagesTranslations.pricingsPageTranslations.guide.guideData.4.5.subData.3'),
                     ],
                   },
                 ]}

@@ -3,7 +3,6 @@ import { m } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { useRouter } from 'next/router';
-import { useMediaQuery } from 'react-responsive';
 // material
 import { Box, Button, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
@@ -28,8 +27,6 @@ function Hero() {
   const { push } = useRouter();
 
   const videoRef = useRef();
-
-  const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
   const triggerRegisterPopUp = useSetRecoilState(registerNowPopUpAtom);
   const triggerJoinUsPopUp = useSetRecoilState(joinUsPopUpAtom);
@@ -59,23 +56,59 @@ function Hero() {
           }}
         >
           {/* Hero video */}
-          <video
-            ref={videoRef}
-            style={{
-              zIndex: 1,
-              objectFit: 'cover',
-              objectPosition: 'center',
-              width: '100vw',
-              height: '100vh',
-              filter: 'brightness(50%)',
+          <Box
+            sx={{
+              display: {
+                xs: 'flex',
+                md: 'none',
+              },
             }}
-            autoPlay
-            loop
-            muted
-            playsInline
           >
-            <source src={isMobile ? '/videos/hero-mobile.mp4' : '/videos/hero.mp4'} type="video/mp4" />
-          </video>
+            <video
+              ref={videoRef}
+              style={{
+                zIndex: 1,
+                objectFit: 'cover',
+                objectPosition: 'center',
+                width: '100vw',
+                height: '100vh',
+                filter: 'brightness(50%)',
+              }}
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src="/videos/hero-mobile.mp4" type="video/mp4" />
+            </video>
+          </Box>
+          <Box
+            sx={{
+              display: {
+                xs: 'none',
+                md: 'flex',
+              },
+            }}
+          >
+            <video
+              ref={videoRef}
+              style={{
+                zIndex: 1,
+                objectFit: 'cover',
+                objectPosition: 'center',
+                width: '100vw',
+                height: '100vh',
+                filter: 'brightness(50%)',
+              }}
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src="/videos/hero.mp4" type="video/mp4" />
+            </video>
+          </Box>
+
           {/* https://res.cloudinary.com/code-hustle/video/upload/v1665519157/hero_faqush.mp4 https://res.cloudinary.com/code-hustle/video/upload/v1666033444/hero_hbqcfu.mp4 */}
           {/* Hero content */}
           <Box

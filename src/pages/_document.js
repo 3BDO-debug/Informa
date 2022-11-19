@@ -41,7 +41,7 @@ export default class MyDocument extends Document {
           <meta name="description" content="Change your life now with Informa" />
           <meta name="keywords" content="Informa" />
           <meta name="author" content="Based On Tech" />
-          <title>Informa</title>
+          <title>Informa - Transforming mindset</title>
         </Head>
 
         <body>
