@@ -54,7 +54,7 @@ function RegisterNowPopUp() {
       fullname: '',
       whatsappNumber: '',
       cor: '',
-      payingRegion: 'international',
+      payingRegion: 'local',
       age: 18,
       gender: 'male',
       weight: 90,
@@ -148,6 +148,14 @@ function RegisterNowPopUp() {
     }
   }, [values.followUpPackage]);
 
+  useEffect(() => {
+    if (userIpRegion !== 'EG') {
+      setFieldValue('payingRegion', 'international');
+    } else {
+      setFieldValue('payingRegion', 'local');
+    }
+  }, [userIpRegion, setFieldValue]);
+
   return (
     <Dialog open={registerNowPopUp} onClose={handlePopUpClose} fullWidth>
       <DialogTitle>
@@ -214,15 +222,15 @@ function RegisterNowPopUp() {
                 fullWidth
                 select
               >
-                <MenuItem value="international">
-                  {translate('componentsTranslations.registerNowPopUpTranslations.form.payingRegion.international')}
-                </MenuItem>
-
                 {userIpRegion === 'EG' && (
                   <MenuItem value="local">
                     {translate('componentsTranslations.registerNowPopUpTranslations.form.payingRegion.local')}
                   </MenuItem>
                 )}
+
+                <MenuItem value="international">
+                  {translate('componentsTranslations.registerNowPopUpTranslations.form.payingRegion.international')}
+                </MenuItem>
               </TextField>
             </Grid>
             <Grid item xs={12} sm={6}>
