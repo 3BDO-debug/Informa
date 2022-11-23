@@ -19,7 +19,7 @@ import customizeUserPlan from 'src/utils/customizeUserPlan';
 import SectionWrapper from 'src/components/SectionWrapper';
 import { MotionViewport, varFade } from 'src/components/animate';
 import Iconify from 'src/components/Iconify';
-import PricingCard from 'src/components/PricingCard';
+import PricingCard from 'src/components/Pricing/PricingCard';
 
 // ---------------------------------------------------------------------------------------------------------
 

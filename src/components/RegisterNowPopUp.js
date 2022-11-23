@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -32,6 +32,7 @@ import userPlanSelector from 'src/recoil/selectors/userPlanSelector';
 import { useCallback } from 'react';
 // __apis__
 import { personalTrainingRequester } from 'src/__apis__/personalTraining';
+import { offersFetcher } from 'src/__apis__/offers';
 
 // ---------------------------------------------------------------------------------------
 
@@ -42,6 +43,9 @@ function RegisterNowPopUp() {
   const setAlert = useSetRecoilState(alertAtom);
   const userIpRegion = useRecoilValue(userIpRegionAtom);
   const { push } = useRouter();
+  const [activeOffer, setActiveOffer] = useState(false);
+  const [offerData, setOfferData] = useState(null);
+  const [salePrice, setSalePrice] = useState(null);
 
   const { translate } = useLocales();
 
@@ -77,11 +81,16 @@ function RegisterNowPopUp() {
       followUpPackage: Yup.string().required('Plan follow-up package is required'),
     }),
     onSubmit: async (values, { setSubmitting }) => {
-      await personalTrainingRequester({
+      let requestData = {
         ...values,
-        computedTotalPrice:
-          values.paymentCurrency === 'EGP' ? userPlanTotalPrice.egpPrice : userPlanTotalPrice.usdPrice,
-      })
+        computedTotalPrice: values.payingRegion === 'local' ? userPlanTotalPrice.egpPrice : userPlanTotalPrice.usdPrice,
+      };
+
+      if (activeOffer) {
+        requestData.computedPriceAfterSale = salePrice;
+      }
+
+      await personalTrainingRequester(requestData)
         .then((response) => {
           setAlert({
             triggered: true,
@@ -122,6 +131,40 @@ function RegisterNowPopUp() {
     return priceContext;
   }, [values.payingRegion, userPlanTotalPrice]);
 
+  const updatePriceAfterOffer = useCallback(() => {}, []);
+
+  const fetchOffers = useCallback(async () => {
+    await offersFetcher()
+      .then((response) => {
+        setOfferData(response);
+      })
+      .catch((error) => {
+        setActiveOffer(false);
+        console.log('Error fetching offers data', error);
+      });
+  }, []);
+
+  const applyDiscount = useCallback(() => {
+    let price = values.payingRegion === 'local' ? userPlanTotalPrice.egpPrice : userPlanTotalPrice.usdPrice;
+    let discountValue = (parseInt(offerData.offer_percentage) / 100) * price;
+
+    const condition = offerData.offer_for.some((offerItem) => {
+      if (offerItem.name === userPlan.program) {
+        return true;
+      } else if (offerItem.name === userPlan.duration.toString()) {
+        return true;
+      }
+      return false;
+    });
+
+    if (condition) {
+      setActiveOffer(true);
+      setSalePrice(price - discountValue);
+    } else {
+      setActiveOffer(false);
+    }
+  }, [userPlan, userPlanTotalPrice, offerData, values]);
+
   /* Controlled effects */
 
   /* Plan Program effect */
@@ -155,6 +198,16 @@ function RegisterNowPopUp() {
       setFieldValue('payingRegion', 'local');
     }
   }, [userIpRegion, setFieldValue]);
+
+  useEffect(() => {
+    fetchOffers();
+  }, [fetchOffers]);
+
+  useEffect(() => {
+    if (offerData) {
+      applyDiscount();
+    }
+  }, [offerData, userPlan, values]);
 
   return (
     <Dialog open={registerNowPopUp} onClose={handlePopUpClose} fullWidth>
@@ -353,8 +406,16 @@ function RegisterNowPopUp() {
           <Grid item xs={12} sm={6}>
             <Box sx={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
               <Typography variant="subtitle1">
-                {translate('componentsTranslations.registerNowPopUpTranslations.form.totalPrice')} : {renderPrice()}
+                {translate('componentsTranslations.registerNowPopUpTranslations.form.totalPrice')} :
               </Typography>
+              <Typography variant="subtitle1" sx={{ ml: 1, textDecoration: activeOffer && 'line-through' }}>
+                {renderPrice()}
+              </Typography>
+              {activeOffer && (
+                <Typography variant="subtitle1" sx={{ ml: 1 }}>
+                  {salePrice} {values.payingRegion === 'local' ? 'EGP' : 'USD'}
+                </Typography>
+              )}
             </Box>
           </Grid>
           <Grid item xs={12} sm={6}>

@@ -8,7 +8,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 // hooks
 import useLocales from 'src/hooks/useLocales';
 // components
-import { varFade } from './animate';
+import { varFade } from '../animate';
 
 // --------------------------------------------------------------------------------------
 

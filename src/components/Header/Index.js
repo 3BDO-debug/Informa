@@ -17,6 +17,7 @@ import Logo from '../Logo';
 import SideDrawer from './SideDrawer';
 import useLocales from 'src/hooks/useLocales';
 import { useCallback } from 'react';
+import Announcement from '../Announcement';
 
 // ----------------------------------------------------------------------
 
@@ -112,6 +113,8 @@ function Header() {
 
   return (
     <AppBar sx={{ boxShadow: 0, bgcolor: 'transparent' }}>
+      {/* Announcement wrapper */}
+      <Announcement />
       <ToolbarStyle
         disableGutters
         sx={{
