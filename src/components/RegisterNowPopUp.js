@@ -149,9 +149,9 @@ function RegisterNowPopUp() {
     let discountValue = (parseInt(offerData.offer_percentage) / 100) * price;
 
     const condition = offerData.offer_for.some((offerItem) => {
-      if (offerItem.name === userPlan.program) {
+      if (offerItem.name === userPlan.program && offerData.plan_type_offer) {
         return true;
-      } else if (offerItem.name === userPlan.duration.toString()) {
+      } else if (offerItem.name === userPlan.duration.toString() && offerData.plan_duration_offer) {
         return true;
       }
       return false;
