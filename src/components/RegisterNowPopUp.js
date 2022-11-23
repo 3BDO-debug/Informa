@@ -24,6 +24,7 @@ import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import registerNowPopUpAtom from 'src/recoil/atoms/registerNowPopUpAtom';
 import userPlanAtom from 'src/recoil/atoms/userPlanAtom';
 import alertAtom from 'src/recoil/atoms/alertAtom';
+import userIpRegionAtom from 'src/recoil/atoms/userIpRegionAtom';
 // hooks
 import useLocales from 'src/hooks/useLocales';
 // selectors
@@ -39,6 +40,7 @@ function RegisterNowPopUp() {
   const [userPlan, setUserPlan] = useRecoilState(userPlanAtom);
   const userPlanTotalPrice = useRecoilValue(userPlanSelector);
   const setAlert = useSetRecoilState(alertAtom);
+  const userIpRegion = useRecoilValue(userIpRegionAtom);
   const { push } = useRouter();
 
   const { translate } = useLocales();
@@ -52,7 +54,7 @@ function RegisterNowPopUp() {
       fullname: '',
       whatsappNumber: '',
       cor: '',
-      paymentCurrency: 'EGP',
+      payingRegion: 'international',
       age: 18,
       gender: 'male',
       weight: 90,
@@ -65,7 +67,7 @@ function RegisterNowPopUp() {
       fullname: Yup.string().required('Full name is required'),
       whatsappNumber: Yup.string().required('Whatsapp number is required'),
       cor: Yup.string().required('Country of residence is required'),
-      paymentCurrency: Yup.string().required('Payment currency is required'),
+      payingRegion: Yup.string().required('Payment currency is required'),
       age: Yup.number().required('Age is required'),
       gender: Yup.string().required('Gender is required'),
       weight: Yup.number().required('Weight is required'),
@@ -111,14 +113,14 @@ function RegisterNowPopUp() {
   const renderPrice = useCallback(() => {
     let priceContext;
 
-    if (values.paymentCurrency === 'EGP') {
+    if (values.payingRegion === 'local') {
       priceContext = `${userPlanTotalPrice?.egpPrice} EGP`;
     } else {
       priceContext = `${userPlanTotalPrice?.usdPrice} USD`;
     }
 
     return priceContext;
-  }, [values.paymentCurrency, userPlanTotalPrice]);
+  }, [values.payingRegion, userPlanTotalPrice]);
 
   /* Controlled effects */
 
@@ -203,17 +205,24 @@ function RegisterNowPopUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                label={translate('componentsTranslations.registerNowPopUpTranslations.form.paymentCurrency')}
-                value={values.paymentCurrency}
-                onChange={(event) => setFieldValue('paymentCurrency', event.target.value)}
-                {...getFieldProps('paymentCurrency')}
-                error={touched.paymentCurrency && Boolean(errors.paymentCurrency)}
-                helperText={touched.paymentCurrency && errors.paymentCurrency}
+                label={translate('componentsTranslations.registerNowPopUpTranslations.form.payingRegion.label')}
+                value={values.payingRegion}
+                onChange={(event) => setFieldValue('payingRegion', event.target.value)}
+                {...getFieldProps('payingRegion')}
+                error={touched.payingRegion && Boolean(errors.payingRegion)}
+                helperText={touched.payingRegion && errors.payingRegion}
                 fullWidth
                 select
               >
-                <MenuItem value="USD">USD-$</MenuItem>
-                <MenuItem value="EGP">EGP-LE</MenuItem>
+                <MenuItem value="international">
+                  {translate('componentsTranslations.registerNowPopUpTranslations.form.payingRegion.international')}
+                </MenuItem>
+
+                {userIpRegion === 'EG' && (
+                  <MenuItem value="local">
+                    {translate('componentsTranslations.registerNowPopUpTranslations.form.payingRegion.local')}
+                  </MenuItem>
+                )}
               </TextField>
             </Grid>
             <Grid item xs={12} sm={6}>

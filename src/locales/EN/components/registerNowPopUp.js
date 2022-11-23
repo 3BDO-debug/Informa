@@ -7,7 +7,11 @@ const registerNowPopUpTranslations = {
     fullName: 'Full name',
     whatsappNumber: 'Whatsapp number',
     cor: 'Country of residence',
-    paymentCurrency: 'Payment currency',
+    payingRegion: {
+      label: 'Paying region ?',
+      local: 'Inside of egypt',
+      international: 'Outside of egypt',
+    },
     age: 'Age',
     gender: 'Gender',
     weight: 'Weight',

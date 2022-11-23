@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
 // material
 import { Box, Fab } from '@mui/material';
 import CreateIcon from '@mui/icons-material/Create';
 // atoms
 import registerNowPopUpAtom from 'src/recoil/atoms/registerNowPopUpAtom';
+import userIpRegionAtom from 'src/recoil/atoms/userIpRegionAtom';
 // hooks
 import useLocales from 'src/hooks/useLocales';
+// __apis__
+import { userIpRegionFetcher } from 'src/__apis__/userIpRegion';
 // components
 import Header from './Header/Index';
 import Footer from './Footer';
@@ -21,6 +24,23 @@ function AppWrapper({ children }) {
   const triggerRegisterNowPopUpAtom = useSetRecoilState(registerNowPopUpAtom);
 
   const { translate } = useLocales();
+
+  const setUserIpRegion = useSetRecoilState(userIpRegionAtom);
+
+  const fetchUserIpRegion = useCallback(async () => {
+    userIpRegionFetcher()
+      .then((response) => {
+        setUserIpRegion(response.country);
+      })
+      .catch((error) => {
+        console.log('Error fetching user region', error);
+        setUserIpRegion(null);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetchUserIpRegion();
+  }, []);
 
   return (
     <>

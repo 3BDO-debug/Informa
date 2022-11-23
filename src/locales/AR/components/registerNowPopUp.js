@@ -7,7 +7,11 @@ const registerNowPopUpTranslations = {
     fullName: 'الاسم بالكامل',
     whatsappNumber: 'رقم الواتس اب',
     cor: 'بلد الإقامة',
-    paymentCurrency: 'عملة الدفع',
+    payingRegion: {
+      label: 'مكان الدفع  ؟',
+      local: 'من داخل مصر',
+      international: 'من خارج مصر',
+    },
     age: 'السن',
     gender: 'النوع',
     weight: 'الوزن',
