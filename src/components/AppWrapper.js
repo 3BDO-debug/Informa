@@ -1,15 +1,18 @@
 import React, { useCallback, useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
 // material
-import { Box, Fab } from '@mui/material';
+import { Box, Fab, Typography } from '@mui/material';
 import CreateIcon from '@mui/icons-material/Create';
 // atoms
 import registerNowPopUpAtom from 'src/recoil/atoms/registerNowPopUpAtom';
 import userIpRegionAtom from 'src/recoil/atoms/userIpRegionAtom';
+import announcementPopUpAtom from 'src/recoil/atoms/announcementPopUpAtom';
 // hooks
 import useLocales from 'src/hooks/useLocales';
 // __apis__
 import { userIpRegionFetcher } from 'src/__apis__/userIpRegion';
+// theme
+import palette from 'src/theme/palette';
 // components
 import Header from './Header/Index';
 import Footer from './Footer';
@@ -17,6 +20,8 @@ import { MotionViewport, varFade } from './animate';
 import RegisterNowPopUp from './RegisterNowPopUp';
 import JoinUsPopUp from './JoinUsPopUp';
 import Alert from './Alert';
+import Iconify from './Iconify';
+import AnnouncementPopUp from './AnnouncementPopUp';
 
 // -------------------------------------------------------------------------------------------
 
@@ -26,6 +31,8 @@ function AppWrapper({ children }) {
   const { translate } = useLocales();
 
   const setUserIpRegion = useSetRecoilState(userIpRegionAtom);
+
+  const triggerAnnouncementPopUp = useSetRecoilState(announcementPopUpAtom);
 
   const fetchUserIpRegion = useCallback(async () => {
     userIpRegionFetcher()
@@ -56,14 +63,29 @@ function AppWrapper({ children }) {
       <RegisterNowPopUp />
       {/* Join us */}
       <JoinUsPopUp />
+      {/* Announcement pop up */}
+      <AnnouncementPopUp />
       {/* Floating action button */}
-      <Fab
-        onClick={() => triggerRegisterNowPopUpAtom(true)}
-        variant="extended"
-        sx={{ position: 'sticky', float: 'right', bottom: '20px', right: '20px' }}
+      <Box
+        sx={{
+          position: 'sticky',
+          float: 'right',
+          bottom: '20px',
+          right: '20px',
+          display: 'flex',
+          flexDirection: 'column',
+          zIndex: 10000,
+        }}
       >
-        {translate('componentsTranslations.fabButtonTranslations.text')} <CreateIcon sx={{ ml: 1 }} />
-      </Fab>
+        <Fab color="secondary" variant="extended" sx={{ mb: 2 }} onClick={() => triggerAnnouncementPopUp(true)}>
+          <Box component="img" src="/icons/giftbox.png" mr={1} />
+          <Typography variant="subtitle2">Black Friday 25%</Typography>
+        </Fab>
+        <Fab onClick={() => triggerRegisterNowPopUpAtom(true)} variant="extended">
+          {translate('componentsTranslations.fabButtonTranslations.text')} <CreateIcon sx={{ ml: 1 }} />
+        </Fab>
+      </Box>
+
       {/* Snackbar alert */}
       <Alert />
     </>

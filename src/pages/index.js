@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <Box sx={{ overflow: 'hidden' }}>
       <Hero />
-      <Announcement />
+      {/* <Announcement /> */}
       <SocialMediaRecords />
       <AboutUs />
       <Transformations />
