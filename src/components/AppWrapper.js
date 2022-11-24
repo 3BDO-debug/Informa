@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect } from 'react';
-import { useSetRecoilState } from 'recoil';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 // material
 import { Box, Fab, Typography } from '@mui/material';
 import CreateIcon from '@mui/icons-material/Create';
@@ -26,13 +26,15 @@ import AnnouncementPopUp from './AnnouncementPopUp';
 // -------------------------------------------------------------------------------------------
 
 function AppWrapper({ children }) {
-  const triggerRegisterNowPopUpAtom = useSetRecoilState(registerNowPopUpAtom);
+  const [registerNowPopUp, triggerRegisterNowPopUpAtom] = useRecoilState(registerNowPopUpAtom);
 
   const { translate } = useLocales();
 
   const setUserIpRegion = useSetRecoilState(userIpRegionAtom);
 
-  const triggerAnnouncementPopUp = useSetRecoilState(announcementPopUpAtom);
+  const [announcementPopUp, triggerAnnouncementPopUp] = useRecoilState(announcementPopUpAtom);
+
+  const [viewActionButtons, setViewActionButtons] = useState(false);
 
   const fetchUserIpRegion = useCallback(async () => {
     userIpRegionFetcher()
@@ -44,6 +46,20 @@ function AppWrapper({ children }) {
         setUserIpRegion(null);
       });
   }, []);
+
+  const shouldRenderActionButtons = useCallback(() => {
+    let shouldRender = true;
+
+    if (announcementPopUp) {
+      shouldRender = false;
+    }
+
+    if (registerNowPopUp) {
+      shouldRender = false;
+    }
+
+    return shouldRender;
+  }, [announcementPopUp, registerNowPopUp]);
 
   useEffect(() => {
     fetchUserIpRegion();
@@ -66,25 +82,27 @@ function AppWrapper({ children }) {
       {/* Announcement pop up */}
       <AnnouncementPopUp />
       {/* Floating action button */}
-      <Box
-        sx={{
-          position: 'sticky',
-          float: 'right',
-          bottom: '20px',
-          right: '20px',
-          display: 'flex',
-          flexDirection: 'column',
-          zIndex: 10000,
-        }}
-      >
-        <Fab color="secondary" variant="extended" sx={{ mb: 2 }} onClick={() => triggerAnnouncementPopUp(true)}>
-          <Box component="img" src="/icons/giftbox.png" mr={1} />
-          <Typography variant="subtitle2">Black Friday 25%</Typography>
-        </Fab>
-        <Fab onClick={() => triggerRegisterNowPopUpAtom(true)} variant="extended">
-          {translate('componentsTranslations.fabButtonTranslations.text')} <CreateIcon sx={{ ml: 1 }} />
-        </Fab>
-      </Box>
+      {shouldRenderActionButtons() && (
+        <Box
+          sx={{
+            position: 'sticky',
+            float: 'right',
+            bottom: '20px',
+            right: '20px',
+            display: 'flex',
+            flexDirection: 'column',
+            zIndex: 10000,
+          }}
+        >
+          <Fab color="secondary" variant="extended" sx={{ mb: 2 }} onClick={() => triggerAnnouncementPopUp(true)}>
+            <Box component="img" src="/icons/giftbox.png" mr={1} />
+            <Typography variant="subtitle2">Black Friday 25%</Typography>
+          </Fab>
+          <Fab onClick={() => triggerRegisterNowPopUpAtom(true)} variant="extended">
+            {translate('componentsTranslations.fabButtonTranslations.text')} <CreateIcon sx={{ ml: 1 }} />
+          </Fab>
+        </Box>
+      )}
 
       {/* Snackbar alert */}
       <Alert />
