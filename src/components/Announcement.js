@@ -7,6 +7,7 @@ import { announcementsFetcher } from 'src/__apis__/offers';
 import useLocales from 'src/hooks/useLocales';
 // components
 import Markdown from './Markdown';
+import palette from 'src/theme/palette';
 
 // ---------------------------------------------------------------------------------
 
@@ -34,7 +35,7 @@ function Announcement() {
 
   return (
     announcement && (
-      <Box sx={{ background: 'linear-gradient(45deg,#e8b45c, #B3852E)' }}>
+      <Box sx={{ background: palette.dark.background.default }}>
         <Container>
           <Box sx={{ pt: 2, pb: 2, display: 'flex', justifyContent: 'center' }}>
             <Markdown
