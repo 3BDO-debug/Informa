@@ -114,7 +114,7 @@ function Header() {
   return (
     <AppBar sx={{ boxShadow: 0, bgcolor: 'transparent' }}>
       {/* Announcement wrapper */}
-      <Announcement />
+      {/*  <Announcement /> */}
       <ToolbarStyle
         disableGutters
         sx={{
