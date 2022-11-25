@@ -2,6 +2,7 @@
 
 import commonSectionsTranslations from './common';
 import {
+  announcementPopUpTranslations,
   contactUsFormTranslations,
   fabButtonTranslations,
   footerTranslations,
@@ -36,6 +37,7 @@ const en = {
     registerNowPopUpTranslations: registerNowPopUpTranslations,
     fabButtonTranslations: fabButtonTranslations,
     contactUsFormTranslations: contactUsFormTranslations,
+    announcementPopUpTranslations: announcementPopUpTranslations,
   },
 };
 

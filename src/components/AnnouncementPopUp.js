@@ -21,7 +21,7 @@ function AnnouncementPopUp() {
   const [announcement, setAnnouncement] = useState(null);
   const triggerRegisterNowPopUp = useSetRecoilState(registerNowPopUpAtom);
 
-  const { currentLang } = useLocales();
+  const { currentLang, translate } = useLocales();
 
   const fetchAnnouncement = useCallback(async () => {
     await announcementsFetcher()
@@ -46,7 +46,7 @@ function AnnouncementPopUp() {
     >
       <DialogTitle sx={{ display: 'flex', alignItems: 'center', color: palette.dark.text.primary }}>
         <Box component="img" src="/icons/announcement.png" width={30} height={30} mr={2} />
-        Announcement
+        {translate('componentsTranslations.announcementPopUpTranslations.title')}
       </DialogTitle>
       <DialogContent>
         <Box paddingTop={6} sx={{ display: 'flex', alignItems: 'center' }}>
@@ -63,7 +63,7 @@ function AnnouncementPopUp() {
           }}
           variant="contained"
         >
-          Register now
+          {translate('componentsTranslations.announcementPopUpTranslations.actionButton')}
         </Button>
       </DialogActions>
     </Dialog>
