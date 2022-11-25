@@ -57,7 +57,7 @@ export default function MyApp(props) {
         <meta property="og:site_name" content="Informa - Powered by B.O.T" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="/logo-icon.png" />
+        <meta property="og:image" content="https://www.informa-180.com/logo.png" />
       </Head>
 
       <RecoilRoot>
