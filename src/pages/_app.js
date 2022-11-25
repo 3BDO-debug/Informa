@@ -46,6 +46,18 @@ export default function MyApp(props) {
     <>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        />
+        <meta name="keywords" content="Based On Tech, Informa, Transforming mindset" />
+        <meta name="author" content="Based On Tech" />
+        <meta name="copyright" content="Based On Tech" />
+        <meta name="robots" content="index,follow" />
+        <meta property="og:title" content="Informa - Powered by B.O.T" />
+        <meta property="og:description" content="Change your life now with Informa" />
+        <meta property="og:url" content="https://www.informa-180.com/" />
+        <meta property="og:site_name" content="Informa - Powered by B.O.T" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/logo-icon.png" />
       </Head>
 
       <RecoilRoot>
