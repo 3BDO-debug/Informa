@@ -42,6 +42,13 @@ export default class MyDocument extends Document {
           <meta name="keywords" content="Informa" />
           <meta name="author" content="Based On Tech" />
           <title>Informa - Transforming mindset</title>
+          <meta property="og:title" content="Informa - Powered by B.O.T" />
+          <meta property="og:description" content="Change your life now with Informa" />
+          <meta property="og:url" content="https://www.informa-180.com/" />
+          <meta property="og:site_name" content="Informa - Powered by B.O.T" />
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:type" content="website" />
+          <meta property="og:image" content="/logo.png" />
         </Head>
 
         <body>
