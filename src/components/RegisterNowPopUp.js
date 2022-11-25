@@ -209,6 +209,8 @@ function RegisterNowPopUp() {
     }
   }, [offerData, userPlan, values]);
 
+  console.log('ds', userPlan);
+
   return (
     <Dialog open={registerNowPopUp} onClose={handlePopUpClose} fullWidth>
       <DialogTitle>
@@ -356,11 +358,11 @@ function RegisterNowPopUp() {
                 fullWidth
                 select
               >
-                <MenuItem value="workout">Workout plan</MenuItem>
+                {userPlan.followUpPackage !== 'mega-package' && <MenuItem value="workout">Workout plan</MenuItem>}
                 <MenuItem value="nutrition-workout" selected>
                   Workout & Nutrition plan
                 </MenuItem>
-                <MenuItem value="nutrition">Nutrition plan</MenuItem>
+                {userPlan.followUpPackage !== 'mega-package' && <MenuItem value="nutrition">Nutrition plan</MenuItem>}
               </TextField>
             </Grid>
             <Grid item xs={12} sm={6}>

@@ -221,16 +221,26 @@ function Pricing() {
         </Grid>
         <Grid item xs={12}>
           <Grid container spacing={3} mt={5} mb={12}>
-            {followUpPlans(translate).map((followUp, index) => (
-              <PricingCard
-                clickHandler={() => {
-                  setUserPlan({ ...userPlan, followUpPackage: followUp.value });
-                  triggerRegisterPopUp(true);
-                }}
-                index={index}
-                data={followUp}
-              />
-            ))}
+            {followUpPlans(translate).map((followUp, index) => {
+              let proceed = true;
+
+              if (followUp.value === 'mega-package' && userPlan.program !== 'nutrition-workout') {
+                proceed = false;
+              }
+
+              return (
+                proceed && (
+                  <PricingCard
+                    clickHandler={() => {
+                      setUserPlan({ ...userPlan, followUpPackage: followUp.value });
+                      triggerRegisterPopUp(true);
+                    }}
+                    index={index}
+                    data={followUp}
+                  />
+                )
+              );
+            })}
           </Grid>
         </Grid>
       </Grid>

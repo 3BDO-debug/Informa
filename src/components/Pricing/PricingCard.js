@@ -21,14 +21,7 @@ function PricingCard({ data, clickHandler, index }) {
   const { translate } = useLocales();
 
   return (
-    <Grid
-      component={m.div}
-      variants={index === 2 ? varFade().inLeft : index === 1 ? varFade().in : varFade().inRight}
-      item
-      xs={12}
-      sm={6}
-      md={4}
-    >
+    <Grid item xs={12} sm={6} md={4}>
       <Paper
         onMouseEnter={() => setHovered(index)}
         onMouseLeave={() => setHovered(null)}

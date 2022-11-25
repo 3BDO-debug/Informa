@@ -46,7 +46,7 @@ export default function MyApp(props) {
     <>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
-        />
+
         <meta name="keywords" content="Based On Tech, Informa, Transforming mindset" />
         <meta name="author" content="Based On Tech" />
         <meta name="copyright" content="Based On Tech" />
