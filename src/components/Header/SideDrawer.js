@@ -25,6 +25,7 @@ import palette from 'src/theme/palette';
 // atoms
 import registerNowPopUpAtom from 'src/recoil/atoms/registerNowPopUpAtom';
 import Logo from '../Logo';
+import Label from '../Label';
 
 // ------------------------------------------------------------------------------------------
 
@@ -62,8 +63,24 @@ function SideDrawer({ isTriggered, closeHandler, headerLinks }) {
               push('/');
               closeHandler();
             }}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              ml: 1,
+            }}
           >
             <Logo />
+            <Box onClick={() => window.open('https://www.basedontech.com', '__blank')}>
+              <Label
+                color="primary"
+                sx={{
+                  cursor: 'pointer',
+                  textDecoration: 'underline',
+                }}
+              >
+                Powered by B.O.T
+              </Label>
+            </Box>
           </Box>
 
           {/* Nav links  */}

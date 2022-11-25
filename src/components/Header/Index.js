@@ -18,12 +18,13 @@ import SideDrawer from './SideDrawer';
 import useLocales from 'src/hooks/useLocales';
 import { useCallback } from 'react';
 import Announcement from '../Announcement';
+import Label from '../Label';
 
 // ----------------------------------------------------------------------
 
 const HEADER = {
   MOBILE_HEIGHT: 80,
-  MAIN_DESKTOP_HEIGHT: 120,
+  MAIN_DESKTOP_HEIGHT: 150,
 };
 
 // ----------------------------------------------------------------------
@@ -135,13 +136,30 @@ function Header() {
             onClick={() => push('/')}
             sx={{
               width: {
-                xs: 40,
+                xs: 60,
                 sm: 100,
+                md: 210,
               },
-              height: 100,
+              display: 'flex',
+              alignItems: 'center',
+              flexWrap: 'wrap',
             }}
           >
             <Logo />
+            <Box onClick={() => window.open('https://www.basedontech.com', '__blank')}>
+              <Label
+                color="primary"
+                sx={{
+                  cursor: 'pointer',
+                  display: {
+                    xs: 'none',
+                    md: 'flex',
+                  },
+                }}
+              >
+                Powered by B.O.T
+              </Label>
+            </Box>
           </Box>
           {/*           <Box width={100} component="img" src={"/logo-svg-final.svg"} />
            */}
