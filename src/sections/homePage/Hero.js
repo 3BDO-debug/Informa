@@ -79,7 +79,7 @@ function Hero() {
               muted
               playsInline
             >
-              <source src="/videos/hero-mobile.mp4" type="video/mp4" />
+              <source src="https://res.cloudinary.com/djkm4nc2h/video/upload/v1669609672/hero-mobile_lz6wpw.mp4" type="video/mp4" />
             </video>
           </Box>
           <Box
@@ -105,7 +105,7 @@ function Hero() {
               muted
               playsInline
             >
-              <source src="/videos/hero.mp4" type="video/mp4" />
+              <source src="https://res.cloudinary.com/djkm4nc2h/video/upload/v1669609686/hero_msyg6u.mp4" type="video/mp4" />
             </video>
           </Box>
 
