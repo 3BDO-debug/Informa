@@ -135,11 +135,6 @@ function Header() {
           <Box
             onClick={() => push('/')}
             sx={{
-              width: {
-                xs: 60,
-                sm: 100,
-                md: 210,
-              },
               display: 'flex',
               alignItems: 'center',
               flexWrap: 'wrap',
