@@ -362,6 +362,7 @@ function RegisterNowPopUp() {
                 helperText={touched.planProgram && errors.planProgram}
                 label={translate('componentsTranslations.registerNowPopUpTranslations.form.planProgram')}
                 fullWidth
+                focused
                 select
               >
                 {userPlan.followUpPackage !== 'mega-package' && <MenuItem value="workout">Workout plan</MenuItem>}
@@ -380,6 +381,7 @@ function RegisterNowPopUp() {
                 helperText={touched.planDuration && errors.planDuration}
                 label={translate('componentsTranslations.registerNowPopUpTranslations.form.planDuration')}
                 fullWidth
+                focused
                 select
               >
                 <MenuItem value={1}>1 Month</MenuItem>
