@@ -211,8 +211,14 @@ function RegisterNowPopUp() {
     }
   }, [offerData, userPlan, values]);
 
+  useEffect(() => {
+    if (Boolean(query.register_now)) {
+      triggerRegisterNowPopUp(true);
+    }
+  }, []);
+
   return (
-    <Dialog open={registerNowPopUp || Boolean(query.register_now)} onClose={handlePopUpClose} fullWidth>
+    <Dialog open={registerNowPopUp} onClose={handlePopUpClose} fullWidth>
       <DialogTitle>
         <Box sx={{ display: 'flex', width: '100%', alginItems: 'center', justifyContent: 'space-between' }}>
           <Typography variant="h6">
