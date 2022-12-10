@@ -47,6 +47,8 @@ function RegisterNowPopUp() {
   const [offerData, setOfferData] = useState(null);
   const [salePrice, setSalePrice] = useState(null);
 
+  const { query } = useRouter();
+
   const { translate } = useLocales();
 
   const handlePopUpClose = () => {
@@ -209,10 +211,8 @@ function RegisterNowPopUp() {
     }
   }, [offerData, userPlan, values]);
 
-  console.log('ds', userPlan);
-
   return (
-    <Dialog open={registerNowPopUp} onClose={handlePopUpClose} fullWidth>
+    <Dialog open={registerNowPopUp || Boolean(query.register_now)} onClose={handlePopUpClose} fullWidth>
       <DialogTitle>
         <Box sx={{ display: 'flex', width: '100%', alginItems: 'center', justifyContent: 'space-between' }}>
           <Typography variant="h6">

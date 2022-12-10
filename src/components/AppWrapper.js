@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRouter } from 'next/router';
 // material
 import { Box, Fab, Typography } from '@mui/material';
 import CreateIcon from '@mui/icons-material/Create';
@@ -36,6 +37,10 @@ function AppWrapper({ children }) {
 
   const [viewActionButtons, setViewActionButtons] = useState(false);
 
+  const { query } = useRouter();
+
+  const { onChangeLang } = useLocales();
+
   const fetchUserIpRegion = useCallback(async () => {
     userIpRegionFetcher()
       .then((response) => {
@@ -64,6 +69,12 @@ function AppWrapper({ children }) {
   useEffect(() => {
     fetchUserIpRegion();
   }, []);
+
+  useEffect(() => {
+    if (Boolean(query.lang)) {
+      onChangeLang(query.lang);
+    }
+  }, [query]);
 
   return (
     <>
@@ -94,7 +105,7 @@ function AppWrapper({ children }) {
             zIndex: 10000,
           }}
         >
-         {/*  <Fab color="secondary" variant="extended" sx={{ mb: 2 }} onClick={() => triggerAnnouncementPopUp(true)}>
+          {/*  <Fab color="secondary" variant="extended" sx={{ mb: 2 }} onClick={() => triggerAnnouncementPopUp(true)}>
             <Box component="img" src="/icons/giftbox.png" mr={1} />
             <Typography variant="subtitle2">Black Friday 25%</Typography>
           </Fab> */}
