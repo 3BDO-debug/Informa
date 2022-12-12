@@ -394,9 +394,14 @@ function RegisterNowPopUp() {
                   select
                 >
                   {durationPrices.map((durationPrice) => (
-                    <MenuItem value={durationPrice.value}>{`${durationPrice.label} - ${
-                      userIpRegion !== 'EG' ? durationPrice.usdPrice : durationPrice.egpPrice
-                    }`}</MenuItem>
+                    <MenuItem value={durationPrice.value}>
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Typography sx={{ mr: 1, direction: 'ltr !important' }}>{durationPrice.label} - </Typography>
+                        <Typography sx={{ direction: 'ltr !important' }}>
+                          {userIpRegion !== 'EG' ? durationPrice.usdPrice : durationPrice.egpPrice}
+                        </Typography>
+                      </Box>
+                    </MenuItem>
                   ))}
                 </TextField>
               )}
