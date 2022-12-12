@@ -61,8 +61,6 @@ function RegisterNowPopUp() {
   const durationPrices = useRenderDurationPrices();
   const followUpPackagesPrices = useRenderFollowUpPackagesPrices();
 
-  console.log('wwwww', followUpPackagesPrices);
-
   const formik = useFormik({
     initialValues: {
       fullname: '',
@@ -155,13 +153,13 @@ function RegisterNowPopUp() {
   }, []);
 
   const applyDiscount = useCallback(() => {
-    let price = values.payingRegion === 'local' ? userPlanTotalPrice.egpPrice : userPlanTotalPrice.usdPrice;
+    let price = values.payingRegion === 'local' ? userPlanTotalPrice?.egpPrice : userPlanTotalPrice?.usdPrice;
     let discountValue = (parseInt(offerData.offer_percentage) / 100) * price;
 
     const condition = offerData.offer_for.some((offerItem) => {
-      if (offerItem.name === userPlan.program && offerData.plan_type_offer) {
+      if (offerItem.name === userPlan?.program && offerData.plan_type_offer) {
         return true;
-      } else if (offerItem.name === userPlan.duration.toString() && offerData.plan_duration_offer) {
+      } else if (offerItem.name === userPlan?.duration?.toString() && offerData.plan_duration_offer) {
         return true;
       }
       return false;

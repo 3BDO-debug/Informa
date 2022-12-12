@@ -228,6 +228,10 @@ function Pricing() {
                 proceed = false;
               }
 
+              if (!Boolean(userPlan.program) && !Boolean(userPlan.duration)) {
+                proceed = true;
+              }
+
               return (
                 proceed && (
                   <PricingCard
