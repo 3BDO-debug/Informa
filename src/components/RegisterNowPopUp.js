@@ -432,22 +432,24 @@ function RegisterNowPopUp() {
       <DialogActions>
         <Grid container spacing={3}>
           {/* Total price */}
-          {/*  <Grid item xs={12} sm={6}>
-            <Box sx={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
-              <Typography variant="subtitle1">
-                {translate('componentsTranslations.registerNowPopUpTranslations.form.totalPrice')} :
-              </Typography>
-              <Typography variant="subtitle1" sx={{ ml: 1, textDecoration: activeOffer && 'line-through' }}>
-                {renderPrice()}
-              </Typography>
-              {activeOffer && (
-                <Typography variant="subtitle1" sx={{ ml: 1 }}>
-                  {salePrice} {values.payingRegion === 'local' ? 'EGP' : 'USD'}
+          {activeOffer && (
+            <Grid item xs={12} sm={6}>
+              <Box sx={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
+                <Typography variant="subtitle1">
+                  {translate('componentsTranslations.registerNowPopUpTranslations.form.totalPrice')} :
                 </Typography>
-              )}
-            </Box>
-          </Grid> */}
-          <Grid item xs={12} sm={12}>
+                <Typography variant="subtitle1" sx={{ ml: 1, textDecoration: activeOffer && 'line-through' }}>
+                  {renderPrice()}
+                </Typography>
+                {activeOffer && (
+                  <Typography variant="subtitle1" sx={{ ml: 1 }}>
+                    {salePrice} {values.payingRegion === 'local' ? 'EGP' : 'USD'}
+                  </Typography>
+                )}
+              </Box>
+            </Grid>
+          )}
+          <Grid item xs={12} sm={activeOffer ? 6 : 12}>
             <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
               <Button sx={{ mr: 1 }} onClick={handlePopUpClose} variant="outlined" color="error">
                 {translate('componentsTranslations.registerNowPopUpTranslations.form.cancelButton')}
