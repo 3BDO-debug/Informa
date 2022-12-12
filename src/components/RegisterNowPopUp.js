@@ -373,11 +373,19 @@ function RegisterNowPopUp() {
                 focused
                 select
               >
-                {userPlan.followUpPackage !== 'mega-package' && <MenuItem value="workout">Workout plan</MenuItem>}
+                {userPlan.followUpPackage !== 'mega-package' && (
+                  <MenuItem value="workout">
+                    {translate('commonSectionsTranslations.pricingsSection.planType.2')}
+                  </MenuItem>
+                )}
                 <MenuItem value="nutrition-workout" selected>
-                  Workout & Nutrition plan
+                  {translate('commonSectionsTranslations.pricingsSection.planType.1')}
                 </MenuItem>
-                {userPlan.followUpPackage !== 'mega-package' && <MenuItem value="nutrition">Nutrition plan</MenuItem>}
+                {userPlan.followUpPackage !== 'mega-package' && (
+                  <MenuItem value="nutrition">
+                    {translate('commonSectionsTranslations.pricingsSection.planType.3')}
+                  </MenuItem>
+                )}
               </TextField>
             </Grid>
             <Grid item xs={12} sm={6}>
