@@ -11,6 +11,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  duration,
   Grid,
   InputAdornment,
   MenuItem,
@@ -27,12 +28,14 @@ import alertAtom from 'src/recoil/atoms/alertAtom';
 import userIpRegionAtom from 'src/recoil/atoms/userIpRegionAtom';
 // hooks
 import useLocales from 'src/hooks/useLocales';
+import useRenderDurationPrices from 'src/hooks/useRenderDurationPrices';
 // selectors
 import userPlanSelector from 'src/recoil/selectors/userPlanSelector';
 import { useCallback } from 'react';
 // __apis__
 import { personalTrainingRequester } from 'src/__apis__/personalTraining';
 import { offersFetcher } from 'src/__apis__/offers';
+import useRenderFollowUpPackagesPrices from 'src/hooks/useRenderFollowUpPackagesPrices';
 
 // ---------------------------------------------------------------------------------------
 
@@ -54,6 +57,11 @@ function RegisterNowPopUp() {
   const handlePopUpClose = () => {
     triggerRegisterNowPopUp(false);
   };
+
+  const durationPrices = useRenderDurationPrices();
+  const followUpPackagesPrices = useRenderFollowUpPackagesPrices();
+
+  console.log('wwwww', followUpPackagesPrices);
 
   const formik = useFormik({
     initialValues: {
@@ -373,47 +381,53 @@ function RegisterNowPopUp() {
               </TextField>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
-                value={values.planDuration}
-                onChange={(event) => setFieldValue('planDuration', event.target.value)}
-                {...getFieldProps('planDuration')}
-                error={touched.planDuration && Boolean(errors.planDuration)}
-                helperText={touched.planDuration && errors.planDuration}
-                label={translate('componentsTranslations.registerNowPopUpTranslations.form.planDuration')}
-                fullWidth
-                focused
-                select
-              >
-                <MenuItem value={1}>1 Month</MenuItem>
-                <MenuItem value={3}>3 Months</MenuItem>
-                <MenuItem value={6}>6 Months</MenuItem>
-                <MenuItem value={12}>12 Months</MenuItem>
-              </TextField>
+              {durationPrices && (
+                <TextField
+                  value={values.planDuration}
+                  onChange={(event) => setFieldValue('planDuration', event.target.value)}
+                  {...getFieldProps('planDuration')}
+                  error={touched.planDuration && Boolean(errors.planDuration)}
+                  helperText={touched.planDuration && errors.planDuration}
+                  label={translate('componentsTranslations.registerNowPopUpTranslations.form.planDuration')}
+                  fullWidth
+                  focused
+                  select
+                >
+                  {durationPrices.map((durationPrice) => (
+                    <MenuItem value={durationPrice.value}>{`${durationPrice.label} - ${
+                      userIpRegion !== 'EG' ? durationPrice.usdPrice : durationPrice.egpPrice
+                    }`}</MenuItem>
+                  ))}
+                </TextField>
+              )}
             </Grid>
             <Grid item xs={12}>
-              <TextField
-                value={values.followUpPackage}
-                onChange={(event) => setFieldValue('followUpPackage', event.target.value)}
-                {...getFieldProps('followUpPackage')}
-                error={touched.followUpPackage && Boolean(errors.followUpPackage)}
-                helperText={touched.followUpPackage && errors.followUpPackage}
-                label={translate('componentsTranslations.registerNowPopUpTranslations.form.followUpPackage')}
-                select
-                fullWidth
-              >
-                <MenuItem value="silver-package">Silver Package</MenuItem>
-                <MenuItem value="golden-package" selected>
-                  Golden Package
-                </MenuItem>
-                <MenuItem value="mega-package">Mega Package</MenuItem>
-              </TextField>
+              {followUpPackagesPrices && (
+                <TextField
+                  value={values.followUpPackage}
+                  onChange={(event) => setFieldValue('followUpPackage', event.target.value)}
+                  {...getFieldProps('followUpPackage')}
+                  error={touched.followUpPackage && Boolean(errors.followUpPackage)}
+                  helperText={touched.followUpPackage && errors.followUpPackage}
+                  label={translate('componentsTranslations.registerNowPopUpTranslations.form.followUpPackage')}
+                  select
+                  fullWidth
+                >
+                  {followUpPackagesPrices.map((followUpPackagePrice) => (
+                    <MenuItem value={followUpPackagePrice.value}>{`${followUpPackagePrice.label} - ${
+                      userIpRegion !== 'EG' ? followUpPackagePrice.usdPrice : followUpPackagePrice.egpPrice
+                    }`}</MenuItem>
+                  ))}
+                </TextField>
+              )}
             </Grid>
           </Grid>
         </Box>
       </DialogContent>
       <DialogActions>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
+          {/* Total price */}
+          {/*  <Grid item xs={12} sm={6}>
             <Box sx={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
               <Typography variant="subtitle1">
                 {translate('componentsTranslations.registerNowPopUpTranslations.form.totalPrice')} :
@@ -427,8 +441,8 @@ function RegisterNowPopUp() {
                 </Typography>
               )}
             </Box>
-          </Grid>
-          <Grid item xs={12} sm={6}>
+          </Grid> */}
+          <Grid item xs={12} sm={12}>
             <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
               <Button sx={{ mr: 1 }} onClick={handlePopUpClose} variant="outlined" color="error">
                 {translate('componentsTranslations.registerNowPopUpTranslations.form.cancelButton')}
