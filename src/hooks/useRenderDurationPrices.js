@@ -11,7 +11,7 @@ function useRenderDurationPrices() {
   const userPlan = useRecoilValue(userPlanAtom);
   const userIpRegion = useRecoilValue(userIpRegionAtom);
 
-  const { translate } = useLocales();
+  const { translate, currentLang } = useLocales();
 
   const [pricesList, setPricesList] = useState();
 
@@ -88,11 +88,11 @@ function useRenderDurationPrices() {
         },
       ]);
     }
-  }, [userPlan.program]);
+  }, [userPlan.program, translate, currentLang]);
 
   useEffect(() => {
     handleDurationPrices();
-  }, [userPlan.program]);
+  }, [userPlan.program, currentLang]);
 
   return pricesList;
 }

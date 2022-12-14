@@ -404,7 +404,9 @@ function RegisterNowPopUp() {
                       <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <Typography sx={{ mr: 1, direction: 'ltr !important' }}>{durationPrice.label} - </Typography>
                         <Typography sx={{ direction: 'ltr !important' }}>
-                          {userIpRegion !== 'EG' ? durationPrice.usdPrice : durationPrice.egpPrice}
+                          {userIpRegion !== 'EG' || values.payingRegion !== 'local'
+                            ? durationPrice.usdPrice
+                            : durationPrice.egpPrice}
                         </Typography>
                       </Box>
                     </MenuItem>
@@ -426,7 +428,9 @@ function RegisterNowPopUp() {
                 >
                   {followUpPackagesPrices.map((followUpPackagePrice) => (
                     <MenuItem value={followUpPackagePrice.value}>{`${followUpPackagePrice.label} - ${
-                      userIpRegion !== 'EG' ? followUpPackagePrice.usdPrice : followUpPackagePrice.egpPrice
+                      userIpRegion !== 'EG' || values.payingRegion !== 'local'
+                        ? followUpPackagePrice.usdPrice
+                        : followUpPackagePrice.egpPrice
                     }`}</MenuItem>
                   ))}
                 </TextField>
