@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 // @mui
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 // components
 import Logo from '../components/Logo';
+import { Box, Container } from '@mui/material';
+import Alert from 'src/components/Alert';
 
 // ----------------------------------------------------------------------
 
@@ -25,12 +27,18 @@ LogoOnlyLayout.propTypes = {
 };
 
 export default function LogoOnlyLayout({ children }) {
+  const theme = useTheme();
+
   return (
-    <>
+    <Box sx={{ backgroundColor: theme.palette.background.neutral, height: '100%' }}>
       <HeaderStyle>
         <Logo />
       </HeaderStyle>
-      {children}
-    </>
+      <Container sx={{ backgroundColor: theme.palette.background.neutral }}>
+        <Box sx={{ backgroundColor: theme.palette.background.neutral }}>{children}</Box>
+      </Container>
+      {/* Snackbar alert */}
+      <Alert />
+    </Box>
   );
 }

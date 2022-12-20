@@ -80,7 +80,7 @@ function Hero() {
               playsInline
             >
               <source
-                src="https://res.cloudinary.com/djkm4nc2h/video/upload/v1669609672/hero-mobile_lz6wpw.mp4"
+                src="https://res.cloudinary.com/code-hustle/video/upload/v1671555565/hero-mobile_amlkpu.mp4"
                 type="video/mp4"
               />
             </video>
@@ -109,7 +109,7 @@ function Hero() {
               playsInline
             >
               <source
-                src="https://res.cloudinary.com/djkm4nc2h/video/upload/v1669609686/hero_msyg6u.mp4"
+                src="https://res.cloudinary.com/code-hustle/video/upload/v1671555597/hero_n2uh5r.mp4"
                 type="video/mp4"
               />
             </video>

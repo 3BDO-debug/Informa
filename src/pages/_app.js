@@ -66,9 +66,13 @@ export default function MyApp(props) {
             <ThemeProvider>
               <ThemeSettings>
                 <ProgressBar />
-                <AppWrapper>
+                {['/client-info'].includes(router.pathname) ? (
                   <Component {...pageProps} />
-                </AppWrapper>
+                ) : (
+                  <AppWrapper>
+                    <Component {...pageProps} />
+                  </AppWrapper>
+                )}
               </ThemeSettings>
             </ThemeProvider>
           </MotionLazyContainer>
