@@ -23,6 +23,7 @@ import JoinUsPopUp from './JoinUsPopUp';
 import Alert from './Alert';
 import Iconify from './Iconify';
 import AnnouncementPopUp from './AnnouncementPopUp';
+import FollowUpPackageExplainationPopUp from './FollowUpPackageExplainationPopUp';
 
 // -------------------------------------------------------------------------------------------
 
@@ -88,6 +89,8 @@ function AppWrapper({ children }) {
       </Box>
       {/* Register now */}
       <RegisterNowPopUp />
+      {/* Follow up package explaination pop up */}
+      <FollowUpPackageExplainationPopUp />
       {/* Join us */}
       <JoinUsPopUp />
       {/* Announcement pop up */}

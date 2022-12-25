@@ -3,6 +3,7 @@ import {
   announcementPopUpTranslations,
   contactUsFormTranslations,
   fabButtonTranslations,
+  followUpPackageExplainationPopUpTranslations,
   footerTranslations,
   headerTranslations,
   registerNowPopUpTranslations,
@@ -38,6 +39,7 @@ const ar = {
     fabButtonTranslations: fabButtonTranslations,
     contactUsFormTranslations: contactUsFormTranslations,
     announcementPopUpTranslations: announcementPopUpTranslations,
+    followUpPackageExplainationPopUpTranslations: followUpPackageExplainationPopUpTranslations,
   },
 };
 

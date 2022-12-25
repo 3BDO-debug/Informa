@@ -12,30 +12,38 @@ import {
   DialogContent,
   DialogTitle,
   duration,
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+  FormLabel,
   Grid,
   InputAdornment,
   MenuItem,
+  Radio,
+  RadioGroup,
   TextField,
   Typography,
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { LoadingButton } from '@mui/lab';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 // atoms
 import registerNowPopUpAtom from 'src/recoil/atoms/registerNowPopUpAtom';
 import userPlanAtom from 'src/recoil/atoms/userPlanAtom';
 import alertAtom from 'src/recoil/atoms/alertAtom';
 import userIpRegionAtom from 'src/recoil/atoms/userIpRegionAtom';
+import followUpPackageExplainationPopUpAtom from 'src/recoil/atoms/followUpPackageExplainationPopUpAtom';
 // hooks
 import useLocales from 'src/hooks/useLocales';
 import useRenderDurationPrices from 'src/hooks/useRenderDurationPrices';
+import useRenderFollowUpPackagesPrices from 'src/hooks/useRenderFollowUpPackagesPrices';
 // selectors
 import userPlanSelector from 'src/recoil/selectors/userPlanSelector';
 import { useCallback } from 'react';
 // __apis__
 import { personalTrainingRequester } from 'src/__apis__/personalTraining';
 import { offersFetcher } from 'src/__apis__/offers';
-import useRenderFollowUpPackagesPrices from 'src/hooks/useRenderFollowUpPackagesPrices';
 
 // ---------------------------------------------------------------------------------------
 
@@ -60,6 +68,8 @@ function RegisterNowPopUp() {
 
   const durationPrices = useRenderDurationPrices();
   const followUpPackagesPrices = useRenderFollowUpPackagesPrices();
+
+  const setFollowUpPackageExplainationPopUp = useSetRecoilState(followUpPackageExplainationPopUpAtom);
 
   const formik = useFormik({
     initialValues: {
@@ -120,6 +130,13 @@ function RegisterNowPopUp() {
   });
 
   const { values, setFieldValue, getFieldProps, errors, touched, dirty, isSubmitting, handleSubmit } = formik;
+
+  const handleFollowUpPackageExplainButton = useCallback(
+    (videoLink) => {
+      setFollowUpPackageExplainationPopUp({ open: true, videoLink: videoLink });
+    },
+    [setFollowUpPackageExplainationPopUp]
+  );
 
   useEffect(() => {
     setFieldValue('planProgram', userPlan.program);
@@ -358,82 +375,110 @@ function RegisterNowPopUp() {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
-                value={values.planProgram}
-                onChange={(event) => {
-                  setFieldValue('planProgram', event.target.value);
-                }}
-                {...getFieldProps('planProgram')}
-                error={touched.planProgram && Boolean(errors.planProgram)}
-                helperText={touched.planProgram && errors.planProgram}
-                label={translate('componentsTranslations.registerNowPopUpTranslations.form.planProgram')}
-                fullWidth
-                focused
-                select
-              >
-                {userPlan.followUpPackage !== 'mega-package' && (
-                  <MenuItem value="workout">
-                    {translate('commonSectionsTranslations.pricingsSection.planType.2')}
-                  </MenuItem>
-                )}
-                <MenuItem value="nutrition-workout" selected>
-                  {translate('commonSectionsTranslations.pricingsSection.planType.1')}
-                </MenuItem>
-                {userPlan.followUpPackage !== 'mega-package' && (
-                  <MenuItem value="nutrition">
-                    {translate('commonSectionsTranslations.pricingsSection.planType.3')}
-                  </MenuItem>
-                )}
-              </TextField>
+              <FormControl fullWidth>
+                <FormLabel id="plan-type">
+                  {translate('componentsTranslations.registerNowPopUpTranslations.form.planProgram')}
+                </FormLabel>
+                <RadioGroup
+                  aria-labelledby="plan-type"
+                  value={values.planProgram}
+                  onChange={(event) => {
+                    setFieldValue('planProgram', event.target.value);
+                  }}
+                  {...getFieldProps('planProgram')}
+                  error={touched.planProgram && Boolean(errors.planProgram)}
+                  helperText={touched.planProgram && errors.planProgram}
+                >
+                  <FormControlLabel
+                    value="workout"
+                    label={translate('commonSectionsTranslations.pricingsSection.planType.2')}
+                    control={<Radio />}
+                  />
+                  <FormControlLabel
+                    value="nutrition"
+                    label={translate('commonSectionsTranslations.pricingsSection.planType.3')}
+                    control={<Radio />}
+                  />
+                  <FormControlLabel
+                    value="nutrition-workout"
+                    label={translate('commonSectionsTranslations.pricingsSection.planType.1')}
+                    control={<Radio />}
+                  />
+                </RadioGroup>
+              </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
               {durationPrices && (
-                <TextField
-                  value={values.planDuration}
-                  onChange={(event) => setFieldValue('planDuration', event.target.value)}
-                  {...getFieldProps('planDuration')}
-                  error={touched.planDuration && Boolean(errors.planDuration)}
-                  helperText={touched.planDuration && errors.planDuration}
-                  label={translate('componentsTranslations.registerNowPopUpTranslations.form.planDuration')}
-                  fullWidth
-                  focused
-                  select
-                >
-                  {durationPrices.map((durationPrice) => (
-                    <MenuItem value={durationPrice.value}>
-                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <Typography sx={{ mr: 1, direction: 'ltr !important' }}>{durationPrice.label} - </Typography>
-                        <Typography sx={{ direction: 'ltr !important' }}>
-                          {userIpRegion !== 'EG' || values.payingRegion !== 'local'
+                <FormControl fullWidth>
+                  <FormLabel id="plan-duration">
+                    {translate('componentsTranslations.registerNowPopUpTranslations.form.planDuration')}
+                  </FormLabel>
+                  <RadioGroup
+                    value={values.planDuration}
+                    onChange={(event) => setFieldValue('planDuration', event.target.value)}
+                    {...getFieldProps('planDuration')}
+                    aria-labelledby="plan-duration"
+                  >
+                    {durationPrices.map((durationPrice) => (
+                      <FormControlLabel
+                        control={<Radio />}
+                        label={`${durationPrice.label} - ${
+                          userIpRegion !== 'EG' || values.payingRegion !== 'local'
                             ? durationPrice.usdPrice
-                            : durationPrice.egpPrice}
-                        </Typography>
-                      </Box>
-                    </MenuItem>
-                  ))}
-                </TextField>
+                            : durationPrice.egpPrice
+                        }`}
+                        value={durationPrice.value}
+                      />
+                    ))}
+                  </RadioGroup>
+                  <FormHelperText error>{errors.planDuration}</FormHelperText>
+                </FormControl>
               )}
             </Grid>
             <Grid item xs={12}>
               {followUpPackagesPrices && (
-                <TextField
-                  value={values.followUpPackage}
-                  onChange={(event) => setFieldValue('followUpPackage', event.target.value)}
-                  {...getFieldProps('followUpPackage')}
-                  error={touched.followUpPackage && Boolean(errors.followUpPackage)}
-                  helperText={touched.followUpPackage && errors.followUpPackage}
-                  label={translate('componentsTranslations.registerNowPopUpTranslations.form.followUpPackage')}
-                  select
-                  fullWidth
-                >
-                  {followUpPackagesPrices.map((followUpPackagePrice) => (
-                    <MenuItem value={followUpPackagePrice.value}>{`${followUpPackagePrice.label} - ${
-                      userIpRegion !== 'EG' || values.payingRegion !== 'local'
-                        ? followUpPackagePrice.usdPrice
-                        : followUpPackagePrice.egpPrice
-                    }`}</MenuItem>
-                  ))}
-                </TextField>
+                <FormControl fullWidth>
+                  <FormLabel>
+                    {translate('componentsTranslations.registerNowPopUpTranslations.form.followUpPackage')}
+                  </FormLabel>
+                  <RadioGroup
+                    value={values.followUpPackage}
+                    onChange={(event) => setFieldValue('followUpPackage', event.target.value)}
+                    {...getFieldProps('followUpPackage')}
+                  >
+                    {followUpPackagesPrices.map((followUpPackagePrice) => (
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          mb: 2,
+                          flexWrap: 'wrap',
+                        }}
+                      >
+                        <FormControlLabel
+                          value={followUpPackagePrice.value}
+                          label={`${followUpPackagePrice.label} - ${
+                            userIpRegion !== 'EG' || values.payingRegion !== 'local'
+                              ? followUpPackagePrice.usdPrice
+                              : followUpPackagePrice.egpPrice
+                          }`}
+                          control={<Radio />}
+                        />
+                        <Button
+                          startIcon={<PlayCircleIcon />}
+                          variant="outlined"
+                          onClick={() => handleFollowUpPackageExplainButton(followUpPackagePrice.videoLink)}
+                        >
+                          {translate(
+                            'componentsTranslations.followUpPackageExplainationPopUpTranslations.triggerButton'
+                          )}
+                        </Button>
+                      </Box>
+                    ))}
+                  </RadioGroup>
+                  <FormHelperText error>{errors.followUpPackage}</FormHelperText>
+                </FormControl>
               )}
             </Grid>
           </Grid>

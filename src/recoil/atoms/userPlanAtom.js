@@ -3,9 +3,9 @@ import { atom } from 'recoil';
 const userPlanAtom = atom({
   key: 'userPlan',
   default: {
-    program: null,
-    duration: null,
-    followUpPackage: null,
+    program: 'nutrition-workout',
+    duration: 3,
+    followUpPackage: 'silver-package',
     totalPrice: null,
   },
 });

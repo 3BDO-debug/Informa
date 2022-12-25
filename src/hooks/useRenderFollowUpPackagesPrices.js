@@ -21,18 +21,21 @@ function useRenderFollowUpPackagesPrices() {
           label: translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.title'),
           egpPrice: `Free`,
           usdPrice: `Free`,
+          videoLink: 'https://www.youtube.com/embed/nGVW5w3SNwc',
         },
         {
           value: 'golden-package',
           label: translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.title'),
           egpPrice: `600 L.E`,
           usdPrice: `40 $`,
+          videoLink: 'https://www.youtube.com/embed/AQOxbolUCZI',
         },
         {
           value: 'mega-package',
           label: translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.title'),
           egpPrice: `1500 L.E`,
           usdPrice: `105 $`,
+          videoLink: 'https://www.youtube.com/embed/ReZNMC0KLkA',
         },
       ]);
     } else if (userPlan.duration === 3) {
@@ -42,18 +45,21 @@ function useRenderFollowUpPackagesPrices() {
           label: translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.title'),
           egpPrice: `Free`,
           usdPrice: `Free`,
+          videoLink: 'https://www.youtube.com/embed/nGVW5w3SNwc',
         },
         {
           value: 'golden-package',
           label: translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.title'),
           egpPrice: `1200 L.E`,
           usdPrice: `80 $`,
+          videoLink: 'https://www.youtube.com/embed/AQOxbolUCZI',
         },
         {
           value: 'mega-package',
           label: translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.title'),
           egpPrice: `3000 L.E`,
           usdPrice: `210 $`,
+          videoLink: 'https://www.youtube.com/embed/ReZNMC0KLkA',
         },
       ]);
     } else if (userPlan.duration === 6) {
@@ -63,18 +69,21 @@ function useRenderFollowUpPackagesPrices() {
           label: translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.title'),
           egpPrice: `Free`,
           usdPrice: `Free`,
+          videoLink: 'https://www.youtube.com/embed/nGVW5w3SNwc',
         },
         {
           value: 'golden-package',
           label: translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.title'),
           egpPrice: `2000 L.E`,
           usdPrice: `135 $`,
+          videoLink: 'https://www.youtube.com/embed/AQOxbolUCZI',
         },
         {
           value: 'mega-package',
           label: translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.title'),
           egpPrice: `5000 L.E`,
           usdPrice: `350 $`,
+          videoLink: 'https://www.youtube.com/embed/ReZNMC0KLkA',
         },
       ]);
     } else if (userPlan.duration === 12) {
@@ -84,18 +93,21 @@ function useRenderFollowUpPackagesPrices() {
           label: translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.title'),
           egpPrice: `Free`,
           usdPrice: `Free`,
+          videoLink: 'https://www.youtube.com/embed/nGVW5w3SNwc',
         },
         {
           value: 'golden-package',
           label: translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.title'),
           egpPrice: `3200 L.E`,
           usdPrice: `215 $`,
+          videoLink: 'https://www.youtube.com/embed/AQOxbolUCZI',
         },
         {
           value: 'mega-package',
           label: translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.title'),
           egpPrice: `8000 L.E`,
           usdPrice: `560 $`,
+          videoLink: 'https://www.youtube.com/embed/ReZNMC0KLkA',
         },
       ]);
     }

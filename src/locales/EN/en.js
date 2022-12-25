@@ -5,6 +5,7 @@ import {
   announcementPopUpTranslations,
   contactUsFormTranslations,
   fabButtonTranslations,
+  followUpPackageExplainationPopUpTranslations,
   footerTranslations,
   headerTranslations,
   registerNowPopUpTranslations,
@@ -38,6 +39,7 @@ const en = {
     fabButtonTranslations: fabButtonTranslations,
     contactUsFormTranslations: contactUsFormTranslations,
     announcementPopUpTranslations: announcementPopUpTranslations,
+    followUpPackageExplainationPopUpTranslations: followUpPackageExplainationPopUpTranslations,
   },
 };
 //
