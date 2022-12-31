@@ -156,6 +156,8 @@ function RegisterNowPopUp() {
     return priceContext;
   }, [values.payingRegion, userPlanTotalPrice]);
 
+  console.log('ds', userPlanTotalPrice);
+
   const updatePriceAfterOffer = useCallback(() => {}, []);
 
   const fetchOffers = useCallback(async () => {
@@ -204,7 +206,7 @@ function RegisterNowPopUp() {
 
   useEffect(() => {
     if (values.planDuration) {
-      setUserPlan({ ...userPlan, duration: values.planDuration });
+      setUserPlan({ ...userPlan, duration: parseInt(values.planDuration, 10) });
     }
   }, [values.planDuration]);
 
