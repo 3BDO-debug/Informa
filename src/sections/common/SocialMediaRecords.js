@@ -111,7 +111,7 @@ function SocialMediaRecords() {
                   <SocialMediaRecord
                     link="https://www.youtube.com/channel/UCR-l_KqB-t4B_qyDccJHtOQ"
                     icon="/icons/youtube.png"
-                    record={758000}
+                    record={800000}
                     suffix={`K`}
                   />
                 </Grid>
@@ -119,7 +119,7 @@ function SocialMediaRecords() {
                   <SocialMediaRecord
                     link="https://www.instagram.com/informa180/"
                     icon="/icons/instagram.png"
-                    record={267000}
+                    record={276000}
                     suffix={`K`}
                   />
                 </Grid>
@@ -127,8 +127,8 @@ function SocialMediaRecords() {
                   <SocialMediaRecord
                     link="https://www.tiktok.com/@informa180"
                     icon="/icons/tik-tok.png"
-                    record={954000}
-                    suffix={`K`}
+                    record={1000000}
+                    suffix={`M`}
                   />
                 </Grid>
               </Grid>
