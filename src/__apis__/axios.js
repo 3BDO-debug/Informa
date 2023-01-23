@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // http://127.0.0.1:8000  https://informa-server.herokuapp.com/
 
-export const mainUrl = 'https://informa-server.herokuapp.com/';
+export const mainUrl = 'http://127.0.0.1:8000';
 
 const axiosInstance = axios.create({
   baseURL: mainUrl,

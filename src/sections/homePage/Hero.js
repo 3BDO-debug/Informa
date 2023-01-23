@@ -79,10 +79,7 @@ function Hero() {
               muted
               playsInline
             >
-              <source
-                src="https://res.cloudinary.com/code-hustle/video/upload/v1671555565/hero-mobile_amlkpu.mp4"
-                type="video/mp4"
-              />
+              <source src="https://basedontech.pythonanywhere.com/media/hero-mobile.mp4" type="video/mp4" />
             </video>
           </Box>
           <Box
@@ -108,10 +105,7 @@ function Hero() {
               muted
               playsInline
             >
-              <source
-                src="https://res.cloudinary.com/code-hustle/video/upload/v1671555597/hero_n2uh5r.mp4"
-                type="video/mp4"
-              />
+              <source src="https://basedontech.pythonanywhere.com/media/hero.mp4" type="video/mp4" />
             </video>
           </Box>
 

@@ -1,6 +1,16 @@
 import React from 'react';
 // material
-import { Grid, InputAdornment, MenuItem, TextField } from '@mui/material';
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Grid,
+  InputAdornment,
+  MenuItem,
+  Radio,
+  RadioGroup,
+  TextField,
+} from '@mui/material';
 
 // -----------------------------------------------------------------------
 
@@ -58,7 +68,7 @@ function GeneralInformation({ formik }) {
           fullWidth
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} md={6}>
         <TextField
           label="In-Body"
           type="number"
@@ -69,6 +79,36 @@ function GeneralInformation({ formik }) {
             endAdornment: <InputAdornment position="start">%</InputAdornment>,
           }}
         />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <TextField
+          label="Prefered number of meals"
+          value={values.numberOfMeals}
+          onChange={(event) => setFieldValue('numberOfMeals', event.target.value)}
+          fullWidth
+          select
+        >
+          <MenuItem value={2}>2 meals per day</MenuItem>
+          <MenuItem value={3}>3 meals per day</MenuItem>
+          <MenuItem value={4}>4 meals per day</MenuItem>
+        </TextField>
+      </Grid>
+      <Grid item xs={12}>
+        <FormControl fullWidth>
+          <FormLabel id="plan-type">Do you want to take protein supplement ?</FormLabel>
+          <RadioGroup
+            aria-labelledby="plan-type"
+            value={values.canTakeProteinSupplement}
+            onChange={(event) => {
+              setFieldValue('canTakeProteinSupplement', event.target.value);
+            }}
+            /* error={touched.planProgram && Boolean(errors.planProgram)}
+            helperText={touched.planProgram && errors.planProgram} */
+          >
+            <FormControlLabel value="yes" label="Yes" control={<Radio />} />
+            <FormControlLabel value="no" label="No" control={<Radio />} />
+          </RadioGroup>
+        </FormControl>
       </Grid>
     </Grid>
   );

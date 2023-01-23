@@ -26,6 +26,7 @@ import { clientInfoRequester } from 'src/__apis__/clientInfo';
 import GeneralInformation from './GeneralInformation';
 import ActivityLevel from './ActivityLevel';
 import { LoadingButton } from '@mui/lab';
+import FoodSelection from './FoodSelection';
 
 // -----------------------------------------------------------------------------------------------------
 
@@ -33,6 +34,9 @@ function ClientInfoForm() {
   const [activeStep, setActiveStep] = useState(0);
 
   const setAlert = useSetRecoilState(alertAtom);
+
+  const [excludedFoodItems, setExcludedFoodItems] = useState([]);
+  const [preferedFoodItems, setPreferedFoodItems] = useState([]);
 
   const formik = useFormik({
     initialValues: {
@@ -46,9 +50,24 @@ function ClientInfoForm() {
       trainingVolume: '',
       activityPerDay: '',
       goal: '',
+      numberOfMeals: 3,
+      canTakeProteinSupplement: '',
     },
     onSubmit: async (values) => {
-      await clientInfoRequester(values)
+      const data = new FormData();
+
+      const formikValuesKeys = Object.keys(values);
+      const formikValues = Object.values(values);
+
+      for (let index = 0; index < formikValuesKeys.length; index++) {
+        data.append(formikValuesKeys[index], formikValues[index]);
+        console.log(formikValuesKeys[index], formikValues[index]);
+      }
+
+      data.append('excludedFoodItems', JSON.stringify(excludedFoodItems.map((foodItem) => foodItem.id)));
+      data.append('preferedFoodItems', JSON.stringify(preferedFoodItems.map((foodItem) => foodItem.id)));
+
+      await clientInfoRequester(data)
         .then((response) => {
           setAlert({
             triggered: true,
@@ -82,6 +101,15 @@ function ClientInfoForm() {
     {
       label: 'Program Goal',
       component: <ClientGoal formik={formik} />,
+    },
+    {
+      label: 'Food Selection',
+      component: (
+        <FoodSelection
+          excludedFoodItemsState={[excludedFoodItems, setExcludedFoodItems]}
+          preferedFoodItemsState={[preferedFoodItems, setPreferedFoodItems]}
+        />
+      ),
     },
   ];
 

@@ -156,7 +156,6 @@ function RegisterNowPopUp() {
     return priceContext;
   }, [values.payingRegion, userPlanTotalPrice]);
 
-  console.log('ds', userPlanTotalPrice);
 
   const updatePriceAfterOffer = useCallback(() => {}, []);
 
