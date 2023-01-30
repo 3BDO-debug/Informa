@@ -114,7 +114,7 @@ function RegisterNowPopUp() {
             setAlert({
               triggered: true,
               message: `Hey ${values.fullname}, we already had recieved your request, and one of our representatives will contact you soon. Or you can re submit the form after 72 hours.`,
-              type: 'error',
+              type: 'warning',
             });
           } else {
             setAlert({
