@@ -2,6 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from . import models, serializers
+from datetime import datetime
 
 
 @api_view(["POST"])
@@ -25,21 +26,31 @@ def personal_training_requests_handler(request):
     )
     has_sale = bool(computed_price_after_sale)
 
-    models.PersonalTrainingRequest.objects.create(
-        fullname=fullname,
-        phone_number=phone_number,
-        cor=cor,
-        paying_region=paying_region,
-        age=age,
-        gender=gender,
-        weight=weight,
-        height=height,
-        plan_program=plan_program,
-        plan_duration=plan_duration,
-        followup_package=followup_package,
-        computed_total_price=computed_total_price,
-        computed_price_after_sale=computed_price_after_sale,
-        has_sale=has_sale,
-    ).save()
+    if models.PersonalTrainingRequest.objects.filter(phone_number=phone_number):
+        client_request = models.PersonalTrainingRequest.objects.get(
+            phone_number=phone_number
+        )
+
+        days_diff = abs((datetime.now().date() - client_request.timestamp.date()).days)
+
+        if days_diff > 3:
+            models.PersonalTrainingRequest.objects.create(
+                fullname=fullname,
+                phone_number=phone_number,
+                cor=cor,
+                paying_region=paying_region,
+                age=age,
+                gender=gender,
+                weight=weight,
+                height=height,
+                plan_program=plan_program,
+                plan_duration=plan_duration,
+                followup_package=followup_package,
+                computed_total_price=computed_total_price,
+                computed_price_after_sale=computed_price_after_sale,
+                has_sale=has_sale,
+            ).save()
+        else:
+            return Response(status=status.HTTP_200_OK, data={"spamming": True})
 
     return Response(status=status.HTTP_200_OK)
