@@ -110,11 +110,20 @@ function RegisterNowPopUp() {
 
       await personalTrainingRequester(requestData)
         .then((response) => {
-          setAlert({
-            triggered: true,
-            message: 'We recieved your request, and we will contact you soon.',
-            type: 'success',
-          });
+          if (response.spamming) {
+            setAlert({
+              triggered: true,
+              message: `Hey ${values.fullname}, we already had recieved your request, and one of our representatives will contact you soon. Or you can re submit the form after 72 hours.`,
+              type: 'error',
+            });
+          } else {
+            setAlert({
+              triggered: true,
+              message: 'We recieved your request, and we will contact you soon.',
+              type: 'success',
+            });
+          }
+
           triggerRegisterNowPopUp(false);
         })
         .catch((error) => {
@@ -155,7 +164,6 @@ function RegisterNowPopUp() {
 
     return priceContext;
   }, [values.payingRegion, userPlanTotalPrice]);
-
 
   const updatePriceAfterOffer = useCallback(() => {}, []);
 
