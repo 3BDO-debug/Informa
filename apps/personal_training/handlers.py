@@ -27,9 +27,9 @@ def personal_training_requests_handler(request):
     has_sale = bool(computed_price_after_sale)
 
     if models.PersonalTrainingRequest.objects.filter(phone_number=phone_number):
-        client_request = models.PersonalTrainingRequest.objects.get(
+        client_request = models.PersonalTrainingRequest.objects.filter(
             phone_number=phone_number
-        )
+        ).order_by("-timestamp")[0]
 
         days_diff = abs((datetime.now().date() - client_request.timestamp.date()).days)
 
