@@ -26,8 +26,7 @@ def personal_training_requests_handler(request):
     )
     has_sale = bool(computed_price_after_sale)
 
-
-    """ if models.PersonalTrainingRequest.objects.filter(phone_number=phone_number):
+    if models.PersonalTrainingRequest.objects.filter(phone_number=phone_number):
         client_request = models.PersonalTrainingRequest.objects.filter(
             phone_number=phone_number
         ).order_by("-timestamp")[0]
@@ -52,22 +51,24 @@ def personal_training_requests_handler(request):
                 has_sale=has_sale,
             ).save()
         else:
-            return Response(status=status.HTTP_200_OK, data={"spamming": True}) """
-    models.PersonalTrainingRequest.objects.create(
-                fullname=fullname,
-                phone_number=phone_number,
-                cor=cor,
-                paying_region=paying_region,
-                age=age,
-                gender=gender,
-                weight=weight,
-                height=height,
-                plan_program=plan_program,
-                plan_duration=plan_duration,
-                followup_package=followup_package,
-                computed_total_price=computed_total_price,
-                computed_price_after_sale=computed_price_after_sale,
-                has_sale=has_sale,
-            ).save()
+            return Response(status=status.HTTP_200_OK, data={"spamming": True})
+
+    else:
+        models.PersonalTrainingRequest.objects.create(
+            fullname=fullname,
+            phone_number=phone_number,
+            cor=cor,
+            paying_region=paying_region,
+            age=age,
+            gender=gender,
+            weight=weight,
+            height=height,
+            plan_program=plan_program,
+            plan_duration=plan_duration,
+            followup_package=followup_package,
+            computed_total_price=computed_total_price,
+            computed_price_after_sale=computed_price_after_sale,
+            has_sale=has_sale,
+        ).save()
 
     return Response(status=status.HTTP_200_OK)
