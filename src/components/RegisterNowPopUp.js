@@ -110,19 +110,11 @@ function RegisterNowPopUp() {
 
       await personalTrainingRequester(requestData)
         .then((response) => {
-          if (response.spamming) {
-            setAlert({
-              triggered: true,
-              message: `Hey ${values.fullname}, we already had recieved your request, and one of our representatives will contact you soon. Or you can re submit the form after 72 hours.`,
-              type: 'warning',
-            });
-          } else {
-            setAlert({
-              triggered: true,
-              message: 'We recieved your request, and we will contact you soon.',
-              type: 'success',
-            });
-          }
+          setAlert({
+            triggered: true,
+            message: 'We recieved your request, and we will contact you soon.',
+            type: 'success',
+          });
 
           triggerRegisterNowPopUp(false);
         })
