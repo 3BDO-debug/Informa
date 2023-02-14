@@ -44,6 +44,7 @@ import { useCallback } from 'react';
 // __apis__
 import { personalTrainingRequester } from 'src/__apis__/personalTraining';
 import { offersFetcher } from 'src/__apis__/offers';
+import { websiteVisitSender } from 'src/__apis__/websiteVisits';
 
 // ---------------------------------------------------------------------------------------
 
@@ -65,6 +66,23 @@ function RegisterNowPopUp() {
   const handlePopUpClose = () => {
     triggerRegisterNowPopUp(false);
   };
+
+  const websiteVisitTracker = useCallback(async () => {
+    let agent = navigator.userAgent;
+
+    const data = new FormData();
+    data.append('siteName', 'Informa');
+    data.append('action', 'Submitted the form');
+    data.append('user_agent', JSON.stringify(agent));
+
+    await websiteVisitSender(data)
+      .then((response) => {
+        console.log('Tracking started');
+      })
+      .catch((error) => {
+        console.log('Error tracking', error);
+      });
+  });
 
   const durationPrices = useRenderDurationPrices();
   const followUpPackagesPrices = useRenderFollowUpPackagesPrices();
@@ -126,6 +144,9 @@ function RegisterNowPopUp() {
             type: 'error',
           });
         });
+
+      await websiteVisitTracker();
+
       setSubmitting(false);
     },
   });
