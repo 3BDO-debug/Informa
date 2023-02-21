@@ -51,7 +51,7 @@ function GetInTouch() {
                       <Typography variant="subtitle1">
                         {translate('pagesTranslations.contactUsPageTranslations.emailUs')}
                       </Typography>
-                      <Typography variant="body2">Informa.180.sales@gmail.com</Typography>
+                      <Typography variant="body2">informa.180.team@gmail.com</Typography>
                     </Box>
                   </Box>
                 </Stack>

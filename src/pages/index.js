@@ -23,6 +23,8 @@ export default function Home() {
   const websiteVisitTracker = useCallback(async () => {
     let agent = navigator.userAgent;
 
+     
+
     const data = new FormData();
     data.append('siteName', 'Informa');
     data.append('action', 'Initial visit');

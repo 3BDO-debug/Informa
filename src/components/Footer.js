@@ -35,7 +35,7 @@ export default function Footer() {
     },
     {
       headline: translate('componentsTranslations.footerTranslations.contact.title'),
-      children: [{ name: 'Informa.180.sales@gmail.com', href: 'mailto:Informa.180.sales@gmail.com' }],
+      children: [{ name: 'informa.180.team@gmail.com', href: 'mailto:informa.180.team@gmail.com' }],
     },
   ];
 
