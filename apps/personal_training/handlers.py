@@ -72,3 +72,13 @@ def personal_training_requests_handler(request):
         ).save()
 
     return Response(status=status.HTTP_200_OK)
+
+
+@api_view(["GET"])
+def personal_training_requests_fetcher(request):
+    training_requests = models.PersonalTrainingRequest.objects.filter(proceeded=False)
+    data_serializer = serializers.PersonalTrainingRequestSerializer(
+        training_requests, many=True
+    )
+
+    return Response(status=status.HTTP_200_OK, data=data_serializer.data)
