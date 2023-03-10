@@ -76,7 +76,7 @@ def personal_training_requests_handler(request):
 
 @api_view(["GET"])
 def personal_training_requests_fetcher(request):
-    training_requests = models.PersonalTrainingRequest.objects.filter(proceeded=False)
+    training_requests = models.PersonalTrainingRequest.objects.all()
     data_serializer = serializers.PersonalTrainingRequestSerializer(
         training_requests, many=True
     )
