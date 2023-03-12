@@ -95,7 +95,7 @@ function AboutUs() {
                   transform: hovered ? 'scale(1.3)' : 'scale(1)',
                   transition: theme.transitions.create(['transform'], {
                     easing: theme.transitions.easing.easeInOut,
-                    duration: '0.9s',
+                    duration: '0.4s',
                   }),
                 }}
                 component="img"

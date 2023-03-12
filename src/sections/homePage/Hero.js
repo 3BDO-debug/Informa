@@ -108,7 +108,6 @@ function Hero() {
               <source src="https://basedontech.pythonanywhere.com/media/hero.mp4" type="video/mp4" />
             </video>
           </Box>
-
           {/* https://res.cloudinary.com/code-hustle/video/upload/v1665519157/hero_faqush.mp4 https://res.cloudinary.com/code-hustle/video/upload/v1666033444/hero_hbqcfu.mp4 */}
           {/* Hero content */}
           <Box
