@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import {
   Box,
   Button,
+  Container,
   Dialog,
   DialogActions,
   DialogContent,
@@ -45,6 +46,7 @@ import { useCallback } from 'react';
 import { personalTrainingRequester } from 'src/__apis__/personalTraining';
 import { offersFetcher } from 'src/__apis__/offers';
 import { websiteVisitSender } from 'src/__apis__/websiteVisits';
+import MUIPhoneNumberInput from './MUIPhoneNumberInput';
 
 // ---------------------------------------------------------------------------------------
 
@@ -296,7 +298,7 @@ function RegisterNowPopUp() {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              {/*  <TextField
                 label={translate('componentsTranslations.registerNowPopUpTranslations.form.whatsappNumber')}
                 value={values.whatsappNumber}
                 onChange={(event) => setFieldValue('whatsappNumber', event.target.value)}
@@ -304,7 +306,14 @@ function RegisterNowPopUp() {
                 error={touched.whatsappNumber && Boolean(errors.whatsappNumber)}
                 helperText={touched.whatsappNumber && errors.whatsappNumber}
                 fullWidth
+              /> */}
+              <MUIPhoneNumberInput
+                {...getFieldProps('whatsappNumber')}
+                value={values.whatsappNumber}
+                setValueHandler={(value) => setFieldValue('whatsappNumber', `${value}`)}
+                label={translate('componentsTranslations.registerNowPopUpTranslations.form.whatsappNumber')}
               />
+              <FormHelperText error>{Boolean(touched.whatsappNumber) && errors.whatsappNumber}</FormHelperText>
             </Grid>
             <Grid item xs={12}>
               <TextField

@@ -12,7 +12,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 import 'react-lazy-load-image-component/src/effects/black-and-white.css';
-
+//
+import '../components/MUIPhoneNumberInput/PhoneNumberStyle.css';
 import PropTypes from 'prop-types';
 import cookie from 'cookie';
 // next
