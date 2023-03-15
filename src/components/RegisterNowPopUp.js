@@ -172,7 +172,13 @@ function RegisterNowPopUp() {
   const fetchOffers = useCallback(async () => {
     await offersFetcher()
       .then((response) => {
-        setOfferData(response);
+        setOfferData(
+          response.map((offer) => ({
+            name: offer.title,
+            percentage: offer.offer_percentage,
+            content: offer.offer_for.map((offerItem) => offerItem.name),
+          }))
+        );
       })
       .catch((error) => {
         setActiveOffer(false);
@@ -181,7 +187,7 @@ function RegisterNowPopUp() {
   }, []);
 
   const applyDiscount = useCallback(() => {
-    let price = values.payingRegion === 'local' ? userPlanTotalPrice?.egpPrice : userPlanTotalPrice?.usdPrice;
+    /* let price = values.payingRegion === 'local' ? userPlanTotalPrice?.egpPrice : userPlanTotalPrice?.usdPrice;
     let discountValue = (parseInt(offerData.offer_percentage) / 100) * price;
 
     const condition = offerData.offer_for.some((offerItem) => {
@@ -198,8 +204,47 @@ function RegisterNowPopUp() {
       setSalePrice(price - discountValue);
     } else {
       setActiveOffer(false);
-    }
+    } */
   }, [userPlan, userPlanTotalPrice, offerData, values]);
+
+  /* Customized offer */
+
+  const applyCustomizedOffer = useCallback(() => {
+    let matchedOffer = null;
+
+    let userProgram = [userPlan?.program, userPlan?.followUpPackage, userPlan?.duration.toString()];
+
+    for (let index = 0; index < offerData.length; index++) {
+      const element = offerData[index];
+
+      if (areEqual(element.content, userProgram)) {
+        matchedOffer = element;
+      }
+    }
+
+    function areEqual(array1, array2) {
+      if (array1.length === userProgram.length) {
+        return array1.every((element) => {
+          if (userProgram.includes(element)) {
+            return true;
+          }
+
+          return false;
+        });
+      }
+
+      return false;
+    }
+
+    if (matchedOffer) {
+      setActiveOffer(true);
+      let price = values.payingRegion === 'local' ? userPlanTotalPrice?.egpPrice : userPlanTotalPrice?.usdPrice;
+      let discountValue = (parseInt(matchedOffer?.percentage) / 100) * price;
+      setSalePrice(price - discountValue);
+    } else {
+      setActiveOffer(false);
+    }
+  }, [values, offerData, userPlan, userPlanTotalPrice]);
 
   /* Controlled effects */
 
@@ -241,7 +286,7 @@ function RegisterNowPopUp() {
 
   useEffect(() => {
     if (offerData) {
-      applyDiscount();
+      applyCustomizedOffer();
     }
   }, [offerData, userPlan, values]);
 
@@ -513,23 +558,22 @@ function RegisterNowPopUp() {
       <DialogActions>
         <Grid container spacing={3}>
           {/* Total price */}
-          {activeOffer && (
-            <Grid item xs={12} sm={6}>
-              <Box sx={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
-                <Typography variant="subtitle1">
-                  {translate('componentsTranslations.registerNowPopUpTranslations.form.totalPrice')} :
+          <Grid item xs={12} sm={6}>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
+              <Typography variant="subtitle1">
+                {translate('componentsTranslations.registerNowPopUpTranslations.form.totalPrice')} :
+              </Typography>
+              <Typography variant="subtitle1" sx={{ ml: 1, textDecoration: activeOffer && 'line-through' }}>
+                {renderPrice()}
+              </Typography>
+              {activeOffer && (
+                <Typography variant="subtitle1" sx={{ ml: 1 }}>
+                  {salePrice} {values.payingRegion === 'local' ? 'EGP' : 'USD'}
                 </Typography>
-                <Typography variant="subtitle1" sx={{ ml: 1, textDecoration: activeOffer && 'line-through' }}>
-                  {renderPrice()}
-                </Typography>
-                {activeOffer && (
-                  <Typography variant="subtitle1" sx={{ ml: 1 }}>
-                    {salePrice} {values.payingRegion === 'local' ? 'EGP' : 'USD'}
-                  </Typography>
-                )}
-              </Box>
-            </Grid>
-          )}
+              )}
+            </Box>
+          </Grid>
+
           <Grid item xs={12} sm={activeOffer ? 6 : 12}>
             <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
               <Button sx={{ mr: 1 }} onClick={handlePopUpClose} variant="outlined" color="error">
