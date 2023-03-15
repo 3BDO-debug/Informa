@@ -45,8 +45,9 @@ import { useCallback } from 'react';
 // __apis__
 import { personalTrainingRequester } from 'src/__apis__/personalTraining';
 import { offersFetcher } from 'src/__apis__/offers';
-import { websiteVisitSender } from 'src/__apis__/websiteVisits';
+//
 import MUIPhoneNumberInput from './MUIPhoneNumberInput';
+import useWebsiteLogs from 'src/hooks/useWebsiteLogs';
 
 // ---------------------------------------------------------------------------------------
 
@@ -61,6 +62,8 @@ function RegisterNowPopUp() {
   const [offerData, setOfferData] = useState(null);
   const [salePrice, setSalePrice] = useState(null);
 
+  const [isReady, websiteLogger] = useWebsiteLogs();
+
   const { query } = useRouter();
 
   const { translate } = useLocales();
@@ -68,23 +71,6 @@ function RegisterNowPopUp() {
   const handlePopUpClose = () => {
     triggerRegisterNowPopUp(false);
   };
-
-  const websiteVisitTracker = useCallback(async () => {
-    let agent = navigator.userAgent;
-
-    const data = new FormData();
-    data.append('siteName', 'Informa');
-    data.append('action', 'Submitted the form');
-    data.append('user_agent', JSON.stringify(agent));
-
-    await websiteVisitSender(data)
-      .then((response) => {
-        console.log('Tracking started');
-      })
-      .catch((error) => {
-        console.log('Error tracking', error);
-      });
-  });
 
   const durationPrices = useRenderDurationPrices();
   const followUpPackagesPrices = useRenderFollowUpPackagesPrices();
@@ -147,7 +133,7 @@ function RegisterNowPopUp() {
           });
         });
 
-      await websiteVisitTracker();
+      websiteLogger('User submitted the form successfully');
 
       setSubmitting(false);
     },
@@ -158,8 +144,9 @@ function RegisterNowPopUp() {
   const handleFollowUpPackageExplainButton = useCallback(
     (videoLink) => {
       setFollowUpPackageExplainationPopUp({ open: true, videoLink: videoLink });
+      websiteLogger('User opened the form but clicked on explaination button');
     },
-    [setFollowUpPackageExplainationPopUp]
+    [setFollowUpPackageExplainationPopUp, websiteLogger]
   );
 
   useEffect(() => {
@@ -263,6 +250,14 @@ function RegisterNowPopUp() {
       triggerRegisterNowPopUp(true);
     }
   }, []);
+
+  useEffect(() => {
+    if (registerNowPopUp) {
+      if (isReady) {
+        websiteLogger('User opened the registeration form');
+      }
+    }
+  }, [isReady, registerNowPopUp]);
 
   return (
     <Dialog open={registerNowPopUp} onClose={handlePopUpClose} fullWidth>

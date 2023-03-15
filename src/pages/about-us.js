@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // hooks
 import useLocales from 'src/hooks/useLocales';
+import useWebsiteLogs from 'src/hooks/useWebsiteLogs';
 // components
 import PageIntro from 'src/sections/common/PageIntro';
 import AboutInforma from 'src/sections/aboutUsPage/AboutInforma';
@@ -13,6 +14,14 @@ import Reviews from 'src/sections/aboutUsPage/Reviews';
 
 function AboutUs() {
   const { translate } = useLocales();
+
+  const [isReady, websiteLogger] = useWebsiteLogs();
+
+  useEffect(() => {
+    if (isReady) {
+      websiteLogger('Viewed landing page');
+    }
+  }, [isReady]);
 
   return (
     <>

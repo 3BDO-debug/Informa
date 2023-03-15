@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // hooks
 import useLocales from 'src/hooks/useLocales';
+import useWebsiteLogs from 'src/hooks/useWebsiteLogs';
 // components
 import PageIntro from 'src/sections/common/PageIntro';
 import GetInTouch from 'src/sections/contactUsPage/GetInTouch';
@@ -9,6 +10,14 @@ import GetInTouch from 'src/sections/contactUsPage/GetInTouch';
 
 function ContactUs() {
   const { translate } = useLocales();
+
+  const [isReady, websiteLogger] = useWebsiteLogs();
+
+  useEffect(() => {
+    if (isReady) {
+      websiteLogger('Viewed landing page');
+    }
+  }, [isReady]);
 
   return (
     <>

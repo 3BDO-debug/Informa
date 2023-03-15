@@ -12,7 +12,6 @@ import announcementPopUpAtom from 'src/recoil/atoms/announcementPopUpAtom';
 import useLocales from 'src/hooks/useLocales';
 // __apis__
 import { userIpRegionFetcher } from 'src/__apis__/userIpRegion';
-import { websiteVisitSender } from 'src/__apis__/websiteVisits';
 // theme
 import palette from 'src/theme/palette';
 // components
@@ -52,7 +51,7 @@ function AppWrapper({ children }) {
         console.log('Error fetching user region', error);
         setUserIpRegion(null);
       });
-  }, []);
+  }, [setUserIpRegion]);
 
   const shouldRenderActionButtons = useCallback(() => {
     let shouldRender = true;
@@ -67,23 +66,6 @@ function AppWrapper({ children }) {
 
     return shouldRender;
   }, [announcementPopUp, registerNowPopUp]);
-
-  const websiteVisitTracker = useCallback(async () => {
-    let agent = navigator.userAgent;
-
-    const data = new FormData();
-    data.append('siteName', 'Informa');
-    data.append('action', 'Clicked register now button');
-    data.append('user_agent', JSON.stringify(agent));
-
-    await websiteVisitSender(data)
-      .then((response) => {
-        console.log('Tracking started');
-      })
-      .catch((error) => {
-        console.log('Error tracking', error);
-      });
-  });
 
   useEffect(() => {
     fetchUserIpRegion();
@@ -133,7 +115,6 @@ function AppWrapper({ children }) {
           <Fab
             onClick={() => {
               triggerRegisterNowPopUpAtom(true);
-              websiteVisitTracker();
             }}
             variant="extended"
           >

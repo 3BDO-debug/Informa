@@ -41,6 +41,7 @@
     "next": "^12.3.1",
     "nprogress": "^0.2.0",
     "numeral": "^2.0.6",
+    "platform": "^1.3.6",
     "rainbowvis.js": "^1.1.1",
     "react": "^18.2.0",
     "react-countup": "^6.3.2",
