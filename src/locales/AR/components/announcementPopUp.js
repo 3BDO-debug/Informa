@@ -1,6 +1,6 @@
 const announcementPopUpTranslations = {
   title: 'تنويه',
-  actionButton: 'اشترك الان',
+  actionButton: 'تم',
 };
 
 export default announcementPopUpTranslations;

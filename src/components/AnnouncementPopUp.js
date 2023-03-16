@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 // material
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Paper } from '@mui/material';
+import { Box, Button, Card, Dialog, DialogActions, DialogContent, DialogTitle, Paper } from '@mui/material';
 // atoms
 import announcementPopUpAtom from 'src/recoil/atoms/announcementPopUpAtom';
 // __apis__
@@ -18,30 +18,15 @@ import registerNowPopUpAtom from 'src/recoil/atoms/registerNowPopUpAtom';
 function AnnouncementPopUp() {
   const [announcementPopUp, triggerAnnouncementPopUp] = useRecoilState(announcementPopUpAtom);
 
-  const [announcement, setAnnouncement] = useState(null);
   const triggerRegisterNowPopUp = useSetRecoilState(registerNowPopUpAtom);
 
   const { currentLang, translate } = useLocales();
-
-  const fetchAnnouncement = useCallback(async () => {
-    await announcementsFetcher()
-      .then((response) => {
-        setAnnouncement(response);
-      })
-      .catch((error) => {
-        setAnnouncement(null);
-        console.log('Error fetching announcement', error);
-      });
-  }, []);
-
-  useEffect(() => {
-    fetchAnnouncement();
-  }, [fetchAnnouncement]);
 
   return (
     <Dialog
       PaperProps={{ sx: { backgroundColor: palette.dark.background.default } }}
       open={announcementPopUp}
+      fullWidth
       onClose={() => triggerAnnouncementPopUp(false)}
     >
       <DialogTitle sx={{ display: 'flex', alignItems: 'center', color: palette.dark.text.primary }}>
@@ -49,17 +34,32 @@ function AnnouncementPopUp() {
         {translate('componentsTranslations.announcementPopUpTranslations.title')}
       </DialogTitle>
       <DialogContent>
-        <Box paddingTop={6} sx={{ display: 'flex', alignItems: 'center' }}>
-          <Markdown
-            children={currentLang.value === 'en' ? announcement?.english_markdown : announcement?.arabic_markdown}
-          />
+        <Box marginTop={5}>
+          <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/PIavGek2uBM"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+              }}
+            ></iframe>
+          </div>
         </Box>
       </DialogContent>
       <DialogActions>
         <Button
           onClick={() => {
             triggerAnnouncementPopUp(false);
-            triggerRegisterNowPopUp(true);
+            /* triggerRegisterNowPopUp(true); */
           }}
           variant="contained"
         >

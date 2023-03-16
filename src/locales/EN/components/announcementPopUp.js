@@ -1,6 +1,6 @@
 const announcementPopUpTranslations = {
   title: 'Announcement',
-  actionButton: 'Register now',
+  actionButton: 'Done',
 };
 
 export default announcementPopUpTranslations;
