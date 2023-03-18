@@ -304,6 +304,14 @@ function RegisterNowPopUp() {
     }
   }, [isReady, registerNowPopUp]);
 
+  useEffect(() => {
+    if (userIpRegion === 'EG') {
+      if (values.whatsappNumber[2] === '0') {
+        setFieldValue('whatsappNumber', `${values.whatsappNumber.slice(0, 2)}${values.whatsappNumber.slice(3)}`);
+      }
+    }
+  }, [values.whatsappNumber, userIpRegion]);
+
   return (
     <Dialog open={registerNowPopUp} onClose={handlePopUpClose} fullWidth>
       <DialogTitle>

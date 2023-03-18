@@ -12,7 +12,7 @@ function MUIPhoneNumberInput({ value, setValueHandler, label }) {
       inputClass="form-control"
       dropdownStyle={{ width: '250px' }}
       onChange={setValueHandler}
-      autoFormat
+      autoFormat={true}
     />
   );
 }
