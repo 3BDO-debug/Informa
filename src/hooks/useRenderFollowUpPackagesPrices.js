@@ -117,7 +117,19 @@ function useRenderFollowUpPackagesPrices() {
     handleFollowUpPackagesPrices();
   }, [userPlan.duration, currentLang]);
 
-  return pricesList;
+  const megaPackageLimitation = useCallback(() => {
+    let data = [];
+
+    if (userPlan.program !== 'nutrition-workout') {
+      data = pricesList.filter((element) => element.value !== 'mega-package');
+    } else {
+      data = pricesList;
+    }
+
+    return data;
+  }, [pricesList, userPlan]);
+
+  return megaPackageLimitation();
 }
 
 export default useRenderFollowUpPackagesPrices;
