@@ -71,11 +71,7 @@ function AboutInforma() {
               </Grid>
               <Grid item xs={12}>
                 <Button
-                  onClick={() =>
-                    window.open(
-                      'https://api.whatsapp.com/send?phone=201090028014&text=Hello%20Informa%2C%20I%20want%20to%20get%20in%20shape.%20'
-                    )
-                  }
+                  onClick={() => window.open('https://wa.me/message/UKLQRDNHUXNEF1')}
                   startIcon={<FitnessCenterIcon />}
                   variant="contained"
                 >

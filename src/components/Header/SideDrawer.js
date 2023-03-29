@@ -119,7 +119,7 @@ function SideDrawer({ isTriggered, closeHandler, headerLinks }) {
               startIcon={<WhatsAppIcon />}
               onClick={() =>
                 window.open(
-                  'https://api.whatsapp.com/send?phone=201090028014&text=Hello%20Informa%2C%20I%20want%20to%20get%20in%20shape.%20'
+                  'https://wa.me/message/UKLQRDNHUXNEF1'
                 )
               }
               fullWidth
@@ -155,7 +155,7 @@ function SideDrawer({ isTriggered, closeHandler, headerLinks }) {
             <IconButton
               onClick={() =>
                 window.open(
-                  'https://api.whatsapp.com/send?phone=201090028014&text=Hello%20Informa%2C%20I%20want%20to%20get%20in%20shape.%20'
+                  'https://wa.me/message/UKLQRDNHUXNEF1'
                 )
               }
             >
