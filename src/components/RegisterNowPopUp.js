@@ -177,6 +177,7 @@ function RegisterNowPopUp() {
             name: offer.title,
             percentage: offer.offer_percentage,
             content: offer.offer_for.map((offerItem) => offerItem.name),
+            isCustomOffer: offer.is_customized_offer,
           }))
         );
       })
@@ -216,24 +217,27 @@ function RegisterNowPopUp() {
 
     for (let index = 0; index < offerData.length; index++) {
       const element = offerData[index];
+      console.log('ss', element);
 
-      if (areEqual(element.content, userProgram)) {
+      if (areEqual(element.content, userProgram, element.isCustomOffer)) {
         matchedOffer = element;
       }
     }
 
-    function areEqual(array1, array2) {
-      if (array1.length === userProgram.length) {
-        return array1.every((element) => {
-          if (userProgram.includes(element)) {
-            return true;
-          }
+    function areEqual(array1, array2, mustEqual) {
+      if (mustEqual) {
+        if (array1.length === userProgram.length) {
+          return array1.every((element) => {
+            if (userProgram.includes(element)) {
+              return true;
+            }
 
-          return false;
-        });
+            return false;
+          });
+        }
+      } else {
+        return array1.some((element) => array2.includes(element));
       }
-
-      return false;
     }
 
     if (matchedOffer) {
