@@ -67,7 +67,16 @@ function StartJourneyPage() {
             <TopTransformations />
           </ContainerWrapper>
         </Grid>
-        <Grid item xs={12}>
+        <Grid
+          item
+          xs={12}
+          sx={{
+            mt: {
+              xs: -10,
+              md: 0,
+            },
+          }}
+        >
           <SocialMediaRecords />
         </Grid>
       </Grid>
