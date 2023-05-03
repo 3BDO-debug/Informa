@@ -19,16 +19,10 @@ function useRenderDurationPrices() {
     if (userPlan.program === 'nutrition-workout') {
       setPricesList([
         {
-          value: 12,
-          label: translate('commonSectionsTranslations.pricingsSection.planDuration.4'),
-          egpPrice: `8000 L.E`,
-          usdPrice: `560 $`,
-        },
-        {
-          value: 6,
-          label: translate('commonSectionsTranslations.pricingsSection.planDuration.3'),
-          egpPrice: `5000 L.E`,
-          usdPrice: `350 $`,
+          value: 1,
+          label: translate('commonSectionsTranslations.pricingsSection.planDuration.1'),
+          egpPrice: `1500 L.E`,
+          usdPrice: `105 $`,
         },
         {
           value: 3,
@@ -37,20 +31,25 @@ function useRenderDurationPrices() {
           usdPrice: `210 $`,
         },
         {
-          value: 1,
-          label: translate('commonSectionsTranslations.pricingsSection.planDuration.1'),
-          egpPrice: `1500 L.E`,
-          usdPrice: `105 $`,
+          value: 6,
+          label: translate('commonSectionsTranslations.pricingsSection.planDuration.3'),
+          egpPrice: `5000 L.E`,
+          usdPrice: `350 $`,
+        },
+        {
+          value: 12,
+          label: translate('commonSectionsTranslations.pricingsSection.planDuration.4'),
+          egpPrice: `8000 L.E`,
+          usdPrice: `560 $`,
         },
       ]);
     } else if (userPlan.program === 'nutrition') {
       setPricesList([
-        { value: 12, label: '12 Months', egpPrice: `6000 L.E`, usdPrice: `400 $` },
         {
-          value: 6,
-          label: translate('commonSectionsTranslations.pricingsSection.planDuration.3'),
-          egpPrice: `3750 L.E`,
-          usdPrice: `245 $`,
+          value: 1,
+          label: translate('commonSectionsTranslations.pricingsSection.planDuration.1'),
+          egpPrice: `1150 L.E`,
+          usdPrice: `75 $`,
         },
         {
           value: 3,
@@ -59,20 +58,20 @@ function useRenderDurationPrices() {
           usdPrice: `150 $`,
         },
         {
-          value: 1,
-          label: translate('commonSectionsTranslations.pricingsSection.planDuration.1'),
-          egpPrice: `1150 L.E`,
-          usdPrice: `75 $`,
+          value: 6,
+          label: translate('commonSectionsTranslations.pricingsSection.planDuration.3'),
+          egpPrice: `3750 L.E`,
+          usdPrice: `245 $`,
         },
+        { value: 12, label: '12 Months', egpPrice: `6000 L.E`, usdPrice: `400 $` },
       ]);
     } else if (userPlan.program === 'workout') {
       setPricesList([
-        { value: 12, label: '12 Months', egpPrice: `5000 L.E`, usdPrice: `350 $` },
         {
-          value: 6,
-          label: translate('commonSectionsTranslations.pricingsSection.planDuration.3'),
-          egpPrice: `3000 L.E`,
-          usdPrice: `200 $`,
+          value: 1,
+          label: translate('commonSectionsTranslations.pricingsSection.planDuration.1'),
+          egpPrice: `900 L.E`,
+          usdPrice: `60 $`,
         },
         {
           value: 3,
@@ -81,11 +80,12 @@ function useRenderDurationPrices() {
           usdPrice: `120 $`,
         },
         {
-          value: 1,
-          label: translate('commonSectionsTranslations.pricingsSection.planDuration.1'),
-          egpPrice: `900 L.E`,
-          usdPrice: `60 $`,
+          value: 6,
+          label: translate('commonSectionsTranslations.pricingsSection.planDuration.3'),
+          egpPrice: `3000 L.E`,
+          usdPrice: `200 $`,
         },
+        { value: 12, label: '12 Months', egpPrice: `5000 L.E`, usdPrice: `350 $` },
       ]);
     }
   }, [userPlan.program, translate, currentLang]);

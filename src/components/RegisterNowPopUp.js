@@ -48,6 +48,7 @@ import { offersFetcher } from 'src/__apis__/offers';
 //
 import MUIPhoneNumberInput from './MUIPhoneNumberInput';
 import useWebsiteLogs from 'src/hooks/useWebsiteLogs';
+import Iconify from './Iconify';
 
 // ---------------------------------------------------------------------------------------
 
@@ -328,7 +329,7 @@ function RegisterNowPopUp() {
               triggerRegisterNowPopUp(false);
               push('plans-&-pricing');
             }}
-            startIcon={<TipsAndUpdatesIcon />}
+            startIcon={<Iconify icon="tabler:hand-click" />}
             variant="contained"
           >
             {translate('componentsTranslations.registerNowPopUpTranslations.title.actionButton')}
@@ -588,9 +589,9 @@ function RegisterNowPopUp() {
 
           <Grid item xs={12} sm={activeOffer ? 6 : 12}>
             <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
-              <Button sx={{ mr: 1 }} onClick={handlePopUpClose} variant="outlined" color="error">
+              {/*  <Button sx={{ mr: 1 }} onClick={handlePopUpClose} variant="outlined" color="error">
                 {translate('componentsTranslations.registerNowPopUpTranslations.form.cancelButton')}
-              </Button>
+              </Button> */}
               <LoadingButton
                 endIcon={<SendIcon />}
                 loading={isSubmitting}

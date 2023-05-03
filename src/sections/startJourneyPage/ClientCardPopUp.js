@@ -54,6 +54,7 @@ function ClientCardPopUp({ isTriggered, closeHandler, data }) {
   const theme = useTheme();
   const flipCardInnerRef = useRef();
   const [animate, setAnimate] = useState(false);
+  const [resetToHoverAnimation, setResetToHoverAnimation] = useState(false);
 
   const { img, name, beforeWeight, afterWeight, beforeBodyFat, afterBodyFat, duration } = data;
 
@@ -66,12 +67,14 @@ function ClientCardPopUp({ isTriggered, closeHandler, data }) {
   }, [isTriggered]);
 
   useEffect(() => {
-    if (animate) {
+    if (animate && !resetToHoverAnimation) {
       const flipCardInner = flipCardInnerRef.current;
       flipCardInner.style.transform = 'rotateY(-180deg)';
       setTimeout(() => {
         flipCardInner.style.transform = 'rotateY(0deg)';
       }, 500);
+
+      setResetToHoverAnimation(true);
     }
   }, [animate]);
 
@@ -86,15 +89,13 @@ function ClientCardPopUp({ isTriggered, closeHandler, data }) {
       open={isTriggered}
       onClose={onClose}
       TransitionComponent={Transition}
-      PaperProps={{ sx: { backgroundColor: 'transparent' } }}
+      PaperProps={{ sx: { backgroundColor: 'transparent', display: 'flex', justifyContent: 'center', width: 300 } }}
     >
       <Box
         sx={{
           perspective: '1000px',
-          width: '300px',
+          width: '100%',
           height: 240,
-          display: 'flex',
-          jusitfyContent: 'center',
         }}
         onMouseEnter={() => {
           const flipCardInner = flipCardInnerRef.current;
@@ -125,6 +126,7 @@ function ClientCardPopUp({ isTriggered, closeHandler, data }) {
               display: 'flex',
               borderRadius: 2,
               overflow: 'hidden',
+              justifyContent: 'center',
             }}
           >
             <Box component="img" sx={{ objectFit: 'cover' }} src={img} />

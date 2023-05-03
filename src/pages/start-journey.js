@@ -8,6 +8,7 @@ import TopTransformations from 'src/sections/startJourneyPage/TopTransformations
 import Intro from 'src/sections/startJourneyPage/Intro';
 // hooks
 import useLocales from 'src/hooks/useLocales';
+import SocialMediaRecords from 'src/sections/common/SocialMediaRecords';
 
 // -----------------------------------------------------------
 
@@ -65,6 +66,9 @@ function StartJourneyPage() {
           <ContainerWrapper isMobile={isMobile}>
             <TopTransformations />
           </ContainerWrapper>
+        </Grid>
+        <Grid item xs={12}>
+          <SocialMediaRecords />
         </Grid>
       </Grid>
     </>
