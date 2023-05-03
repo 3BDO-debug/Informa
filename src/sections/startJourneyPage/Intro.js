@@ -16,12 +16,24 @@ const CharacterImage = styled('img')(({ theme }) => ({
   position: 'relative',
   right: 0,
   zIndex: 1000,
-  width: 'auto',
   objectFit: 'contain',
-  height: '100%',
   opacity: 0,
   animation: 'fadeInFromRight 1s forwards',
-  [theme.breakpoints.up('md')]: {},
+  [theme.breakpoints.up('xs')]: {
+    width: 170,
+    height: 170,
+    marginTop: -70,
+  },
+  [theme.breakpoints.up('sm')]: {
+    width: 170,
+    height: 170,
+    marginTop: -70,
+  },
+  [theme.breakpoints.up('md')]: {
+    width: 250,
+    height: 250,
+    marginTop: -70,
+  },
   [theme.breakpoints.up('lg')]: {},
   [theme.breakpoints.up('xl')]: {},
   '@keyframes fadeInFromRight': {
