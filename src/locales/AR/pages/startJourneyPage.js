@@ -1,6 +1,6 @@
 const startJourneyPageTranslations = {
   banner: {
-    title: 'قصص النجاح بتبدأ بقرار',
+    title: 'يلا الحق العرض … ٣٥٪ خصم علي اى نظام ٣ شهور او اكتر',
   },
   topPicksTransformations: {
     title: 'غير جسمك و حياتك',

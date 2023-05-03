@@ -61,6 +61,8 @@ function ClientCardPopUp({ isTriggered, closeHandler, data }) {
 
   const { translate } = useLocales();
 
+  const [flipped, setIsFlipped] = useState(false);
+
   useEffect(() => {
     if (isTriggered) {
       setAnimate(true);
@@ -75,7 +77,7 @@ function ClientCardPopUp({ isTriggered, closeHandler, data }) {
         flipCardInner.style.transform = 'rotateY(0deg)';
       }, 500);
 
-      setResetToHoverAnimation(true);
+      setAnimate(false);
     }
   }, [animate]);
 
@@ -98,13 +100,15 @@ function ClientCardPopUp({ isTriggered, closeHandler, data }) {
           width: '100%',
           height: 240,
         }}
-        onMouseEnter={() => {
+        onClick={() => {
           const flipCardInner = flipCardInnerRef.current;
-          flipCardInner.style.transform = 'rotateY(180deg)';
-        }}
-        onMouseLeave={() => {
-          const flipCardInner = flipCardInnerRef.current;
-          flipCardInner.style.transform = 'rotateY(0deg)';
+          if (!flipped) {
+            flipCardInner.style.transform = 'rotateY(180deg)';
+            setIsFlipped(true);
+          } else {
+            flipCardInner.style.transform = 'rotateY(0deg)';
+            setIsFlipped(false);
+          }
         }}
       >
         <Box

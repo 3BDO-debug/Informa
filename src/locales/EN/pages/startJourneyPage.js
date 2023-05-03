@@ -1,6 +1,6 @@
 const startJourneyPageTranslations = {
   banner: {
-    title: 'Transform Your Life Now With Informa',
+    title: 'Don’t miss our offer… 35% off on any 3 months package',
   },
   topPicksTransformations: {
     title: 'Be The Next',
