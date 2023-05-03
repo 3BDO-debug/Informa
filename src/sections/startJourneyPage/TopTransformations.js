@@ -106,21 +106,7 @@ const ActionButton = () => {
 // ------------------------------------------------------------------------------
 
 function TopTransformations() {
-  const [data, setData] = useState([]);
-
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down('sm'));
-
-  useEffect(() => {
-    const mockedData = [];
-    for (let index = 0; index < 11; index++) {
-      if (index === 4) {
-        mockedData.push(<ActionButton />);
-      } else {
-        mockedData.push(topPicksTransformationsData[index]);
-      }
-    }
-    setData(mockedData);
-  }, [topPicksTransformationsData]);
 
   return (
     <MotionViewport>
