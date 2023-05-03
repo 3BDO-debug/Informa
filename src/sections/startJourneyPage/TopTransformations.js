@@ -130,15 +130,108 @@ function TopTransformations() {
           spacing={isMobile ? 0.4 : 2}
           sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
         >
-          {data.map((client, index) => (
-            <Grid item xs={4}>
-              {index === 4 ? (
-                client
+          <Grid item xs={4}>
+            <>
+              {isMobile ? (
+                <ClientCardMobile clientData={topPicksTransformationsData[0]} />
               ) : (
-                <>{isMobile ? <ClientCardMobile clientData={client} /> : <ClientCardFull clientData={client} />}</>
+                <ClientCardFull clientData={topPicksTransformationsData[0]} />
               )}
-            </Grid>
-          ))}
+            </>
+          </Grid>
+          <Grid item xs={4}>
+            <>
+              {isMobile ? (
+                <ClientCardMobile clientData={topPicksTransformationsData[1]} />
+              ) : (
+                <ClientCardFull clientData={topPicksTransformationsData[1]} />
+              )}
+            </>
+          </Grid>
+          <Grid item xs={4}>
+            <>
+              {isMobile ? (
+                <ClientCardMobile clientData={topPicksTransformationsData[2]} />
+              ) : (
+                <ClientCardFull clientData={topPicksTransformationsData[2]} />
+              )}
+            </>
+          </Grid>
+          <Grid item xs={4}>
+            <>
+              {isMobile ? (
+                <ClientCardMobile clientData={topPicksTransformationsData[3]} />
+              ) : (
+                <ClientCardFull clientData={topPicksTransformationsData[3]} />
+              )}
+            </>
+          </Grid>
+          <Grid item xs={4}>
+            <ActionButton />
+          </Grid>
+          <Grid item xs={4}>
+            <>
+              {isMobile ? (
+                <ClientCardMobile clientData={topPicksTransformationsData[4]} />
+              ) : (
+                <ClientCardFull clientData={topPicksTransformationsData[4]} />
+              )}
+            </>
+          </Grid>
+          <Grid item xs={4}>
+            <>
+              {isMobile ? (
+                <ClientCardMobile clientData={topPicksTransformationsData[5]} />
+              ) : (
+                <ClientCardFull clientData={topPicksTransformationsData[5]} />
+              )}
+            </>
+          </Grid>
+          <Grid item xs={4}>
+            <>
+              {isMobile ? (
+                <ClientCardMobile clientData={topPicksTransformationsData[6]} />
+              ) : (
+                <ClientCardFull clientData={topPicksTransformationsData[6]} />
+              )}
+            </>
+          </Grid>
+          <Grid item xs={4}>
+            <>
+              {isMobile ? (
+                <ClientCardMobile clientData={topPicksTransformationsData[7]} />
+              ) : (
+                <ClientCardFull clientData={topPicksTransformationsData[7]} />
+              )}
+            </>
+          </Grid>
+          <Grid item xs={4}>
+            <>
+              {isMobile ? (
+                <ClientCardMobile clientData={topPicksTransformationsData[8]} />
+              ) : (
+                <ClientCardFull clientData={topPicksTransformationsData[8]} />
+              )}
+            </>
+          </Grid>
+          <Grid item xs={4}>
+            <>
+              {isMobile ? (
+                <ClientCardMobile clientData={topPicksTransformationsData[9]} />
+              ) : (
+                <ClientCardFull clientData={topPicksTransformationsData[9]} />
+              )}
+            </>
+          </Grid>
+          <Grid item xs={4}>
+            <>
+              {isMobile ? (
+                <ClientCardMobile clientData={topPicksTransformationsData[10]} />
+              ) : (
+                <ClientCardFull clientData={topPicksTransformationsData[10]} />
+              )}
+            </>
+          </Grid>
         </Grid>
       </m.div>
     </MotionViewport>

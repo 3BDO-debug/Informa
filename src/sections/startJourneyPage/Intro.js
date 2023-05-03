@@ -13,25 +13,17 @@ import { MotionLazyContainer, MotionViewport, varFade } from 'src/components/ani
 // -------------------------------------------------------------------------------------------------------------------------------
 
 const CharacterImage = styled('img')(({ theme }) => ({
-  position: 'absolute',
+  position: 'relative',
   right: 0,
   zIndex: 1000,
-  width: 120,
-  top: '10.8%',
+  width: 'auto',
+  objectFit: 'contain',
+  height: '100%',
   opacity: 0,
   animation: 'fadeInFromRight 1s forwards',
-  [theme.breakpoints.up('md')]: {
-    width: 200,
-    top: '13.1%',
-  },
-  [theme.breakpoints.up('lg')]: {
-    width: 200,
-    top: '12.2%',
-  },
-  [theme.breakpoints.up('xl')]: {
-    width: 260,
-    top: '1.4%',
-  },
+  [theme.breakpoints.up('md')]: {},
+  [theme.breakpoints.up('lg')]: {},
+  [theme.breakpoints.up('xl')]: {},
   '@keyframes fadeInFromRight': {
     '0%': {
       opacity: 0,

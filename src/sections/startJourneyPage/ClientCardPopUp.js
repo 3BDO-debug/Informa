@@ -91,7 +91,7 @@ function ClientCardPopUp({ isTriggered, closeHandler, data }) {
       <Box
         sx={{
           perspective: '1000px',
-          width: '100%',
+          width: '300px',
           height: 240,
         }}
         onMouseEnter={() => {
