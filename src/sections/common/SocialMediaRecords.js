@@ -73,11 +73,11 @@ function SocialMediaRecords() {
       <Box marginBottom={10}>
         <SectionWrapper>
           <Grid component={m.div} variants={varFade().inUp} container spacing={3}>
-            <Grid item xs={12}>
+            {/*  <Grid item xs={12}>
               <Typography sx={{ display: 'flex', justifyContent: 'center' }} variant="overline">
                 {translate('commonSectionsTranslations.socialMediaRecords.subtitle')}
               </Typography>
-            </Grid>
+            </Grid> */}
             <Grid item xs={12}>
               <Typography
                 sx={{
