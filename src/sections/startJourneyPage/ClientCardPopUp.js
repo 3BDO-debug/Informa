@@ -93,6 +93,8 @@ function ClientCardPopUp({ isTriggered, closeHandler, data }) {
           perspective: '1000px',
           width: '300px',
           height: 240,
+          display: 'flex',
+          jusitfyContent: 'center',
         }}
         onMouseEnter={() => {
           const flipCardInner = flipCardInnerRef.current;
