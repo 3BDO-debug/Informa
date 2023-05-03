@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 // material
 import { Box, Typography, useTheme } from '@mui/material';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
@@ -91,7 +92,7 @@ function ClientCardFull({ clientData }) {
             overflow: 'hidden',
           }}
         >
-          <Box component="img" sx={{ objectFit: 'cover' }} src={img} />
+          <Image src={img} layout="fill" objectFit="cover" quality={75} alt="Your image description" />{' '}
         </Box>
 
         {/* Back Side */}

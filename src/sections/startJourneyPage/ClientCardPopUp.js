@@ -6,6 +6,7 @@ import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import useLocales from 'src/hooks/useLocales';
 // components
 import Iconify from 'src/components/Iconify';
+import Image from 'next/image';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Zoom timeout={5} ref={ref} {...props} />;
@@ -129,7 +130,7 @@ function ClientCardPopUp({ isTriggered, closeHandler, data }) {
               justifyContent: 'center',
             }}
           >
-            <Box component="img" sx={{ objectFit: 'cover' }} src={img} />
+            <Image src={img} layout="fill" objectFit="cover" quality={75} alt="Your image description" />{' '}
           </Box>
 
           {/* Back Side */}

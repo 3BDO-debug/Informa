@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactTypingEffect from 'react-typing-effect';
-import { m } from 'framer-motion';
+import Image from 'next/image';
 // material
 import { Box, Typography, styled, useMediaQuery, useTheme } from '@mui/material';
 // theme
@@ -86,49 +86,47 @@ function Intro() {
   const { translate } = useLocales();
 
   return (
-    <MotionLazyContainer>
-      <Box
+    <Box
+      sx={{
+        backgroundColor: palette.dark.background.paper,
+        height: {
+          xs: 100,
+          md: 180,
+        },
+        display: 'flex',
+        justifyContent: 'flex-start',
+        direction: 'ltr !important',
+      }}
+    >
+      <AnimatedTypography
         sx={{
-          backgroundColor: palette.dark.background.paper,
-          height: {
-            xs: 100,
-            md: 180,
+          fontSize: {
+            xs: 15,
+            sm: 26,
+            md: 40,
+            lg: 46,
+            xl: 65,
           },
-          display: 'flex',
-          justifyContent: 'flex-start',
-          direction: 'ltr !important',
+          px: {
+            xs: 2,
+            lg: 12,
+          },
+          verticalAlign: 'center',
+          width: '70%',
+          pt: {
+            xs: '7%',
+            sm: '4%',
+            md: '4%',
+            lg: '1.7%',
+          },
         }}
+        variant={isMobile ? 'h6' : 'h3'}
       >
-        <AnimatedTypography
-          sx={{
-            fontSize: {
-              xs: 15,
-              sm: 26,
-              md: 40,
-              lg: 46,
-              xl: 65,
-            },
-            px: {
-              xs: 2,
-              lg: 12,
-            },
-            verticalAlign: 'center',
-            width: '70%',
-            pt: {
-              xs: '7%',
-              sm: '4%',
-              md: '4%',
-              lg: '1.7%',
-            },
-          }}
-          variant={isMobile ? 'h6' : 'h3'}
-        >
-          {translate('pagesTranslations.startJourneyPageTranslations.banner.title')}
-        </AnimatedTypography>
+        {translate('pagesTranslations.startJourneyPageTranslations.banner.title')}
+      </AnimatedTypography>
 
-        <CharacterImage sx={{ transform: 'scaleX(-1)' }} src="/images/informa-character.png" />
-      </Box>
-    </MotionLazyContainer>
+      <CharacterImage sx={{ transform: 'scaleX(-1)' }} src="/images/informa-character.png" />
+    </Box>
   );
 }
 
