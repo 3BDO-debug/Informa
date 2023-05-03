@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 export default function useOffSetTop(top) {
   const [offsetTop, setOffSetTop] = useState(false);
-  const isTop = top || 100;
+  const isTop = 10;
 
   useEffect(() => {
     const options = { passive: true }; // options must match add/remove event

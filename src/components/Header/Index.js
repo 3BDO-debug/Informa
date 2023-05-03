@@ -23,7 +23,7 @@ import Label from '../Label';
 // ----------------------------------------------------------------------
 
 const HEADER = {
-  MOBILE_HEIGHT: 80,
+  MOBILE_HEIGHT: 70,
   MAIN_DESKTOP_HEIGHT: 150,
 };
 
@@ -224,7 +224,10 @@ function Header() {
                       transition={{ duration: 0.4, type: 'tween' }}
                       variant="subtitle2"
                       sx={{
-                        color: isOffset || detailsPageFinder() ? 'text.primary' : 'common.white',
+                        color:
+                          isOffset || detailsPageFinder() || pathname === '/start-journey'
+                            ? 'text.primary'
+                            : 'common.white',
                       }}
                       href={headerLink.href}
                       key={index}
@@ -259,11 +262,7 @@ function Header() {
             }}
           >
             <Button
-              onClick={() =>
-                window.open(
-                  'https://wa.me/message/UKLQRDNHUXNEF1'
-                )
-              }
+              onClick={() => window.open('https://wa.me/message/UKLQRDNHUXNEF1')}
               startIcon={<WhatsAppIcon />}
               variant="outlined"
             >
@@ -298,13 +297,7 @@ function Header() {
             }}
           >
             {/* Whatsapp */}
-            <IconButton
-              onClick={() =>
-                window.open(
-                  'https://wa.me/message/UKLQRDNHUXNEF1'
-                )
-              }
-            >
+            <IconButton onClick={() => window.open('https://wa.me/message/UKLQRDNHUXNEF1')}>
               <Box component="img" src="/icons/whatsapp.png" width={25} />
             </IconButton>
             {/* Dark / Light mode */}

@@ -108,10 +108,10 @@ function AppWrapper({ children }) {
             zIndex: 10000,
           }}
         >
-          <Fab color="secondary" variant="extended" sx={{ mb: 2 }} onClick={() => triggerAnnouncementPopUp(true)}>
+          {/* <Fab color="secondary" variant="extended" sx={{ mb: 2 }} onClick={() => triggerAnnouncementPopUp(true)}>
             <Box component="img" src="/icons/muscle.png" mr={1} width={30} />
             <Typography variant="subtitle2">تحدي انفورما</Typography>
-          </Fab>
+          </Fab> */}
           <Fab
             onClick={() => {
               triggerRegisterNowPopUpAtom(true);
