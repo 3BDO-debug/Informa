@@ -125,6 +125,7 @@ function ClientCardFull({ clientData }) {
                 md: 'inherit',
               },
               textAlign: 'center',
+              textTransform: 'capitalize',
             }}
           >
             {name}

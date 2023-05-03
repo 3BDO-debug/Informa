@@ -159,6 +159,7 @@ function ClientCardPopUp({ isTriggered, closeHandler, data }) {
                   md: 'inherit',
                 },
                 textAlign: 'center',
+                textTransform: 'capitalize',
               }}
             >
               {name}
