@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { m } from 'framer-motion';
+import { useSetRecoilState } from 'recoil';
 // material
 import { Box, Button, ButtonBase, Grid, Typography, keyframes, styled, useMediaQuery, useTheme } from '@mui/material';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
@@ -8,6 +9,8 @@ import TimerIcon from '@mui/icons-material/Timer';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 // utils
 import topPicksTransformationsData from 'src/utils/mock-data/topPicksTransformations';
+// atoms
+import registerNowPopUpAtom from 'src/recoil/atoms/registerNowPopUpAtom';
 // palette
 import palette from 'src/theme/palette';
 // hooks
@@ -23,6 +26,8 @@ const ActionButton = () => {
   const theme = useTheme();
 
   const { translate } = useLocales();
+
+  const triggerRegisterNowPopUp = useSetRecoilState(registerNowPopUpAtom);
 
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down('sm'));
 
@@ -81,6 +86,7 @@ const ActionButton = () => {
       </Typography>
       <AnimatedButton
         variant="contained"
+        onClick={() => triggerRegisterNowPopUp(true)}
         sx={{
           fontSize: {
             xs: 6.8,
