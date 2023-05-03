@@ -1,6 +1,6 @@
 const topPicksTransformationsData = [
   {
-    img: `/images/top-picks-transformations/${1}.png`,
+    img: `/images/top-picks-transformations/${1}.jpg`,
     name: 'Kamal Nimr',
     beforeWeight: 77.5,
     afterWeight: 79,
@@ -8,7 +8,7 @@ const topPicksTransformationsData = [
     afterBodyFat: 10,
   },
   {
-    img: `/images/top-picks-transformations/${2}.png`,
+    img: `/images/top-picks-transformations/${2}.jpg`,
     name: 'Nashaat Mohamed',
     beforeWeight: 76,
     afterWeight: 65,
@@ -16,7 +16,7 @@ const topPicksTransformationsData = [
     afterBodyFat: 6.7,
   },
   {
-    img: `/images/top-picks-transformations/${3}.png`,
+    img: `/images/top-picks-transformations/${3}.jpg`,
     name: 'Ahmed attalah',
     beforeWeight: 75,
     afterWeight: 81,
@@ -24,7 +24,7 @@ const topPicksTransformationsData = [
     afterBodyFat: 8,
   },
   {
-    img: `/images/top-picks-transformations/${4}.png`,
+    img: `/images/top-picks-transformations/${4}.jpg`,
     name: 'Ahmed Sabry',
     beforeWeight: 78,
     afterWeight: 71,
@@ -32,7 +32,7 @@ const topPicksTransformationsData = [
     afterBodyFat: 12,
   },
   {
-    img: `/images/top-picks-transformations/${5}.png`,
+    img: `/images/top-picks-transformations/${5}.jpg`,
     name: 'Hussein Ali',
     beforeWeight: 88.1,
     afterWeight: 73.5,
@@ -40,7 +40,7 @@ const topPicksTransformationsData = [
     afterBodyFat: 9,
   },
   {
-    img: `/images/top-picks-transformations/${6}.png`,
+    img: `/images/top-picks-transformations/${6}.jpg`,
     name: 'Abdullah bughdadi',
     beforeWeight: 81.5,
     afterWeight: 74,
@@ -48,7 +48,7 @@ const topPicksTransformationsData = [
     afterBodyFat: 11.1,
   },
   {
-    img: `/images/top-picks-transformations/${7}.png`,
+    img: `/images/top-picks-transformations/${7}.jpg`,
     name: 'Mohamed Hemida',
     beforeWeight: 108,
     afterWeight: 85,
@@ -56,7 +56,7 @@ const topPicksTransformationsData = [
     afterBodyFat: 12.5,
   },
   {
-    img: `/images/top-picks-transformations/${8}.png`,
+    img: `/images/top-picks-transformations/${8}.jpg`,
     name: 'Ahmed Sayed',
     beforeWeight: 135,
     afterWeight: 89,
@@ -64,7 +64,7 @@ const topPicksTransformationsData = [
     afterBodyFat: 12,
   },
   {
-    img: `/images/top-picks-transformations/${9}.png`,
+    img: `/images/top-picks-transformations/${9}.jpg`,
     name: 'mostafa ezzat',
     beforeWeight: 61,
     afterWeight: 62,
@@ -72,7 +72,7 @@ const topPicksTransformationsData = [
     afterBodyFat: 7,
   },
   {
-    img: `/images/top-picks-transformations/${10}.png`,
+    img: `/images/top-picks-transformations/${10}.jpg`,
     name: 'Abdullah Emara',
     beforeWeight: 71.5,
     afterWeight: 70,
@@ -80,7 +80,7 @@ const topPicksTransformationsData = [
     afterBodyFat: 13,
   },
   {
-    img: `/images/top-picks-transformations/${11}.png`,
+    img: `/images/top-picks-transformations/${11}.jpg`,
     name: 'Mohamed Mostafa',
     beforeWeight: 74,
     afterWeight: 82.5,
