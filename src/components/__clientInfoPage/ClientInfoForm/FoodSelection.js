@@ -11,7 +11,6 @@ import { foodItemsFetcher } from 'src/__apis__/foodItems';
 
 function FoodSelection({ excludedFoodItemsState, preferedFoodItemsState }) {
   const [excludedFoodItems, setExcludedFoodItems] = excludedFoodItemsState;
-  const [preferedFoodItems, setPreferedFoodItems] = preferedFoodItemsState;
 
   const [foodItems, setFoodItems] = useState([]);
   const [mappedFoodItems, setMappedFoodItems] = useState([]);
@@ -47,16 +46,6 @@ function FoodSelection({ excludedFoodItemsState, preferedFoodItemsState }) {
           options={mappedFoodItems}
           getOptionLabel={(option) => option.title}
           renderInput={(params) => <TextField {...params} variant="outlined" label="Food you don't like ?" />}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <Autocomplete
-          multiple
-          value={preferedFoodItems}
-          onChange={(event, newValue) => setPreferedFoodItems(newValue)}
-          options={mappedFoodItems.filter((foodItem) => !excludedFoodItems.includes(foodItem))}
-          getOptionLabel={(option) => option.title}
-          renderInput={(params) => <TextField {...params} variant="outlined" label="Food you like ?" />}
         />
       </Grid>
     </Grid>

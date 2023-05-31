@@ -12,26 +12,18 @@ import {
   TextField,
 } from '@mui/material';
 
-// -----------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 
 function GeneralInformation({ formik }) {
   const { values, setFieldValue } = formik;
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12}>
         <TextField
           label="ID"
           value={values.id}
           onChange={(event) => setFieldValue('id', event.target.value)}
-          fullWidth
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <TextField
-          label="Full name"
-          value={values.fullName}
-          onChange={(event) => setFieldValue('fullName', event.target.value)}
           fullWidth
         />
       </Grid>

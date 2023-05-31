@@ -36,7 +36,6 @@ function ClientInfoForm() {
   const setAlert = useSetRecoilState(alertAtom);
 
   const [excludedFoodItems, setExcludedFoodItems] = useState([]);
-  const [preferedFoodItems, setPreferedFoodItems] = useState([]);
 
   const formik = useFormik({
     initialValues: {
@@ -65,7 +64,6 @@ function ClientInfoForm() {
       }
 
       data.append('excludedFoodItems', JSON.stringify(excludedFoodItems.map((foodItem) => foodItem.id)));
-      data.append('preferedFoodItems', JSON.stringify(preferedFoodItems.map((foodItem) => foodItem.id)));
 
       await clientInfoRequester(data)
         .then((response) => {
@@ -104,12 +102,7 @@ function ClientInfoForm() {
     },
     {
       label: 'Food Selection',
-      component: (
-        <FoodSelection
-          excludedFoodItemsState={[excludedFoodItems, setExcludedFoodItems]}
-          preferedFoodItemsState={[preferedFoodItems, setPreferedFoodItems]}
-        />
-      ),
+      component: <FoodSelection excludedFoodItemsState={[excludedFoodItems, setExcludedFoodItems]} />,
     },
   ];
 
