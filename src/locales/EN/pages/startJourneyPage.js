@@ -1,6 +1,6 @@
 const startJourneyPageTranslations = {
   banner: {
-    title: 'Don’t miss our offer… 30% off on any packages 3 months or above',
+    title: 'Don’t miss our offer… 30% off on 3 months or more',
   },
   topPicksTransformations: {
     title: 'Be The Next',
