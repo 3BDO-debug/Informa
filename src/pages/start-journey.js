@@ -47,7 +47,7 @@ function StartJourneyPage() {
         <Grid item xs={12}>
           <Typography
             align="center"
-            variant="h2"
+            variant="h4"
             sx={{
               '&:after': {
                 content: `'${translate(
