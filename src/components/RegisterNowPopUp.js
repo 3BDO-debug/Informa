@@ -218,9 +218,9 @@ function RegisterNowPopUp() {
 
     for (let index = 0; index < offerData.length; index++) {
       const element = offerData[index];
-      console.log('ss', element);
 
       if (areEqual(element.content, userProgram, element.isCustomOffer)) {
+        console.log('hello caught');
         matchedOffer = element;
       }
     }
