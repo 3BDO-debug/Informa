@@ -1,6 +1,6 @@
 const startJourneyPageTranslations = {
   banner: {
-    title: 'يلا الحق العرض … ٣٠٪ خصم علي اى نظام ٣ شهور او اكتر',
+    title: 'ابدا رحلتك و غير شكل جسمك',
   },
   topPicksTransformations: {
     title: 'غير جسمك و حياتك',

@@ -1,6 +1,6 @@
 const startJourneyPageTranslations = {
   banner: {
-    title: 'Don’t miss our offer… 30% off on 3 months or more',
+    title: 'Transform Your Body, Start Your Journey!',
   },
   topPicksTransformations: {
     title: 'Be The Next',
