@@ -1,7 +1,8 @@
 const refundPolicyPopUpTranslations = {
-  title: 'Refund Policy',
-  content: 'You are elgible for refund, only within 24 hours from the payment date.',
-  actionButton: 'I Have Read',
+  title: 'سياسة الاسترجاع',
+  content: 'يمكن استرجاع المبلغ كامل بعد الدفع خلال ٢٤ ساعة فقط من تاريخ و ميعاد الدفع',
+  actionButton: 'اوافق',
+  declineButton: 'لا اوافق',
 };
 
 export default refundPolicyPopUpTranslations;
