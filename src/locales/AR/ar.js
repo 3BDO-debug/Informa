@@ -6,6 +6,7 @@ import {
   followUpPackageExplainationPopUpTranslations,
   footerTranslations,
   headerTranslations,
+  refundPolicyPopUpTranslations,
   registerNowPopUpTranslations,
 } from './components';
 import {
@@ -42,6 +43,7 @@ const ar = {
     contactUsFormTranslations: contactUsFormTranslations,
     announcementPopUpTranslations: announcementPopUpTranslations,
     followUpPackageExplainationPopUpTranslations: followUpPackageExplainationPopUpTranslations,
+    refundPolicyPopUpTranslations: refundPolicyPopUpTranslations,
   },
 };
 

@@ -34,6 +34,12 @@ export default function Footer() {
       ],
     },
     {
+      headline: translate('componentsTranslations.footerTranslations.termsConditions.title'),
+      children: [
+        { name: translate('componentsTranslations.footerTranslations.termsConditions.1'), href: '/?refundPolicy=show' },
+      ],
+    },
+    {
       headline: translate('componentsTranslations.footerTranslations.contact.title'),
       children: [{ name: 'informa.180.team@gmail.com', href: 'mailto:informa.180.team@gmail.com' }],
     },
@@ -84,13 +90,7 @@ export default function Footer() {
                 </IconButton>
               </Box>
               <Box marginRight={1}>
-                <IconButton
-                  onClick={() =>
-                    window.open(
-                      'https://wa.me/message/UKLQRDNHUXNEF1'
-                    )
-                  }
-                >
+                <IconButton onClick={() => window.open('https://wa.me/message/UKLQRDNHUXNEF1')}>
                   <Box component="img" src="/icons/whatsapp.png" width={30} />
                 </IconButton>
               </Box>

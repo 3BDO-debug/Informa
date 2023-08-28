@@ -30,12 +30,12 @@ export default function LogoOnlyLayout({ children }) {
   const theme = useTheme();
 
   return (
-    <Box sx={{ backgroundColor: theme.palette.background.neutral, height: '100%' }}>
+    <Box sx={{ backgroundColor: theme.palette.background.neutral, width: '100%', height: '100%' }}>
       <HeaderStyle>
         <Logo />
       </HeaderStyle>
-      <Container sx={{ backgroundColor: theme.palette.background.neutral }}>
-        <Box sx={{ backgroundColor: theme.palette.background.neutral }}>{children}</Box>
+      <Container sx={{ backgroundColor: theme.palette.background.neutral, width: '100%', height: '100%' }}>
+        <Box sx={{ backgroundColor: theme.palette.background.neutral, width: '100%', height: '100%' }}>{children}</Box>
       </Container>
       {/* Snackbar alert */}
       <Alert />

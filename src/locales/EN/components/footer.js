@@ -11,6 +11,10 @@ const footerTranslations = {
   contact: {
     title: 'Contact Us',
   },
+  termsConditions: {
+    title: 'Terms & Conditions',
+    1: 'Refund Policy',
+  },
 };
 
 export default footerTranslations;

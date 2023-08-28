@@ -2,14 +2,14 @@ import React from 'react';
 // layouts
 import LogoOnlyLayout from 'src/layouts/LogoOnlyLayout';
 // components
-import ClientInfoForm from 'src/components/__clientInfoPage/ClientInfoForm';
+import AlgorithmForm from 'src/components/__clientInfoPage/AlgorithmForm';
 
 // -----------------------------------------------------------------------------------------------
 
 function ClientInfoPage() {
   return (
     <LogoOnlyLayout>
-      <ClientInfoForm />
+      <AlgorithmForm />
     </LogoOnlyLayout>
   );
 }

@@ -49,6 +49,7 @@ import { offersFetcher } from 'src/__apis__/offers';
 import MUIPhoneNumberInput from './MUIPhoneNumberInput';
 import useWebsiteLogs from 'src/hooks/useWebsiteLogs';
 import Iconify from './Iconify';
+import refundPolicyPopUpAtom from 'src/recoil/atoms/refundPolicyPopUpAtom';
 
 // ---------------------------------------------------------------------------------------
 
@@ -62,6 +63,7 @@ function RegisterNowPopUp() {
   const [activeOffer, setActiveOffer] = useState(false);
   const [offerData, setOfferData] = useState(null);
   const [salePrice, setSalePrice] = useState(null);
+  const [refundPolicy, triggerRefundPolicy] = useRecoilState(refundPolicyPopUpAtom);
 
   const [isReady, websiteLogger] = useWebsiteLogs();
 
@@ -106,37 +108,43 @@ function RegisterNowPopUp() {
       followUpPackage: Yup.string().required('Plan follow-up package is required'),
     }),
     onSubmit: async (values, { setSubmitting }) => {
-      let requestData = {
-        ...values,
-        computedTotalPrice: values.payingRegion === 'local' ? userPlanTotalPrice.egpPrice : userPlanTotalPrice.usdPrice,
-      };
+      if (refundPolicy.answer === 'agreed') {
+        let requestData = {
+          ...values,
+          computedTotalPrice:
+            values.payingRegion === 'local' ? userPlanTotalPrice.egpPrice : userPlanTotalPrice.usdPrice,
+        };
 
-      if (activeOffer) {
-        requestData.computedPriceAfterSale = salePrice;
+        if (activeOffer) {
+          requestData.computedPriceAfterSale = salePrice;
+        }
+
+        await personalTrainingRequester(requestData)
+          .then((response) => {
+            setAlert({
+              triggered: true,
+              message: 'We recieved your request, and we will contact you soon.',
+              type: 'success',
+            });
+
+            triggerRegisterNowPopUp(false);
+          })
+          .catch((error) => {
+            console.log('Error sending request', error);
+            setAlert({
+              triggered: true,
+              message: 'Something wrong happened, try again later.',
+              type: 'error',
+            });
+          });
+
+        websiteLogger('User submitted the form successfully');
+
+        setSubmitting(false);
+      } else {
+        triggerRefundPolicy({ show: true, answer: null });
+        setAlert({ triggered: true, message: 'Please Accept The Refund Policy First', type: 'warning' });
       }
-
-      await personalTrainingRequester(requestData)
-        .then((response) => {
-          setAlert({
-            triggered: true,
-            message: 'We recieved your request, and we will contact you soon.',
-            type: 'success',
-          });
-
-          triggerRegisterNowPopUp(false);
-        })
-        .catch((error) => {
-          console.log('Error sending request', error);
-          setAlert({
-            triggered: true,
-            message: 'Something wrong happened, try again later.',
-            type: 'error',
-          });
-        });
-
-      websiteLogger('User submitted the form successfully');
-
-      setSubmitting(false);
     },
   });
 
@@ -149,6 +157,10 @@ function RegisterNowPopUp() {
     },
     [setFollowUpPackageExplainationPopUp, websiteLogger]
   );
+
+  const handleRefundPolicy = () => {
+    triggerRefundPolicy({ show: true, answer: null });
+  };
 
   useEffect(() => {
     setFieldValue('planProgram', userPlan.program);

@@ -11,6 +11,10 @@ const footerTranslations = {
   contact: {
     title: 'تواصل  معنا',
   },
+  termsConditions: {
+    title: 'الشروط و الاحكام',
+    1: 'سياسة الاسترجاع',
+  },
 };
 
 export default footerTranslations;

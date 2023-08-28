@@ -24,6 +24,8 @@ import Alert from './Alert';
 import Iconify from './Iconify';
 import AnnouncementPopUp from './AnnouncementPopUp';
 import FollowUpPackageExplainationPopUp from './FollowUpPackageExplainationPopUp';
+import RefundPolicyPopUp from './RefundPolicyPopUp';
+import refundPolicyPopUpAtom from 'src/recoil/atoms/refundPolicyPopUpAtom';
 
 // -------------------------------------------------------------------------------------------
 
@@ -37,6 +39,8 @@ function AppWrapper({ children }) {
   const [announcementPopUp, triggerAnnouncementPopUp] = useRecoilState(announcementPopUpAtom);
 
   const [viewActionButtons, setViewActionButtons] = useState(false);
+
+  const triggerRefundPolicyPopUp = useSetRecoilState(refundPolicyPopUpAtom);
 
   const { query } = useRouter();
 
@@ -74,6 +78,12 @@ function AppWrapper({ children }) {
   useEffect(() => {
     if (Boolean(query.lang)) {
       onChangeLang(query.lang);
+    }
+  }, [query]);
+
+  useEffect(() => {
+    if (query.refundPolicy === 'show') {
+      triggerRefundPolicyPopUp({ show: true, answer: null });
     }
   }, [query]);
 
@@ -125,6 +135,8 @@ function AppWrapper({ children }) {
 
       {/* Snackbar alert */}
       <Alert />
+      {/* Refund policy pop up */}
+      <RefundPolicyPopUp />
     </>
   );
 }
