@@ -156,7 +156,7 @@ function RegisterNowPopUp() {
   );
 
   const handleRefundPolicy = () => {
-    triggerRefundPolicy({ show: true, answer: null });
+    triggerRefundPolicy(true);
   };
 
   useEffect(() => {
@@ -585,7 +585,7 @@ function RegisterNowPopUp() {
                 label={
                   <>
                     I agree to the{' '}
-                    <Button sx={{ ml: -0.5 }} onClick={() => push('plans-&-pricing')}>
+                    <Button sx={{ ml: -0.5 }} onClick={handleRefundPolicy}>
                       terms and conditions
                     </Button>
                   </>
