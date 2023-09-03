@@ -83,7 +83,7 @@ function AppWrapper({ children }) {
 
   useEffect(() => {
     if (query.refundPolicy === 'show') {
-      triggerRefundPolicyPopUp({ show: true, answer: null });
+      triggerRefundPolicyPopUp(true);
     }
   }, [query]);
 

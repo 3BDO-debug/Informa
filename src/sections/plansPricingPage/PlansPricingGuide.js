@@ -24,7 +24,7 @@ import SectionWrapper from 'src/components/SectionWrapper';
 
 // --------------------------------------------------------------------------------------------
 
-const GuideElement = ({ title, details }) => {
+export const GuideElement = ({ title, details }) => {
   const theme = useTheme();
   const { currentLang } = useLocales();
 
@@ -269,6 +269,14 @@ function PlansPricingGuide() {
                       translate('pagesTranslations.pricingsPageTranslations.guide.guideData.4.5.subData.2'),
                       translate('pagesTranslations.pricingsPageTranslations.guide.guideData.4.5.subData.3'),
                     ],
+                  },
+                ]}
+              />
+              <GuideElement
+                title={translate('pagesTranslations.pricingsPageTranslations.guide.guideData.7.title')}
+                details={[
+                  {
+                    data: translate('pagesTranslations.pricingsPageTranslations.guide.guideData.7.1.data'),
                   },
                 ]}
               />

@@ -1,7 +1,7 @@
 const refundPolicyPopUpTranslations = {
-  title: 'سياسة الاسترجاع',
+  title: 'الشروط و الاحكام',
   content: 'يمكن استرجاع المبلغ كامل بعد الدفع خلال ٢٤ ساعة فقط من تاريخ و ميعاد الدفع',
-  actionButton: 'اوافق',
+  actionButton: 'اغلاق',
   declineButton: 'لا اوافق',
 };
 

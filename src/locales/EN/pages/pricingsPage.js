@@ -186,6 +186,12 @@ After registering and paying the subscription fee`,
           data: 'If possible we need Inbody, body measurements, body pictures (monthly) to better evaluate the results of the past month and send them to Coach Hussein (informa) via his email and this is optional',
         },
       },
+      7: {
+        title: 'Refund Policy',
+        1: {
+          data: 'You are elgible for refund, only within 24 hours from the payment date.',
+        },
+      },
     },
   },
 };

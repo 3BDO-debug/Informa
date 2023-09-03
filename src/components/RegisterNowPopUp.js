@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import {
   Box,
   Button,
+  Checkbox,
   Container,
   Dialog,
   DialogActions,
@@ -50,6 +51,7 @@ import MUIPhoneNumberInput from './MUIPhoneNumberInput';
 import useWebsiteLogs from 'src/hooks/useWebsiteLogs';
 import Iconify from './Iconify';
 import refundPolicyPopUpAtom from 'src/recoil/atoms/refundPolicyPopUpAtom';
+import Link from 'next/link';
 
 // ---------------------------------------------------------------------------------------
 
@@ -93,6 +95,7 @@ function RegisterNowPopUp() {
       planProgram: null,
       planDuration: null,
       followUpPackage: null,
+      termsAndConditions: false,
     },
     validationSchema: Yup.object().shape({
       fullname: Yup.string().required('Full name is required'),
@@ -108,43 +111,37 @@ function RegisterNowPopUp() {
       followUpPackage: Yup.string().required('Plan follow-up package is required'),
     }),
     onSubmit: async (values, { setSubmitting }) => {
-      if (refundPolicy.answer === 'agreed') {
-        let requestData = {
-          ...values,
-          computedTotalPrice:
-            values.payingRegion === 'local' ? userPlanTotalPrice.egpPrice : userPlanTotalPrice.usdPrice,
-        };
+      let requestData = {
+        ...values,
+        computedTotalPrice: values.payingRegion === 'local' ? userPlanTotalPrice.egpPrice : userPlanTotalPrice.usdPrice,
+      };
 
-        if (activeOffer) {
-          requestData.computedPriceAfterSale = salePrice;
-        }
+      if (activeOffer) {
+        requestData.computedPriceAfterSale = salePrice;
+      }
 
-        await personalTrainingRequester(requestData)
-          .then((response) => {
-            setAlert({
-              triggered: true,
-              message: 'We recieved your request, and we will contact you soon.',
-              type: 'success',
-            });
-
-            triggerRegisterNowPopUp(false);
-          })
-          .catch((error) => {
-            console.log('Error sending request', error);
-            setAlert({
-              triggered: true,
-              message: 'Something wrong happened, try again later.',
-              type: 'error',
-            });
+      await personalTrainingRequester(requestData)
+        .then((response) => {
+          setAlert({
+            triggered: true,
+            message: 'We recieved your request, and we will contact you soon.',
+            type: 'success',
           });
 
-        websiteLogger('User submitted the form successfully');
+          triggerRegisterNowPopUp(false);
+        })
+        .catch((error) => {
+          console.log('Error sending request', error);
+          setAlert({
+            triggered: true,
+            message: 'Something wrong happened, try again later.',
+            type: 'error',
+          });
+        });
 
-        setSubmitting(false);
-      } else {
-        triggerRefundPolicy({ show: true, answer: null });
-        setAlert({ triggered: true, message: 'Please Accept The Refund Policy First', type: 'warning' });
-      }
+      websiteLogger('User submitted the form successfully');
+
+      setSubmitting(false);
     },
   });
 
@@ -576,6 +573,24 @@ function RegisterNowPopUp() {
                   <FormHelperText error>{errors.followUpPackage}</FormHelperText>
                 </FormControl>
               )}
+            </Grid>
+            <Grid item xs={12}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={values.termsAndConditions}
+                    onChange={(event) => setFieldValue('termsAndConditions', event.target.checked)}
+                  />
+                }
+                label={
+                  <>
+                    I agree to the{' '}
+                    <Button sx={{ ml: -0.5 }} onClick={() => push('plans-&-pricing')}>
+                      terms and conditions
+                    </Button>
+                  </>
+                }
+              />
             </Grid>
           </Grid>
         </Box>
