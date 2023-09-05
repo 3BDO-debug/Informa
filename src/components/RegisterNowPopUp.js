@@ -110,8 +110,8 @@ function RegisterNowPopUp() {
       planDuration: Yup.string().required('Please choose your plan duration'),
       followUpPackage: Yup.string().required('Plan follow-up package is required'),
       termsAndConditions: Yup.boolean()
-        .oneOf([true], 'You must accept the terms and conditions')
-        .required('You must accept the terms and conditions'),
+        .oneOf([true], translate('componentsTranslations.registerNowPopUpTranslations.form.termsAndConditionsError'))
+        .required(translate('componentsTranslations.registerNowPopUpTranslations.form.termsAndConditionsError')),
     }),
     onSubmit: async (values, { setSubmitting }) => {
       let requestData = {

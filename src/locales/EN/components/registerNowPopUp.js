@@ -24,6 +24,7 @@ const registerNowPopUpTranslations = {
     cancelButton: 'Cancel',
     termsAndConditions: 'I agree to the',
     termsAndConditionsLink: 'terms and conditions',
+    termsAndConditionsError: 'You must accept the terms and conditions first.',
   },
 };
 

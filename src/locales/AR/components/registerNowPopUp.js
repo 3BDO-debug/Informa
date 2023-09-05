@@ -24,6 +24,7 @@ const registerNowPopUpTranslations = {
     cancelButton: 'الغاء',
     termsAndConditions: 'انا اوافق علي',
     termsAndConditionsLink: 'الشروط و الاحكام',
+    termsAndConditionsError: 'يجب ان توافق علي الشروط و الاحكام اولا',
   },
 };
 
