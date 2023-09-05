@@ -22,6 +22,8 @@ const registerNowPopUpTranslations = {
     totalPrice: 'الاجمالي',
     actionButton: 'اشتراك',
     cancelButton: 'الغاء',
+    termsAndConditions: 'انا اوافق علي',
+    termsAndConditionsLink: 'الشروط و الاحكام',
   },
 };
 

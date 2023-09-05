@@ -22,6 +22,8 @@ const registerNowPopUpTranslations = {
     totalPrice: 'Total Price',
     actionButton: 'Submit',
     cancelButton: 'Cancel',
+    termsAndConditions: 'I agree to the',
+    termsAndConditionsLink: 'terms and conditions',
   },
 };
 

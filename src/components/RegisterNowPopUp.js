@@ -109,6 +109,9 @@ function RegisterNowPopUp() {
       planProgram: Yup.string().required('Please choose a plan program'),
       planDuration: Yup.string().required('Please choose your plan duration'),
       followUpPackage: Yup.string().required('Plan follow-up package is required'),
+      termsAndConditions: Yup.boolean()
+        .oneOf([true], 'You must accept the terms and conditions')
+        .required('You must accept the terms and conditions'),
     }),
     onSubmit: async (values, { setSubmitting }) => {
       let requestData = {
@@ -584,13 +587,16 @@ function RegisterNowPopUp() {
                 }
                 label={
                   <>
-                    I agree to the{' '}
+                    {translate('componentsTranslations.registerNowPopUpTranslations.form.termsAndConditions')}
                     <Button sx={{ ml: -0.5 }} onClick={handleRefundPolicy}>
-                      terms and conditions
+                      {translate('componentsTranslations.registerNowPopUpTranslations.form.termsAndConditionsLink')}
                     </Button>
                   </>
                 }
               />
+              {errors.termsAndConditions && touched.termsAndConditions && (
+                <FormHelperText error>{errors.termsAndConditions}</FormHelperText>
+              )}
             </Grid>
           </Grid>
         </Box>
