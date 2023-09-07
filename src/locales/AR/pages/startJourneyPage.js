@@ -1,6 +1,6 @@
 const startJourneyPageTranslations = {
   banner: {
-    title: 'ابدا رحلتك و غير شكل جسمك',
+    title: 'خصم  ٣٠% علي الثلاث اشهر او اكثر',
   },
   topPicksTransformations: {
     title: 'غير جسمك و حياتك',
