@@ -3,57 +3,57 @@ const customizeUserPlan = (followUpPackage, planProgram, planDuration) => {
 
   /* Nutrition & Workout logic */
   if (planProgram === 'nutrition-workout' && planDuration === 1) {
-    total = { egpPrice: 1500, usdPrice: 105 };
+    total = { egpPrice: 1750, usdPrice: 125 };
   } else if (planProgram === 'nutrition-workout' && planDuration === 3) {
-    total = { egpPrice: 3000, usdPrice: 210 };
+    total = { egpPrice: 3500, usdPrice: 250 };
   } else if (planProgram === 'nutrition-workout' && planDuration === 6) {
-    total = { egpPrice: 5000, usdPrice: 350 };
+    total = { egpPrice: 6000, usdPrice: 420 };
   } else if (planProgram === 'nutrition-workout' && planDuration === 12) {
-    total = { egpPrice: 8000, usdPrice: 560 };
+    total = { egpPrice: 9500, usdPrice: 670 };
   }
 
   /* Workout logic */
   if (planProgram === 'workout' && planDuration === 1) {
-    total = { egpPrice: 900, usdPrice: 60 };
+    total = { egpPrice: 1000, usdPrice: 70 };
   } else if (planProgram === 'workout' && planDuration === 3) {
-    total = { egpPrice: 1800, usdPrice: 120 };
+    total = { egpPrice: 2000, usdPrice: 140 };
   } else if (planProgram === 'workout' && planDuration === 6) {
-    total = { egpPrice: 3000, usdPrice: 200 };
+    total = { egpPrice: 3500, usdPrice: 240 };
   } else if (planProgram === 'workout' && planDuration === 12) {
-    total = { egpPrice: 5000, usdPrice: 350 };
+    total = { egpPrice: 6000, usdPrice: 420 };
   }
 
   /* Nutrition logic */
   if (planProgram === 'nutrition' && planDuration === 1) {
-    total = { egpPrice: 1150, usdPrice: 75 };
+    total = { egpPrice: 1500, usdPrice: 90 };
   } else if (planProgram === 'nutrition' && planDuration === 3) {
-    total = { egpPrice: 2300, usdPrice: 150 };
+    total = { egpPrice: 3000, usdPrice: 180 };
   } else if (planProgram === 'nutrition' && planDuration === 6) {
-    total = { egpPrice: 3750, usdPrice: 245 };
+    total = { egpPrice: 4500, usdPrice: 300 };
   } else if (planProgram === 'nutrition' && planDuration === 12) {
-    total = { egpPrice: 6000, usdPrice: 400 };
+    total = { egpPrice: 7000, usdPrice: 480 };
   }
 
   /* Follow-up plans logic */
 
   if (followUpPackage === 'golden-package' && planDuration === 1) {
-    total = { egpPrice: total.egpPrice + 600, usdPrice: total.usdPrice + 40 };
+    total = { egpPrice: total.egpPrice + 750, usdPrice: total.usdPrice + 50 };
   } else if (followUpPackage === 'golden-package' && planDuration === 3) {
-    total = { egpPrice: total.egpPrice + 1200, usdPrice: total.usdPrice + 80 };
+    total = { egpPrice: total.egpPrice + 1500, usdPrice: total.usdPrice + 100 };
   } else if (followUpPackage === 'golden-package' && planDuration === 6) {
-    total = { egpPrice: total.egpPrice + 2000, usdPrice: total.usdPrice + 135 };
+    total = { egpPrice: total.egpPrice + 2500, usdPrice: total.usdPrice + 160 };
   } else if (followUpPackage === 'golden-package' && planDuration === 12) {
-    total = { egpPrice: total.egpPrice + 3200, usdPrice: total.usdPrice + 215 };
+    total = { egpPrice: total.egpPrice + 4000, usdPrice: total.usdPrice + 260 };
   }
 
   if (followUpPackage === 'mega-package' && planDuration === 1) {
-    total = { egpPrice: total.egpPrice + 1500, usdPrice: total.usdPrice + 105 };
+    total = { egpPrice: total.egpPrice + 2000, usdPrice: total.usdPrice + 125 };
   } else if (followUpPackage === 'mega-package' && planDuration === 3) {
-    total = { egpPrice: total.egpPrice + 3000, usdPrice: total.usdPrice + 210 };
+    total = { egpPrice: total.egpPrice + 4000, usdPrice: total.usdPrice + 250 };
   } else if (followUpPackage === 'mega-package' && planDuration === 6) {
-    total = { egpPrice: total.egpPrice + 5000, usdPrice: total.usdPrice + 350 };
+    total = { egpPrice: total.egpPrice + 6000, usdPrice: total.usdPrice + 420 };
   } else if (followUpPackage === 'mega-package' && planDuration === 12) {
-    total = { egpPrice: total.egpPrice + 8000, usdPrice: total.usdPrice + 560 };
+    total = { egpPrice: total.egpPrice + 9500, usdPrice: total.usdPrice + 680 };
   }
 
   return total;
