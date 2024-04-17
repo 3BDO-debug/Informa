@@ -6,9 +6,12 @@ import { Box, Button } from '@mui/material';
 import Iconify from './Iconify';
 import useLocales from 'src/hooks/useLocales';
 
-const stripePromise = loadStripe('pk_test_qblFNYngBkEdjEZ16jxxoWSM');
+const stripePromise = loadStripe(
+  'pk_live_51MU6GUDUPkE56DQ9Uy8040Yo91kuW9OTN3UlhN5oGQhAqX0x0GwdkwAtPyNu4Qlpd3UGwQlGzrLoXdk4x8Rw320x00OE7z7w65'
+);
 
 //'pk_live_51MU6GUDUPkE56DQ9Uy8040Yo91kuW9OTN3UlhN5oGQhAqX0x0GwdkwAtPyNu4Qlpd3UGwQlGzrLoXdk4x8Rw320x00OE7z7w65'
+//pk_test_qblFNYngBkEdjEZ16jxxoWSM
 
 const CheckoutForm = ({ onSuccessfulCheckout, isSuccess }) => {
   const stripe = useStripe();
