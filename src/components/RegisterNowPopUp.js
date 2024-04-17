@@ -52,6 +52,9 @@ import useWebsiteLogs from 'src/hooks/useWebsiteLogs';
 import Iconify from './Iconify';
 import refundPolicyPopUpAtom from 'src/recoil/atoms/refundPolicyPopUpAtom';
 import Link from 'next/link';
+import { Payment } from '@mui/icons-material';
+//component
+import StripeCheckout from './StripeCheckoutComponent';
 
 // ---------------------------------------------------------------------------------------
 
@@ -66,6 +69,7 @@ function RegisterNowPopUp() {
   const [offerData, setOfferData] = useState(null);
   const [salePrice, setSalePrice] = useState(null);
   const [refundPolicy, triggerRefundPolicy] = useRecoilState(refundPolicyPopUpAtom);
+  const [isSuccess, setSuccess] = useState(false);
 
   const [isReady, websiteLogger] = useWebsiteLogs();
 
@@ -96,6 +100,7 @@ function RegisterNowPopUp() {
       planDuration: null,
       followUpPackage: null,
       termsAndConditions: false,
+      paymentMethode: '',
     },
     validationSchema: Yup.object().shape({
       fullname: Yup.string().required('Full name is required'),
@@ -112,6 +117,7 @@ function RegisterNowPopUp() {
       termsAndConditions: Yup.boolean()
         .oneOf([true], translate('componentsTranslations.registerNowPopUpTranslations.form.termsAndConditionsError'))
         .required(translate('componentsTranslations.registerNowPopUpTranslations.form.termsAndConditionsError')),
+      paymentMethode: Yup.string().required('Payment methode is required'),
     }),
     onSubmit: async (values, { setSubmitting }) => {
       let requestData = {
@@ -123,24 +129,56 @@ function RegisterNowPopUp() {
         requestData.computedPriceAfterSale = salePrice;
       }
 
-      await personalTrainingRequester(requestData)
-        .then((response) => {
-          setAlert({
-            triggered: true,
-            message: 'We recieved your request, and we will contact you soon.',
-            type: 'success',
-          });
+      if (values.paymentMethode == 'vodafoneCash') {
+        const whatsappUrl = `https://wa.me/message/N4ILPTTGXJIZG1`;
 
-          triggerRegisterNowPopUp(false);
-        })
-        .catch((error) => {
-          console.log('Error sending request', error);
+        // Open the URL in a new tab
+        window.open(whatsappUrl, '_blank');
+        await personalTrainingRequester(requestData)
+          .then((response) => {
+            setAlert({
+              triggered: true,
+              message: 'We recieved your request, and we will contact you soon.',
+              type: 'success',
+            });
+            triggerRegisterNowPopUp(false);
+          })
+          .catch((error) => {
+            console.log('Error sending request', error);
+            setAlert({
+              triggered: true,
+              message: 'Something wrong happened, try again later.',
+              type: 'error',
+            });
+          });
+      } else if (values.paymentMethode == 'stripe') {
+        if (isSuccess) {
+          await personalTrainingRequester(requestData)
+            .then((response) => {
+              setAlert({
+                triggered: true,
+                message: 'We recieved your request, and we will contact you soon.',
+                type: 'success',
+              });
+              triggerRegisterNowPopUp(false);
+              setSuccess('false');
+            })
+            .catch((error) => {
+              console.log('Error sending request', error);
+              setAlert({
+                triggered: true,
+                message: 'Something wrong happened, try again later.',
+                type: 'error',
+              });
+            });
+        } else {
           setAlert({
             triggered: true,
-            message: 'Something wrong happened, try again later.',
+            message: 'you didnt paid yet',
             type: 'error',
           });
-        });
+        }
+      }
 
       websiteLogger('User submitted the form successfully');
 
@@ -575,6 +613,69 @@ function RegisterNowPopUp() {
                   </RadioGroup>
                   <FormHelperText error>{errors.followUpPackage}</FormHelperText>
                 </FormControl>
+              )}
+            </Grid>
+            <Grid item xs={12}>
+              <FormControl fullWidth>
+                <FormLabel>
+                  {translate('componentsTranslations.registerNowPopUpTranslations.form.paymentMethode.lable')}
+                </FormLabel>
+                <RadioGroup
+                  value={values.paymentMethode}
+                  onChange={(event) => setFieldValue('paymentMethode', event.target.value)}
+                  {...getFieldProps('paymentMethode')}
+                >
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      mb: 2,
+                      flexWrap: 'wrap',
+                    }}
+                  >
+                    <FormControlLabel
+                      value="vodafoneCash"
+                      label={translate(
+                        'componentsTranslations.registerNowPopUpTranslations.form.paymentMethode.vodafoneCash'
+                      )}
+                      control={<Radio />}
+                    />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      mb: 2,
+                      flexWrap: 'wrap',
+                    }}
+                  >
+                    <FormControlLabel
+                      value="stripe"
+                      label={translate(
+                        'componentsTranslations.registerNowPopUpTranslations.form.paymentMethode.stripe'
+                      )}
+                      control={<Radio />}
+                    />
+                  </Box>
+                </RadioGroup>
+                <FormHelperText error>{errors.paymentMethode}</FormHelperText>
+              </FormControl>
+              {values.paymentMethode === 'stripe' && (
+                <StripeCheckout
+                  isSuccess={isSuccess}
+                  onSuccessfulCheckout={(paymentMethodId) => {
+                    // Add your logic after successful payment here
+                    let requestData = {
+                      ...values,
+                      paymentMethodId,
+                      computedTotalPrice:
+                        values.payingRegion === 'local' ? userPlanTotalPrice.egpPrice : userPlanTotalPrice.usdPrice,
+                    };
+                    setSuccess(true);
+                  }}
+                />
               )}
             </Grid>
             <Grid item xs={12}>

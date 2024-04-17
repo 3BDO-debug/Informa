@@ -12,6 +12,15 @@ const registerNowPopUpTranslations = {
       local: 'Inside of egypt',
       international: 'Outside of egypt',
     },
+    paymentMethode: {
+      lable: 'Choose payment methode',
+      vodafoneCash: 'Vodafone Cash',
+      stripe: 'Stripe',
+    },
+    stripeCheckout: {
+      paid: 'Paid',
+      pay: 'Pay',
+    },
     age: 'Age',
     gender: 'Gender',
     weight: 'Weight',

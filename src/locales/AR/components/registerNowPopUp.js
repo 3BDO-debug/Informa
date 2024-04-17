@@ -12,6 +12,15 @@ const registerNowPopUpTranslations = {
       local: 'من داخل مصر',
       international: 'من خارج مصر',
     },
+    paymentMethode: {
+      lable: 'اختر طريقة الدفع',
+      vodafoneCash: 'فودافون كاش',
+      stripe: 'سترايب',
+    },
+    stripeCheckout: {
+      paid: 'تم الدفع',
+      pay: 'ادفع',
+    },
     age: 'السن',
     gender: 'النوع',
     weight: 'الوزن',
