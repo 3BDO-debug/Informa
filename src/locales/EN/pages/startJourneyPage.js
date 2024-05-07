@@ -1,6 +1,6 @@
 const startJourneyPageTranslations = {
   banner: {
-    title: '30% oFF On 3 Months Or More',
+    title: '50% oFF On 3 Months Or More',
   },
   topPicksTransformations: {
     title: 'Be The Next',

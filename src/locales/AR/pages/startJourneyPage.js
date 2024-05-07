@@ -1,6 +1,6 @@
 const startJourneyPageTranslations = {
   banner: {
-    title: 'خصم  ٣٠% علي الثلاث اشهر او اكثر',
+    title: 'خصم  ٥٠% علي الثلاث اشهر او اكثر',
   },
   topPicksTransformations: {
     title: 'غير جسمك و حياتك',
