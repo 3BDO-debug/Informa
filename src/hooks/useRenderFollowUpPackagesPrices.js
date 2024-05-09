@@ -26,15 +26,15 @@ function useRenderFollowUpPackagesPrices() {
         {
           value: 'golden-package',
           label: translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.title'),
-          egpPrice: `600 L.E`,
-          usdPrice: `40 $`,
+          egpPrice: `750 L.E`,
+          usdPrice: `50 $`,
           videoLink: 'https://www.youtube.com/embed/AQOxbolUCZI',
         },
         {
           value: 'mega-package',
           label: translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.title'),
-          egpPrice: `1500 L.E`,
-          usdPrice: `105 $`,
+          egpPrice: `2000 L.E`,
+          usdPrice: `125 $`,
           videoLink: 'https://www.youtube.com/embed/ReZNMC0KLkA',
         },
       ]);
@@ -50,15 +50,15 @@ function useRenderFollowUpPackagesPrices() {
         {
           value: 'golden-package',
           label: translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.title'),
-          egpPrice: `1200 L.E`,
-          usdPrice: `80 $`,
+          egpPrice: `1500 L.E`,
+          usdPrice: `100 $`,
           videoLink: 'https://www.youtube.com/embed/AQOxbolUCZI',
         },
         {
           value: 'mega-package',
           label: translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.title'),
-          egpPrice: `3000 L.E`,
-          usdPrice: `210 $`,
+          egpPrice: `4000 L.E`,
+          usdPrice: `250 $`,
           videoLink: 'https://www.youtube.com/embed/ReZNMC0KLkA',
         },
       ]);
@@ -74,15 +74,15 @@ function useRenderFollowUpPackagesPrices() {
         {
           value: 'golden-package',
           label: translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.title'),
-          egpPrice: `2000 L.E`,
-          usdPrice: `135 $`,
+          egpPrice: `2500 L.E`,
+          usdPrice: `160 $`,
           videoLink: 'https://www.youtube.com/embed/AQOxbolUCZI',
         },
         {
           value: 'mega-package',
           label: translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.title'),
-          egpPrice: `5000 L.E`,
-          usdPrice: `350 $`,
+          egpPrice: `6000 L.E`,
+          usdPrice: `420 $`,
           videoLink: 'https://www.youtube.com/embed/ReZNMC0KLkA',
         },
       ]);
@@ -98,15 +98,15 @@ function useRenderFollowUpPackagesPrices() {
         {
           value: 'golden-package',
           label: translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.title'),
-          egpPrice: `3200 L.E`,
-          usdPrice: `215 $`,
+          egpPrice: `4000 L.E`,
+          usdPrice: `260 $`,
           videoLink: 'https://www.youtube.com/embed/AQOxbolUCZI',
         },
         {
           value: 'mega-package',
           label: translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.title'),
-          egpPrice: `8000 L.E`,
-          usdPrice: `560 $`,
+          egpPrice: `9500 L.E`,
+          usdPrice: `680 $`,
           videoLink: 'https://www.youtube.com/embed/ReZNMC0KLkA',
         },
       ]);
