@@ -117,11 +117,7 @@ function SideDrawer({ isTriggered, closeHandler, headerLinks }) {
             </Button>
             <Button
               startIcon={<WhatsAppIcon />}
-              onClick={() =>
-                window.open(
-                  'https://wa.me/message/UKLQRDNHUXNEF1'
-                )
-              }
+              onClick={() => window.open('https://wa.link/cfn3ss')}
               fullWidth
               variant="outlined"
             >
@@ -152,13 +148,7 @@ function SideDrawer({ isTriggered, closeHandler, headerLinks }) {
             </IconButton>
           </Box>
           <Box marginRight={1}>
-            <IconButton
-              onClick={() =>
-                window.open(
-                  'https://wa.me/message/UKLQRDNHUXNEF1'
-                )
-              }
-            >
+            <IconButton onClick={() => window.open('https://wa.link/cfn3ss')}>
               <Box component="img" src="/icons/whatsapp.png" width={20} />
             </IconButton>
           </Box>
