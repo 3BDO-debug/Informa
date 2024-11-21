@@ -26,6 +26,9 @@ import AnnouncementPopUp from './AnnouncementPopUp';
 import FollowUpPackageExplainationPopUp from './FollowUpPackageExplainationPopUp';
 import RefundPolicyPopUp from './RefundPolicyPopUp';
 import refundPolicyPopUpAtom from 'src/recoil/atoms/refundPolicyPopUpAtom';
+import StripeCheckout from './checkout/StripeCheckout';
+import PaymentPopUp from './checkout/PaymentPopUp';
+import SecretCodePopUp from './checkout/SecretCodePopUp';
 
 // -------------------------------------------------------------------------------------------
 
@@ -99,6 +102,10 @@ function AppWrapper({ children }) {
       </Box>
       {/* Register now */}
       <RegisterNowPopUp />
+      {/* Payment */}
+      <PaymentPopUp />
+      {/* Secret code PopUp */}
+      <SecretCodePopUp />
       {/* Follow up package explaination pop up */}
       <FollowUpPackageExplainationPopUp />
       {/* Join us */}

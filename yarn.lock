@@ -642,6 +642,18 @@
   resolved "https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.0.8.tgz"
   integrity sha512-ZK5v4bJwgXldAUA8r3q9YKfCwOqoHTK/ZqRjSeRXQrBXWouoPnS4MQtgC4AXGiiBuUu5wxrRgTlv0ktmM4P1Aw==
 
+"@stripe/react-stripe-js@^2.9.0":
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/@stripe/react-stripe-js/-/react-stripe-js-2.9.0.tgz#1f1a9a3d5eab8ca144e060df1e9fd855a7658aca"
+  integrity sha512-+/j2g6qKAKuWSurhgRMfdlIdKM+nVVJCy/wl0US2Ccodlqx0WqfIIBhUkeONkCG+V/b+bZzcj4QVa3E/rXtT4Q==
+  dependencies:
+    prop-types "^15.7.2"
+
+"@stripe/stripe-js@^4.10.0":
+  version "4.10.0"
+  resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-4.10.0.tgz#5c785f9a5a500113d69d98c16061e0addd1c0305"
+  integrity sha512-KrMOL+sH69htCIXCaZ4JluJ35bchuCCznyPyrbN8JXSGQfwBI1SuIEMZNwvy8L8ykj29t6sa5BAAiL7fNoLZ8A==
+
 "@swc/helpers@0.4.11":
   version "0.4.11"
   resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.4.11.tgz#db23a376761b3d31c26502122f349a21b592c8de"

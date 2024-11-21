@@ -36,6 +36,10 @@ import userPlanAtom from 'src/recoil/atoms/userPlanAtom';
 import alertAtom from 'src/recoil/atoms/alertAtom';
 import userIpRegionAtom from 'src/recoil/atoms/userIpRegionAtom';
 import followUpPackageExplainationPopUpAtom from 'src/recoil/atoms/followUpPackageExplainationPopUpAtom';
+import paymentInfoAtom from 'src/recoil/atoms/paymentInfoAtom';
+import chechoutPopUpAtom from 'src/recoil/atoms/checkoutPopUpAtom';
+import trainingRequestIdAtom from 'src/recoil/atoms/trainingRequestIdAtom';
+import subscriptionDataAtom from 'src/recoil/atoms/subscriptionDataAtom';
 // hooks
 import useLocales from 'src/hooks/useLocales';
 import useRenderDurationPrices from 'src/hooks/useRenderDurationPrices';
@@ -82,6 +86,11 @@ function RegisterNowPopUp() {
 
   const setFollowUpPackageExplainationPopUp = useSetRecoilState(followUpPackageExplainationPopUpAtom);
 
+  const setPaymentInfo = useSetRecoilState(paymentInfoAtom);
+  const triggerPaymentPopUp = useSetRecoilState(chechoutPopUpAtom);
+  const setTrainingreuestId = useSetRecoilState(trainingRequestIdAtom);
+  const setSubscriptionData = useSetRecoilState(subscriptionDataAtom);
+
   const formik = useFormik({
     initialValues: {
       fullname: '',
@@ -113,7 +122,7 @@ function RegisterNowPopUp() {
         .oneOf([true], translate('componentsTranslations.registerNowPopUpTranslations.form.termsAndConditionsError'))
         .required(translate('componentsTranslations.registerNowPopUpTranslations.form.termsAndConditionsError')),
     }),
-    onSubmit: async (values, { setSubmitting }) => {
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
       let requestData = {
         ...values,
         computedTotalPrice: values.payingRegion === 'local' ? userPlanTotalPrice.egpPrice : userPlanTotalPrice.usdPrice,
@@ -123,6 +132,20 @@ function RegisterNowPopUp() {
         requestData.computedPriceAfterSale = salePrice;
       }
 
+      setPaymentInfo({ price: salePrice, region: userIpRegion });
+
+      const lastName =
+        values.fullname.includes(' ') && values.fullname.split(' ')[1] ? values.fullname.split(' ')[1] : ' ';
+
+      setSubscriptionData({
+        firstName: values.fullname.split(' ')[0] || '',
+        lastName: lastName,
+        program: values.planProgram,
+        duration: values.planDuration,
+        followUpPackage: values.followUpPackage,
+        phoneNumber: values.whatsappNumber,
+      });
+
       await personalTrainingRequester(requestData)
         .then((response) => {
           setAlert({
@@ -130,8 +153,10 @@ function RegisterNowPopUp() {
             message: 'We recieved your request, and we will contact you soon.',
             type: 'success',
           });
-
+          resetForm();
+          triggerPaymentPopUp(true);
           triggerRegisterNowPopUp(false);
+          setTrainingreuestId(response?.requestId);
         })
         .catch((error) => {
           console.log('Error sending request', error);
