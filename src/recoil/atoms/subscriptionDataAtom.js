@@ -9,6 +9,7 @@ const subscriptionDataAtom = atom({
     firstName: '',
     lastName: '',
     phoneNumber: '',
+    email: '',
   },
 });
 

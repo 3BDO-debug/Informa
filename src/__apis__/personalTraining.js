@@ -24,3 +24,6 @@ export const clientSubscriptionIdRequest = async (followUpPackage, planType, pla
 
 export const registerClientRequest = async (requestData) =>
   axiosInstance.post('/clients-management/clients-handler', requestData).then((response) => response.data);
+
+export const fetchRequestInfo = async (phone) =>
+  axiosInstance.get('personal-training/fetch-request-info', { params: { phone } }).then((response) => response.data);

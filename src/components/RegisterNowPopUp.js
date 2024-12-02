@@ -75,7 +75,7 @@ function RegisterNowPopUp() {
 
   const { query } = useRouter();
 
-  const { translate } = useLocales();
+  const { translate, currentLang } = useLocales();
 
   const handlePopUpClose = () => {
     triggerRegisterNowPopUp(false);
@@ -94,6 +94,7 @@ function RegisterNowPopUp() {
   const formik = useFormik({
     initialValues: {
       fullname: '',
+      email: '',
       whatsappNumber: '',
       cor: '',
       payingRegion: 'local',
@@ -108,6 +109,7 @@ function RegisterNowPopUp() {
     },
     validationSchema: Yup.object().shape({
       fullname: Yup.string().required('Full name is required'),
+      email: Yup.string().required('Email address is required'),
       whatsappNumber: Yup.string().required('Whatsapp number is required'),
       cor: Yup.string().required('Country of residence is required'),
       payingRegion: Yup.string().required('Payment currency is required'),
@@ -144,6 +146,7 @@ function RegisterNowPopUp() {
         duration: values.planDuration,
         followUpPackage: values.followUpPackage,
         phoneNumber: values.whatsappNumber,
+        email: values.email,
       });
 
       await personalTrainingRequester(requestData)
@@ -404,6 +407,17 @@ function RegisterNowPopUp() {
                 label={translate('componentsTranslations.registerNowPopUpTranslations.form.whatsappNumber')}
               />
               <FormHelperText error>{Boolean(touched.whatsappNumber) && errors.whatsappNumber}</FormHelperText>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label={currentLang.value === 'ar' ? 'البريد الإلكتروني' : 'Email'}
+                value={values.email}
+                onChange={(event) => setFieldValue('email', event.target.value)}
+                {...getFieldProps('email')}
+                error={touched.email && Boolean(errors.email)}
+                helperText={touched.email && errors.email}
+                fullWidth
+              />
             </Grid>
             <Grid item xs={12}>
               <TextField

@@ -1,16 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
 // stripe
-// StripeCheckout.js
 import { loadStripe } from '@stripe/stripe-js';
-import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { Box, Button } from '@mui/material';
+import { Elements, CardElement, useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
+// @mui
+import { Box, Button, TextField } from '@mui/material';
+// lottie-react
+import Lottie from 'lottie-react';
 // __apis__
 import { fetchClientSecret } from 'src/__apis__/payment';
-import {
-  clientSubscriptionIdRequest,
-  registerClientRequest,
-  proceedTrainingRequest,
-} from 'src/__apis__/personalTraining';
 // recoil
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 // atoms
@@ -24,6 +21,9 @@ import secretCodePopUpAtom from 'src/recoil/atoms/secretCodePopUp';
 import Iconify from '../Iconify';
 import useLocales from 'src/hooks/useLocales';
 import { LoadingButton } from '@mui/lab';
+// animations
+import loadingPaymentForm from '../../assets/animations/loadingPaymentForm.json';
+//-------------------------------------------------------
 
 const stripePromise = loadStripe(
   'pk_test_51MU6GUDUPkE56DQ9qaD6OAoOEgA0WJNw6TLWb4MG1N88HMS3erP9tTcKwDfGYLQXtrXNybjOkfAxuXDkoO0G8WeA00j4ue8GDK'
@@ -31,34 +31,46 @@ const stripePromise = loadStripe(
 
 const CheckoutForm = () => {
   const triggerAlert = useSetRecoilState(alertAtom);
-
   const { currentLang } = useLocales();
+
+  const subscriptionData = useRecoilValue(subscriptionDataAtom);
 
   const [paymentInfo, setPaymentInfo] = useRecoilState(paymentInfoAtom);
   const [paymentPopUp, triggerPaymentPopUp] = useRecoilState(chechoutPopUpAtom);
   const stripe = useStripe();
   const elements = useElements();
-  const [clientSecret, setClientSecret] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!stripe || !elements) {
+      triggerAlert({
+        triggered: true,
+        type: 'error',
+        message: 'Stripe has not loaded properly.',
+      });
       return;
     }
 
     setLoading(true);
 
-    const cardElement = elements.getElement(CardElement);
-
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: 'card',
-      card: cardElement,
+    const { error, paymentIntent } = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        payment_method_data: {
+          billing_details: {
+            name: `${subscriptionData.firstName}${subscriptionData.lastName ? ` ${subscriptionData.lastName}` : ''}`,
+            email: subscriptionData.email,
+            phone: subscriptionData.phoneNumber,
+          },
+        },
+        return_url: `http://localhost:3030?phone=${subscriptionData.phoneNumber}`,
+      },
     });
 
     if (error) {
-      console.log('[PaymentMethod Error]', error);
+      console.error('[Payment Error]', error);
       triggerAlert({
         triggered: true,
         type: 'error',
@@ -68,39 +80,34 @@ const CheckoutForm = () => {
       return;
     }
 
-    const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: paymentMethod.id,
+    triggerAlert({
+      triggered: true,
+      type: 'success',
+      message: 'Payment is being processed!',
     });
-
-    if (confirmError) {
-      console.log('[Confirm Payment Error]', confirmError);
-      triggerAlert({
-        triggered: true,
-        type: 'error',
-        message: 'Error confirming payment',
-      });
-      setLoading(false);
-      return;
-    }
-
-    if (paymentIntent.status === 'succeeded') {
-      console.log('[PaymentIntent Success]', paymentIntent);
-      triggerAlert({
-        triggered: true,
-        type: 'success',
-        message: 'Payment successful!',
-      });
-      proceedTrainingRequestStatus();
-      triggerPaymentPopUp(false);
-    } else {
-      triggerAlert({
-        triggered: true,
-        type: 'error',
-        message: 'Payment failed or was incomplete.',
-      });
-    }
     setLoading(false);
+    triggerPaymentPopUp(false);
   };
+
+  //--------------------------------------------------------------------
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <PaymentElement options={{ layout: 'tabs' }} />
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <LoadingButton sx={{ marginTop: 2 }} variant="contained" type="submit" loading={loading} disabled={!stripe}>
+          {currentLang.value === 'ar' ? 'دفع' : 'Pay'} {paymentInfo.price} {paymentInfo.region === 'EG' ? 'EGP' : 'USD'}
+        </LoadingButton>
+      </Box>
+    </form>
+  );
+};
+
+const StripeCheckout = () => {
+  const triggerAlert = useSetRecoilState(alertAtom);
+  const [paymentInfo, setPaymentInfo] = useRecoilState(paymentInfoAtom);
+
+  const [clientSecret, setClientSecret] = useState('');
 
   const createPaymentIntent = useCallback(async () => {
     await fetchClientSecret(paymentInfo?.price, paymentInfo?.region)
@@ -120,128 +127,17 @@ const CheckoutForm = () => {
     if (paymentInfo) {
       createPaymentIntent();
     }
-  }, [paymentInfo, createPaymentIntent]);
+  }, [createPaymentIntent, paymentInfo]);
 
-  //--------------------------------------------------------------------
-
-  const [secretCodePopUp, triggerSecretCodePopUp] = useRecoilState(secretCodePopUpAtom);
-
-  const requestId = useRecoilValue(trainingRequestIdAtom);
-  const subscriptionData = useRecoilValue(subscriptionDataAtom);
-  const [subscriptionId, setSubscriptionId] = useState(null);
-
-  const proceedTrainingRequestStatus = useCallback(async () => {
-    await proceedTrainingRequest({ requestId: requestId })
-      .then((response) => {
-        createSubscriptionId();
-      })
-      .catch((error) =>
-        triggerAlert({ triggered: true, type: 'error', message: 'Something wrong happened, Contact Support' })
-      );
-  }, [requestId]);
-
-  const createSubscriptionId = useCallback(async () => {
-    await clientSubscriptionIdRequest(
-      subscriptionData.followUpPackage,
-      subscriptionData.program,
-      subscriptionData.duration,
-      subscriptionData.firstName,
-      subscriptionData.lastName
-    )
-      .then((response) => {
-        setSubscriptionId(response);
-      })
-      .catch((error) => {
-        triggerAlert({ triggered: true, type: 'error', message: 'Something wrong happened, Contact Support' });
-      });
-  }, [
-    subscriptionData.followUpPackage,
-    subscriptionData.program,
-    subscriptionData.duration,
-    subscriptionData.firstName,
-    subscriptionData.lastName,
-  ]);
-
-  const registerClient = useCallback(async () => {
-    const data = {
-      subscriptionId: subscriptionId,
-      firstName: subscriptionData.firstName,
-      lastName: subscriptionData.lastName,
-      phoneNumber: subscriptionData.phoneNumber,
-      planType: subscriptionData.program,
-      planDuration: subscriptionData.duration,
-      followUpPackage: subscriptionData.followUpPackage,
-    };
-    const signUpCode = secretCodePopUp.code;
-    await registerClientRequest({ ...data, signUpCode })
-      .then((response) => {
-        triggerSecretCodePopUp({ triggered: true, code: signUpCode });
-      })
-      .catch((error) => {
-        triggerAlert({ triggered: true, type: 'error', message: 'Something wrong happened, Contact Support' });
-      });
-  }, [subscriptionId]);
-
-  const generateUniqueSignUpCode = () => {
-    const timestamp = new Date().getTime(); // Current time in milliseconds
-    const randomPart = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15); // Two long random strings
-    triggerSecretCodePopUp({ code: timestamp.toString(36) + '-' + randomPart });
-  };
-
-  useEffect(() => {
-    if (subscriptionId) {
-      registerClient();
-    }
-  }, [subscriptionId]);
-
-  useEffect(() => {
-    generateUniqueSignUpCode();
-  }, []);
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <CardElement
-        options={{
-          style: {
-            base: {
-              color: 'primary.main',
-              fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-              fontSmoothing: 'antialiased',
-              fontSize: '16px',
-              '::placeholder': {
-                color: '#aab7c4',
-              },
-            },
-            invalid: {
-              color: 'error.main',
-              iconColor: 'error.main',
-            },
-            complete: {
-              color: 'success',
-            },
-          },
-          hidePostalCode: true,
-        }}
-      />
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <LoadingButton
-          sx={{ marginTop: 2, mx: 2 }}
-          variant="contained"
-          type="submit"
-          loading={loading}
-          disabled={!stripe}
-        >
-          {currentLang === 'ar' ? 'دفع' : 'Pay'}
-        </LoadingButton>
-      </Box>
-    </form>
+  return clientSecret ? (
+    <Elements stripe={stripePromise} options={{ clientSecret }}>
+      <CheckoutForm />
+    </Elements>
+  ) : (
+    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+      <Lottie animationData={loadingPaymentForm} style={{ width: 400 }} />
+    </Box>
   );
 };
-
-const StripeCheckout = () => (
-  <Elements stripe={stripePromise}>
-    <CheckoutForm />
-  </Elements>
-);
 
 export default StripeCheckout;
