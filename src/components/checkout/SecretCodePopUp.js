@@ -79,7 +79,7 @@ function SecretCodePopUp() {
   const [signUpCode, setSignUpCode] = useState(null);
 
   const proceedTrainingRequestStatus = useCallback(async () => {
-    await proceedTrainingRequest({ requestId: requestInfo?.id })
+    await proceedTrainingRequest({ requestId: requestInfo?.id, method: 'paymentGateway' })
       .then((response) => {
         if (response.message) {
           triggerAlert({
