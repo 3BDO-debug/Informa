@@ -266,7 +266,7 @@ function Header() {
               startIcon={<WhatsAppIcon />}
               variant="outlined"
             >
-              Contact Us
+              Contact Sales
             </Button>
             {/* Dark / Light mode */}
             <IconButton sx={{ ml: 2 }} onClick={() => onChangeMode(themeMode === 'dark' ? 'light' : 'dark')}>

@@ -94,8 +94,8 @@ const CheckoutForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <PaymentElement options={{ layout: 'tabs' }} />
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <LoadingButton sx={{ marginTop: 2 }} variant="contained" type="submit" loading={loading} disabled={!stripe}>
+      <Box>
+        <LoadingButton sx={{ marginTop: 2, width:"100%" }} variant="contained" type="submit" loading={loading} disabled={!stripe}>
           {currentLang.value === 'ar' ? 'دفع' : 'Pay'} {paymentInfo.price} {paymentInfo.region === 'EG' ? 'EGP' : 'USD'}
         </LoadingButton>
       </Box>

@@ -1,7 +1,7 @@
 const registerNowPopUpTranslations = {
   title: {
     text: 'Register Now',
-    actionButton: ' Guide',
+    actionButton: 'Explanation',
   },
   form: {
     fullName: 'Full name',
