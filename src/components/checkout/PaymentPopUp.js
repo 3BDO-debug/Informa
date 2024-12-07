@@ -116,7 +116,7 @@ function PaymentPopUp() {
           </Box>
         )}
         <Box sx={{ mt: 5 }}>{stripeMethode && <StripeCheckout />}</Box>
-        {region === 'SA' && stripeMethode && (
+        {region === 'EG' && stripeMethode && (
           <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Button sx={{ textDecoration: 'underline' }} onClick={() => setStripeMethode(false)}>
               {currentLang.value === 'ar' ? 'طرق الدفع الأخرى' : 'other payment methods'}
