@@ -99,6 +99,9 @@ function Checkout() {
 
     return context;
   }, [currentLang, allLangs]);
+  //-------------------------------------------------------------------
+
+  const { query } = useRouter();
 
   //-------------------------------------------------------------------------------
   const [userIpRegion, setUserIpRegion] = useRecoilState(userIpRegionAtom);
@@ -126,8 +129,6 @@ function Checkout() {
   const [refundPolicy, triggerRefundPolicy] = useRecoilState(refundPolicyPopUpAtom);
 
   const [isReady, websiteLogger] = useWebsiteLogs();
-
-  const { query } = useRouter();
 
   const durationPrices = useRenderDurationPrices();
   const followUpPackagesPrices = useRenderFollowUpPackagesPrices();

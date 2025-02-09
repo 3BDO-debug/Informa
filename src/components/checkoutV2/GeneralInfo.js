@@ -1,10 +1,11 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 // @Mui
 import { Box, ButtonBase, FormHelperText, Stack, TextField, Typography } from '@mui/material';
 // hooks
 import useLocales from 'src/hooks/useLocales';
 import MUIPhoneNumberInput from '../MUIPhoneNumberInput';
 import { createLeadRequest } from 'src/__apis__/leads';
+import { useRouter } from 'next/router';
 
 // ---------------------------------------------------------------------
 
@@ -13,10 +14,21 @@ function GeneralInfo({ formik, setActiveStep }) {
 
   const { values, setFieldValue, getFieldProps, errors, touched, dirty, isSubmitting, handleSubmit } = formik;
 
+  const { query } = useRouter();
+
+  const [source, setSource] = useState('');
+
+  useEffect(() => {
+    if (query.platform) {
+      setSource(query.platform);
+    }
+  }, [query.platform]);
+
   const createLead = useCallback(async () => {
     const leadData = {
       name: values.fullname,
       whatsappNumber: values.whatsappNumber,
+      platform: source,
     };
     await createLeadRequest(leadData)
       .then((response) => {
