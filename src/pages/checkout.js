@@ -24,7 +24,7 @@ function CheckoutPage() {
         <Grid item xs={12} md={6} sx={{ display: { xs: 'none', md: 'flex' } }}>
           <Box sx={{ width: '100%', height: '100vh', position: 'relative' }}>
             {/* Hooks */}
-            <Box sx={{ width: '100%', position: 'absolute', zIndex: 2, height: 50, bottom: '40vh' }}>
+            <Box sx={{ width: '100%', position: 'absolute', zIndex: 2, height: '100%', bottom: '-35%' }}>
               <Container>
                 <Stack gap={3}>
                   <Box

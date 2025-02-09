@@ -267,7 +267,7 @@ function Checkout() {
   ];
 
   return (
-    <Box sx={{ py: 3, height: '100%' }}>
+    <Box sx={{ py: 3, height: '100vh', overflowY: 'scroll' }}>
       <Container>
         <Grid container rowSpacing={6}>
           <Grid item xs={12}>
@@ -324,7 +324,7 @@ function Checkout() {
               </Paper>
             </Stack>
           </Grid>
-          <Grid item xs="12">
+          <Grid item xs={12}>
             <Box sx={{ px: '10%' }}>
               <Box sx={{ width: '100%', height: 1.2, bgcolor: 'grey.400' }} />
             </Box>
@@ -333,9 +333,9 @@ function Checkout() {
             <Box>{STEPS[activeStep].component({ formik })}</Box>
           </Grid>
         </Grid>
+        <PaymentPopUp />
+        <SecretCodePopUp />
       </Container>
-      <PaymentPopUp />
-      <SecretCodePopUp />
     </Box>
   );
 }
