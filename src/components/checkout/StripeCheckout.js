@@ -26,7 +26,7 @@ import loadingPaymentForm from '../../assets/animations/loadingPaymentForm.json'
 //-------------------------------------------------------
 
 const stripePromise = loadStripe(
-  'pk_test_51MU6GUDUPkE56DQ9qaD6OAoOEgA0WJNw6TLWb4MG1N88HMS3erP9tTcKwDfGYLQXtrXNybjOkfAxuXDkoO0G8WeA00j4ue8GDK'
+  'pk_live_51MU6GUDUPkE56DQ9Uy8040Yo91kuW9OTN3UlhN5oGQhAqX0x0GwdkwAtPyNu4Qlpd3UGwQlGzrLoXdk4x8Rw320x00OE7z7w65'
 );
 
 const CheckoutForm = () => {
@@ -94,8 +94,14 @@ const CheckoutForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <PaymentElement options={{ layout: 'tabs' }} />
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <LoadingButton sx={{ marginTop: 2 }} variant="contained" type="submit" loading={loading} disabled={!stripe}>
+      <Box>
+        <LoadingButton
+          sx={{ marginTop: 2, width: '100%' }}
+          variant="contained"
+          type="submit"
+          loading={loading}
+          disabled={!stripe}
+        >
           {currentLang.value === 'ar' ? 'دفع' : 'Pay'} {paymentInfo.price} {paymentInfo.region === 'EG' ? 'EGP' : 'USD'}
         </LoadingButton>
       </Box>

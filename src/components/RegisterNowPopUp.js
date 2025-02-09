@@ -153,10 +153,10 @@ function RegisterNowPopUp() {
         .then((response) => {
           setAlert({
             triggered: true,
-            message: 'We recieved your request, and we will contact you soon.',
+            message: 'We recieved your request.',
             type: 'success',
           });
-          resetForm();
+          // resetForm();
           triggerPaymentPopUp(true);
           triggerRegisterNowPopUp(false);
           setTrainingreuestId(response?.requestId);

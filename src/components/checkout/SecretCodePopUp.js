@@ -48,7 +48,7 @@ function SecretCodePopUp() {
   const getRequestInfo = useCallback(async () => {
     await fetchRequestInfo(query.phone)
       .then((response) => {
-        setRequestInfo(response[0]);
+        setRequestInfo(response);
       })
       .catch((error) => {
         triggerAlert({ triggered: true, type: 'error', message: 'Something wrong happend, contact support' });
@@ -79,7 +79,7 @@ function SecretCodePopUp() {
   const [signUpCode, setSignUpCode] = useState(null);
 
   const proceedTrainingRequestStatus = useCallback(async () => {
-    await proceedTrainingRequest({ requestId: requestInfo?.id })
+    await proceedTrainingRequest({ requestId: requestInfo?.id, method: 'paymentGateway' })
       .then((response) => {
         if (response.message) {
           triggerAlert({
@@ -200,7 +200,7 @@ function SecretCodePopUp() {
               sx={{ transform: currentLang.value === 'ar' ? 'rotate(180deg)' : null }}
             />
           }
-          onClick={() => window.open(`http://localhost:3001/auth/signup?signUpCode=${signUpCode}`)}
+          onClick={() => window.open(`https://informa-portal.vercel.app/auth/signup?signUpCode=${signUpCode}`)}
         >
           {currentLang.value === 'ar' ? 'تسجيل' : 'Sign Up'}
         </Button>
