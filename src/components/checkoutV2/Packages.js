@@ -3,14 +3,23 @@ import React, { useState } from 'react';
 import { Box, ButtonBase, Stack, Typography } from '@mui/material';
 import Label from '../Label';
 import Scrollbar from '../Scrollbar';
+import Iconify from '../Iconify';
+import useLocales from 'src/hooks/useLocales';
+import userIpRegionAtom from 'src/recoil/atoms/userIpRegionAtom';
+import { useRecoilValue } from 'recoil';
 
 // --------------------------------------------------------------------
 
-const PackageCard = ({ title, borderStyling, price, background, color, borderColor }) => {
+const PackageCard = ({ title, egPrice, usPrice, background, color, border, onClick, mega, silver, golden }) => {
   const [hovered, setIsHovered] = useState(false);
+
+  const userIpRegion = useRecoilValue(userIpRegionAtom);
 
   return (
     <Box
+      onClick={() => {
+        onClick();
+      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       sx={{
@@ -20,7 +29,7 @@ const PackageCard = ({ title, borderStyling, price, background, color, borderCol
         borderRadius: 3,
         overflow: 'hidden',
         cursor: 'pointer',
-        ...(borderStyling ? borderStyling : { border: `3px solid ${borderColor}` }),
+        border: border,
         p: 1,
       }}
     >
@@ -35,12 +44,17 @@ const PackageCard = ({ title, borderStyling, price, background, color, borderCol
           justifyContent: 'center',
         }}
       >
-        <Typography variant="subtitle1" sx={{ textTransform: 'uppercase' }}>
-          Golden Package
+        <Typography variant="subtitle1" sx={{ textTransform: 'uppercase', color: mega && 'primary.main' }}>
+          {title}
         </Typography>
-        <Typography color={color} variant="h2">
-          3500 EGP
-        </Typography>
+        <Stack direction="row" gap={1}>
+          <Typography color={color} variant="h2">
+            {userIpRegion === 'EG' ? egPrice : usPrice} {userIpRegion === 'EG' ? 'EGP' : 'USD'}
+          </Typography>
+          <Typography color={color} variant="h4" sx={{ display: 'flex', alignSelf: 'end' }}>
+            / 3 Months
+          </Typography>
+        </Stack>
       </Box>
       <Box sx={{ overflow: 'hidden', height: '100%', width: '100%', borderRadius: 3 }}>
         <Box
@@ -62,18 +76,62 @@ const PackageCard = ({ title, borderStyling, price, background, color, borderCol
 
 // --------------------------------------------------------------------
 
-function Packages() {
+function Packages({ formik, setActiveStep, price }) {
+  const { values, setFieldValue, getFieldProps, errors, touched, dirty, isSubmitting, handleSubmit } = formik;
+
+  const { translate, currentLang } = useLocales();
+
   return (
     <Box component={Stack} sx={{ height: '100%' }}>
-      <Scrollbar sx={{ height: '30vh', pr: 3 }} gap={3}>
+      <Scrollbar sx={{ height: { xs: '25vh', sm: '30vh' }, pr: 3 }} gap={3}>
         <Stack gap={3}>
-          <PackageCard borderColor="#D9E1E4" color="grey.900" background="/images/silver-package.jpg" />
-          <PackageCard borderColor="#F0C53A" background="/images/golden-package.jpg" />
-          <PackageCard borderColor="#000000" color="grey.100" background="/images/mega-package.png" />
+          <PackageCard
+            borderColor="#D9E1E4"
+            color="grey.900"
+            background="/images/silver-package.jpg"
+            title={translate('pagesTranslations.checkoutPageTranslations.packages.silver')}
+            border={values.followUpPackage === 'silver-package' && '3px solid #D9E1E4'}
+            onClick={() => setFieldValue('followUpPackage', 'silver-package')}
+            silver={true}
+            egPrice={3500}
+            usPrice={250}
+          />
+          <PackageCard
+            borderColor="#F0C53A"
+            background="/images/golden-package.jpg"
+            title={translate('pagesTranslations.checkoutPageTranslations.packages.golden')}
+            border={values.followUpPackage === 'golden-package' && '3px solid #F0C53A'}
+            onClick={() => setFieldValue('followUpPackage', 'golden-package')}
+            golden={true}
+            egPrice={5000}
+            usPrice={350}
+          />
+          <PackageCard
+            borderColor="#000000"
+            color="grey.100"
+            background="/images/mega-package.png"
+            title={translate('pagesTranslations.checkoutPageTranslations.packages.mega')}
+            border={values.followUpPackage === 'mega-package' && '3px solid #000000'}
+            onClick={() => setFieldValue('followUpPackage', 'mega-package')}
+            mega={true}
+            egPrice={7500}
+            usPrice={500}
+          />
         </Stack>
       </Scrollbar>
-      <ButtonBase sx={{ bgcolor: 'text.primary', color: 'background.paper', borderRadius: 1, py: 2, mt: 6 }}>
-        <Typography variant="subtitle1">Next Step</Typography>
+      <ButtonBase
+        sx={{ bgcolor: 'text.primary', color: 'background.paper', borderRadius: 1, py: 2, mt: 6, width: '100%' }}
+        onClick={() => {
+          setActiveStep(2);
+        }}
+      >
+        <Typography variant="subtitle1">
+          {translate('pagesTranslations.checkoutPageTranslations.packages.button')}
+        </Typography>
+        <Iconify
+          style={{ fontSize: 30, transform: currentLang.value === 'ar' && 'rotate(180deg)' }}
+          icon="mingcute:arrows-right-line"
+        />
       </ButtonBase>
     </Box>
   );

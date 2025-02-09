@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { m } from 'framer-motion';
 import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRouter } from 'next/router';
 // material
 import { Box, Button, Card, Chip, Grid, Paper, Tab, Tabs, Typography, useTheme } from '@mui/material';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
@@ -33,6 +34,8 @@ function Pricing() {
 
   const [planProgram, setPlanProgram] = useState('nutrition-workout');
   const [planDuration, setPlanDuration] = useState(6);
+
+  const { query, push } = useRouter();
 
   return (
     <SectionWrapper>
@@ -96,7 +99,7 @@ function Pricing() {
                 }}
                 clickable
               />
-              <Chip
+              {/* <Chip
                 color="primary"
                 sx={{
                   mr: 2,
@@ -115,16 +118,16 @@ function Pricing() {
                 variant={userPlan.program === 'workout' ? 'filled' : 'outlined'}
                 onClick={() => setUserPlan({ ...userPlan, program: 'workout' })}
                 clickable
-              />
+              /> */}
 
-              <Chip
+              {/* <Chip
                 color="primary"
                 icon={<LocalDiningIcon />}
                 label={translate('commonSectionsTranslations.pricingsSection.planType.3')}
                 variant={userPlan.program === 'nutrition' ? 'filled' : 'outlined'}
                 onClick={() => setUserPlan({ ...userPlan, program: 'nutrition' })}
                 clickable
-              />
+              /> */}
             </Box>
           </Box>
         </Grid>
@@ -237,7 +240,8 @@ function Pricing() {
                   <PricingCard
                     clickHandler={() => {
                       setUserPlan({ ...userPlan, followUpPackage: followUp.value });
-                      triggerRegisterPopUp(true);
+                      // triggerRegisterPopUp(true);
+                      push('/checkout');
                     }}
                     index={index}
                     data={followUp}

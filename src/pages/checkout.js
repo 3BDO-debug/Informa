@@ -7,10 +7,13 @@ import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import muscleCharacter from 'src/assets/animations/muscle-character.json';
 //
 import Checkout from 'src/components/checkoutV2';
+import useLocales from 'src/hooks/useLocales';
 
 // -------------------------------------------------------------------------------------
 
 function CheckoutPage() {
+  const { translate, currentLang } = useLocales();
+
   return (
     <Box sx={{ height: '100vh', overflowY: 'hidden' }}>
       <Grid container spacing={3}>
@@ -18,7 +21,7 @@ function CheckoutPage() {
           <Checkout />
         </Grid>
         {/* Illustration */}
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} sx={{ display: { xs: 'none', md: 'flex' } }}>
           <Box sx={{ width: '100%', height: '100vh', position: 'relative' }}>
             {/* Hooks */}
             <Box sx={{ width: '100%', position: 'absolute', zIndex: 2, height: 50, bottom: '40vh' }}>
@@ -43,11 +46,12 @@ function CheckoutPage() {
                   </Box>
                   {/*  <Box sx={{ height: 1.1, width: '50%', bgcolor: 'grey.600' }} /> */}
                   <Typography color="grey.100" variant="h1">
-                    Get <br /> Everything <br /> You Want
+                    {translate('pagesTranslations.checkoutPageTranslations.video.title.1')} <br />{' '}
+                    {translate('pagesTranslations.checkoutPageTranslations.video.title.2')} <br />{' '}
+                    {translate('pagesTranslations.checkoutPageTranslations.video.title.3')}
                   </Typography>
                   <Typography color="grey.200">
-                    It is a long established fact that a reader will be distracted by the readable content of a page
-                    when looking at its layout.
+                    {translate('pagesTranslations.checkoutPageTranslations.video.subtitle')}
                   </Typography>
                 </Stack>
               </Container>

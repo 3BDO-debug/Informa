@@ -45,7 +45,7 @@ function AppWrapper({ children }) {
 
   const triggerRefundPolicyPopUp = useSetRecoilState(refundPolicyPopUpAtom);
 
-  const { query } = useRouter();
+  const { query, push } = useRouter();
 
   const { onChangeLang } = useLocales();
 
@@ -131,7 +131,8 @@ function AppWrapper({ children }) {
           </Fab> */}
           <Fab
             onClick={() => {
-              triggerRegisterNowPopUpAtom(true);
+              // triggerRegisterNowPopUpAtom(true);
+              push('/checkout');
             }}
             variant="extended"
           >

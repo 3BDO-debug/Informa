@@ -18,6 +18,7 @@ import {
   pricingsPageTranslations,
   transformationsPageTranslations,
   startJourneyPageTranslations,
+  checkoutPageTranslations,
 } from './pages';
 
 // IF THIS TRANSLATION IS INCORRECT PLEASE IGNORE THIS AS THIS TRANSLATION IS FOR DEMO PURPOSES ONLY
@@ -33,6 +34,7 @@ const en = {
     aboutUsPageTranslations: aboutUsPageTranslations,
     contactUsPageTranslations: contactUsPageTranslations,
     startJourneyPageTranslations: startJourneyPageTranslations,
+    checkoutPageTranslations: checkoutPageTranslations,
   },
   commonSectionsTranslations: commonSectionsTranslations,
   componentsTranslations: {
