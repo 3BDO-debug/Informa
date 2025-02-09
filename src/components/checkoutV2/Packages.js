@@ -83,42 +83,40 @@ function Packages({ formik, setActiveStep, price }) {
 
   return (
     <Box component={Stack} sx={{ height: '100%' }}>
-      <Scrollbar sx={{ height: { xs: '25vh', sm: '30vh' }, pr: 3 }} gap={3}>
-        <Stack gap={3}>
-          <PackageCard
-            borderColor="#D9E1E4"
-            color="grey.900"
-            background="/images/silver-package.jpg"
-            title={translate('pagesTranslations.checkoutPageTranslations.packages.silver')}
-            border={values.followUpPackage === 'silver-package' && '3px solid #D9E1E4'}
-            onClick={() => setFieldValue('followUpPackage', 'silver-package')}
-            silver={true}
-            egPrice={3500}
-            usPrice={250}
-          />
-          <PackageCard
-            borderColor="#F0C53A"
-            background="/images/golden-package.jpg"
-            title={translate('pagesTranslations.checkoutPageTranslations.packages.golden')}
-            border={values.followUpPackage === 'golden-package' && '3px solid #F0C53A'}
-            onClick={() => setFieldValue('followUpPackage', 'golden-package')}
-            golden={true}
-            egPrice={5000}
-            usPrice={350}
-          />
-          <PackageCard
-            borderColor="#000000"
-            color="grey.100"
-            background="/images/mega-package.png"
-            title={translate('pagesTranslations.checkoutPageTranslations.packages.mega')}
-            border={values.followUpPackage === 'mega-package' && '3px solid #000000'}
-            onClick={() => setFieldValue('followUpPackage', 'mega-package')}
-            mega={true}
-            egPrice={7500}
-            usPrice={500}
-          />
-        </Stack>
-      </Scrollbar>
+      <Stack gap={3}>
+        <PackageCard
+          borderColor="#D9E1E4"
+          color="grey.900"
+          background="/images/silver-package.jpg"
+          title={translate('pagesTranslations.checkoutPageTranslations.packages.silver')}
+          border={values.followUpPackage === 'silver-package' && '3px solid #D9E1E4'}
+          onClick={() => setFieldValue('followUpPackage', 'silver-package')}
+          silver={true}
+          egPrice={3500}
+          usPrice={250}
+        />
+        <PackageCard
+          borderColor="#F0C53A"
+          background="/images/golden-package.jpg"
+          title={translate('pagesTranslations.checkoutPageTranslations.packages.golden')}
+          border={values.followUpPackage === 'golden-package' && '3px solid #F0C53A'}
+          onClick={() => setFieldValue('followUpPackage', 'golden-package')}
+          golden={true}
+          egPrice={5000}
+          usPrice={350}
+        />
+        <PackageCard
+          borderColor="#000000"
+          color="grey.100"
+          background="/images/mega-package.png"
+          title={translate('pagesTranslations.checkoutPageTranslations.packages.mega')}
+          border={values.followUpPackage === 'mega-package' && '3px solid #000000'}
+          onClick={() => setFieldValue('followUpPackage', 'mega-package')}
+          mega={true}
+          egPrice={7500}
+          usPrice={500}
+        />
+      </Stack>
       <ButtonBase
         sx={{ bgcolor: 'text.primary', color: 'background.paper', borderRadius: 1, py: 2, mt: 6, width: '100%' }}
         onClick={() => {
