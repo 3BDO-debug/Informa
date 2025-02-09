@@ -36,6 +36,10 @@ import userPlanAtom from 'src/recoil/atoms/userPlanAtom';
 import alertAtom from 'src/recoil/atoms/alertAtom';
 import userIpRegionAtom from 'src/recoil/atoms/userIpRegionAtom';
 import followUpPackageExplainationPopUpAtom from 'src/recoil/atoms/followUpPackageExplainationPopUpAtom';
+import paymentInfoAtom from 'src/recoil/atoms/paymentInfoAtom';
+import chechoutPopUpAtom from 'src/recoil/atoms/checkoutPopUpAtom';
+import trainingRequestIdAtom from 'src/recoil/atoms/trainingRequestIdAtom';
+import subscriptionDataAtom from 'src/recoil/atoms/subscriptionDataAtom';
 // hooks
 import useLocales from 'src/hooks/useLocales';
 import useRenderDurationPrices from 'src/hooks/useRenderDurationPrices';
@@ -71,7 +75,7 @@ function RegisterNowPopUp() {
 
   const { query } = useRouter();
 
-  const { translate } = useLocales();
+  const { translate, currentLang } = useLocales();
 
   const handlePopUpClose = () => {
     triggerRegisterNowPopUp(false);
@@ -82,9 +86,15 @@ function RegisterNowPopUp() {
 
   const setFollowUpPackageExplainationPopUp = useSetRecoilState(followUpPackageExplainationPopUpAtom);
 
+  const setPaymentInfo = useSetRecoilState(paymentInfoAtom);
+  const triggerPaymentPopUp = useSetRecoilState(chechoutPopUpAtom);
+  const setTrainingreuestId = useSetRecoilState(trainingRequestIdAtom);
+  const setSubscriptionData = useSetRecoilState(subscriptionDataAtom);
+
   const formik = useFormik({
     initialValues: {
       fullname: '',
+      email: '',
       whatsappNumber: '',
       cor: '',
       payingRegion: 'local',
@@ -99,6 +109,7 @@ function RegisterNowPopUp() {
     },
     validationSchema: Yup.object().shape({
       fullname: Yup.string().required('Full name is required'),
+      email: Yup.string().required('Email address is required'),
       whatsappNumber: Yup.string().required('Whatsapp number is required'),
       cor: Yup.string().required('Country of residence is required'),
       payingRegion: Yup.string().required('Payment currency is required'),
@@ -113,7 +124,7 @@ function RegisterNowPopUp() {
         .oneOf([true], translate('componentsTranslations.registerNowPopUpTranslations.form.termsAndConditionsError'))
         .required(translate('componentsTranslations.registerNowPopUpTranslations.form.termsAndConditionsError')),
     }),
-    onSubmit: async (values, { setSubmitting }) => {
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
       let requestData = {
         ...values,
         computedTotalPrice: values.payingRegion === 'local' ? userPlanTotalPrice.egpPrice : userPlanTotalPrice.usdPrice,
@@ -123,6 +134,21 @@ function RegisterNowPopUp() {
         requestData.computedPriceAfterSale = salePrice;
       }
 
+      setPaymentInfo({ price: salePrice, region: userIpRegion });
+
+      const lastName =
+        values.fullname.includes(' ') && values.fullname.split(' ')[1] ? values.fullname.split(' ')[1] : ' ';
+
+      setSubscriptionData({
+        firstName: values.fullname.split(' ')[0] || '',
+        lastName: lastName,
+        program: values.planProgram,
+        duration: values.planDuration,
+        followUpPackage: values.followUpPackage,
+        phoneNumber: values.whatsappNumber,
+        email: values.email,
+      });
+
       await personalTrainingRequester(requestData)
         .then((response) => {
           setAlert({
@@ -130,8 +156,10 @@ function RegisterNowPopUp() {
             message: 'We recieved your request, and we will contact you soon.',
             type: 'success',
           });
-
+          resetForm();
+          triggerPaymentPopUp(true);
           triggerRegisterNowPopUp(false);
+          setTrainingreuestId(response?.requestId);
         })
         .catch((error) => {
           console.log('Error sending request', error);
@@ -379,6 +407,17 @@ function RegisterNowPopUp() {
                 label={translate('componentsTranslations.registerNowPopUpTranslations.form.whatsappNumber')}
               />
               <FormHelperText error>{Boolean(touched.whatsappNumber) && errors.whatsappNumber}</FormHelperText>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label={currentLang.value === 'ar' ? 'البريد الإلكتروني' : 'Email'}
+                value={values.email}
+                onChange={(event) => setFieldValue('email', event.target.value)}
+                {...getFieldProps('email')}
+                error={touched.email && Boolean(errors.email)}
+                helperText={touched.email && errors.email}
+                fullWidth
+              />
             </Grid>
             <Grid item xs={12}>
               <TextField

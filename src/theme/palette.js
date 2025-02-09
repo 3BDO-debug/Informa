@@ -8,14 +8,14 @@ function createGradient(color1, color2) {
 
 // SETUP COLORS
 const PRIMARY = {
-  lighter: '#F0C67A', // Add this line
-  light: '#e8b45c',
-  main: '#B3852E',
-  dark: '#805800',
+  lighter: '#F7E1AE', // Soft golden beige
+  light: '#F0C878', // Warm gold
+  main: '#D4A132', // Rich modern gold
+  dark: '#9C6D17', // Deep elegant gold
 };
 const SECONDARY = {
-  lighter: '#F0C67A', // Add this line
-  light: '#4c5762',
+  lighter: '#D9D9D9',
+  light: '#4C5762',
   main: '#242E38',
   dark: '#000312',
 };
@@ -81,7 +81,7 @@ const CHART_COLORS = {
   violet: ['#826AF9', '#9E86FF', '#D0AEFF', '#F7D2FF'],
   blue: ['#2D99FF', '#83CFFF', '#A5F3FF', '#CCFAFF'],
   green: ['#2CD9C5', '#60F1C8', '#A4F7CC', '#C0F2DC'],
-  yellow: ['#FFE700', '#FFEF5A', '#FFF7AE', '#FFF3D6'],
+  yellow: ['#FFD700', '#FFEA70', '#FFF4C2', '#FFFBE6'],
   red: ['#FF6C40', '#FF8F6D', '#FFBD98', '#FFF2D4'],
 };
 

@@ -12,7 +12,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 import 'react-lazy-load-image-component/src/effects/black-and-white.css';
-//
+// MUI Phone Number Input styles
 import '../components/MUIPhoneNumberInput/PhoneNumberStyle.css';
 import PropTypes from 'prop-types';
 import cookie from 'cookie';
@@ -43,12 +43,14 @@ export default function MyApp(props) {
   const { Component, pageProps, settings } = props;
   const router = useRouter();
 
+  // Allow individual pages to define their own layout
+  const getLayout = Component.getLayout || ((page) => page);
+
   return (
     <>
       <Head>
         <title>Informa : Transforming mindset</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
-
         <meta name="keywords" content="Based On Tech, Informa, Transforming mindset" />
         <meta name="author" content="Based On Tech" />
         <meta name="copyright" content="Based On Tech" />
@@ -68,13 +70,13 @@ export default function MyApp(props) {
             <ThemeProvider>
               <ThemeSettings>
                 <ProgressBar />
-                {['/client-info'].includes(router.pathname) ? (
-                  <Component {...pageProps} />
-                ) : (
-                  <AppWrapper>
-                    <Component {...pageProps} />
-                  </AppWrapper>
-                )}
+                {['/checkout'].includes(router.pathname)
+                  ? getLayout(<Component {...pageProps} />)
+                  : getLayout(
+                      <AppWrapper>
+                        <Component {...pageProps} />
+                      </AppWrapper>
+                    )}
               </ThemeSettings>
             </ThemeProvider>
           </MotionLazyContainer>
