@@ -69,6 +69,8 @@ import useSettings from 'src/hooks/useSettings';
 import PaymentPopUp from '../checkout/PaymentPopUp';
 import SecretCodePopUp from '../checkout/SecretCodePopUp';
 import { userIpRegionFetcher } from 'src/__apis__/userIpRegion';
+import Transformations from 'src/sections/homePage/Transformations';
+import TransformationCheckout from '../TransformationCheckout';
 
 // -------------------------------------------------------------------------------------------------------
 
@@ -302,6 +304,9 @@ function Checkout() {
                 </Typography>
               </Stack>
             </Stack>
+          </Grid>
+          <Grid item xs={12}>
+            <TransformationCheckout />
           </Grid>
           <Grid item xs={12}>
             <Stack justifyContent="center" flexDirection="row">

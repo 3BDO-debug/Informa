@@ -60,6 +60,51 @@ function Durations({ formik, setActiveStep }) {
     },
   };
 
+  const offerPrice = {
+    silver: {
+      egp: {
+        1: PRICES.silver.egp[1] * 0.75,
+        3: PRICES.silver.egp[3] * 0.5,
+        6: PRICES.silver.egp[6] * 0.5,
+        12: PRICES.silver.egp[12] * 0.5,
+      },
+      usd: {
+        1: PRICES.silver.usd[1] * 0.75,
+        3: PRICES.silver.usd[3] * 0.5,
+        6: PRICES.silver.usd[6] * 0.5,
+        12: PRICES.silver.usd[12] * 0.5,
+      },
+    },
+    golden: {
+      egp: {
+        1: PRICES.golden.egp[1] * 0.75,
+        3: PRICES.golden.egp[3] * 0.5,
+        6: PRICES.golden.egp[6] * 0.5,
+        12: PRICES.golden.egp[12] * 0.5,
+      },
+      usd: {
+        1: PRICES.golden.usd[1] * 0.75,
+        3: PRICES.golden.usd[3] * 0.5,
+        6: PRICES.golden.usd[6] * 0.5,
+        12: PRICES.golden.usd[12] * 0.5,
+      },
+    },
+    mega: {
+      egp: {
+        1: PRICES.mega.egp[1] * 0.75,
+        3: PRICES.mega.egp[3] * 0.75,
+        6: PRICES.mega.egp[6] * 0.75,
+        12: PRICES.mega.egp[12] * 0.75,
+      },
+      usd: {
+        1: PRICES.mega.usd[1] * 0.75,
+        3: PRICES.mega.usd[3] * 0.75,
+        6: PRICES.mega.usd[6] * 0.75,
+        12: PRICES.mega.usd[12] * 0.75,
+      },
+    },
+  };
+
   useEffect(() => {
     if (values.payingRegion === 'local') {
       setCurrency('egp');
@@ -109,8 +154,11 @@ function Durations({ formik, setActiveStep }) {
         <Typography variant="h5">
           {translate('componentsTranslations.registerNowPopUpTranslations.form.totalPrice')} :
         </Typography>
+        <Typography variant="h5" sx={{ ml: 1, textDecoration: 'line-through' }}>
+          {PRICES[plan][currency][values.planDuration]}
+        </Typography>
         <Typography variant="h5" sx={{ ml: 1 }}>
-          {PRICES[plan][currency][values.planDuration]} {values.payingRegion === 'local' ? 'EGP' : 'USD'}
+          {offerPrice[plan][currency][values.planDuration]} {values.payingRegion === 'local' ? 'EGP' : 'USD'}
         </Typography>
       </Box>
       <Box sx={{ mt: 2 }}>
@@ -136,7 +184,15 @@ function Durations({ formik, setActiveStep }) {
       </Box>
       <Stack direction="row" gap={2}>
         <ButtonBase
-          sx={{ color: 'text.primary', borderRadius: 1, py: 2, mt: 6, width: '100%', border: 2,borderColor:"text.primary" }}
+          sx={{
+            color: 'text.primary',
+            borderRadius: 1,
+            py: 2,
+            mt: 6,
+            width: '100%',
+            border: 2,
+            borderColor: 'text.primary',
+          }}
           onClick={() => {
             setActiveStep(1);
           }}

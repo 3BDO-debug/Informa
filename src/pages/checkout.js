@@ -8,11 +8,15 @@ import muscleCharacter from 'src/assets/animations/muscle-character.json';
 //
 import Checkout from 'src/components/checkoutV2';
 import useLocales from 'src/hooks/useLocales';
+import userPlanAtom from 'src/recoil/atoms/userPlanAtom';
+import { useRecoilState } from 'recoil';
 
 // -------------------------------------------------------------------------------------
 
 function CheckoutPage() {
   const { translate, currentLang } = useLocales();
+
+  const [userPlan, setUserPlan] = useRecoilState(userPlanAtom);
 
   return (
     <Box sx={{ height: '100vh', overflowY: 'hidden' }}>
@@ -70,7 +74,35 @@ function CheckoutPage() {
               loop
               muted
             >
-              <Box component="source" src="https://basedontech.pythonanywhere.com/media/hero.mp4" />
+              <Box
+                component="div"
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  height: '100vh',
+                  width: '100%',
+                  overflow: 'hidden',
+                }}
+              >
+                <iframe
+                  src={
+                    userPlan.followUpPackage === 'silver-package'
+                      ? 'https://www.youtube.com/embed/iRSAAPPcK7M?start=468'
+                      : userPlan.followUpPackage === 'golden-package'
+                      ? 'https://www.youtube.com/embed/iRSAAPPcK7M?start=514'
+                      : 'https://www.youtube.com/embed/iRSAAPPcK7M?start=551'
+                  }
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{
+                    width: '100%',
+                    height: '100vh',
+                  }}
+                />
+              </Box>
             </Box>
           </Box>
         </Grid>
