@@ -27,6 +27,7 @@ function TransformationCheckout() {
     easing: 'ease-in-out',
     speed: 1000,
     arrows: true,
+    slidesToShow: 3,
   };
 
   const generateCarouselData = () => {
@@ -89,7 +90,7 @@ function TransformationCheckout() {
               <Slider ref={carouselRef} {...settings}>
                 {generateCarouselData().map((client) => (
                   <Box>
-                    <Paper elevation={0} sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Paper elevation={0} sx={{ display: 'flex', justifyContent: 'center', p: 2}}>
                       <Box component="img" sx={{ borderRadius: '8px', width: '200px' }} src={client} />
                     </Paper>
                   </Box>

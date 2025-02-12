@@ -30,6 +30,7 @@ import {
   IconButton,
   Paper,
   ButtonBase,
+  useMediaQuery,
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { LoadingButton } from '@mui/lab';
@@ -71,6 +72,7 @@ import SecretCodePopUp from '../checkout/SecretCodePopUp';
 import { userIpRegionFetcher } from 'src/__apis__/userIpRegion';
 import Transformations from 'src/sections/homePage/Transformations';
 import TransformationCheckout from '../TransformationCheckout';
+import FloatingVideo from './FloatingVideo';
 
 // -------------------------------------------------------------------------------------------------------
 
@@ -246,7 +248,7 @@ function Checkout() {
   }, [values.whatsappNumber, userIpRegion]);
   //-------------------------------------------------------------------------------
 
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(1);
 
   const STEPS = [
     {
@@ -269,8 +271,11 @@ function Checkout() {
     },
   ];
 
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+
   return (
     <Box sx={{ py: 3, height: '100vh', overflowY: 'scroll' }}>
+      {!isDesktop && <FloatingVideo activeStep={activeStep} />}
       <Container>
         <Grid container rowSpacing={6}>
           <Grid item xs={12}>
