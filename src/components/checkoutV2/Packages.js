@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // @Mui
-import { Box, ButtonBase, Icon, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, ButtonBase, Collapse, Icon, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 import Label from '../Label';
 import Scrollbar from '../Scrollbar';
 import Iconify from '../Iconify';
@@ -13,7 +13,7 @@ import userPlanAtom from 'src/recoil/atoms/userPlanAtom';
 
 // --------------------------------------------------------------------
 
-const PackageCard = ({ title, egPrice, usPrice, background, color, border, onClick, mega, silver, golden }) => {
+const PackageCard = ({ title, egPrice, usPrice, background, color, border, onClick, variant }) => {
   const [hovered, setIsHovered] = useState(false);
 
   const userIpRegion = useRecoilValue(userIpRegionAtom);
@@ -22,6 +22,33 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
 
   const theme = useTheme();
   const isMdOrLarger = useMediaQuery(theme.breakpoints.up('md'));
+
+  const FEATURES_LIST = {
+    silver: [
+      translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.1'),
+      translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.2'),
+    ],
+    golden: [
+      translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.1'),
+      translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.2'),
+      translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.3'),
+      translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.5'),
+    ],
+    mega: [
+      translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.1'),
+      translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.2'),
+      translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.3'),
+      translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.4'),
+      translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.5'),
+      translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.6'),
+    ],
+  };
+
+  const PRICES_MAPPING = {
+    silver: '1750',
+    golden: '2500',
+    mega: '5625',
+  };
 
   return (
     <Box
@@ -32,30 +59,23 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
       onMouseLeave={() => setIsHovered(false)}
       sx={{
         position: 'relative',
-        height: isMdOrLarger ? 350 : 500,
         width: '100%',
         borderRadius: 3,
         overflow: 'hidden',
         cursor: 'pointer',
         border: border,
-        p: 1,
+        px: 3,
+        py: 3,
       }}
     >
-      <Box
-        component={Stack}
-        sx={{
-          position: 'absolute',
-          zIndex: 2,
-          px: 3,
-          py: 6,
-          height: '100%',
-          justifyContent: 'center',
-        }}
-      >
-        <Typography variant="subtitle1" sx={{ textTransform: 'uppercase', color: mega && 'primary.main' }}>
+      <Box component={Stack} sx={{ position: 'relative', zIndex: 2, justifyContent: 'center' }}>
+        <Typography
+          variant="subtitle1"
+          sx={{ textTransform: 'uppercase', color: variant === 'mega' && 'primary.main' }}
+        >
           {title}
         </Typography>
-        <Stack direction={isMdOrLarger ? 'row' : 'column'} gap={5}>
+        <Stack direction={'column'} gap={5}>
           <Box>
             <Typography
               color={color}
@@ -68,63 +88,37 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
               {userIpRegion === 'EG' ? egPrice : usPrice} {userIpRegion === 'EG' ? 'EGP' : 'USD'}
             </Typography>
             <Typography color={color} variant="h2">
-              {silver ? '1750' : golden ? '2500' : '5625'} {userIpRegion === 'EG' ? 'EGP' : 'USD'}
+              {PRICES_MAPPING[variant]} {userIpRegion === 'EG' ? 'EGP' : 'USD'}
             </Typography>
             <Typography color={color} variant="h4" sx={{ display: 'flex', alignSelf: 'end' }}>
               / 3 Months
             </Typography>
           </Box>
-          <Box>
-            {silver ? (
-              <>
-                <Typography variant="subtitle1">
-                  • {translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.1')}
+          {/*   <Collapse>
+            <Stack>
+              {FEATURES_LIST[variant].map((feature, index) => (
+                <Typography key={index} variant="subtitle1">
+                  {feature}
                 </Typography>
-                <Typography variant="subtitle1">
-                  • {translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.2')}
-                </Typography>
-              </>
-            ) : golden ? (
-              <>
-                <Typography variant="subtitle1">
-                  • {translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.1')}
-                </Typography>
-                <Typography variant="subtitle1">
-                  • {translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.2')}
-                </Typography>
-                <Typography variant="subtitle1">
-                  • {translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.3')}
-                </Typography>
-                <Typography variant="subtitle1">
-                  • {translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.5')}
-                </Typography>
-              </>
-            ) : (
-              <>
-                <Typography variant="subtitle1" color="grey.0">
-                  • {translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.1')}
-                </Typography>
-                <Typography variant="subtitle1" color="grey.0">
-                  • {translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.2')}
-                </Typography>
-                <Typography variant="subtitle1" color="grey.0">
-                  • {translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.3')}
-                </Typography>
-                <Typography variant="subtitle1" color="grey.0">
-                  • {translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.4')}
-                </Typography>
-                <Typography variant="subtitle1" color="grey.0">
-                  • {translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.5')}
-                </Typography>
-                <Typography variant="subtitle1" color="grey.0">
-                  • {translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.6')}
-                </Typography>
-              </>
-            )}
-          </Box>
+              ))}
+            </Stack>
+          </Collapse> */}
         </Stack>
       </Box>
-      <Box sx={{ overflow: 'hidden', height: '100%', width: '100%', borderRadius: 3 }}>
+      <Box
+        sx={{
+          position: 'absolute',
+          overflow: 'hidden',
+          height: '100%',
+          width: '100%',
+          borderRadius: 3,
+          zIndex: 1,
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+        }}
+      >
         <Box
           sx={{
             zIndex: 1,
@@ -133,6 +127,7 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
             objectFit: 'cover',
             transition: 'all 0.7s ease-in-out',
             transform: hovered ? 'scale(1.1)' : 'scale(1)',
+            filter: 'brightness(0.7)',
           }}
           component="img"
           src={background}
@@ -156,7 +151,7 @@ function Packages({ formik, setActiveStep, price }) {
       <Stack gap={3}>
         <PackageCard
           borderColor="#D9E1E4"
-          color="grey.900"
+          color="grey.100"
           background="/images/silver-package.jpg"
           title={translate('pagesTranslations.checkoutPageTranslations.packages.silver')}
           border={values.followUpPackage === 'silver-package' && '3px solid #D9E1E4'}
@@ -164,12 +159,13 @@ function Packages({ formik, setActiveStep, price }) {
             setFieldValue('followUpPackage', 'silver-package');
             setUserPlan({ ...userPlan, followUpPackage: 'silver-package' });
           }}
-          silver={true}
           egPrice={3500}
           usPrice={250}
+          variant="silver"
         />
         <PackageCard
           borderColor="#F0C53A"
+          color="grey.100"
           background="/images/golden-package.jpg"
           title={translate('pagesTranslations.checkoutPageTranslations.packages.golden')}
           border={values.followUpPackage === 'golden-package' && '3px solid #F0C53A'}
@@ -180,6 +176,7 @@ function Packages({ formik, setActiveStep, price }) {
           golden={true}
           egPrice={5000}
           usPrice={350}
+          variant="golden"
         />
         <PackageCard
           borderColor="#000000"
@@ -194,6 +191,7 @@ function Packages({ formik, setActiveStep, price }) {
           mega={true}
           egPrice={7500}
           usPrice={500}
+          variant="mega"
         />
       </Stack>
       <ButtonBase

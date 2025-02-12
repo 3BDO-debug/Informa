@@ -1,5 +1,5 @@
 const checkoutPageTranslations = {
-  title: 'ابدأ رحلتك نحو التغيير.',
+  title: 'ابدأ رحلتك دلوقتي .',
   subtitle: 'أنت على بُعد نقرة واحدة من تغيير حياتك.',
   contactUs: 'تواصل معنا لمزيد من المساعدة',
   generalInfo: { button: 'ابدأ رحلتي' },

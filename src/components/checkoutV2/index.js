@@ -103,11 +103,9 @@ function Checkout() {
 
     return context;
   }, [currentLang, allLangs]);
-  //-------------------------------------------------------------------
 
   const { query } = useRouter();
 
-  //-------------------------------------------------------------------------------
   const [userIpRegion, setUserIpRegion] = useRecoilState(userIpRegionAtom);
 
   const fetchUserIpRegion = useCallback(async () => {
@@ -124,7 +122,6 @@ function Checkout() {
   useEffect(() => {
     fetchUserIpRegion();
   }, []);
-  //----------------------------------------------------------------------
 
   const [userPlan, setUserPlan] = useRecoilState(userPlanAtom);
   const userPlanTotalPrice = useRecoilValue(userPlanSelector);
@@ -246,7 +243,6 @@ function Checkout() {
       }
     }
   }, [values.whatsappNumber, userIpRegion]);
-  //-------------------------------------------------------------------------------
 
   const [activeStep, setActiveStep] = useState(1);
 
@@ -272,6 +268,11 @@ function Checkout() {
   ];
 
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+
+  useEffect(() => {
+    onChangeLang('ar');
+    onChangeDirection('rtl');
+  }, []);
 
   return (
     <Box sx={{ py: 3, height: '100vh', overflowY: 'scroll' }}>
@@ -299,6 +300,9 @@ function Checkout() {
             <Box sx={{ width: '100%' }} />
           </Grid>
           <Grid item xs={12}>
+            <TransformationCheckout />
+          </Grid>
+          <Grid item xs={12}>
             <Stack direction="row" justifyContent="center">
               <Stack>
                 <Typography align="center" variant="h2">
@@ -310,9 +314,7 @@ function Checkout() {
               </Stack>
             </Stack>
           </Grid>
-          <Grid item xs={12}>
-            <TransformationCheckout />
-          </Grid>
+
           <Grid item xs={12}>
             <Stack justifyContent="center" flexDirection="row">
               <Paper
