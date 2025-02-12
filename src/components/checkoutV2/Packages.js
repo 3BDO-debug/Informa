@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // @Mui
-import { Box, ButtonBase, Collapse, Icon, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Button, ButtonBase, Collapse, Icon, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 import Label from '../Label';
 import Scrollbar from '../Scrollbar';
 import Iconify from '../Iconify';
@@ -13,12 +13,12 @@ import userPlanAtom from 'src/recoil/atoms/userPlanAtom';
 
 // --------------------------------------------------------------------
 
-const PackageCard = ({ title, egPrice, usPrice, background, color, border, onClick, variant }) => {
+const PackageCard = ({ title, egPrice, usPrice, background, color, border, onClick, variant, setActiveStep }) => {
   const [hovered, setIsHovered] = useState(false);
 
   const userIpRegion = useRecoilValue(userIpRegionAtom);
 
-  const { translate } = useLocales();
+  const { translate, currentLang } = useLocales();
 
   const theme = useTheme();
   const isMdOrLarger = useMediaQuery(theme.breakpoints.up('md'));
@@ -64,18 +64,43 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
         overflow: 'hidden',
         cursor: 'pointer',
         border: border,
-        px: 3,
+        px: 2,
         py: 3,
       }}
     >
-      <Box component={Stack} sx={{ position: 'relative', zIndex: 2, justifyContent: 'center' }}>
-        <Typography
-          variant="subtitle1"
-          sx={{ textTransform: 'uppercase', color: variant === 'mega' && 'primary.main' }}
-        >
-          {title}
-        </Typography>
-        <Stack direction={'column'} gap={5}>
+      <Box component={Stack} sx={{ position: 'relative', zIndex: 2 }} gap={3}>
+        <Stack direction="row" alignItems="center" justifyContent="space-between">
+          <Typography
+            variant="overline"
+            sx={{ textTransform: 'uppercase', color: variant === 'mega' ? 'primary.main' : 'grey.300' }}
+          >
+            {title}
+          </Typography>
+          <ButtonBase
+            onClick={() => {
+              onClick();
+              setActiveStep(2);
+            }}
+            sx={{
+              bgcolor: variant === 'mega' ? '#fff' : '#000',
+              color: variant === 'mega' ? '#000' : 'grey.100',
+              px: 3,
+              py: 1,
+              borderRadius: 2,
+              display: 'flex',
+              justifyContent: 'center',
+              gap: 1,
+              textTransform: 'uppercase',
+              flexDirection: currentLang.value === 'ar' ? 'row-reverse' : 'row',
+            }}
+            variant="contained"
+            size="large"
+          >
+            <Iconify icon="line-md:chevron-left" />
+            <Typography variant="subtitle2">Subscribe</Typography>
+          </ButtonBase>
+        </Stack>
+        <Stack gap={5}>
           <Box>
             <Typography
               color={color}
@@ -105,6 +130,19 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
           </Collapse> */}
         </Stack>
       </Box>
+
+      {/* Dark Overlay */}
+      {/*   <Box
+        sx={{
+          position: 'absolute',
+          zIndex: 2,
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);',
+          width: '100%',
+          height: '100%',
+          top: 0,
+          left: 0,
+        }}
+      /> */}
       <Box
         sx={{
           position: 'absolute',
@@ -127,7 +165,7 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
             objectFit: 'cover',
             transition: 'all 0.7s ease-in-out',
             transform: hovered ? 'scale(1.1)' : 'scale(1)',
-            filter: 'brightness(0.7)',
+            filter: hovered ? 'brightness(0.7)' : 'brightness(0.3)',
           }}
           component="img"
           src={background}
@@ -150,6 +188,7 @@ function Packages({ formik, setActiveStep, price }) {
     <Box component={Stack} sx={{ height: '100%' }}>
       <Stack gap={3}>
         <PackageCard
+          setActiveStep={setActiveStep}
           borderColor="#D9E1E4"
           color="grey.100"
           background="/images/silver-package.jpg"
@@ -164,6 +203,7 @@ function Packages({ formik, setActiveStep, price }) {
           variant="silver"
         />
         <PackageCard
+          setActiveStep={setActiveStep}
           borderColor="#F0C53A"
           color="grey.100"
           background="/images/golden-package.jpg"
@@ -179,6 +219,7 @@ function Packages({ formik, setActiveStep, price }) {
           variant="golden"
         />
         <PackageCard
+          setActiveStep={setActiveStep}
           borderColor="#000000"
           color="grey.100"
           background="/images/mega-package.png"
