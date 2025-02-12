@@ -11,7 +11,15 @@ function TransformationCheckout() {
         {Array.from({ length: 4 }).map((_, index) => (
           <Grid item xs={6}>
             <Box
-              sx={{ height: 250, aspectRatio: '1/1', width: '100%', objectFit: 'cover' }}
+              sx={{
+                height: {
+                  xs: 150,
+                  md: 250,
+                },
+                aspectRatio: '1/1',
+                width: '100%',
+                objectFit: 'cover',
+              }}
               component="img"
               src={`/images/transformations/${index + 1}.png`}
             />
