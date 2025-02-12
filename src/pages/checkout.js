@@ -20,6 +20,13 @@ function CheckoutPage() {
 
   const [userPlan, setUserPlan] = useRecoilState(userPlanAtom);
 
+  const videoSrc =
+    userPlan.followUpPackage === 'silver-package'
+      ? 'https://www.youtube.com/embed/iRSAAPPcK7M?start=468'
+      : userPlan.followUpPackage === 'golden-package'
+      ? 'https://www.youtube.com/embed/iRSAAPPcK7M?start=514'
+      : 'https://www.youtube.com/embed/iRSAAPPcK7M?start=551';
+
   return (
     <Box sx={{ height: '100vh', overflowY: 'hidden', position: 'relative', mt: { xs: '10%', md: 0 } }}>
       <Grid container spacing={3}>
@@ -34,13 +41,7 @@ function CheckoutPage() {
                 <iframe
                   width="560"
                   height="315"
-                  src={
-                    userPlan.followUpPackage === 'silver-package'
-                      ? 'https://www.youtube.com/embed/iRSAAPPcK7M?start=468'
-                      : userPlan.followUpPackage === 'golden-package'
-                      ? 'https://www.youtube.com/embed/iRSAAPPcK7M?start=514'
-                      : 'https://www.youtube.com/embed/iRSAAPPcK7M?start=551'
-                  }
+                  src={videoSrc + '&autoplay=1'}
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

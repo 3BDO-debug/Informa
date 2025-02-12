@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 // @Mui
-import { Box, Button, ButtonBase, Collapse, Icon, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
+import {
+  Box,
+  Button,
+  ButtonBase,
+  Collapse,
+  Icon,
+  IconButton,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import Label from '../Label';
 import Scrollbar from '../Scrollbar';
 import Iconify from '../Iconify';
@@ -50,10 +61,13 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
     mega: '5625',
   };
 
+  const [collapse, setCollapse] = useState(false);
+
   return (
     <Box
       onClick={() => {
         onClick();
+        setCollapse(!collapse);
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -76,31 +90,37 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
           >
             {title}
           </Typography>
-          <ButtonBase
-            onClick={() => {
-              onClick();
-              setActiveStep(2);
-            }}
-            sx={{
-              bgcolor: variant === 'mega' ? '#fff' : '#000',
-              color: variant === 'mega' ? '#000' : 'grey.100',
-              px: 3,
-              py: 1,
-              borderRadius: 2,
-              display: 'flex',
-              justifyContent: 'center',
-              gap: 1,
-              textTransform: 'uppercase',
-              flexDirection: currentLang.value === 'ar' ? 'row-reverse' : 'row',
-            }}
-            variant="contained"
-            size="large"
-          >
-            <Iconify icon="line-md:chevron-left" />
-            <Typography variant="subtitle2">
-              {translate('pagesTranslations.checkoutPageTranslations.packages.subscribeButton')}
-            </Typography>
-          </ButtonBase>
+          <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
+            <ButtonBase
+              onClick={() => {
+                onClick();
+                setActiveStep(2);
+              }}
+              sx={{
+                bgcolor: variant === 'mega' ? '#fff' : '#000',
+                color: variant === 'mega' ? '#000' : 'grey.100',
+                px: 3,
+                py: 1,
+                borderRadius: 2,
+                display: 'flex',
+                justifyContent: 'center',
+                gap: 1,
+                textTransform: 'uppercase',
+                flexDirection: currentLang.value === 'ar' ? 'row-reverse' : 'row',
+              }}
+              variant="contained"
+              size="large"
+            >
+              {currentLang.value === 'ar' && <Iconify icon="line-md:chevron-left" />}
+              <Typography variant="subtitle2">
+                {translate('pagesTranslations.checkoutPageTranslations.packages.subscribeButton')}
+              </Typography>
+              {currentLang.value === 'en' && <Iconify icon="line-md:chevron-right" />}
+            </ButtonBase>
+            <IconButton sx={{ bgcolor: 'grey.0' }} onClick={() => {}}>
+              <Iconify icon="streamline:live-video-solid" sx={{ color: 'grey.900' }} />
+            </IconButton>
+          </Box>
         </Stack>
         <Stack gap={5}>
           <Box>
@@ -121,20 +141,20 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
               / 3 Months
             </Typography>
           </Box>
-          {/*   <Collapse>
+          <Collapse in={collapse}>
             <Stack>
               {FEATURES_LIST[variant].map((feature, index) => (
-                <Typography key={index} variant="subtitle1">
+                <Typography key={index} variant="subtitle1" sx={{ color: 'grey.0' }}>
                   {feature}
                 </Typography>
               ))}
             </Stack>
-          </Collapse> */}
+          </Collapse>
         </Stack>
       </Box>
 
       {/* Dark Overlay */}
-      {/*   <Box
+      {/* <Box
         sx={{
           position: 'absolute',
           zIndex: 2,
