@@ -97,7 +97,9 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
             size="large"
           >
             <Iconify icon="line-md:chevron-left" />
-            <Typography variant="subtitle2">Subscribe</Typography>
+            <Typography variant="subtitle2">
+              {translate('pagesTranslations.checkoutPageTranslations.packages.subscribeButton')}
+            </Typography>
           </ButtonBase>
         </Stack>
         <Stack gap={5}>

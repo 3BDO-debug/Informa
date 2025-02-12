@@ -8,6 +8,7 @@ const checkoutPageTranslations = {
     golden: 'Golden Package',
     mega: 'Mega Package',
     button: 'Choose Your Duration',
+    subscribeButton: 'Subscribe',
   },
   duration: { 1: '1 Month', 2: '3 Months', 3: '6 Months', 4: '12 Months', buttons: { back: 'Back', submit: 'Submit' } },
   video: {

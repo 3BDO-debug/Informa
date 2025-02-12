@@ -8,6 +8,7 @@ const checkoutPageTranslations = {
     golden: 'الباقة الذهبية',
     mega: 'الباقة الميجا',
     button: 'اختر المدة',
+    subscribeButton:"اشترك الان"
   },
   duration: {
     1: 'شهر واحد',
