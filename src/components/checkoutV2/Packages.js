@@ -21,6 +21,8 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
 import userPlanAtom from 'src/recoil/atoms/userPlanAtom';
+import { transform } from 'typescript';
+import playFloatingVideoAtom from 'src/recoil/atoms/PlayFloatingVideoAtom';
 
 // --------------------------------------------------------------------
 
@@ -62,6 +64,8 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
   };
 
   const [collapse, setCollapse] = useState(false);
+
+  const [play, setPlay] = useRecoilState(playFloatingVideoAtom);
 
   return (
     <Box
@@ -117,8 +121,16 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
               </Typography>
               {currentLang.value === 'en' && <Iconify icon="line-md:chevron-right" />}
             </ButtonBase>
-            <IconButton sx={{ bgcolor: 'grey.0' }} onClick={() => {}}>
-              <Iconify icon="streamline:live-video-solid" sx={{ color: 'grey.900' }} />
+            <IconButton
+              sx={{ bgcolor: 'grey.0' }}
+              onClick={() => {
+                setPlay(true);
+              }}
+            >
+              <Iconify
+                icon="streamline:live-video-solid"
+                sx={{ color: 'grey.900', transform: currentLang.value === 'ar' && 'rotate(180deg)' }}
+              />
             </IconButton>
           </Box>
         </Stack>

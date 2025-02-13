@@ -27,6 +27,8 @@ function CheckoutPage() {
       ? 'https://www.youtube.com/embed/iRSAAPPcK7M?start=514'
       : 'https://www.youtube.com/embed/iRSAAPPcK7M?start=551';
 
+  const isMdOrLarger = useMediaQuery(theme.breakpoints.up('md'));
+
   return (
     <Box sx={{ height: '100vh', overflowY: 'hidden', position: 'relative', mt: { xs: '10%', md: 0 } }}>
       <Grid container spacing={3}>
@@ -34,30 +36,32 @@ function CheckoutPage() {
           <Checkout />
         </Grid>
         {/* Illustration */}
-        <Grid item xs={12} md={6} sx={{ display: { xs: 'none', md: 'flex' } }}>
-          <Box sx={{ width: '100%', height: '100vh', position: 'relative' }}>
-            <Box sx={{ width: '100%', height: '100%' }}>
-              <div style={{ padding: '56.25% 0 0 0', position: 'relative', width: '100%', height: '100%' }}>
-                <iframe
-                  width="560"
-                  height="315"
-                  src={videoSrc + '&autoplay=1'}
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                  }}
-                ></iframe>
-              </div>
+        {isMdOrLarger && (
+          <Grid item xs={12} md={6}>
+            <Box sx={{ width: '100%', height: '100vh', position: 'relative' }}>
+              <Box sx={{ width: '100%', height: '100%' }}>
+                <div style={{ padding: '56.25% 0 0 0', position: 'relative', width: '100%', height: '100%' }}>
+                  <iframe
+                    width="560"
+                    height="315"
+                    src={videoSrc + '&autoplay=1'}
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                    }}
+                  ></iframe>
+                </div>
+              </Box>
             </Box>
-          </Box>
-        </Grid>
+          </Grid>
+        )}
       </Grid>
     </Box>
   );

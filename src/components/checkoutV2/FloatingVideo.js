@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // mui
 import { Box, Collapse, IconButton, Paper, Stack, Typography } from '@mui/material';
 // recoil
@@ -6,6 +6,7 @@ import { useRecoilState } from 'recoil';
 // atoms
 import userPlanAtom from 'src/recoil/atoms/userPlanAtom';
 import Iconify from '../Iconify';
+import playFloatingVideoAtom from 'src/recoil/atoms/PlayFloatingVideoAtom';
 
 function FloatingVideo({ activeStep }) {
   const [collapsed, setCollapsed] = useState(true);
@@ -14,12 +15,21 @@ function FloatingVideo({ activeStep }) {
 
   const ref = useRef();
 
+  const [play, setPlay] = useRecoilState(playFloatingVideoAtom);
+
   const handleColapse = () => {
     if (ref?.current) {
       ref.current.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo' }), '*');
       setCollapsed(!collapsed);
+      setPlay(false);
     }
   };
+
+  useEffect(() => {
+    if (play) {
+      handleColapse();
+    }
+  }, [play]);
 
   return (
     <Box sx={{ position: 'fixed', width: '100%', top: '0%', paddingX: '3%', zIndex: 10 }}>
@@ -63,10 +73,10 @@ function FloatingVideo({ activeStep }) {
                     height="315"
                     src={
                       userPlan.followUpPackage === 'silver-package'
-                        ? 'https://www.youtube.com/embed/iRSAAPPcK7M?start=468&enablejsapi=1'
+                        ? 'https://www.youtube.com/embed/iRSAAPPcK7M?start=468'
                         : userPlan.followUpPackage === 'golden-package'
-                        ? 'https://www.youtube.com/embed/iRSAAPPcK7M?start=514&enablejsapi=1'
-                        : 'https://www.youtube.com/embed/iRSAAPPcK7M?start=551&enablejsapi=1'
+                        ? 'https://www.youtube.com/embed/iRSAAPPcK7M?start=514'
+                        : 'https://www.youtube.com/embed/iRSAAPPcK7M?start=551'
                     }
                     title="YouTube video player"
                     frameborder="0"
