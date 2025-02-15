@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+// recoil
+import { useRecoilState } from 'recoil';
 // lottie
 import Lottie from 'lottie-react';
 // @Mui
@@ -9,7 +11,6 @@ import muscleCharacter from 'src/assets/animations/muscle-character.json';
 import Checkout from 'src/components/checkoutV2';
 import useLocales from 'src/hooks/useLocales';
 import userPlanAtom from 'src/recoil/atoms/userPlanAtom';
-import { useRecoilState } from 'recoil';
 import FloatingVideo from 'src/components/checkoutV2/FloatingVideo';
 
 // -------------------------------------------------------------------------------------
@@ -22,10 +23,10 @@ function CheckoutPage() {
 
   const videoSrc =
     userPlan.followUpPackage === 'silver-package'
-      ? 'https://www.youtube.com/embed/iRSAAPPcK7M?start=468'
+      ? 'https://www.youtube.com/embed/nGVW5w3SNwc'
       : userPlan.followUpPackage === 'golden-package'
-      ? 'https://www.youtube.com/embed/iRSAAPPcK7M?start=514'
-      : 'https://www.youtube.com/embed/iRSAAPPcK7M?start=551';
+      ? 'https://www.youtube.com/embed/AQOxbolUCZI'
+      : 'https://www.youtube.com/embed/ReZNMC0KLkA';
 
   const isMdOrLarger = useMediaQuery(theme.breakpoints.up('md'));
 

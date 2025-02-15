@@ -38,22 +38,21 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
 
   const FEATURES_LIST = {
     silver: [
-      translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.1'),
-      translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.2'),
+      translate('pagesTranslations.checkoutPageTranslations.packagesInfo.silver.1'),
+      translate('pagesTranslations.checkoutPageTranslations.packagesInfo.silver.2'),
+      translate('pagesTranslations.checkoutPageTranslations.packagesInfo.silver.3'),
     ],
     golden: [
-      translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.1'),
-      translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.2'),
-      translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.3'),
-      translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.5'),
+      translate('pagesTranslations.checkoutPageTranslations.packagesInfo.golden.1'),
+      translate('pagesTranslations.checkoutPageTranslations.packagesInfo.golden.2'),
+      translate('pagesTranslations.checkoutPageTranslations.packagesInfo.golden.3'),
+      translate('pagesTranslations.checkoutPageTranslations.packagesInfo.golden.4'),
     ],
     mega: [
-      translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.1'),
-      translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.2'),
-      translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.3'),
-      translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.4'),
-      translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.5'),
-      translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.6'),
+      translate('pagesTranslations.checkoutPageTranslations.packagesInfo.mega.1'),
+      translate('pagesTranslations.checkoutPageTranslations.packagesInfo.mega.2'),
+      translate('pagesTranslations.checkoutPageTranslations.packagesInfo.mega.3'),
+      translate('pagesTranslations.checkoutPageTranslations.packagesInfo.mega.4'),
     ],
   };
 

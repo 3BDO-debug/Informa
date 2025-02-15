@@ -73,10 +73,10 @@ function FloatingVideo({ activeStep }) {
                     height="315"
                     src={
                       userPlan.followUpPackage === 'silver-package'
-                        ? 'https://www.youtube.com/embed/iRSAAPPcK7M?start=468'
+                        ? 'https://www.youtube.com/embed/nGVW5w3SNwc'
                         : userPlan.followUpPackage === 'golden-package'
-                        ? 'https://www.youtube.com/embed/iRSAAPPcK7M?start=514'
-                        : 'https://www.youtube.com/embed/iRSAAPPcK7M?start=551'
+                        ? 'https://www.youtube.com/embed/AQOxbolUCZI'
+                        : 'https://www.youtube.com/embed/ReZNMC0KLkA'
                     }
                     title="YouTube video player"
                     frameborder="0"

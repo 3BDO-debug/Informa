@@ -10,6 +10,25 @@ const checkoutPageTranslations = {
     button: 'Choose Your Duration',
     subscribeButton: 'Subscribe',
   },
+  packagesInfo: {
+    silver: {
+      1: 'Customized nutrition and training program',
+      2: 'Monthly follow-up with Captain Hussein (Informa)',
+      3: '24/7 customer service',
+    },
+    golden: {
+      1: 'Customized nutrition and training program',
+      2: 'Every-other-day follow-up with a certified coach from the (Informa) team',
+      3: 'Weekly follow-up with Captain Hussein (Informa)',
+      4: '24/7 customer service',
+    },
+    mega: {
+      1: 'Customized nutrition and training program',
+      2: 'Daily follow-up with a certified coach from the (Informa) team',
+      3: 'Weekly WhatsApp conversation with Captain Hussein (Informa)',
+      4: '24/7 customer service',
+    },
+  },
   duration: { 1: '1 Month', 2: '3 Months', 3: '6 Months', 4: '12 Months', buttons: { back: 'Back', submit: 'Submit' } },
   video: {
     title: { 1: 'Get', 2: 'Everything', 3: 'You Want' },
