@@ -182,7 +182,7 @@ function Durations({ formik, setActiveStep }) {
           <FormHelperText error>{errors.termsAndConditions}</FormHelperText>
         )}
       </Box>
-      <Stack direction="row" gap={2}>
+      <Stack direction={currentLang.value === 'ar' ? 'row-reverse' : 'row'} gap={2}>
         <ButtonBase
           sx={{
             color: 'text.primary',
@@ -197,14 +197,27 @@ function Durations({ formik, setActiveStep }) {
             setActiveStep(1);
           }}
         >
-          <Iconify
-            style={{ fontSize: 30, transform: currentLang.value === 'ar' && 'rotate(180deg)' }}
-            icon="mingcute:arrows-left-line"
-          />
-
-          <Typography variant="subtitle1">
-            {translate('pagesTranslations.checkoutPageTranslations.duration.buttons.back')}
-          </Typography>
+          {currentLang.value === 'ar' ? (
+            <>
+              <Typography variant="subtitle1">
+                {translate('pagesTranslations.checkoutPageTranslations.duration.buttons.back')}
+              </Typography>
+              <Iconify
+                style={{ fontSize: 30, transform: currentLang.value === 'ar' && 'rotate(180deg)' }}
+                icon="mingcute:arrows-right-line"
+              />
+            </>
+          ) : (
+            <>
+              <Iconify
+                style={{ fontSize: 30, transform: currentLang.value === 'ar' && 'rotate(180deg)' }}
+                icon="mingcute:arrows-left-line"
+              />
+              <Typography variant="subtitle1">
+                {translate('pagesTranslations.checkoutPageTranslations.duration.buttons.back')}
+              </Typography>
+            </>
+          )}
         </ButtonBase>
         <ButtonBase
           onClick={() => {
@@ -220,13 +233,27 @@ function Durations({ formik, setActiveStep }) {
             width: '100%',
           }}
         >
-          <Typography variant="subtitle1">
-            {translate('pagesTranslations.checkoutPageTranslations.duration.buttons.submit')}
-          </Typography>
-          <Iconify
-            style={{ fontSize: 30, transform: currentLang.value === 'ar' && 'rotate(180deg)' }}
-            icon="mingcute:arrows-right-line"
-          />
+          {currentLang.value === 'ar' ? (
+            <>
+              <Iconify
+                style={{ fontSize: 30, transform: currentLang.value === 'ar' && 'rotate(180deg)' }}
+                icon="mingcute:arrows-left-line"
+              />
+              <Typography variant="subtitle1">
+                {translate('pagesTranslations.checkoutPageTranslations.duration.buttons.submit')}
+              </Typography>
+            </>
+          ) : (
+            <>
+              <Typography variant="subtitle1">
+                {translate('pagesTranslations.checkoutPageTranslations.duration.buttons.submit')}
+              </Typography>
+              <Iconify
+                style={{ fontSize: 30, transform: currentLang.value === 'ar' && 'rotate(180deg)' }}
+                icon="mingcute:arrows-right-line"
+              />
+            </>
+          )}
         </ButtonBase>
       </Stack>
     </Container>

@@ -4,9 +4,18 @@ const checkoutPageTranslations = {
   contactUs: 'Contact Us For More Help',
   generalInfo: { button: 'Start My Journey' },
   packages: {
-    silver: 'Silver Package',
-    golden: 'Golden Package',
-    mega: 'Mega Package',
+    silver: {
+      title: 'Silver Package',
+      subtitle: 'Eco',
+    },
+    golden: {
+      title: 'Golden Package',
+      subtitle: 'Best Seller',
+    },
+    mega: {
+      title: 'Mega Package',
+      subtitle: 'VIP',
+    },
     button: 'Choose Your Duration',
     subscribeButton: 'Subscribe',
   },

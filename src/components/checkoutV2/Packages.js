@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   ButtonBase,
+  Chip,
   Collapse,
   Icon,
   IconButton,
@@ -105,6 +106,12 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
 
   const [play, setPlay] = useRecoilState(playFloatingVideoAtom);
 
+  const SUBTITLE_COLORS = {
+    silver: 'success',
+    golden: 'error',
+    mega: 'primary',
+  };
+
   return (
     <Box
       onClick={() => {
@@ -126,13 +133,49 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
     >
       <Box component={Stack} sx={{ position: 'relative', zIndex: 2 }} gap={1}>
         <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <Typography
-            variant="h6"
-            sx={{ textTransform: 'uppercase', color: variant === 'mega' ? 'primary.main' : 'grey.300' }}
+          <Stack sx={{ mb: 2 }} gap={1}>
+            <Box>
+              <Chip
+                icon={
+                  variant === 'golden' && <Iconify sx={{ width: 20, height: 20 }} icon="solar:heart-bold-duotone" />
+                }
+                label={translate(`pagesTranslations.checkoutPageTranslations.packages.${variant}.subtitle`)}
+                color={SUBTITLE_COLORS[variant]}
+                sx={{ textTransform: 'uppercase' }}
+              />
+            </Box>
+            <Typography
+              variant="h5"
+              sx={{ textTransform: 'uppercase', color: variant === 'mega' ? 'primary.main' : 'grey.300' }}
+            >
+              {translate(`pagesTranslations.checkoutPageTranslations.packages.${variant}.title`)}
+            </Typography>
+          </Stack>
+
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 1,
+              flexWrap: 'wrap-reverse',
+            }}
           >
-            {title}
-          </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <IconButton
+                sx={{ borderRadius: '99%' }}
+                onClick={() => {
+                  setPlay(true);
+                }}
+              >
+                <Iconify
+                  icon="logos:youtube-icon"
+                  sx={{
+                    width: 30,
+                    height: 30,
+                  }}
+                />
+              </IconButton>
+            </Box>
             <ButtonBase
               onClick={() => {
                 onClick();
@@ -153,26 +196,12 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
               variant="contained"
               size="large"
             >
-              {currentLang.value === 'ar' && <Iconify icon="line-md:chevron-left" />}
-              <Typography variant="subtitle1">
+              {currentLang.value === 'ar' && <Iconify sx={{ width: 20, height: 20 }} icon="line-md:chevron-left" />}
+              <Typography variant="h6">
                 {translate('pagesTranslations.checkoutPageTranslations.packages.subscribeButton')}
               </Typography>
               {currentLang.value === 'en' && <Iconify icon="line-md:chevron-right" />}
             </ButtonBase>
-            <IconButton
-              sx={{ borderRadius: '99%' }}
-              onClick={() => {
-                setPlay(true);
-              }}
-            >
-              <Iconify
-                icon="logos:youtube-icon"
-                sx={{
-                  width: 30,
-                  height: 30,
-                }}
-              />
-            </IconButton>
           </Box>
         </Stack>
         <Stack gap={5}>

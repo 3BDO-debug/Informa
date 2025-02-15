@@ -4,9 +4,18 @@ const checkoutPageTranslations = {
   contactUs: 'تواصل معنا لمزيد من المساعدة',
   generalInfo: { button: 'ابدأ رحلتي' },
   packages: {
-    silver: 'الباقة الفضية ( الاقتصادية )',
-    golden: 'الباقة الذهبية',
-    mega: 'الباقة الميجا ( VIP )',
+    silver: {
+      title: 'الباقة الفضية',
+      subtitle: '( الاقتصادية )',
+    },
+    golden: {
+      title: 'الباقة الذهبية',
+      subtitle: 'الاكثر مبيعا',
+    },
+    mega: {
+      title: 'الباقة الميجا ',
+      subtitle: '( VIP )',
+    },
     button: 'اختر المدة',
     subscribeButton: 'اشترك الان',
   },
