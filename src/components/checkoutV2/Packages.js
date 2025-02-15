@@ -38,6 +38,45 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
 
   const FEATURES_LIST = {
     silver: [
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.1'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.2'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.3'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.4'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.5'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.6'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.7'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.8'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.9'), isFeatured: false },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.10'), isFeatured: false },
+    ],
+    golden: [
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.1'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.2'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.3'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.4'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.5'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.6'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.7'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.8'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.9'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.10'), isFeatured: false },
+    ],
+    mega: [
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.1'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.2'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.3'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.4'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.5'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.6'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.7'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.8'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.9'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.10'), isFeatured: true },
+    ],
+  };
+
+  /*   const FEATURES_LIST = {
+    silver: [
       translate('pagesTranslations.checkoutPageTranslations.packagesInfo.silver.1'),
       translate('pagesTranslations.checkoutPageTranslations.packagesInfo.silver.2'),
       translate('pagesTranslations.checkoutPageTranslations.packagesInfo.silver.3'),
@@ -54,7 +93,7 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
       translate('pagesTranslations.checkoutPageTranslations.packagesInfo.mega.3'),
       translate('pagesTranslations.checkoutPageTranslations.packagesInfo.mega.4'),
     ],
-  };
+  }; */
 
   const PRICES_MAPPING = {
     silver: '1750',
@@ -85,10 +124,10 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
         py: 3,
       }}
     >
-      <Box component={Stack} sx={{ position: 'relative', zIndex: 2 }} gap={3}>
+      <Box component={Stack} sx={{ position: 'relative', zIndex: 2 }} gap={1}>
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Typography
-            variant="overline"
+            variant="h6"
             sx={{ textTransform: 'uppercase', color: variant === 'mega' ? 'primary.main' : 'grey.300' }}
           >
             {title}
@@ -100,8 +139,8 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
                 setActiveStep(2);
               }}
               sx={{
-                bgcolor: variant === 'mega' ? '#fff' : '#000',
-                color: variant === 'mega' ? '#000' : 'grey.100',
+                bgcolor: 'primary.main',
+                color: '#000',
                 px: 3,
                 py: 1,
                 borderRadius: 2,
@@ -115,20 +154,23 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
               size="large"
             >
               {currentLang.value === 'ar' && <Iconify icon="line-md:chevron-left" />}
-              <Typography variant="subtitle2">
+              <Typography variant="subtitle1">
                 {translate('pagesTranslations.checkoutPageTranslations.packages.subscribeButton')}
               </Typography>
               {currentLang.value === 'en' && <Iconify icon="line-md:chevron-right" />}
             </ButtonBase>
             <IconButton
-              sx={{ bgcolor: 'grey.0' }}
+              sx={{ borderRadius: '99%' }}
               onClick={() => {
                 setPlay(true);
               }}
             >
               <Iconify
-                icon="streamline:live-video-solid"
-                sx={{ color: 'grey.900', transform: currentLang.value === 'ar' && 'rotate(180deg)' }}
+                icon="logos:youtube-icon"
+                sx={{
+                  width: 30,
+                  height: 30,
+                }}
               />
             </IconButton>
           </Box>
@@ -153,10 +195,20 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
             </Typography>
           </Box>
           <Collapse in={collapse}>
-            <Stack>
+            <Stack gap={1}>
               {FEATURES_LIST[variant].map((feature, index) => (
-                <Typography key={index} variant="subtitle1" sx={{ color: 'grey.0' }}>
-                  {feature}
+                <Typography
+                  key={index}
+                  variant="subtitle1"
+                  sx={{ color: 'grey.0', textWrap: 'nowrap', display: 'inline-flex', alignItems: 'center', gap: 1 }}
+                >
+                  {
+                    <Iconify
+                      icon={feature.isFeatured ? 'icon-park-solid:check-one' : 'zondicons:close-solid'}
+                      sx={{ color: feature.isFeatured ? 'success.main' : 'error.main', width: 20, height: 20 }}
+                    />
+                  }{' '}
+                  {feature.feature}
                 </Typography>
               ))}
             </Stack>
@@ -197,8 +249,12 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
             width: '100%',
             objectFit: 'cover',
             transition: 'all 0.7s ease-in-out',
-            transform: hovered ? 'scale(1.1)' : 'scale(1)',
-            filter: hovered ? 'brightness(0.7)' : 'brightness(0.3)',
+            transform: hovered
+              ? `scale(1.1) ${currentLang.value === 'ar' && 'scaleX(-1)'}`
+              : `scale(1)  ${currentLang.value === 'ar' && 'scaleX(-1)'}`,
+            filter: hovered
+              ? `brightness(${variant === 'mega' ? '1' : 0.3})`
+              : `brightness(${variant === 'mega' ? '0.7' : 0.2})`,
           }}
           component="img"
           src={background}

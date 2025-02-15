@@ -10,6 +10,18 @@ const checkoutPageTranslations = {
     button: 'Choose Your Duration',
     subscribeButton: 'Subscribe',
   },
+  packagesFeatures: {
+    1: 'Customized diet plan with calories and macros ',
+    2: 'Customized workout program (gym or home)',
+    3: 'Videos for preparing meals',
+    4: 'Video for each workout and cardio',
+    5: 'Tracking system for calories and water',
+    6: 'Dynamic tracking system for workouts',
+    7: 'Limited number of inquiries',
+    8: '24/7 customer service',
+    9: 'Day by day follow up with a certified coach',
+    10: 'Weekly WhatsApp follow up directly with Informa',
+  },
   packagesInfo: {
     silver: {
       1: 'Customized nutrition and training program',
