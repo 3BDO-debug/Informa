@@ -136,7 +136,6 @@ function Checkout() {
 
   const setFollowUpPackageExplainationPopUp = useSetRecoilState(followUpPackageExplainationPopUpAtom);
 
-  const setPaymentInfo = useSetRecoilState(paymentInfoAtom);
   const triggerPaymentPopUp = useSetRecoilState(chechoutPopUpAtom);
   const setTrainingreuestId = useSetRecoilState(trainingRequestIdAtom);
   const setSubscriptionData = useSetRecoilState(subscriptionDataAtom);
@@ -167,8 +166,6 @@ function Checkout() {
         ...values,
         computedTotalPrice: values.payingRegion === 'local' ? userPlanTotalPrice.egpPrice : userPlanTotalPrice.usdPrice,
       };
-
-      setPaymentInfo({ price: requestData.computedTotalPrice, region: userIpRegion });
 
       const lastName =
         values.fullname.includes(' ') && values.fullname.split(' ')[1] ? values.fullname.split(' ')[1] : ' ';

@@ -19,7 +19,9 @@ import {
 import Iconify from '../Iconify';
 import useLocales from 'src/hooks/useLocales';
 import refundPolicyPopUpAtom from 'src/recoil/atoms/refundPolicyPopUpAtom';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import paymentInfoAtom from 'src/recoil/atoms/paymentInfoAtom';
+import userIpRegionAtom from 'src/recoil/atoms/userIpRegionAtom';
 
 function Durations({ formik, setActiveStep }) {
   const { values, setFieldValue, handleSubmit, dirty, errors, touched } = formik;
@@ -38,6 +40,10 @@ function Durations({ formik, setActiveStep }) {
   const handleRefundPolicy = () => {
     triggerRefundPolicy(true);
   };
+
+  const setPaymentInfo = useSetRecoilState(paymentInfoAtom);
+
+  const userIpRegion = useRecoilValue(userIpRegionAtom);
 
   const [plan, setPlan] = useState('silver');
 
@@ -120,6 +126,8 @@ function Durations({ formik, setActiveStep }) {
       setPlan('mega');
     }
   }, [values.payingRegion, values.followUpPackage]);
+
+  setPaymentInfo({ price: offerPrice[plan][currency][values.planDuration], region: userIpRegion });
 
   return (
     <Container maxWidth="md">
