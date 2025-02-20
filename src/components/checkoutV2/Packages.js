@@ -47,7 +47,7 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
       { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.6'), isFeatured: true },
       { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.7'), isFeatured: true },
       { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.8'), isFeatured: true },
-      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.9'), isFeatured: false },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.silver9'), isFeatured: false },
       { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.10'), isFeatured: false },
     ],
     golden: [
@@ -59,7 +59,7 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
       { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.6'), isFeatured: true },
       { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.7'), isFeatured: true },
       { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.8'), isFeatured: true },
-      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.9'), isFeatured: true },
+      { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.gold9'), isFeatured: true },
       { feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.10'), isFeatured: false },
     ],
     mega: [
