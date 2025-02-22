@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// http://127.0.0.1:8000 /-33=-3/  https://informa-2f385573ab19.herokuapp.com https://informa180.pythonanywhere.com/ ....
+// http://127.0.0.1:8000 /-33=-3/https://if180-375381fc460c.herokuapp.com   https://informa-2f385573ab19.herokuapp.com https://informa180.pythonanywhere.com/ ....
 
-export const mainUrl = 'https://informa-2f385573ab19.herokuapp.com';
+export const mainUrl = 'https://if180-375381fc460c.herokuapp.com';
 
 const axiosInstance = axios.create({
   baseURL: mainUrl,
