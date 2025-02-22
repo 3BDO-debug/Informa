@@ -39,6 +39,19 @@ function GeneralInfo({ formik, setActiveStep }) {
       });
   }, [values.fullname, values.whatsappNumber]);
 
+  const convertArabicToWesternNumbers = (value) => {
+    const arabicNumbers = '٠١٢٣٤٥٦٧٨٩';
+    const westernNumbers = '0123456789';
+
+    return value
+      .split('')
+      .map((char) => {
+        const index = arabicNumbers.indexOf(char);
+        return index !== -1 ? westernNumbers[index] : char;
+      })
+      .join('');
+  };
+
   return (
     <Box>
       <Stack gap={3}>
@@ -54,7 +67,10 @@ function GeneralInfo({ formik, setActiveStep }) {
         <MUIPhoneNumberInput
           {...getFieldProps('whatsappNumber')}
           value={values.whatsappNumber}
-          setValueHandler={(value) => setFieldValue('whatsappNumber', `${value}`)}
+          setValueHandler={(value) => {
+            const convertedValue = convertArabicToWesternNumbers(value);
+            setFieldValue('whatsappNumber', convertedValue);
+          }}
           label={translate('componentsTranslations.registerNowPopUpTranslations.form.whatsappNumber')}
         />
         <FormHelperText error>{Boolean(touched.whatsappNumber) && errors.whatsappNumber}</FormHelperText>

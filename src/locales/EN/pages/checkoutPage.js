@@ -28,7 +28,9 @@ const checkoutPageTranslations = {
     6: 'Dynamic tracking system for workouts',
     7: 'Limited number of inquiries',
     8: '24/7 customer service',
-    9: 'Day by day follow up with a certified coach',
+    9: 'Daily follow up with a certified coach',
+    silver9: 'follow up with a certified coach',
+    gold9: 'Day by day follow up with a certified coach',
     10: 'Weekly WhatsApp follow up directly with Informa',
   },
   packagesInfo: {

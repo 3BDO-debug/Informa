@@ -73,6 +73,7 @@ import { userIpRegionFetcher } from 'src/__apis__/userIpRegion';
 import Transformations from 'src/sections/homePage/Transformations';
 import TransformationCheckout from '../TransformationCheckout';
 import FloatingVideo from './FloatingVideo';
+import RefundPolicyPopUp from '../RefundPolicyPopUp';
 
 // -------------------------------------------------------------------------------------------------------
 
@@ -311,7 +312,6 @@ function Checkout() {
               </Stack>
             </Stack>
           </Grid>
-
           <Grid item xs={12}>
             <Stack justifyContent="center" flexDirection="row">
               <Paper
@@ -345,6 +345,7 @@ function Checkout() {
         </Grid>
         <PaymentPopUp />
         <SecretCodePopUp />
+        <RefundPolicyPopUp />
       </Container>
     </Box>
   );
