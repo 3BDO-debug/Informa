@@ -52,7 +52,7 @@ function Pricing() {
             {translate('commonSectionsTranslations.pricingsSection.title')}
           </Typography>
         </Grid>
-        <Grid item xs={12}>
+      {/* /*   <Grid item xs={12}> */
           <Box
             sx={{
               display: 'flex',
@@ -130,8 +130,8 @@ function Pricing() {
               /> */}
             </Box>
           </Box>
-        </Grid>
-        <Grid item xs={12}>
+        </Grid> */}
+        {/* <Grid item xs={12}>
           <Box
             sx={{
               display: 'flex',
@@ -216,12 +216,12 @@ function Pricing() {
               />
             </Box>
           </Box>
-        </Grid>
-        <Grid item xs={12}>
+        </Grid> */}
+       {/*  <Grid item xs={12}>
           <Typography sx={{ textAlign: 'center' }} variant="h4">
             {translate('commonSectionsTranslations.pricingsSection.plansData.headTitle')}
           </Typography>
-        </Grid>
+        </Grid> */}
         <Grid item xs={12}>
           <Grid container spacing={3} mt={5} mb={12}>
             {followUpPlans(translate).map((followUp, index) => {

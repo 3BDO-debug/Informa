@@ -3,27 +3,43 @@ const followUpPlans = (translate) => [
     title: translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.title'),
     features: [
       {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.1'),
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.1'),
         included: true,
       },
       {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.2'),
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.2'),
         included: true,
       },
       {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.3'),
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.3'),
+        included: true,
+      },
+      {
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.4'),
+        included: true,
+      },
+      {
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.5'),
+        included: true,
+      },
+      {
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.6'),
+        included: true,
+      },
+      {
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.7'),
+        included: true,
+      },
+      {
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.8'),
+        included: true,
+      },
+      {
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.silver9'),
         included: false,
       },
       {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.4'),
-        included: false,
-      },
-      {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.5'),
-        included: false,
-      },
-      {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.silverPackage.6'),
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.10'),
         included: false,
       },
     ],
@@ -35,27 +51,43 @@ const followUpPlans = (translate) => [
     title: translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.title'),
     features: [
       {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.1'),
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.1'),
         included: true,
       },
       {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.2'),
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.2'),
         included: true,
       },
       {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.3'),
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.3'),
         included: true,
       },
       {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.4'),
-        included: false,
-      },
-      {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.5'),
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.4'),
         included: true,
       },
       {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.goldenPackage.6'),
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.5'),
+        included: true,
+      },
+      {
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.6'),
+        included: true,
+      },
+      {
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.7'),
+        included: true,
+      },
+      {
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.8'),
+        included: true,
+      },
+      {
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.gold9'),
+        included: true,
+      },
+      {
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.10'),
         included: false,
       },
     ],
@@ -67,27 +99,43 @@ const followUpPlans = (translate) => [
     title: translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.title'),
     features: [
       {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.1'),
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.1'),
         included: true,
       },
       {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.2'),
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.2'),
         included: true,
       },
       {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.3'),
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.3'),
         included: true,
       },
       {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.4'),
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.4'),
         included: true,
       },
       {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.5'),
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.5'),
         included: true,
       },
       {
-        feature: translate('commonSectionsTranslations.pricingsSection.plansData.megaPackage.6'),
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.6'),
+        included: true,
+      },
+      {
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.7'),
+        included: true,
+      },
+      {
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.8'),
+        included: true,
+      },
+      {
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.9'),
+        included: true,
+      },
+      {
+        feature: translate('pagesTranslations.checkoutPageTranslations.packagesFeatures.10'),
         included: true,
       },
     ],

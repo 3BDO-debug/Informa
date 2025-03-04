@@ -73,7 +73,7 @@ function Header() {
     { title: translate('componentsTranslations.headerTranslations.1'), href: '/' },
     { title: translate('componentsTranslations.headerTranslations.2'), href: '/transformations' },
     { title: translate('componentsTranslations.headerTranslations.3'), href: '/about-us#feedbacks' },
-    { title: translate('componentsTranslations.headerTranslations.4'), href: '/checkout' },
+    { title: translate('componentsTranslations.headerTranslations.4'), href: '/plans-&-pricing' },
     { title: translate('componentsTranslations.headerTranslations.5'), href: '/about-us' },
     { title: translate('componentsTranslations.headerTranslations.6'), href: '/contact-us' },
   ];
