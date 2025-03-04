@@ -15,6 +15,7 @@ import {
   Checkbox,
   Button,
   FormHelperText,
+  Icon,
 } from '@mui/material';
 import Iconify from '../Iconify';
 import useLocales from 'src/hooks/useLocales';
@@ -30,7 +31,8 @@ function Durations({ formik, setActiveStep }) {
 
   const options = [
     { label: translate('pagesTranslations.checkoutPageTranslations.duration.1'), value: 1 },
-    { label: translate('pagesTranslations.checkoutPageTranslations.duration.2'), value: 3 },
+    // { label: translate('pagesTranslations.checkoutPageTranslations.duration.2'), value: 3 },
+    { label: translate('pagesTranslations.checkoutPageTranslations.duration.5'), value: 4 },
     { label: translate('pagesTranslations.checkoutPageTranslations.duration.3'), value: 6 },
     { label: translate('pagesTranslations.checkoutPageTranslations.duration.4'), value: 12 },
   ];
@@ -53,16 +55,16 @@ function Durations({ formik, setActiveStep }) {
 
   const PRICES = {
     silver: {
-      egp: { 1: 1750, 3: 3500, 6: 6000, 12: 9500 },
-      usd: { 1: 125, 3: 250, 6: 420, 12: 670 },
+      egp: { 1: 1750, 3: 3500, 6: 6000, 12: 9500, 4: 3500 },
+      usd: { 1: 125, 3: 250, 6: 420, 12: 670, 4: 250 },
     },
     golden: {
-      egp: { 1: 2500, 3: 5000, 6: 8500, 12: 13500 },
-      usd: { 1: 175, 3: 350, 6: 580, 12: 930 },
+      egp: { 1: 2500, 3: 5000, 6: 8500, 12: 13500, 4: 5000 },
+      usd: { 1: 175, 3: 350, 6: 580, 12: 930, 4: 350 },
     },
     mega: {
-      egp: { 1: 3750, 3: 7500, 6: 12000, 12: 19000 },
-      usd: { 1: 250, 3: 500, 6: 840, 12: 1350 },
+      egp: { 1: 3750, 3: 7500, 6: 12000, 12: 19000, 4: 7500 },
+      usd: { 1: 250, 3: 500, 6: 840, 12: 1350, 4: 500 },
     },
   };
 
@@ -73,12 +75,14 @@ function Durations({ formik, setActiveStep }) {
         3: PRICES.silver.egp[3] * 0.5,
         6: PRICES.silver.egp[6] * 0.5,
         12: PRICES.silver.egp[12] * 0.5,
+        4: PRICES.silver.egp[3] * 0.5,
       },
       usd: {
         1: PRICES.silver.usd[1] * 0.75,
         3: PRICES.silver.usd[3] * 0.5,
         6: PRICES.silver.usd[6] * 0.5,
         12: PRICES.silver.usd[12] * 0.5,
+        4: PRICES.silver.usd[3] * 0.5,
       },
     },
     golden: {
@@ -87,12 +91,14 @@ function Durations({ formik, setActiveStep }) {
         3: PRICES.golden.egp[3] * 0.5,
         6: PRICES.golden.egp[6] * 0.5,
         12: PRICES.golden.egp[12] * 0.5,
+        4: PRICES.golden.egp[3] * 0.5,
       },
       usd: {
         1: PRICES.golden.usd[1] * 0.75,
         3: PRICES.golden.usd[3] * 0.5,
         6: PRICES.golden.usd[6] * 0.5,
         12: PRICES.golden.usd[12] * 0.5,
+        4: PRICES.golden.usd[3] * 0.5,
       },
     },
     mega: {
@@ -101,12 +107,14 @@ function Durations({ formik, setActiveStep }) {
         3: PRICES.mega.egp[3] * 0.75,
         6: PRICES.mega.egp[6] * 0.75,
         12: PRICES.mega.egp[12] * 0.75,
+        4: PRICES.mega.egp[3] * 0.75,
       },
       usd: {
         1: PRICES.mega.usd[1] * 0.75,
         3: PRICES.mega.usd[3] * 0.75,
         6: PRICES.mega.usd[6] * 0.75,
         12: PRICES.mega.usd[12] * 0.75,
+        4: PRICES.mega.usd[3] * 0.75,
       },
     },
   };
@@ -117,6 +125,8 @@ function Durations({ formik, setActiveStep }) {
     } else {
       setCurrency('usd');
     }
+
+    setFieldValue('planDuration', 4);
 
     if (values.followUpPackage === 'silver-package') {
       setPlan('silver');
@@ -143,6 +153,9 @@ function Durations({ formik, setActiveStep }) {
                       padding: 2,
                       borderColor: values.planDuration === option.value ? 'primary.main' : 'grey.300',
                       boxShadow: values.planDuration === option.value ? 3 : 0,
+                      display: 'flex',
+                      flexDirection: 'row',
+                      alignItems: 'center',
                     }}
                   >
                     <FormControlLabel
@@ -151,6 +164,7 @@ function Durations({ formik, setActiveStep }) {
                       label={<Typography variant="h6">{option.label}</Typography>}
                       sx={{ width: '100%' }}
                     />
+                    {option.value === 4 && <Iconify icon="bxs:offer" sx={{ color: 'primary.main', fontSize: 40 }} />}
                   </Card>
                 </Grid>
               ))}
@@ -158,6 +172,7 @@ function Durations({ formik, setActiveStep }) {
           </RadioGroup>
         </FormControl>
       </Box>
+
       <Box sx={{ display: 'flex', justifyContent: 'flex-start', width: '100%', mt: 4 }}>
         <Typography variant="h5">
           {translate('componentsTranslations.registerNowPopUpTranslations.form.totalPrice')} :

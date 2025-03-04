@@ -10,6 +10,8 @@ const customizeUserPlan = (followUpPackage, planProgram, planDuration) => {
     total = { egpPrice: 6000, usdPrice: 420 };
   } else if (planProgram === 'nutrition-workout' && planDuration === 12) {
     total = { egpPrice: 9500, usdPrice: 670 };
+  } else if (planProgram === 'nutrition-workout' && planDuration === 4) {
+    total = { egpPrice: 3500, usdPrice: 250 };
   }
 
   /* Workout logic */
@@ -44,6 +46,8 @@ const customizeUserPlan = (followUpPackage, planProgram, planDuration) => {
     total = { egpPrice: total.egpPrice + 2500, usdPrice: total.usdPrice + 160 };
   } else if (followUpPackage === 'golden-package' && planDuration === 12) {
     total = { egpPrice: total.egpPrice + 4000, usdPrice: total.usdPrice + 260 };
+  } else if (followUpPackage === 'golden-package' && planDuration === 4) {
+    total = { egpPrice: total.egpPrice + 1500, usdPrice: total.usdPrice + 100 };
   }
 
   if (followUpPackage === 'mega-package' && planDuration === 1) {
@@ -54,6 +58,8 @@ const customizeUserPlan = (followUpPackage, planProgram, planDuration) => {
     total = { egpPrice: total.egpPrice + 6000, usdPrice: total.usdPrice + 420 };
   } else if (followUpPackage === 'mega-package' && planDuration === 12) {
     total = { egpPrice: total.egpPrice + 9500, usdPrice: total.usdPrice + 680 };
+  } else if (followUpPackage === 'mega-package' && planDuration === 4) {
+    total = { egpPrice: total.egpPrice + 4000, usdPrice: total.usdPrice + 250 };
   }
 
   return total;

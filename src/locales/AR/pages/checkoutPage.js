@@ -58,6 +58,7 @@ const checkoutPageTranslations = {
     3: '6 أشهر',
     4: '12 شهرًا',
     buttons: { back: 'عودة', submit: 'إرسال' },
+    5: '3 أشهر + 1 شهر مجاني',
   },
   video: {
     title: { 1: 'احصل', 2: 'على كل', 3: 'ما تريد' },

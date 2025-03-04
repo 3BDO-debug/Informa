@@ -29,6 +29,7 @@ import refundPolicyPopUpAtom from 'src/recoil/atoms/refundPolicyPopUpAtom';
 import StripeCheckout from './checkout/StripeCheckout';
 import PaymentPopUp from './checkout/PaymentPopUp';
 import SecretCodePopUp from './checkout/SecretCodePopUp';
+import RamadanOffer from './RamadanOffer';
 
 // -------------------------------------------------------------------------------------------
 
@@ -90,6 +91,8 @@ function AppWrapper({ children }) {
     }
   }, [query]);
 
+  const [offerPopUp, triggerOfferPopUp] = useState(true);
+
   return (
     <>
       <Box sx={{ overflowX: 'hidden' }}>
@@ -144,6 +147,12 @@ function AppWrapper({ children }) {
       {/* Snackbar alert */}
       <Alert />
       {/* Refund policy pop up */}
+      <RamadanOffer
+        isTriggered={offerPopUp}
+        closeHandler={() => {
+          triggerOfferPopUp(false);
+        }}
+      />
       <RefundPolicyPopUp />
     </>
   );

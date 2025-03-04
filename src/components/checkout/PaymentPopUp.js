@@ -45,7 +45,7 @@ function PaymentPopUp() {
     <Dialog open={paymentPopUp} onClose={handlePopUpClose} fullWidth>
       <DialogContent>
         <Stack direction="row" sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Button
+          {/* <Button
             startIcon={<Iconify icon="ic:round-arrow-back-ios-new" />}
             onClick={() => {
               triggerRegisterNowPopUp(true);
@@ -53,7 +53,7 @@ function PaymentPopUp() {
             }}
           >
             Back
-          </Button>
+          </Button> */}
           <Typography variant="h3" sx={{ display: 'flex', justifyContent: 'center' }}>
             {currentLang.value === 'ar' ? 'إتمام الدفع' : 'Checkout'}
           </Typography>

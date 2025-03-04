@@ -52,7 +52,14 @@ const checkoutPageTranslations = {
       4: '24/7 customer service',
     },
   },
-  duration: { 1: '1 Month', 2: '3 Months', 3: '6 Months', 4: '12 Months', buttons: { back: 'Back', submit: 'Submit' } },
+  duration: {
+    1: '1 Month',
+    2: '3 Months',
+    3: '6 Months',
+    4: '12 Months',
+    buttons: { back: 'Back', submit: 'Submit' },
+    5: '3 Months Plus 1 Free Month',
+  },
   video: {
     title: { 1: 'Get', 2: 'Everything', 3: 'You Want' },
     subtitle: 'Fuel your fitness journey—secure your plan and take the first step towards a healthier you!',
