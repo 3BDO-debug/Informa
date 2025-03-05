@@ -22,7 +22,7 @@ import { MotionViewport, varFade } from 'src/components/animate';
 import Iconify from 'src/components/Iconify';
 import PricingCard from 'src/components/Pricing/PricingCard';
 
-// ---------------------------------------------------------------------------------------------------------
+// ------------------------------------22---------------------------------------------------------------------
 
 function Pricing() {
   const [selectedPlanType, setSelectedPlanType] = useState(1);
