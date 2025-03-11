@@ -97,9 +97,9 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
   }; */
 
   const PRICES_MAPPING = {
-    silver: '1750',
-    golden: '2500',
-    mega: '5625',
+    silver: '1500',
+    golden: '2000',
+    mega: '6000',
   };
 
   const [collapse, setCollapse] = useState(false);
@@ -316,8 +316,8 @@ function Packages({ formik, setActiveStep, price }) {
             setFieldValue('followUpPackage', 'silver-package');
             setUserPlan({ ...userPlan, followUpPackage: 'silver-package' });
           }}
-          egPrice={3500}
-          usPrice={250}
+          egPrice={3000}
+          usPrice={200}
           variant="silver"
         />
         <PackageCard
@@ -332,8 +332,8 @@ function Packages({ formik, setActiveStep, price }) {
             setUserPlan({ ...userPlan, followUpPackage: 'golden-package' });
           }}
           golden={true}
-          egPrice={5000}
-          usPrice={350}
+          egPrice={4000}
+          usPrice={300}
           variant="golden"
         />
         <PackageCard
@@ -349,7 +349,7 @@ function Packages({ formik, setActiveStep, price }) {
           }}
           mega={true}
           egPrice={7500}
-          usPrice={500}
+          usPrice={450}
           variant="mega"
         />
       </Stack>

@@ -30,7 +30,7 @@ function Durations({ formik, setActiveStep }) {
   const { translate, currentLang } = useLocales();
 
   const options = [
-    { label: translate('pagesTranslations.checkoutPageTranslations.duration.1'), value: 1 },
+    /* { label: translate('pagesTranslations.checkoutPageTranslations.duration.1'), value: 1 }, */
     // { label: translate('pagesTranslations.checkoutPageTranslations.duration.2'), value: 3 },
     { label: translate('pagesTranslations.checkoutPageTranslations.duration.5'), value: 4 },
     { label: translate('pagesTranslations.checkoutPageTranslations.duration.3'), value: 6 },
@@ -55,66 +55,66 @@ function Durations({ formik, setActiveStep }) {
 
   const PRICES = {
     silver: {
-      egp: { 1: 1750, 3: 3500, 6: 6000, 12: 9500, 4: 3500 },
-      usd: { 1: 125, 3: 250, 6: 420, 12: 670, 4: 250 },
+      egp: { /*  1: 1750, */ 3: 3000, 6: 5000, 12: 8000, 4: 3000 },
+      usd: { /* 1: 125, */ 3: 200, 6: 350, 12: 600, 4: 200 },
     },
     golden: {
-      egp: { 1: 2500, 3: 5000, 6: 8500, 12: 13500, 4: 5000 },
-      usd: { 1: 175, 3: 350, 6: 580, 12: 930, 4: 350 },
+      egp: { /*  1: 2500, */ 3: 4000, 6: 7000, 12: 12000, 4: 4000 },
+      usd: { /* 1: 175, */ 3: 300, 6: 580, 12: 800, 4: 300 },
     },
     mega: {
-      egp: { 1: 3750, 3: 7500, 6: 12000, 12: 19000, 4: 7500 },
-      usd: { 1: 250, 3: 500, 6: 840, 12: 1350, 4: 500 },
+      egp: { /* 1: 3750, */ 3: 7500, 6: 12000, 12: 19000, 4: 7500 },
+      usd: { /* 1: 250, */ 3: 450, 6: 800, 12: 1200, 4: 450 },
     },
   };
 
   const offerPrice = {
     silver: {
       egp: {
-        1: PRICES.silver.egp[1] * 0.75,
-        3: PRICES.silver.egp[3] * 0.5,
-        6: PRICES.silver.egp[6] * 0.5,
-        12: PRICES.silver.egp[12] * 0.5,
-        4: PRICES.silver.egp[3] * 0.5,
+        /*  1: PRICES.silver.egp[1] * 0.75, */
+        3: 1500,
+        6: 2500,
+        12: 4000,
+        4: 1500,
       },
       usd: {
-        1: PRICES.silver.usd[1] * 0.75,
-        3: PRICES.silver.usd[3] * 0.5,
-        6: PRICES.silver.usd[6] * 0.5,
-        12: PRICES.silver.usd[12] * 0.5,
-        4: PRICES.silver.usd[3] * 0.5,
+        /*         1: PRICES.silver.usd[1] * 0.75, */
+        3: 100,
+        6: 175,
+        12: 300,
+        4: 100,
       },
     },
     golden: {
       egp: {
-        1: PRICES.golden.egp[1] * 0.75,
-        3: PRICES.golden.egp[3] * 0.5,
-        6: PRICES.golden.egp[6] * 0.5,
-        12: PRICES.golden.egp[12] * 0.5,
-        4: PRICES.golden.egp[3] * 0.5,
+        /*  1: PRICES.golden.egp[1] * 0.75, */
+        3: 2000,
+        6: 3500,
+        12: 6000,
+        4: 2000,
       },
       usd: {
-        1: PRICES.golden.usd[1] * 0.75,
-        3: PRICES.golden.usd[3] * 0.5,
-        6: PRICES.golden.usd[6] * 0.5,
-        12: PRICES.golden.usd[12] * 0.5,
-        4: PRICES.golden.usd[3] * 0.5,
+        /* 1: PRICES.golden.usd[1] * 0.75, */
+        3: 150,
+        6: 250,
+        12: 400,
+        4: 150,
       },
     },
     mega: {
       egp: {
-        1: PRICES.mega.egp[1] * 0.75,
-        3: PRICES.mega.egp[3] * 0.75,
-        6: PRICES.mega.egp[6] * 0.75,
-        12: PRICES.mega.egp[12] * 0.75,
-        4: PRICES.mega.egp[3] * 0.75,
+        /* 1: PRICES.mega.egp[1] * 0.75, */
+        3: 6000,
+        6: 9600,
+        12: 15200,
+        4: 6000,
       },
       usd: {
-        1: PRICES.mega.usd[1] * 0.75,
-        3: PRICES.mega.usd[3] * 0.75,
-        6: PRICES.mega.usd[6] * 0.75,
-        12: PRICES.mega.usd[12] * 0.75,
-        4: PRICES.mega.usd[3] * 0.75,
+        /*  1: PRICES.mega.usd[1] * 0.75, */
+        3: 350,
+        6: 650,
+        12: 950,
+        4: 350,
       },
     },
   };
