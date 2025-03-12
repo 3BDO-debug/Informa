@@ -147,12 +147,12 @@ function AppWrapper({ children }) {
       {/* Snackbar alert */}
       <Alert />
       {/* Refund policy pop up */}
-      <RamadanOffer
+      {/*   <RamadanOffer
         isTriggered={offerPopUp}
         closeHandler={() => {
           triggerOfferPopUp(false);
         }}
-      />
+      /> */}
       <RefundPolicyPopUp />
     </>
   );

@@ -58,7 +58,7 @@ const checkoutPageTranslations = {
     3: '6 Months',
     4: '12 Months',
     buttons: { back: 'Back', submit: 'Submit' },
-    5: '3 Months Plus 1 Free Month',
+    5: '3 Months',
   },
   video: {
     title: { 1: 'Get', 2: 'Everything', 3: 'You Want' },
