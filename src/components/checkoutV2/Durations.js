@@ -32,7 +32,7 @@ function Durations({ formik, setActiveStep }) {
   const options = [
     /* { label: translate('pagesTranslations.checkoutPageTranslations.duration.1'), value: 1 }, */
     // { label: translate('pagesTranslations.checkoutPageTranslations.duration.2'), value: 3 },
-    { label: translate('pagesTranslations.checkoutPageTranslations.duration.5'), value: 4 },
+    { label: translate('pagesTranslations.checkoutPageTranslations.duration.5'), value: 3 },
     { label: translate('pagesTranslations.checkoutPageTranslations.duration.3'), value: 6 },
     { label: translate('pagesTranslations.checkoutPageTranslations.duration.4'), value: 12 },
   ];
