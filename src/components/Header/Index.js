@@ -74,6 +74,7 @@ function Header() {
     { title: translate('componentsTranslations.headerTranslations.2'), href: '/transformations' },
     { title: translate('componentsTranslations.headerTranslations.3'), href: '/about-us#feedbacks' },
     { title: translate('componentsTranslations.headerTranslations.4'), href: '/plans-&-pricing' },
+    { title: translate('componentsTranslations.headerTranslations.7'), href: '/mobile-app' },
     { title: translate('componentsTranslations.headerTranslations.5'), href: '/about-us' },
     { title: translate('componentsTranslations.headerTranslations.6'), href: '/contact-us' },
   ];
@@ -126,10 +127,12 @@ function Header() {
         }}
       >
         <Container
+          // maxWidth="xl"
           sx={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            maxWidth: '1350px !important'
           }}
         >
           <Box
@@ -225,7 +228,7 @@ function Header() {
                       variant="subtitle2"
                       sx={{
                         color:
-                          isOffset || detailsPageFinder() || pathname === '/start-journey'
+                          isOffset || detailsPageFinder() || pathname === '/start-journey' || pathname === '/mobile-app'
                             ? 'text.primary'
                             : 'common.white',
                       }}

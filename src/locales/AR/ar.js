@@ -17,6 +17,7 @@ import {
   transformationsPageTranslations,
   startJourneyPageTranslations,
   checkoutPageTranslations,
+  mobileAppPageTranslations,
 } from './pages';
 
 // ----------------------------------------------------------------------
@@ -35,6 +36,7 @@ const ar = {
     contactUsPageTranslations: contactUsPageTranslations,
     startJourneyPageTranslations: startJourneyPageTranslations,
     checkoutPageTranslations: checkoutPageTranslations,
+    mobileAppPageTranslations,
   },
   commonSectionsTranslations: commonSectionsTranslations,
   componentsTranslations: {

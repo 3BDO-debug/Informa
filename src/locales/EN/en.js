@@ -19,6 +19,7 @@ import {
   transformationsPageTranslations,
   startJourneyPageTranslations,
   checkoutPageTranslations,
+  mobileAppPageTranslations,
 } from './pages';
 
 // IF THIS TRANSLATION IS INCORRECT PLEASE IGNORE THIS AS THIS TRANSLATION IS FOR DEMO PURPOSES ONLY
@@ -35,6 +36,7 @@ const en = {
     contactUsPageTranslations: contactUsPageTranslations,
     startJourneyPageTranslations: startJourneyPageTranslations,
     checkoutPageTranslations: checkoutPageTranslations,
+    mobileAppPageTranslations,
   },
   commonSectionsTranslations: commonSectionsTranslations,
   componentsTranslations: {

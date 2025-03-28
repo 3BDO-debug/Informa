@@ -6,6 +6,7 @@ const footerTranslations = {
     3: 'Plans & Pricing',
     4: 'About Us',
     5: 'Contact Us',
+    6: 'Informa App',
   },
   about: `Hussein Sayed is a certified fitness trainer and nutritionist who helps people change their mindsets and adopt healthier lifestyles`,
   contact: {

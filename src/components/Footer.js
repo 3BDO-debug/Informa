@@ -29,6 +29,7 @@ export default function Footer() {
         { name: translate('componentsTranslations.footerTranslations.links.1'), href: '/' },
         { name: translate('componentsTranslations.footerTranslations.links.2'), href: '/transformations' },
         { name: translate('componentsTranslations.footerTranslations.links.3'), href: '/plans-&-pricing' },
+        { name: translate('componentsTranslations.footerTranslations.links.6'), href: '/mobile-app' },
         { name: translate('componentsTranslations.footerTranslations.links.4'), href: '/about-us' },
         { name: translate('componentsTranslations.footerTranslations.links.5'), href: '/contact-us' },
       ],
