@@ -45,6 +45,8 @@ function mobileApp() {
     }
   }, []);
 
+  //----------------------------------------------
+
   const handleDownload = () => {
     if (device === 'ios') {
       window.open('https://apps.apple.com/eg/app/informa-180/id6741183566', '_self');
