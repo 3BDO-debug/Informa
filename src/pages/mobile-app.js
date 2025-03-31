@@ -49,7 +49,7 @@ function mobileApp() {
     if (device === 'ios') {
       window.open('https://apps.apple.com/eg/app/informa-180/id6741183566', '_self');
     } else if (device === 'android') {
-      window.open('https://expo.dev/artifacts/eas/s1dfvgyU48MhiPXCNsNXiy.apk', '_self');
+      window.open('https://expo.dev/artifacts/eas/VupiNDS6PAD8Z5tMc7bxZ.apk', '_self');
     } else {
       triggerAlert({
         triggered: 'success',
@@ -91,9 +91,9 @@ function mobileApp() {
                 <Stack
                   onClick={() => {
                     if (device === 'android') {
-                      window.open('https://expo.dev/artifacts/eas/s1dfvgyU48MhiPXCNsNXiy.apk', '_self');
+                      window.open('https://expo.dev/artifacts/eas/VupiNDS6PAD8Z5tMc7bxZ.apk', '_self');
                     } else if (device !== 'ios' && device !== 'android') {
-                      setLink('https://expo.dev/artifacts/eas/s1dfvgyU48MhiPXCNsNXiy.apk');
+                      setLink('https://expo.dev/artifacts/eas/VupiNDS6PAD8Z5tMc7bxZ.apk');
                       triggerQrPopUp(true);
                     } else {
                       triggerAlert({
