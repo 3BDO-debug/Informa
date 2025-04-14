@@ -1,8 +1,8 @@
 {
-  "name": "@minimal/material-kit-nextjs",
-  "author": "minimals.cc",
+  "name": "informa180",
+  "author": "basedontech",
   "version": "3.4.0",
-  "description": "Simple Next.Js & Javascript",
+  "description": "Informa-180 Powered By Based On Tech",
   "private": true,
   "scripts": {
     "lint": "next lint",
