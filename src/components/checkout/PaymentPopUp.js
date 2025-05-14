@@ -80,7 +80,7 @@ function PaymentPopUp() {
                   borderRadius: 3,
                 }}
                 onClick={() => {
-                  window.open('https://wa.link/cfn3ss');
+                  window.open('https://wa.me/201019484861');
                 }}
               >
                 <Card sx={{ boxShadow: 20 }}>

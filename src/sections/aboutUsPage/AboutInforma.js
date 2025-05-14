@@ -71,7 +71,7 @@ function AboutInforma() {
               </Grid>
               <Grid item xs={12}>
                 <Button
-                  onClick={() => window.open('https://wa.link/cfn3ss')}
+                  onClick={() => window.open('https://wa.me/201019484861')}
                   startIcon={<FitnessCenterIcon />}
                   variant="contained"
                 >

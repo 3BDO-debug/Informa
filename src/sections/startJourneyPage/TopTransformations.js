@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
+import { useRouter } from 'next/router';
 // material
 import { Box, Button, ButtonBase, Grid, Typography, keyframes, styled, useMediaQuery, useTheme } from '@mui/material';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
@@ -24,6 +25,8 @@ const ActionButton = () => {
   const theme = useTheme();
 
   const { translate } = useLocales();
+
+  const { query, push } = useRouter();
 
   const triggerRegisterNowPopUp = useSetRecoilState(registerNowPopUpAtom);
 
@@ -84,7 +87,9 @@ const ActionButton = () => {
       </Typography>
       <AnimatedButton
         variant="contained"
-        onClick={() => triggerRegisterNowPopUp(true)}
+        onClick={() => {
+          push('/checkout');
+        }}
         sx={{
           fontSize: {
             xs: 6.8,

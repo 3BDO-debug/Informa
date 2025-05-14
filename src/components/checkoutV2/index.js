@@ -315,7 +315,7 @@ function Checkout() {
           <Grid item xs={12}>
             <Stack justifyContent="center" flexDirection="row">
               <Paper
-                onClick={() => window.open('https://wa.link/cfn3ss')}
+                onClick={() => window.open('https://wa.me/201019484861')}
                 component={ButtonBase}
                 sx={{
                   display: 'flex',

@@ -91,8 +91,8 @@ export default function Footer() {
                 </IconButton>
               </Box>
               <Box marginRight={1}>
-                {/* https://wa.link/cfn3ss */}
-                <IconButton onClick={() => window.open('https://wa.link/cfn3ss')}>
+                {/* https://wa.me/201019484861*/}
+                <IconButton onClick={() => window.open('https://wa.me/201019484861')}>
                   <Box component="img" src="/icons/whatsapp.png" width={30} />
                 </IconButton>
               </Box>

@@ -132,7 +132,7 @@ function Header() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            maxWidth: '1350px !important'
+            maxWidth: '1350px !important',
           }}
         >
           <Box
@@ -265,7 +265,7 @@ function Header() {
             }}
           >
             <Button
-              onClick={() => window.open('https://wa.link/cfn3ss')}
+              onClick={() => window.open('https://wa.me/201019484861')}
               startIcon={<WhatsAppIcon />}
               variant="outlined"
             >
@@ -300,7 +300,7 @@ function Header() {
             }}
           >
             {/* Whatsapp */}
-            <IconButton onClick={() => window.open('https://wa.link/cfn3ss')}>
+            <IconButton onClick={() => window.open('https://wa.me/201019484861')}>
               <Box component="img" src="/icons/whatsapp.png" width={25} />
             </IconButton>
             {/* Dark / Light mode */}
