@@ -111,10 +111,10 @@ function Durations({ formik, setActiveStep }) {
       },
       usd: {
         /*  1: PRICES.mega.usd[1] * 0.75, */
-        3: 350,
+        3: 450,
         6: 650,
         12: 950,
-        4: 350,
+        4: 450,
       },
     },
   };
