@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 // recoil
 import { useRecoilState } from 'recoil';
 // lottie
-import Lottie from 'lottie-react';
 // @Mui
 import { Box, Container, Grid, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 // animations
