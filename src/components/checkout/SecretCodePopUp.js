@@ -2,8 +2,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 // next/router
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 // lottie-react
-import Lottie from 'lottie-react';
 // mui
 import {
   Box,
@@ -34,6 +34,8 @@ import Iconify from '../Iconify';
 // animations
 import success from '../../assets/animations/success.json';
 import useLocales from 'src/hooks/useLocales';
+
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 
 function SecretCodePopUp() {
   const triggerAlert = useSetRecoilState(alertAtom);

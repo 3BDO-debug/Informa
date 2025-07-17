@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 // stripe
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 // @mui
 import { Box, Button, TextField } from '@mui/material';
 // lottie-react
-import Lottie from 'lottie-react';
 // __apis__
 import { fetchClientSecret } from 'src/__apis__/payment';
 // recoil
@@ -29,6 +29,8 @@ const stripePromise = loadStripe(
   'pk_live_51MU6GUDUPkE56DQ9Uy8040Yo91kuW9OTN3UlhN5oGQhAqX0x0GwdkwAtPyNu4Qlpd3UGwQlGzrLoXdk4x8Rw320x00OE7z7w65'
   // 'pk_test_51MU6GUDUPkE56DQ9qaD6OAoOEgA0WJNw6TLWb4MG1N88HMS3erP9tTcKwDfGYLQXtrXNybjOkfAxuXDkoO0G8WeA00j4ue8GDK'
 );
+
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 
 const CheckoutForm = () => {
   const triggerAlert = useSetRecoilState(alertAtom);

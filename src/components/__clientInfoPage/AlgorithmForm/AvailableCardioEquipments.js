@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Lottie from 'lottie-react';
+import dynamic from 'next/dynamic';
+
 import SwipeableViews from 'react-swipeable-views';
 // material
 import {
@@ -22,6 +23,8 @@ import selected from 'src/assets/animations/equipment-selected.json';
 import Iconify from 'src/components/Iconify';
 
 // ---------------------------------------------------------------------------------------------------
+
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 
 const EquipmentCard = ({ slideNext }) => {
   const [isSelected, setIsSelected] = useState(false);

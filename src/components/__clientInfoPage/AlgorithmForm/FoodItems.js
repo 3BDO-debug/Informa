@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Lottie from 'lottie-react';
+import dynamic from 'next/dynamic';
 import SwipeableViews from 'react-swipeable-views';
 // material
 import {
@@ -23,6 +23,8 @@ import deleted from 'src/assets/animations/food-item-deleted.json';
 import Iconify from 'src/components/Iconify';
 
 // ---------------------------------------------------------------------------------------------------------------
+
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 
 const FoodItemCard = () => {
   const [isExcluded, setIsExcluded] = useState(false);

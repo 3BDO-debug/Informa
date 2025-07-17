@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Lottie from 'lottie-react';
+import dynamic from 'next/dynamic';
+
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useSetRecoilState } from 'recoil';
@@ -43,6 +44,8 @@ import Iconify from 'src/components/Iconify';
 import { LoadingButton } from '@mui/lab';
 
 // ----------------------------------------------------------------------------------------------------------------------------------
+
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 
 function AlgorithmForm() {
   const [activeStep, setActiveStep] = useState(0);
