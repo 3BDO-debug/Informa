@@ -1,4 +1,3 @@
-import { responsive } from 'react-slick-slider/lib/default-props';
 import axiosInstance from './axios';
 
 export const personalTrainingRequester = async (data) =>

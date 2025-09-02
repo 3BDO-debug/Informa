@@ -89,14 +89,14 @@ function Durations({ formik, setActiveStep }) {
       egp: {
         /*  1: PRICES.golden.egp[1] * 0.75, */
         3: 2000,
-        6: 3500,
+        6: 1750, // 3500
         12: 6000,
         4: 2000,
       },
       usd: {
         /* 1: PRICES.golden.usd[1] * 0.75, */
         3: 150,
-        6: 250,
+        6: 125, // 250
         12: 400,
         4: 150,
       },
@@ -164,7 +164,18 @@ function Durations({ formik, setActiveStep }) {
                       label={<Typography variant="h6">{option.label}</Typography>}
                       sx={{ width: '100%' }}
                     />
-                    {option.value === 4 && <Iconify icon="bxs:offer" sx={{ color: 'primary.main', fontSize: 40 }} />}
+                    {option.value === 6 && plan === 'golden' && (
+                      <Typography variant="h6" color="primary.main">
+                        <Stack
+                          direction={currentLang.value === 'ar' ? 'row-reverse' : 'row'}
+                          alignItems="center"
+                          gap={0.5}
+                        >
+                          50 <Iconify icon="bxs:offer" sx={{ color: 'primary.main', fontSize: 20 }} />
+                        </Stack>
+                        OFF
+                      </Typography>
+                    )}
                   </Card>
                 </Grid>
               ))}

@@ -25,15 +25,15 @@ import PricingCard from 'src/components/Pricing/PricingCard';
 // ------------------------------------22---------------------------------------------------------------------
 
 function Pricing() {
-  const [selectedPlanType, setSelectedPlanType] = useState(1);
-  const [selectedPlanDuration, setSelectedPlanDuration] = useState(0);
-  const theme = useTheme();
+  // const [selectedPlanType, setSelectedPlanType] = useState(1);
+  // const [selectedPlanDuration, setSelectedPlanDuration] = useState(0);
+  // const theme = useTheme();
   const { translate } = useLocales();
   const [userPlan, setUserPlan] = useRecoilState(userPlanAtom);
-  const triggerRegisterPopUp = useSetRecoilState(registerNowPopUpAtom);
+  // const triggerRegisterPopUp = useSetRecoilState(registerNowPopUpAtom);
 
-  const [planProgram, setPlanProgram] = useState('nutrition-workout');
-  const [planDuration, setPlanDuration] = useState(6);
+  // const [planProgram, setPlanProgram] = useState('nutrition-workout');
+  // const [planDuration, setPlanDuration] = useState(6);
 
   const { query, push } = useRouter();
 
@@ -52,7 +52,7 @@ function Pricing() {
             {translate('commonSectionsTranslations.pricingsSection.title')}
           </Typography>
         </Grid>
-      {/* /*   <Grid item xs={12}> */
+        {/* <Grid item xs={12}>
           <Box
             sx={{
               display: 'flex',
@@ -99,7 +99,7 @@ function Pricing() {
                 }}
                 clickable
               />
-              {/* <Chip
+              <Chip
                 color="primary"
                 sx={{
                   mr: 2,
@@ -118,16 +118,16 @@ function Pricing() {
                 variant={userPlan.program === 'workout' ? 'filled' : 'outlined'}
                 onClick={() => setUserPlan({ ...userPlan, program: 'workout' })}
                 clickable
-              /> */}
+              />
 
-              {/* <Chip
+              <Chip
                 color="primary"
                 icon={<LocalDiningIcon />}
                 label={translate('commonSectionsTranslations.pricingsSection.planType.3')}
                 variant={userPlan.program === 'nutrition' ? 'filled' : 'outlined'}
                 onClick={() => setUserPlan({ ...userPlan, program: 'nutrition' })}
                 clickable
-              /> */}
+              />
             </Box>
           </Box>
         </Grid> */}
@@ -217,7 +217,7 @@ function Pricing() {
             </Box>
           </Box>
         </Grid> */}
-       {/*  <Grid item xs={12}>
+        {/*  <Grid item xs={12}>
           <Typography sx={{ textAlign: 'center' }} variant="h4">
             {translate('commonSectionsTranslations.pricingsSection.plansData.headTitle')}
           </Typography>

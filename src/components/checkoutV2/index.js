@@ -242,7 +242,7 @@ function Checkout() {
     }
   }, [values.whatsappNumber, userIpRegion]);
 
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(1);
 
   const STEPS = [
     {
