@@ -61,7 +61,7 @@ function Durations({ formik, setActiveStep }) {
     golden: {
       egp: {
         /*  1: 2500, */ 3: 4000,
-        6: 3500, // 7000
+        6: 7000,
         12: 12000,
         4: 4000,
       },
@@ -94,14 +94,14 @@ function Durations({ formik, setActiveStep }) {
       egp: {
         /*  1: PRICES.golden.egp[1] * 0.75, */
         3: 2000,
-        6: 1750, // 3500
+        6: 3500,
         12: 6000,
         4: 2000,
       },
       usd: {
         /* 1: PRICES.golden.usd[1] * 0.75, */
         3: 150,
-        6: 125, // 250
+        6: 250,
         12: 400,
         4: 150,
       },
@@ -143,6 +143,14 @@ function Durations({ formik, setActiveStep }) {
   }, [values.payingRegion, values.followUpPackage]);
 
   setPaymentInfo({ price: offerPrice[plan][currency][values.planDuration], region: userIpRegion });
+
+  useEffect(() => {
+    if (values.planDuration) {
+      setDuration(Number(values.planDuration));
+    }
+  }, [values.planDuration]);
+
+  console.log('ss', duration);
 
   return (
     <Container maxWidth="md">
@@ -193,12 +201,21 @@ function Durations({ formik, setActiveStep }) {
         <Typography variant="h5">
           {translate('componentsTranslations.registerNowPopUpTranslations.form.totalPrice')} :
         </Typography>
-        <Typography variant="h5" sx={{ ml: 1, textDecoration: 'line-through' }}>
+        <Typography
+          variant="h5"
+          sx={{
+            ml: 1,
+            textDecoration: duration === 6 && plan === 'golden' ? 'line-through' : 'none',
+            textDecorationColor: 'primary.main',
+          }}
+        >
           {PRICES[plan][currency][values.planDuration]}
         </Typography>
-        <Typography variant="h5" sx={{ ml: 1 }}>
-          {offerPrice[plan][currency][values.planDuration]} {values.payingRegion === 'local' ? 'EGP' : 'USD'}
-        </Typography>
+        {duration === 6 && plan === 'golden' && (
+          <Typography variant="h5" sx={{ ml: 1 }}>
+            {offerPrice[plan][currency][values.planDuration]} {values.payingRegion === 'local' ? 'EGP' : 'USD'}
+          </Typography>
+        )}
       </Box>
       <Box sx={{ mt: 2 }}>
         <FormControlLabel

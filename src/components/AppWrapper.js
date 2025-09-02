@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { useRouter } from 'next/router';
 // material
-import { Box, Fab, Typography } from '@mui/material';
+import { Box, Fab, Stack, Typography } from '@mui/material';
 import CreateIcon from '@mui/icons-material/Create';
 // atoms
 import registerNowPopUpAtom from 'src/recoil/atoms/registerNowPopUpAtom';
@@ -93,6 +93,32 @@ function AppWrapper({ children }) {
 
   const [offerPopUp, triggerOfferPopUp] = useState(true);
 
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    const targetDate = new Date('2025-09-04T00:00:00+02:00');
+    // +02:00 → Cairo time (Eastern European Time without DST)
+
+    const interval = setInterval(() => {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        clearInterval(interval);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      } else {
+        setTimeLeft({
+          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((diff / (1000 * 60)) % 60),
+          seconds: Math.floor((diff / 1000) % 60),
+        });
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <Box sx={{ overflowX: 'hidden' }}>
@@ -138,8 +164,19 @@ function AppWrapper({ children }) {
               push('/checkout');
             }}
             variant="extended"
+            sx={{ paddingY: 8 }}
           >
-            {translate('componentsTranslations.fabButtonTranslations.text')} <CreateIcon sx={{ ml: 1 }} />
+            <Stack alignItems="center">
+              <Stack direction="row" alignItems="center">
+                {translate('componentsTranslations.fabButtonTranslations.text')} <CreateIcon sx={{ ml: 1 }} />
+              </Stack>
+              <Typography variant="h6">{translate('componentsTranslations.fabButtonTranslations.offer1')} </Typography>
+              <Typography variant="h6">{translate('componentsTranslations.fabButtonTranslations.offer2')} </Typography>
+              <Typography variant="h6">
+                {translate('componentsTranslations.fabButtonTranslations.offer3')} {timeLeft.days}d {timeLeft.hours}h{' '}
+                {timeLeft.minutes}m {timeLeft.seconds}s
+              </Typography>
+            </Stack>
           </Fab>
         </Box>
       )}

@@ -217,14 +217,14 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
               variant="h5"
               sx={{
                 display: 'flex',
-                textDecoration: 'line-through',
+                // textDecoration: 'line-through',
               }}
             >
               {userIpRegion === 'EG' ? egPrice : usPrice} {userIpRegion === 'EG' ? 'EGP' : 'USD'}
             </Typography>
-            <Typography color={color} variant="h2">
+            {/* <Typography color={color} variant="h2">
               {userIpRegion === 'EG' ? PRICES_EG_MAPPING[variant] : PRICES_USD_MAPPING[variant]} {userIpRegion === 'EG' ? 'EGP' : 'USD'}
-            </Typography>
+            </Typography> */}
             <Typography color={color} variant="h4" sx={{ display: 'flex', alignSelf: 'end' }}>
               / 3 Months
             </Typography>
