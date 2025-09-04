@@ -36,9 +36,9 @@ import RamadanOffer from './RamadanOffer';
 function AppWrapper({ children }) {
   const [registerNowPopUp, triggerRegisterNowPopUpAtom] = useRecoilState(registerNowPopUpAtom);
 
-  const { translate } = useLocales();
+  const { translate, currentLang } = useLocales();
 
-  const setUserIpRegion = useSetRecoilState(userIpRegionAtom);
+  const [userIpRegion, setUserIpRegion] = useRecoilState(userIpRegionAtom);
 
   const [announcementPopUp, triggerAnnouncementPopUp] = useRecoilState(announcementPopUpAtom);
 
@@ -61,6 +61,10 @@ function AppWrapper({ children }) {
       });
   }, [setUserIpRegion]);
 
+  useEffect(() => {
+    fetchUserIpRegion();
+  }, []);
+
   const shouldRenderActionButtons = useCallback(() => {
     let shouldRender = true;
 
@@ -74,10 +78,6 @@ function AppWrapper({ children }) {
 
     return shouldRender;
   }, [announcementPopUp, registerNowPopUp]);
-
-  useEffect(() => {
-    fetchUserIpRegion();
-  }, []);
 
   useEffect(() => {
     if (Boolean(query.lang)) {
@@ -96,7 +96,7 @@ function AppWrapper({ children }) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const targetDate = new Date('2025-09-04T00:00:00+02:00');
+    const targetDate = new Date('2025-09-10T00:00:00+02:00');
     // +02:00 → Cairo time (Eastern European Time without DST)
 
     const interval = setInterval(() => {
@@ -164,14 +164,25 @@ function AppWrapper({ children }) {
               push('/checkout');
             }}
             variant="extended"
-            sx={{ paddingY: 8 }}
+            sx={{ mb: 2 }}
+          >
+            {translate('componentsTranslations.fabButtonTranslations.text')} <CreateIcon sx={{ ml: 1 }} />
+          </Fab>
+          <Fab
+            onClick={() => {
+              // triggerRegisterNowPopUpAtom(true);
+              push('/checkout');
+            }}
+            variant="extended"
+            sx={{ paddingY: 6 }}
           >
             <Stack alignItems="center">
-              <Stack direction="row" alignItems="center">
-                {translate('componentsTranslations.fabButtonTranslations.text')} <CreateIcon sx={{ ml: 1 }} />
-              </Stack>
               <Typography variant="h6">{translate('componentsTranslations.fabButtonTranslations.offer1')} </Typography>
-              <Typography variant="h6">{translate('componentsTranslations.fabButtonTranslations.offer2')} </Typography>
+              <Typography variant="h6">
+                {translate('componentsTranslations.fabButtonTranslations.offer2')}{' '}
+                {userIpRegion !== 'EG' && (currentLang.value === 'ar' ? 'و الميجا' : '& MEGA')}{' '}
+                {currentLang.value === 'ar' ? '' : 'PACKAGES'}
+              </Typography>
               <Typography variant="h6">
                 {translate('componentsTranslations.fabButtonTranslations.offer3')} {timeLeft.days}d {timeLeft.hours}h{' '}
                 {timeLeft.minutes}m {timeLeft.seconds}s

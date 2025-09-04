@@ -31,6 +31,7 @@ import {
   Paper,
   ButtonBase,
   useMediaQuery,
+  Fab,
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { LoadingButton } from '@mui/lab';
@@ -272,6 +273,32 @@ function Checkout() {
     onChangeDirection('rtl');
   }, []);
 
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    const targetDate = new Date('2025-09-10T00:00:00+02:00');
+    // +02:00 → Cairo time (Eastern European Time without DST)
+
+    const interval = setInterval(() => {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        clearInterval(interval);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      } else {
+        setTimeLeft({
+          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((diff / (1000 * 60)) % 60),
+          seconds: Math.floor((diff / 1000) % 60),
+        });
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <Box sx={{ py: 3, height: '100vh', overflowY: 'scroll' }}>
       {!isDesktop && <FloatingVideo activeStep={activeStep} />}
@@ -343,6 +370,32 @@ function Checkout() {
             <Box>{STEPS[activeStep].component({ formik })}</Box>
           </Grid>
         </Grid>
+        <Box
+          sx={{
+            position: 'sticky',
+            float: 'right',
+            bottom: '0px',
+            right: '20px',
+            display: 'flex',
+            flexDirection: 'column',
+            zIndex: 10000,
+          }}
+        >
+          <Fab variant="extended" sx={{ paddingY: 6, mt: 3 }}>
+            <Stack alignItems="center">
+              <Typography variant="h6">{translate('componentsTranslations.fabButtonTranslations.offer1')} </Typography>
+              <Typography variant="h6">
+                {translate('componentsTranslations.fabButtonTranslations.offer2')}{' '}
+                {userIpRegion !== 'EG' && (currentLang.value === 'ar' ? 'و الميجا' : '& MEGA')}{' '}
+                {currentLang.value === 'ar' ? '' : 'PACKAGES'}
+              </Typography>
+              <Typography variant="h6">
+                {translate('componentsTranslations.fabButtonTranslations.offer3')} {timeLeft.days}d {timeLeft.hours}h{' '}
+                {timeLeft.minutes}m {timeLeft.seconds}s
+              </Typography>
+            </Stack>
+          </Fab>
+        </Box>
         <PaymentPopUp />
         <SecretCodePopUp />
         <RefundPolicyPopUp />

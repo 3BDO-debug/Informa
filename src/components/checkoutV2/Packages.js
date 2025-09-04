@@ -105,7 +105,7 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
   const PRICES_USD_MAPPING = {
     silver: '100',
     golden: '150',
-    mega: '450',
+    mega: '350',
   };
 
   const [collapse, setCollapse] = useState(false);
@@ -217,14 +217,18 @@ const PackageCard = ({ title, egPrice, usPrice, background, color, border, onCli
               variant="h5"
               sx={{
                 display: 'flex',
-                // textDecoration: 'line-through',
+                textDecoration:
+                  (userIpRegion !== 'EG' && variant === 'mega') || variant === 'golden' ? 'line-through' : 'none',
               }}
             >
               {userIpRegion === 'EG' ? egPrice : usPrice} {userIpRegion === 'EG' ? 'EGP' : 'USD'}
             </Typography>
-            {/* <Typography color={color} variant="h2">
-              {userIpRegion === 'EG' ? PRICES_EG_MAPPING[variant] : PRICES_USD_MAPPING[variant]} {userIpRegion === 'EG' ? 'EGP' : 'USD'}
-            </Typography> */}
+            {((userIpRegion !== 'EG' && variant === 'mega') || variant === 'golden') && (
+              <Typography color={color} variant="h2">
+                {userIpRegion === 'EG' ? PRICES_EG_MAPPING[variant] : PRICES_USD_MAPPING[variant]}{' '}
+                {userIpRegion === 'EG' ? 'EGP' : 'USD'}
+              </Typography>
+            )}
             <Typography color={color} variant="h4" sx={{ display: 'flex', alignSelf: 'end' }}>
               / 3 Months
             </Typography>

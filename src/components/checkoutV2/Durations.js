@@ -116,7 +116,7 @@ function Durations({ formik, setActiveStep }) {
       },
       usd: {
         /*  1: PRICES.mega.usd[1] * 0.75, */
-        3: 450,
+        3: 350,
         6: 650,
         12: 950,
         4: 450,
@@ -150,8 +150,6 @@ function Durations({ formik, setActiveStep }) {
     }
   }, [values.planDuration]);
 
-  console.log('ss', duration);
-
   return (
     <Container maxWidth="md">
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -177,7 +175,8 @@ function Durations({ formik, setActiveStep }) {
                       label={<Typography variant="h6">{option.label}</Typography>}
                       sx={{ width: '100%' }}
                     />
-                    {option.value === 6 && plan === 'golden' && (
+                    {((option.value === 3 && plan === 'golden') ||
+                      (option.value === 3 && plan === 'mega' && userIpRegion !== 'EG')) && (
                       <Typography variant="h6" color="primary.main">
                         <Stack
                           direction={currentLang.value === 'ar' ? 'row-reverse' : 'row'}
@@ -205,13 +204,16 @@ function Durations({ formik, setActiveStep }) {
           variant="h5"
           sx={{
             ml: 1,
-            textDecoration: duration === 6 && plan === 'golden' ? 'line-through' : 'none',
+            textDecoration:
+              (duration === 3 && plan === 'golden') || (duration === 3 && plan === 'mega' && userIpRegion !== 'EG')
+                ? 'line-through'
+                : 'none',
             textDecorationColor: 'primary.main',
           }}
         >
           {PRICES[plan][currency][values.planDuration]}
         </Typography>
-        {duration === 6 && plan === 'golden' && (
+        {((duration === 3 && plan === 'golden') || (duration === 3 && plan === 'mega' && userIpRegion !== 'EG')) && (
           <Typography variant="h5" sx={{ ml: 1 }}>
             {offerPrice[plan][currency][values.planDuration]} {values.payingRegion === 'local' ? 'EGP' : 'USD'}
           </Typography>

@@ -1,7 +1,7 @@
 const fabButtonTranslations = {
   text: 'Register now',
   offer1: 'LIMITED TIME OFFER',
-  offer2: 'ON GOLDEN PACKAGE',
+  offer2: 'ON GOLDEN',
   offer3: 'ENDS IN :',
 };
 
